@@ -1,4 +1,4 @@
-const jsPatches = ["displayFullName"]
+const jsPatches = ["displayFullName", "redirectToBoard"]
 const cssPatches = ["hideWCAG", "alignDetailedGradesButton", "hideTutorsFromBoard"]
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
