@@ -1,14 +1,8 @@
-const isEduVulcan = !!window.location.hostname.match(/^((?!dziennik).)*$/);
+const isEduVulcan = !window.location.hostname.startsWith("dziennik");
 const isMobile = window.innerWidth < 1024;
 
 const getLogoElement = () =>
-    document.querySelector(
-        `${
-            isEduVulcan
-                ? ".header__logo-product a"
-                : ".header__logo-product img"
-        }`,
-    );
+    document.querySelector(".header__logo-product a").firstChild;
 
 const logoObserver = new MutationObserver((mutationsList, observer) => {
     if (getLogoElement()) {
