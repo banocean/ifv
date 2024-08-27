@@ -66,3 +66,7 @@ main > * > * > .content-container {
 .side_studentContext {
     display: none !important;
 }
+
+.wiadomosci_svg__icon_4 {
+    fill: white
+}
