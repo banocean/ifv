@@ -8,7 +8,6 @@ const doesElementExist = () =>
     );
 
 const observer = new MutationObserver((mutationsList, observer) => {
-    console.log("adasdadw")
     if (doesElementExist()) {
         observer.disconnect();
         displayFullName();
@@ -28,29 +27,30 @@ function getStudentData() {
 function displayFullName() {
     const studentData = getStudentData();
 
-    if (studentData) {
-        const studentNameSpan = document.createElement("span");
-        studentNameSpan.style = "font-size: 20px;";
-        studentNameSpan.innerHTML = `${studentData}`;
+    if (!studentData) return;
 
-        const usernameContainer = document.querySelector(
-            ".user div:nth-of-type(2)",
-        );
-        usernameContainer.style =
-            "display: flex; flex-direction: column; font-size: 16px;";
+    const studentNameSpan = document.createElement("span");
+    studentNameSpan.style = "font-size: 20px;";
+    studentNameSpan.innerHTML = `${studentData}`;
 
-        usernameContainer.insertBefore(
-            studentNameSpan,
-            usernameContainer.firstChild,
-        );
-    }
+    const usernameContainer = document.querySelector(
+        ".user div:nth-of-type(2)",
+    );
+    usernameContainer.style =
+        "display: flex; flex-direction: column; font-size: 16px;";
+
+    usernameContainer.insertBefore(
+        studentNameSpan,
+        usernameContainer.firstChild,
+    );
 }
 
 if (doesElementExist()) {
     displayFullName();
-} else observer.observe(document.body, {
-    characterData: false,
-    childList: true,
-    attributes: false,
-    subtree: true,
-});
+} else
+    observer.observe(document.body, {
+        characterData: false,
+        childList: true,
+        attributes: false,
+        subtree: true,
+    });
