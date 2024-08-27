@@ -2,7 +2,7 @@ const isEduVulcan = !window.location.hostname.startsWith("dziennik");
 const isMobile = window.innerWidth < 1024;
 
 const getLogoElement = () =>
-    document.querySelector(".header__logo-product a").firstChild;
+    document.querySelector(".header__logo-product").firstChild;
 
 const logoObserver = new MutationObserver((mutationsList, observer) => {
     if (getLogoElement()) {
