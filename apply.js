@@ -1,4 +1,4 @@
-const jsPatches = []
+const jsPatches = ["displayFullName"]
 const cssPatches = ["hideWCAG"]
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
