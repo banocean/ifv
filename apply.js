@@ -1,5 +1,5 @@
-const jsPatches = []
-const cssPatches = ["hideWCAG", "theme"]
+const jsPatches = ["displayFullName"]
+const cssPatches = ["hideWCAG", "theme", "alignDetailedGradesButton"]
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
