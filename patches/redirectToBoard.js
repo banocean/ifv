@@ -1,4 +1,5 @@
 const isEduVulcan = !!window.location.hostname.match(/^((?!dziennik).)*$/);
+const isMobile = window.innerWidth < 1024;
 
 const getLogoElement = () =>
     document.querySelector(
@@ -10,7 +11,6 @@ const getLogoElement = () =>
     );
 
 const logoObserver = new MutationObserver((mutationsList, observer) => {
-    console.log(mutationsList);
     if (getLogoElement()) {
         observer.disconnect();
         redirectToBoard();
@@ -18,18 +18,36 @@ const logoObserver = new MutationObserver((mutationsList, observer) => {
 });
 
 function redirectToBoard() {
-    const url = !!window.location.hostname.match(/^(dziennik-)?wiadomosci.*/)
-        ? `https://${window.location.hostname.replace("wiadomosci", "uczen")}/${
-              window.location.pathname.split("/")[1]
-          }/App`
-        : window.location.href.split("/").slice(0, -1).join("/") + "/tablica";
-
     const logoElement = getLogoElement();
+    if (!!window.location.hostname.match(/^(dziennik-)?wiadomosci.*/)) {
+        const url = !!window.location.hostname.match(
+            /^(dziennik-)?wiadomosci.*/,
+        )
+            ? `https://${window.location.hostname.replace(
+                  "wiadomosci",
+                  "uczen",
+              )}/${window.location.pathname.split("/")[1]}/App`
+            : window.location.href.split("/").slice(0, -1).join("/") +
+              "/tablica";
 
-    if (isEduVulcan) logoElement.href = url;
-    else {
-        logoElement.onclick = () => (window.location.href = url);
-        logoElement.style = "cursor: pointer;";
+        if (isEduVulcan) logoElement.href = url;
+        else {
+            logoElement.onclick = () => (window.location.href = url);
+            logoElement.style = "cursor: pointer;";
+        }
+    } else if (isMobile) {
+        if (isEduVulcan) logoElement.href = "javascript:void(0)";
+
+        logoElement.onclick = () => {
+            document.querySelector(".app").classList.add("hideAside")
+            document.querySelector(".header__hamburger__icon button").click()
+            document.querySelector(".tablica a").click()
+            document.querySelector(".app").classList.remove("hideAside")
+        }
+    } else {
+        if (isEduVulcan) logoElement.href = "javascript:void(0)";
+        logoElement.onclick = () =>
+            document.querySelector(".tablica a").click();
     }
 }
 

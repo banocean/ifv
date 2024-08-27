@@ -1,5 +1,5 @@
 const jsPatches = ["displayFullName", "redirectToBoard"]
-const cssPatches = ["hideWCAG", "alignDetailedGradesButton", "hideTutorsFromBoard"]
+const cssPatches = ["hideWCAG", "alignDetailedGradesButton", "hideTutorsFromBoard", "redirectToBoard"]
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
