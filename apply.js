@@ -1,5 +1,5 @@
 const jsPatches = []
-const cssPatches = ["hideWCAG"]
+const cssPatches = ["hideWCAG", "theme"]
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
