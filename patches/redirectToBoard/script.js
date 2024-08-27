@@ -20,15 +20,10 @@ const logoObserver = new MutationObserver((mutationsList, observer) => {
 function redirectToBoard() {
     const logoElement = getLogoElement();
     if (!!window.location.hostname.match(/^(dziennik-)?wiadomosci.*/)) {
-        const url = !!window.location.hostname.match(
-            /^(dziennik-)?wiadomosci.*/,
-        )
-            ? `https://${window.location.hostname.replace(
+        const url = `https://${window.location.hostname.replace(
                   "wiadomosci",
                   "uczen",
               )}/${window.location.pathname.split("/")[1]}/App`
-            : window.location.href.split("/").slice(0, -1).join("/") +
-              "/tablica";
 
         if (isEduVulcan) logoElement.href = url;
         else {
@@ -55,8 +50,5 @@ if (getLogoElement()) {
     redirectToBoard();
 } else
     logoObserver.observe(document.body, {
-        characterData: true,
-        childList: true,
-        attributes: true,
         subtree: true,
     });
