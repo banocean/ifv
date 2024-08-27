@@ -1,0 +1,68 @@
+:root {
+    --primary-background: #121212;
+    --secondary-background: #1d1d1d;
+    --component-background: #212121;
+    --secondary--component--background: #242424;
+    --primary-text: white;
+    --secondary-text: color-mix(in srgb, black 100%, white 70%)
+}
+
+main > section {
+    background-color: var(--primary-background) !important;
+    color: white !important;
+}
+
+main > header {
+    background-color: var(--primary-background) !important;
+    border-bottom: 0 !important;
+}
+
+footer {
+    border: 0 !important;
+}
+
+footer > * > div {
+    background-color: var(--primary-background) !important;
+    border: 0 !important;
+}
+
+aside, aside > header {
+    background-color: var(--secondary-background) !important;
+}
+
+aside > header {
+    border: 0 !important;
+}
+
+.fonts > li > a {
+    color: var(--secondary-text) !important;
+}
+
+.languages-desktop {
+    border: 0 !important;
+}
+
+.user {
+    border: 0 !important;
+}
+
+main > * > * > .content-container {
+    background-color: var(--component-background) !important;
+}
+
+.box-shaded {
+    background-color: var(--component-background) !important;
+    color: var(--secondary-text) !important;
+}
+
+.user__section > a > div > span, .user__section > svg {
+    color: var(--secondary-text) !important;
+}
+
+.header__hamburger__icon > button > span > svg {
+    color: white !important;
+}
+
+.side_studentContext {
+    display: none !important;
+}
