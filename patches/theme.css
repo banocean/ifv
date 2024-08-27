@@ -50,12 +50,12 @@ main > * > * > .content-container {
     background-color: var(--component-background) !important;
 }
 
-.box-shaded {
+.box-shaded:not(#kafel-pomoc-pomigracyjna) {
     background-color: var(--component-background) !important;
     color: var(--secondary-text) !important;
 }
 
-.user__section > a > div > span, .user__section > svg {
+.user__section > a > div > span, .user__section > a > svg {
     color: var(--secondary-text) !important;
 }
 
