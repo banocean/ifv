@@ -42,9 +42,16 @@ const patches = [
     description: "todo",
     files: {
       js: ["redirectToBoard/script.js"],
-      css: ["redirectToBoard/styles.css"]
+      css: ["redirectToBoard/styles.css"],
     },
-  }
+  },
+  {
+    name: "Hide Help On Dashboard",
+    description: "Hide irritating blue help block on dashboard",
+    files: {
+      css: ["hideHelpOnDashboard.css"],
+    },
+  },
 ];
 
 let config = {
