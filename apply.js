@@ -41,8 +41,8 @@ const patches = [
     name: "Redirect To Board",
     description: "todo",
     files: {
-      js: ["redirectToBoard/script"],
-      css: ["redirectToBoard/styles"]
+      js: ["redirectToBoard/script.js"],
+      css: ["redirectToBoard/styles.css"]
     },
   }
 ];
