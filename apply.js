@@ -1,24 +1,55 @@
-const jsPatches = ["displayFullName"];
-const cssPatches = [
-  "hideWCAG",
-  "alignDetailedGradesButton",
-  "hideTutorsFromBoard",
+/**
+ * @typedef {Object} Patch
+ * @property {string} name - The name of the patch.
+ * @property {string} description - The description of the patch.
+ * @property {Object} files - The files to be injected.
+ * @property {string[]} [files.css] - An array of CSS file names (optional).
+ * @property {string[]} [files.js] - An array of JS file names (optional).
+ */
+
+/** @type {Patch[]} */
+const patches = [
+  {
+    name: "Hide WCAG",
+    description: "todo",
+    files: {
+      css: ["hideWCAG.css"],
+    },
+  },
+  {
+    name: "Align Detailed Grades Button",
+    description: "todo",
+    files: {
+      css: ["alignDetailedGradesButton.css"],
+    },
+  },
+  {
+    name: "Hide Tutors From Board",
+    description: "todo",
+    files: {
+      css: ["hideTutorsFromBoard.css"],
+    },
+  },
+  {
+    name: "Display Full Name",
+    description: "todo",
+    files: {
+      js: ["displayFullName.js"],
+    },
+  },
 ];
 
-const defaultOptions = {
-  ...cssPatches.reduce(
-    (acc, patch) => ({ ...acc, [patch]: { enable: true, type: "css" } }),
-    {}
-  ),
-  ...jsPatches.reduce(
-    (acc, patch) => ({ ...acc, [patch]: { enable: true, type: "js" } }),
+let config = {
+  ...patches.reduce(
+    (acc, patch) => ({
+      ...acc,
+      [patch.name]: { description: patch.description, enable: true },
+    }),
     {}
   ),
 };
 
-chrome.storage.sync.set({ options: defaultOptions });
-
-let config = defaultOptions;
+chrome.storage.sync.set({ options: config });
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
   if (namespace !== "sync") return;
@@ -38,24 +69,27 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && /^http/.test(tab.url)) {
-    for (const patch of jsPatches.filter((patch) => config[patch].enable)) {
-      chrome.scripting.executeScript({
-        target: { tabId: tabId },
-        files: [`./patches/${patch}.js`],
-      });
-    }
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      files: patches.reduce((acc, patch) => {
+        if (config[patch.name].enable && patch.files?.js?.length)
+          return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
+        return acc;
+      }, []),
+    });
   }
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading" && /^http/.test(tab.url)) {
-    for (const patch of cssPatches.filter((patch) => config[patch].enable)) {
-      if (config[patch].enable)
-        chrome.scripting.insertCSS({
-          target: { tabId: tabId },
-          files: [`./patches/${patch}.css`],
-        });
-    }
+    chrome.scripting.insertCSS({
+      target: { tabId: tabId },
+      files: patches.reduce((acc, patch) => {
+        if (config[patch.name].enable && patch.files?.css?.length)
+          return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
+        return acc;
+      }, []),
+    });
   }
 });
 

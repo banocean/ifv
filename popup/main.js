@@ -1,11 +1,3 @@
-const beautifyName = (name) => {
-  const words = name.split(/(?<=[a-z])(?=[A-Z])/);
-  const capitalizedWords = words.map(
-    (word) => word.charAt(0).toUpperCase() + word.slice(1)
-  );
-  return capitalizedWords.join(" ");
-};
-
 document.addEventListener("DOMContentLoaded", async () => {
   let config = (await chrome.storage.sync.get("options"))?.options ?? {};
   const optionsDOM = document.querySelector(".options");
@@ -13,7 +5,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const option = document.createElement("div");
     option.className = "option";
     option.innerHTML = `
-    <label for="${key}">${beautifyName(key)}</label>
+    <div>
+      <label for="${key}">${key}</label>
+      <p class ="desc">${value.description}</p>
+    </div>
     <input type="checkbox" id="${key}" ${value.enable ? "checked" : ""}>
     `;
     optionsDOM.appendChild(option);
