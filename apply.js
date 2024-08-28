@@ -38,19 +38,18 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && /^http/.test(tab.url)) {
-    for (const patch of jsPatches) {
-      if (config[patch].enable)
-        chrome.scripting.executeScript({
-          target: { tabId: tabId },
-          files: [`./patches/${patch}.js`],
-        });
+    for (const patch of jsPatches.filter((patch) => config[patch].enable)) {
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        files: [`./patches/${patch}.js`],
+      });
     }
   }
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "loading" && /^http/.test(tab.url)) {
-    for (const patch of cssPatches) {
+    for (const patch of cssPatches.filter((patch) => config[patch].enable)) {
       if (config[patch].enable)
         chrome.scripting.insertCSS({
           target: { tabId: tabId },
