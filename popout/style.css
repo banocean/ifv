@@ -1,0 +1,32 @@
+body {
+  background: #121212;
+  color: white;
+  width: 300px;
+  padding-bottom: 60px;
+}
+
+.options {
+  background: #212121;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  font-size: medium;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #121212;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+}
