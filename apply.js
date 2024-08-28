@@ -1,26 +1,96 @@
-const jsPatches = ["displayFullName"]
-const cssPatches = ["hideWCAG", "alignDetailedGradesButton"]
+/**
+ * @typedef {Object} Patch
+ * @property {string} name - The name of the patch.
+ * @property {string} description - The description of the patch.
+ * @property {Object} files - The files to be injected.
+ * @property {string[]} [files.css] - An array of CSS file names (optional).
+ * @property {string[]} [files.js] - An array of JS file names (optional).
+ */
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {
-        for (const patch of jsPatches) {
-            chrome.scripting.executeScript({
-                target: { tabId: tabId },
-                files: [`./patches/${patch}.js`]
-            })
-        }
-    }
+/** @type {Patch[]} */
+const patches = [
+  {
+    name: "Hide WCAG",
+    description: "todo",
+    files: {
+      css: ["hideWCAG.css"],
+    },
+  },
+  {
+    name: "Align Detailed Grades Button",
+    description: "todo",
+    files: {
+      css: ["alignDetailedGradesButton.css"],
+    },
+  },
+  {
+    name: "Hide Tutors From Board",
+    description: "todo",
+    files: {
+      css: ["hideTutorsFromBoard.css"],
+    },
+  },
+  {
+    name: "Display Full Name",
+    description: "todo",
+    files: {
+      js: ["displayFullName.js"],
+    },
+  },
+];
+
+let config = {
+  ...patches.reduce(
+    (acc, patch) => ({
+      ...acc,
+      [patch.name]: { description: patch.description, enable: true },
+    }),
+    {}
+  ),
+};
+
+chrome.storage.sync.set({ options: config });
+
+chrome.storage.onChanged.addListener(function (changes, namespace) {
+  if (namespace !== "sync") return;
+  config = changes.options.newValue;
+  chrome.permissions.getAll((permissions) => {
+    const hostPatterns = permissions.origins || [];
+
+    hostPatterns.forEach((pattern) => {
+      chrome.tabs.query({ url: pattern }, (tabs) => {
+        tabs.forEach((tab) => {
+          chrome.tabs.reload(tab.id);
+        });
+      });
+    });
+  });
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (changeInfo.status === 'loading' && /^http/.test(tab.url)) {
-        for (const patch of cssPatches) {
-            chrome.scripting.insertCSS({
-                target: {tabId: tabId},
-                files: [`./patches/${patch}.css`]
-            })
-        }
-    }
-})
+  if (changeInfo.status === "complete" && /^http/.test(tab.url)) {
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      files: patches.reduce((acc, patch) => {
+        if (config[patch.name].enable && patch.files?.js?.length)
+          return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
+        return acc;
+      }, []),
+    });
+  }
+});
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "loading" && /^http/.test(tab.url)) {
+    chrome.scripting.insertCSS({
+      target: { tabId: tabId },
+      files: patches.reduce((acc, patch) => {
+        if (config[patch.name].enable && patch.files?.css?.length)
+          return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
+        return acc;
+      }, []),
+    });
+  }
+});
 
 // "*://*dziennik-uczen.vulcan.net.pl/*"
