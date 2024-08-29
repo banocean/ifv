@@ -123,8 +123,9 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       const isFirstRun = !window.iWasThere; // :)
       window.iWasThere = true
 
-      for (const { onlyOnReloads, isLoaded, run } of window.modules) {
+      for (const { onlyOnReloads, doesRunHere, isLoaded, run } of window.modules) {
         if (onlyOnReloads && !isFirstRun) continue
+        if (doesRunHere !== undefined && !doesRunHere()) continue
 
         if (isLoaded === undefined) run()
         else if (isLoaded()) run()
