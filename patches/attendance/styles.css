@@ -23,15 +23,3 @@
 .tabsview.attendance-init:not(.stats) > .tabsview__tabs > div > div > div:last-of-type {
     display: none;
 }
-
-@media screen and (max-width: 1024px) {
-    .frequency__legend,
-    .tabsview.attendance-init > .tabsview__header,
-    .tabsview.attendance-init > .tabsview__tabs > div > div > div:first-of-type {
-        display: none;
-    }
-
-    #tabpanel-0 > div > div {
-
-    }
-}

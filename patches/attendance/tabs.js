@@ -36,22 +36,9 @@ const isRendered = () =>
     !!document.querySelector(".content-container:has(.statistics)")
     && !!document.querySelector(".tabsview")
 
-const attendanceObserver = new MutationObserver((_, observer) => {
-    if (isRendered()) {
-        observer.disconnect();
-        createSelector();
-    } else console.log("nuh uh")
-});
-
-const run = () => {
-    if (isRendered()) createSelector()
-    else attendanceObserver.observe(document.body, {
-        subtree: true,
-        childList: true
-    })
-}
-
-if (isAttendancePage()) run()
-addEventListener("popstate", () => {
-    if (isAttendancePage()) run()
+window.modules.push({
+    isLoaded: isRendered,
+    run: createSelector,
+    onlyOnReloads: false,
+    doesRunHere: isAttendancePage
 })
