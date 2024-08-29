@@ -49,8 +49,7 @@ const patches = [
     name: "Add login button in eduVulcan home",
     description: "todo",
     files: {
-      js: ["addEduVulcanLoginButton.js"],
-      css: ["addEduVulcanLoginButton.css"],
+      js: ["addEduVulcanLoginButton.js"]
     },
   },
   {
