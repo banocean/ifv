@@ -37,6 +37,14 @@ const patches = [
       js: ["displayFullName.js"],
     },
   },
+  {
+    name: "Redirect To Board",
+    description: "todo",
+    files: {
+      js: ["redirectToBoard/script.js"],
+      css: ["redirectToBoard/styles.css"]
+    },
+  }
 ];
 
 let config = {
