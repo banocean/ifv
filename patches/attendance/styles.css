@@ -23,3 +23,7 @@
 .tabsview.attendance-init:not(.stats) > .tabsview__tabs > div > div > div:last-of-type {
     display: none;
 }
+
+.tabsview.attendance-init > div:first-of-type {
+    margin-top: 10px;
+}
