@@ -1,0 +1,19 @@
+/* app download links, eduvulcan banner, maziaj */
+.box-app, .carousel-area, .ribbon-bg {
+    display: none !important;
+}
+
+.part-business-content-bottom {
+    padding-left: 0 !important;
+}
+
+.main-content {
+    flex-direction: column;
+    flex: inherit !important;
+}
+
+.part-constant, .part-business {
+    flex: 0 !important;
+    padding: 0 !important;
+}
+.part-business { order: 2 !important; }
