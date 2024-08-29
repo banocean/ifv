@@ -47,7 +47,7 @@ const patches = [
   },
   {
     name: "Hide Help On Dashboard",
-    description: "Hide help block on dashboard.",
+description: "Hides \"Do you need help\" tile",
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
