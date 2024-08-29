@@ -68,8 +68,8 @@ const patches = [
     },
   },
   {
-    name: "PWA",
-    description: "todo",
+    name: "PWA Support",
+    description: "Gives ability to install page as PWA",
     files: {
       js: ["pwa.js"],
     }
