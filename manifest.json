@@ -4,12 +4,7 @@
   "version": "0.1",
   "name": "Improvements for Vulcan",
 
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting",
-    "tabs"
-  ],
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "host_permissions": [
     "*://dziennik-uczen.vulcan.net.pl/*",
     "*://dziennik-wiadomosci.vulcan.net.pl/*",
@@ -20,5 +15,9 @@
 
   "background": {
     "service_worker": "apply.js"
+  },
+
+  "action": {
+    "default_popup": "popup/index.html"
   }
 }
