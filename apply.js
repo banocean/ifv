@@ -42,7 +42,7 @@ const patches = [
     description: "todo",
     files: {
       js: ["redirectToBoard/script.js"],
-      css: ["redirectToBoard/styles.css"]
+      css: ["redirectToBoard/styles.css"],
     },
   },
   {
@@ -58,6 +58,10 @@ const patches = [
       "Hides eduVulcan app download links tile, eduVulcan banner and ribbon.",
     files: {
       css: ["cleanUpEduVulcanHome.css"],
+    name: "Hide Help On Dashboard",
+    description: "Hides \"Do you need help\" tile",
+    files: {
+      css: ["hideHelpOnDashboard.css"],
     },
   },
 ];
