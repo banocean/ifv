@@ -46,8 +46,23 @@ const patches = [
     },
   },
   {
+    name: "Auto redirect to login page in eduVulcan",
+    description: "todo",
+    files: {
+      js: ["redirectToEVLogin.js"],
+    },
+  },
+  {
+    name: "Hide unneeded tiles in eduVulcan home",
+    description:
+      "Hides eduVulcan app download links tile, eduVulcan banner and ribbon.",
+    files: {
+      css: ["cleanUpEduVulcanHome.css"],
+    },
+  },
+  {
     name: "Hide Help On Dashboard",
-description: "Hides \"Do you need help\" tile",
+    description: 'Hides "Do you need help" tile',
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
@@ -86,7 +101,8 @@ const allowedHostnames = [
   "dziennik-uczen.vulcan.net.pl",
   "dziennik-wiadomosci.vulcan.net.pl",
   "uczen.eduvulcan.pl",
-  "wiadomosci.eduvulcan.pl"
+  "wiadomosci.eduvulcan.pl",
+  "eduvulcan.pl"
 ]
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
