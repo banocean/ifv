@@ -57,7 +57,7 @@ const patches = [
     name: "Hide unneeded tiles in eduVulcan home",
     description: "Hide eduVulcan features tile, eduVulcan app download links tile, eduVulcan banner and ribbon.",
     files: {
-      js: ["cleanUpEduVulcanHome.js"]
+      css: ["cleanUpEduVulcanHome.css"]
     }
   }
 ];
