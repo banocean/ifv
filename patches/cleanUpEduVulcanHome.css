@@ -1,8 +1,18 @@
-/* eduVulcan features, app downlaod links, eduvulcan banner, maziaj */
-.part-constant:has(.carousel-area-no-authenticated), .box-app, .carousel-component, .ribbon-bg {
+/* app download links, eduvulcan banner, maziaj */
+.box-app, .carousel-area, .ribbon-bg {
     display: none !important;
 }
 
 .part-business-content-bottom {
-    padding-left: none !important;
+    padding-left: 0 !important;
+}
+
+.main-content {
+    flex-direction: column;
+    flex: inherit !important;
+}
+
+.part-constant, .part-business {
+    flex: 0 !important;
+    padding: 0 !important;
 }

@@ -46,19 +46,20 @@ const patches = [
     },
   },
   {
-    name: "Add login button in eduVulcan home",
+    name: "Auto redirect to login page in eduVulcan",
     description: "todo",
     files: {
-      js: ["addEduVulcanLoginButton.js"]
+      js: ["redirectToEVLogin.js"],
     },
   },
   {
     name: "Hide unneeded tiles in eduVulcan home",
-    description: "Hide eduVulcan features tile, eduVulcan app download links tile, eduVulcan banner and ribbon.",
+    description:
+      "Hides eduVulcan app download links tile, eduVulcan banner and ribbon.",
     files: {
-      css: ["cleanUpEduVulcanHome.css"]
-    }
-  }
+      css: ["cleanUpEduVulcanHome.css"],
+    },
+  },
 ];
 
 let config = {
