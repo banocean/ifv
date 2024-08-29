@@ -1,21 +1,9 @@
-const isMessagesPage = window.location.hostname.match(
+const isMessagesPage = () => window.location.hostname.match(
     /(dziennik-)?wiadomosci.*/,
 );
 
-const doesElementExist = () =>
-    document.querySelector(
-        `.${isMessagesPage ? "account__name span" : "side_student"}`,
-    );
-
-const observer = new MutationObserver((mutationsList, observer) => {
-    if (doesElementExist()) {
-        observer.disconnect();
-        displayFullName();
-    }
-});
-
 function getStudentData() {
-    return isMessagesPage
+    return isMessagesPage()
         ? document
               .querySelector(".account__name span")
               ?.firstChild?.textContent?.split(" ")
@@ -45,12 +33,10 @@ function displayFullName() {
     );
 }
 
-if (doesElementExist()) {
-    displayFullName();
-} else
-    observer.observe(document.body, {
-        characterData: false,
-        childList: true,
-        attributes: false,
-        subtree: true,
-    });
+window.modules.push({
+    isLoaded: () => document.querySelector(
+        `.${isMessagesPage() ? "account__name span" : "side_student"}`,
+    ),
+    onlyOnReloads: true,
+    run: displayFullName
+})
