@@ -119,6 +119,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   chrome.scripting.executeScript({
     target: { tabId },
     func: () => {
+      if (!window.modules.length) return console.warn("Script tried executing before all files loaded or all patches are disabled")
       const isFirstRun = !window.iWasThere; // :)
       window.iWasThere = true
 
