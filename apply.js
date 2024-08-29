@@ -75,30 +75,72 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
   });
 });
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === "complete" && /^http/.test(tab.url)) {
-    chrome.scripting.executeScript({
-      target: { tabId: tabId },
-      files: patches.reduce((acc, patch) => {
-        if (config[patch.name].enable && patch.files?.js?.length)
-          return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
-        return acc;
-      }, []),
-    });
-  }
-});
+const allowedHostnames = [
+  "dziennik-uczen.vulcan.net.pl",
+  "dziennik-wiadomosci.vulcan.net.pl",
+  "uczen.eduvulcan.pl",
+  "wiadomosci.eduvulcan.pl"
+]
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === "loading" && /^http/.test(tab.url)) {
-    chrome.scripting.insertCSS({
-      target: { tabId: tabId },
-      files: patches.reduce((acc, patch) => {
-        if (config[patch.name].enable && patch.files?.css?.length)
-          return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
-        return acc;
-      }, []),
-    });
-  }
-});
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  if (changeInfo.status !== "loading" || !/^http/.test(tab.url)) return
+  const tabHostname = (new URLPattern(tab.url)).hostname
+  if (!allowedHostnames.includes(tabHostname)) return
 
-// "*://*dziennik-uczen.vulcan.net.pl/*"
+  chrome.scripting.insertCSS({
+    target: { tabId: tabId },
+    files: patches.reduce((acc, patch) => {
+      if (config[patch.name].enable && patch.files?.css?.length)
+        return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
+      return acc
+    }, []),
+  });
+
+  const [{ result: isInitiated }] = await chrome.scripting.executeScript({
+    target: { tabId },
+    func: () => {
+      if (!window.modules) {
+        window.modules = []
+        return false
+      }
+      return true
+    }
+  })
+
+  if (!isInitiated) await chrome.scripting.executeScript({
+    target: { tabId },
+    files: patches.reduce((acc, patch) => {
+      if (config[patch.name].enable && patch.files?.js?.length)
+        return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
+      return acc;
+    }, []),
+  })
+
+  chrome.scripting.executeScript({
+    target: { tabId },
+    func: () => {
+      if (!window.modules.length) return console.warn("Script tried executing before all files loaded or all patches are disabled")
+      const isFirstRun = !window.iWasThere; // :)
+      window.iWasThere = true
+
+      for (const { onlyOnReloads, doesRunHere, isLoaded, run } of window.modules) {
+        if (onlyOnReloads && !isFirstRun) continue
+        if (doesRunHere !== undefined && !doesRunHere()) continue
+
+        if (isLoaded === undefined) run()
+        else if (isLoaded()) run()
+        else {
+          const observer = new MutationObserver((mutationsList, observer) => {
+            if (!isLoaded()) return
+            observer.disconnect();
+            run();
+          });
+          observer.observe(document.body, {
+            subtree: true,
+            childList: true
+          })
+        }
+      }
+    }
+  });
+});
