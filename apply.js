@@ -72,7 +72,15 @@ const patches = [
     description: "todo",
     files: {
       js: ["pwa.js"],
-    },
+    }
+  },
+  {
+    name: "Attendance statistics in separate tab",
+    description: "Makes attendance page more readable by moving statistics to separate tab",
+    files: {
+      css: ["attendance/styles.css"],
+      js: ["attendance/tabs.js"]
+    }
   }
 ];
 
