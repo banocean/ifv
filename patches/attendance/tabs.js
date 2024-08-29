@@ -34,7 +34,9 @@ const isAttendancePage = () => window.location.pathname.endsWith("frekwencja")
 
 const isRendered = () =>
     !!document.querySelector(".content-container:has(.statistics)")
-    && !!document.querySelector(".tabsview")
+        && !!document.querySelector(".tabsview")
+        && !!document.querySelector("h1")
+
 
 window.modules.push({
     isLoaded: isRendered,
