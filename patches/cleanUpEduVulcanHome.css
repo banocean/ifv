@@ -1,5 +1,7 @@
 /* app download links, eduvulcan banner, maziaj */
-.box-app, .carousel-area, .ribbon-bg {
+.box-app,
+.carousel-area,
+.ribbon-bg {
     display: none !important;
 }
 
@@ -12,8 +14,11 @@
     flex: inherit !important;
 }
 
-.part-constant, .part-business {
+.part-constant,
+.part-business {
     flex: 0 !important;
     padding: 0 !important;
 }
-.part-business { order: 2 !important; }
+.part-business {
+    order: 2 !important;
+}

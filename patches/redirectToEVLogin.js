@@ -7,7 +7,7 @@ window.modules.push({
     onlyOnReloads: true,
     run: redirectToLoginPage,
     doesRunHere: () =>
-        window.location.hostname === "eduvulcan.pl"
-        && window.location.pathname === "/"
-        && !!document.querySelector("#panelLoginButton")
+        window.location.hostname === "eduvulcan.pl" &&
+        window.location.pathname === "/" &&
+        !!document.querySelector("#panelLoginButton"),
 });

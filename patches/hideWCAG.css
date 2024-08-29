@@ -1,3 +1,5 @@
-.wcag-mobile, .wcag-tools, .wcag-controls {
+.wcag-mobile,
+.wcag-tools,
+.wcag-controls {
     display: none !important;
 }
