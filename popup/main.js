@@ -9,10 +9,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             <p class="desc">${value.description}</p>
         </div>
         <div class="toggle-wrapper">
-            <input class="toggle-input" type="checkbox" id="${key}" ${value.enable ? "checked" : ""}>
+            <input class="toggle-input" type="checkbox" ${value.enable ? "checked" : ""}>
             <div class="toggle-switch"></div>
         </div>
     `;
+        option.querySelector("input").id = key
         optionsDOM.appendChild(option);
     }
     optionsDOM.addEventListener("change", async (e) => {
