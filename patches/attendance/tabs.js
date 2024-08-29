@@ -1,5 +1,5 @@
 const selector = document.createElement("div")
-selector.innerHTML = "<button disabled>Ferekwencja</button><button>Statystyki</button>"
+selector.innerHTML = "<button disabled>Frekwencja</button><button>Statystyki</button>"
 selector.classList.add("attendance-tabs")
 
 const createSelector = () => {
