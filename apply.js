@@ -58,8 +58,11 @@ const patches = [
       "Hides eduVulcan app download links tile, eduVulcan banner and ribbon.",
     files: {
       css: ["cleanUpEduVulcanHome.css"],
+    },
+  },
+  {
     name: "Hide Help On Dashboard",
-    description: "Hides \"Do you need help\" tile",
+    description: 'Hides "Do you need help" tile',
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
