@@ -1,5 +1,5 @@
-const jsPatches = ["displayFullName"]
-const cssPatches = ["hideWCAG", "alignDetailedGradesButton", "hideTutorsFromBoard"]
+const jsPatches = ["displayFullName", "addEduVulcanLoginButton"]
+const cssPatches = ["hideWCAG", "alignDetailedGradesButton", "hideTutorsFromBoard", "cleanUpEduVulcanHome", "addEduVulcanLoginButton"]
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete' && /^http/.test(tab.url)) {

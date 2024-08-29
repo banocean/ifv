@@ -1,0 +1,8 @@
+/* eduVulcan features, app downlaod links, eduvulcan banner, maziaj */
+.part-constant, .carousel-component, .ribbon-bg {
+    display: none !important;
+}
+
+.part-business-content-bottom {
+    padding-left: none !important;
+}
