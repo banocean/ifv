@@ -6,7 +6,7 @@ function injectWebManifest() {
         "href",
         `${
             !window.location.hostname.startsWith("dziennik")
-                ? "https://gist.githubusercontent.com/PanLiszka/ba52ff26cd7fc774137766ea9f81f67e/raw/674836637599d6e91d5a47a2038e589ce48bcc32/manifest-eduvulcan.json"
+                ? "https://raw.githubusercontent.com/banocean/ifv/main/pwa/manifest-eduvulcan.json"
                 : "todo: manifest for uonet"
         }`,
     );
