@@ -4,11 +4,8 @@ function injectWebManifest() {
     metaLink.setAttribute("rel", "manifest");
     metaLink.setAttribute(
         "href",
-        `${
-            !window.location.hostname.startsWith("dziennik")
-                ? "https://raw.githubusercontent.com/banocean/ifv/main/pwa/manifest-eduvulcan.json"
-                : "todo: manifest for uonet"
-        }`,
+        // TODO: implement web manifest for UONET+
+        "https://raw.githubusercontent.com/banocean/ifv/main/pwa/manifest-eduvulcan.json",
     );
 
     document.head.appendChild(metaLink);
