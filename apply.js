@@ -67,6 +67,13 @@ const patches = [
       css: ["hideHelpOnDashboard.css"],
     },
   },
+  {
+    name: "PWA",
+    description: "todo",
+    files: {
+      js: ["pwa.js"],
+    },
+  }
 ];
 
 let config = {

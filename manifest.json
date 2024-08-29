@@ -17,13 +17,6 @@
     "service_worker": "apply.js"
   },
 
-  "content_scripts": [
-    {
-      "js": [ "pwa.js" ],
-      "matches": ["*://eduvulcan.pl/*"]
-    }
-  ],
-
   "action": {
     "default_popup": "popup/index.html"
   },
