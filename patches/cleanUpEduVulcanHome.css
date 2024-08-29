@@ -16,3 +16,4 @@
     flex: 0 !important;
     padding: 0 !important;
 }
+.part-business { order: 2 !important; }
