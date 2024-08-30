@@ -68,6 +68,13 @@ const patches = [
     },
   },
   {
+    name: "PWA Support",
+    description: "Gives ability to install page as PWA",
+    files: {
+      js: ["pwa.js"],
+    }
+  },
+  {
     name: "Attendance statistics in separate tab",
     description: "Makes attendance page more readable by moving statistics to separate tab",
     files: {
