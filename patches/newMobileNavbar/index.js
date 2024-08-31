@@ -1,7 +1,7 @@
-const getPages = () => {
+const getPages = (selector = "aside > section > .MuiList-root > ul") => {
     if (!document.querySelector("aside")) return []
     return Array.from(
-        document.querySelector("aside > section > .MuiList-root > ul").children
+        document.querySelector(selector).children
     ).map((item) => {
         const isDirectLink = item.classList.contains("MuiListItem-gutters")
         const icon = getComputedStyle(
@@ -41,6 +41,7 @@ const run = () => {
 
     const more = document.createElement("div")
     more.classList.add("more-popup")
+    more.classList.add("list-modal")
     more.innerHTML = `<div><img src='${BACK_ICON_URL}'><h1>Więcej</h1></div><div></div>`
     more.style.display = "none"
 
@@ -67,11 +68,47 @@ const run = () => {
             nav.appendChild(item)
         }
 
-        if (page.type === 1) item.addEventListener("click", () => {
-            document.querySelector(`.${itemClass} a`).click()
-            more.style.display = "none"
-            document.querySelector(".header__hamburger__icon button").click()
-        })
+        if (page.type === 1) {
+            item.addEventListener("click", () => {
+                document.querySelector(`.${itemClass} a`).click()
+                more.style.display = "none"
+                document.querySelector(".header__hamburger__icon button").click()
+                document.querySelector("div#root").scroll(0,0)
+            })
+        } else {
+            const detailedOptionsPage = document.createElement("div")
+            detailedOptionsPage.innerHTML = `<div><img src='${BACK_ICON_URL}'><h1></h1></div><div></div>`
+            detailedOptionsPage.style.zIndex = "4002"
+            detailedOptionsPage.style.display = "none"
+            detailedOptionsPage.classList.add("list-modal")
+
+            detailedOptionsPage.querySelector("h1").innerText = page.name
+            detailedOptionsPage.querySelector("img").addEventListener("click", () => {
+                detailedOptionsPage.style.display = "none"
+            })
+
+            for (let i = 0; i < page.items.length; i++) {
+                const option = page.items[i]
+                const element = document.createElement("div")
+                element.innerHTML = "<div class='icon'></div><span class='name'></span>"
+                element.querySelector(".icon").style.content = page.icon
+                element.querySelector(".name").innerText = option.firstChild.innerText
+                element.addEventListener("click", () => {
+                    Array.from(document.querySelectorAll(`.${itemClass} .items a`))[i].click()
+                    detailedOptionsPage.style.display = "none"
+                    more.style.display = "none"
+                    document.querySelector(".header__hamburger__icon button").click()
+                    document.querySelector("div#root").scroll(0,0)
+                })
+                detailedOptionsPage.lastElementChild.appendChild(element)
+            }
+
+            item.addEventListener("click", () => {
+                detailedOptionsPage.style.display = "block"
+            })
+
+            document.body.appendChild(detailedOptionsPage)
+        }
     }
 
     const moreButton = document.createElement("div")

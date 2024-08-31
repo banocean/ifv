@@ -2,18 +2,18 @@
     --bottom-navbar-height: 70px;
 }
 
-.more-popup {
+.list-modal {
     height: 100vh;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 4000;
     background: #eff2f7;
     font-family: "WorkSans", Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.more-popup > div:first-of-type {
+.list-modal > div:first-of-type {
     background: white;
     border-bottom: 2px solid #e5e7e9;
     height: 60px;
@@ -21,7 +21,7 @@
     align-items: center;
 }
 
-.more-popup > div:first-of-type > img {
+.list-modal > div:first-of-type > img {
     margin-left: 10px;
     position: absolute;
     filter: invert(0.8);
@@ -31,18 +31,18 @@
 }
 
 
-.more-popup > div:first-of-type > h1 {
+.list-modal > div:first-of-type > h1 {
     width: 100%;
     font-size: 1.8rem;
     text-align: center;
 }
 
-.more-popup > div:last-of-type {
+.list-modal > div:last-of-type {
     overflow-y: auto;
     height: calc(100vh - 60px - var(--bottom-navbar-height));
 }
 
-.more-popup > div:last-of-type > div {
+.list-modal > div:last-of-type > div {
     display: flex;
     color: black;
     font-size: 1.6rem;
@@ -54,15 +54,14 @@
     align-items: center;
 }
 
-.more-popup > div:last-of-type > div > .icon {
+.list-modal > div:last-of-type > div > .icon {
     filter: invert(0.8);
     margin-right: 20px;
 }
 
-.more-popup > div:last-of-type > div > .name {
+.list-modal > div:last-of-type > div > .name {
     display: flex;
     align-content: center;
-    /*height: min-content;*/
 }
 
 
