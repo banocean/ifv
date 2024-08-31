@@ -77,20 +77,8 @@ const allowedHostnames = [
   "eduvulcan.pl",
 ];
 
-const getObjectFromSyncStorage = async function (key) {
-  return new Promise((resolve, reject) => {
-    try {
-      chrome.storage.sync.get(key, function (value) {
-        resolve(value[key]);
-      });
-    } catch (ex) {
-      reject(ex);
-    }
-  });
-};
-
 async function run() {
-  let config = (await getObjectFromSyncStorage("options")) ?? {
+  let config = (await chrome.storage.sync.get("options"))?.options ?? {
     ...patches.reduce(
       (acc, patch) => ({
         ...acc,
