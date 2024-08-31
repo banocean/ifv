@@ -1,23 +1,23 @@
 {
-    "manifest_version": 3,
-    "description": "Zmienia problematyczne elementy strony usługi \"Dziennik Vulcan\"",
-    "version": "0.1",
-    "name": "Improvements for Vulcan",
+  "manifest_version": 3,
+  "description": "Zmienia problematyczne elementy strony usługi \"Dziennik Vulcan\"",
+  "version": "0.1",
+  "name": "Improvements for Vulcan",
 
-    "permissions": ["storage", "activeTab", "scripting", "tabs"],
-    "host_permissions": [
-        "*://dziennik-uczen.vulcan.net.pl/*",
-        "*://dziennik-wiadomosci.vulcan.net.pl/*",
-        "*://uczen.eduvulcan.pl/*",
-        "*://wiadomosci.eduvulcan.pl/*",
-        "*://eduvulcan.pl/*"
-    ],
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": [
+    "*://dziennik-uczen.vulcan.net.pl/*",
+    "*://dziennik-wiadomosci.vulcan.net.pl/*",
+    "*://uczen.eduvulcan.pl/*",
+    "*://wiadomosci.eduvulcan.pl/*",
+    "*://eduvulcan.pl/*"
+  ],
 
-    "background": {
-        "service_worker": "apply.js"
-    },
+  "background": {
+    "service_worker": "apply.js"
+  },
 
-    "action": {
-        "default_popup": "popup/index.html"
-    }
+  "action": {
+    "default_popup": "popup/index.html"
+  }
 }
