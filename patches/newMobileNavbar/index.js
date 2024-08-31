@@ -42,6 +42,7 @@ const run = () => {
     const more = document.createElement("div")
     more.classList.add("more-popup")
     more.innerHTML = `<div><img src='${BACK_ICON_URL}'><h1>Więcej</h1></div><div></div>`
+    more.style.display = "none"
 
     more.querySelector("img").addEventListener("click", () => {
         more.style.display = "none"
