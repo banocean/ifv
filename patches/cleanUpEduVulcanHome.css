@@ -16,4 +16,9 @@
     flex: 0 !important;
     padding: 0 !important;
 }
+
 .part-business { order: 2 !important; }
+
+.header-part-2 {
+    min-width: inherit !important;
+}
