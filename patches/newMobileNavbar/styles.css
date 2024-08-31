@@ -13,18 +13,35 @@
     background: white;
     border-bottom: 2px solid #e5e7e9;
     height: 60px;
+    display: flex;
+    align-items: center;
 }
 
+.more-popup > div:first-of-type > img {
+    margin-left: 10px;
+    position: absolute;
+    filter: invert(0.8);
+    top: calc((60px - 40px) / 2);
+    cursor: pointer;
+    height: 40px;
+}
+
+
 .more-popup > div:first-of-type > h1 {
+    width: 100%;
     font-size: 1.8rem;
     text-align: center;
+}
+
+.more-popup > div:last-of-type {
+    overflow-y: auto;
+    height: calc(100vh - 60px);
 }
 
 .more-popup > div:last-of-type > div {
     display: flex;
     color: black;
     font-size: 1.6rem;
-    height: 60px;
     cursor: pointer;
     padding-inline: 15px;
     padding-block: 10px;
@@ -46,10 +63,15 @@
 
 div#root {
     height: calc(100vh - 60px);
+    overflow: auto;
 }
 
 @media screen and (max-width: 1023px) {
-    div:has(div:has(aside)), .header__hamburger__icon {
+    aside, .header__hamburger__icon {
         display: none !important;
+    }
+
+    .app__aside__mobile + .app__main {
+        display: block !important;
     }
 }
