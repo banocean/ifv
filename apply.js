@@ -68,6 +68,13 @@ const patches = [
     },
   },
   {
+    name: "Custom font",
+    description: 'Applies "Nunito" font',
+    files: {
+      css: ["customFont.css"],
+    },
+  },
+  {
     name: "PWA Support",
     description: "Gives ability to install page as PWA",
     files: {
