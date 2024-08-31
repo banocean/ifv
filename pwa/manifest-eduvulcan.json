@@ -1,0 +1,26 @@
+{
+    "name": "eduVULCAN",
+    "short_name": "eduVULCAN",
+    "start_url": "https://eduvulcan.pl/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "https://raw.githubusercontent.com/PanLiszka/ifv/pwa/assets/logo/logo-128-blue.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "https://raw.githubusercontent.com/PanLiszka/ifv/pwa/assets/logo/logo-192-blue.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "https://raw.githubusercontent.com/PanLiszka/ifv/pwa/assets/logo/logo-512-blue.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "splash_pages": null,
+    "prefer-related-application": false
+  }
