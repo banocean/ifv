@@ -122,7 +122,7 @@ const allowedHostnames = [
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (changeInfo.status !== "loading" || !/^http/.test(tab.url)) return
-  const tabHostname = (new URLPattern(tab.url)).hostname
+  const tabHostname = (new URL(tab.url)).hostname
   if (!allowedHostnames.includes(tabHostname)) return
 
   chrome.scripting.insertCSS({
