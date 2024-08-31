@@ -67,6 +67,10 @@
 
 
 @media screen and (max-width: 1023px) {
+    .modal {
+        width: 100vw;
+    }
+
     aside, .header__hamburger__icon {
         display: none !important;
     }
@@ -82,7 +86,7 @@
         position: fixed;
     }
 
-    header {
+    header.app__header {
         position: fixed;
         width: 100%;
         top: 0;
