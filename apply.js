@@ -69,7 +69,7 @@ const patches = [
   },
   {
     name: "Custom font",
-    description: 'Applies "Nunito" font',
+    description: 'Applies default OS font',
     files: {
       css: ["customFont.css"],
     },
