@@ -67,6 +67,21 @@ const patches = [
       css: ["hideHelpOnDashboard.css"],
     },
   },
+  {
+    name: "PWA Support",
+    description: "Gives ability to install page as PWA",
+    files: {
+      js: ["pwa.js"],
+    }
+  },
+  {
+    name: "Attendance statistics in separate tab",
+    description: "Makes attendance page more readable by moving statistics to separate tab",
+    files: {
+      css: ["attendance/styles.css"],
+      js: ["attendance/tabs.js"]
+    }
+  }
 ];
 
 let config = {
