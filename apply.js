@@ -81,6 +81,14 @@ const patches = [
       css: ["attendance/styles.css"],
       js: ["attendance/tabs.js"]
     }
+  },
+  {
+    name: "Mobile Navigation",
+    description: "Replaces aside with more readable bottom navigation bar designed (mobile only)",
+    files: {
+      css: ["newMobileNavbar/styles.css"],
+      js: ["newMobileNavbar/script.js"]
+    }
   }
 ];
 
