@@ -87,7 +87,7 @@ const patches = [
     description: "Replaces aside with more readable bottom navigation bar designed (mobile only)",
     files: {
       css: ["newMobileNavbar/styles.css"],
-      js: ["newMobileNavbar/script.js"]
+      js: ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
     }
   }
 ];

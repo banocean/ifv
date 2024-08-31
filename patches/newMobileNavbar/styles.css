@@ -1,3 +1,7 @@
+:root {
+    --bottom-navbar-height: 70px;
+}
+
 .more-popup {
     height: 100vh;
     width: 100%;
@@ -35,7 +39,7 @@
 
 .more-popup > div:last-of-type {
     overflow-y: auto;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 60px - var(--bottom-navbar-height));
 }
 
 .more-popup > div:last-of-type > div {
@@ -61,10 +65,7 @@
     /*height: min-content;*/
 }
 
-div#root {
-    height: calc(100vh - 60px);
-    overflow: auto;
-}
+
 
 @media screen and (max-width: 1023px) {
     aside, .header__hamburger__icon {
@@ -73,5 +74,75 @@ div#root {
 
     .app__aside__mobile + .app__main {
         display: block !important;
+    }
+
+    div#root {
+        overflow: auto;
+        height: calc(100vh - 60px - var(--bottom-navbar-height));
+        top: 60px;
+        position: fixed;
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+
+    .bottom-navigation-bar {
+        border-top: 2px solid #e5e7e9;
+        background: white;
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        top: calc(100vh - var(--bottom-navbar-height));
+        height: var(--bottom-navbar-height);
+        width: 100%;
+        align-items: center;
+        z-index: 4002;
+    }
+
+    .bottom-navigation-bar > div {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .bottom-navigation-bar > div > div:has(img) {
+        padding-inline: 15px;
+        padding-block: 4px;
+        margin-bottom: 4px;
+        border-radius: 20px;
+        width: min-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+    }
+
+    .bottom-navigation-bar > div > div > img {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+        height: 25px;
+        margin: 2px;
+    }
+
+    .bottom-navigation-bar > div > div:has(img.highlight) {
+        font-family: "WorkSans", Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        background: var(--kolor-wcag);
+    }
+
+    .bottom-navigation-bar > div > div > img:not(.highlight) {
+        filter: invert(1);
+    }
+
+    .content__header.first-header__date-selector {
+        position: absolute !important;
     }
 }
