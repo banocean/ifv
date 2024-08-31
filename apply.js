@@ -10,6 +10,13 @@
 /** @type {Patch[]} */
 const patches = [
   {
+    name: "Hide footer",
+    description: "Hides footer (mobile only)",
+    files: {
+      css: ["hideFooter.css"]
+    }
+  },
+  {
     name: "Hide WCAG",
     description: "todo",
     files: {
