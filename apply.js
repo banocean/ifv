@@ -88,6 +88,13 @@ const patches = [
       css: ["attendance/styles.css"],
       js: ["attendance/tabs.js"]
     }
+  },
+  {
+    name: "Reload on resize",
+    description: "Reloads page while changing between desktop and mobile layouts",
+    files: {
+      js: ["fixResizing.js"]
+    }
   }
 ];
 
