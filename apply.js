@@ -38,12 +38,6 @@ const patches = [
     files: {
       js: ["displayFullName.js"],
     },
-    allowedHostsCss: [
-      "uczen.eduvulcan.pl",
-      "wiadomosci.eduvulcan.pl",
-      "dziennik-uczen.vulcan.net.pl",
-      "dziennik-wiadomosci.vulcan.net.pl",
-    ],
   },
   {
     name: "Redirect To Board",
@@ -65,7 +59,6 @@ const patches = [
     files: {
       js: ["redirectToEVLogin.js"],
     },
-    allowedHostsCss: ["eduvulcan.pl"],
   },
   {
     name: "Hide unneeded tiles in eduVulcan home",
@@ -90,7 +83,6 @@ const patches = [
     files: {
       js: ["pwa.js"],
     },
-    allowedHostsCss: ["eduvulcan.pl", "uczen.eduvulcan.pl", "wiadomosci.eduvulcan.pl"],
   },
   {
     name: "Attendance statistics in separate tab",
