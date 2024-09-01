@@ -15,13 +15,6 @@ const patches = [
     files: {
       css: ["hideWCAG.css"],
     },
-    allowedHostsCss: [
-      "eduvulcan.pl",
-      "uczen.eduvulcan.pl",
-      "wiadomosci.eduvulcan.pl",
-      "dziennik-uczen.vulcan.net.pl",
-      "dziennik-wiadomosci.vulcan.net.pl",
-    ],
   },
   {
     name: "Align Detailed Grades Button",
@@ -155,7 +148,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   chrome.scripting.insertCSS({
     target: { tabId: tabId },
     files: patches
-      .filter((patch) => patch.allowedHostsCss.includes(tabHostname))
+      .filter((patch) => !patch.allowedHostsCss || patch.allowedHostsCss.includes(tabHostname))
       .reduce((acc, patch) => {
         if (config[patch.name].enable && patch.files?.css?.length)
           return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
