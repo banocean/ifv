@@ -177,7 +177,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   if (!isInitiated) await chrome.scripting.executeScript({
     target: { tabId },
     files: patches
-      .filter((patch) => patch.hosts.includes(tabHostname))
       .reduce((acc, patch) => {
         if (config[patch.name].enable && patch.files?.js?.length)
           return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
