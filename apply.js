@@ -14,7 +14,8 @@ const patches = [
     description: "Hides footer (mobile only)",
     files: {
       css: ["hideFooter.css"]
-    }
+    },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
   },
   {
     name: "Hide WCAG",
