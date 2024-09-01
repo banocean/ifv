@@ -49,6 +49,7 @@ const moveUserOptionsToHeader = () => {
     modalElement.appendChild(userDataElement);
 
     userLinks.forEach((link) => {
+        link.href = "javascript:void(0)";
         const linkContainer = document.createElement("div");
         linkContainer.classList.add("modal-link-container");
         linkContainer.appendChild(link);
