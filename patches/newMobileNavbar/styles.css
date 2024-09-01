@@ -144,8 +144,4 @@
     .bottom-navigation-bar > div > div > img:not(.highlight) {
         filter: invert(1);
     }
-
-    .content__header.first-header__date-selector {
-        position: absolute !important;
-    }
 }
