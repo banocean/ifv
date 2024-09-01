@@ -145,3 +145,7 @@
         filter: invert(1);
     }
 }
+
+main.app__main {
+    width: 100vw !important;
+}
