@@ -39,6 +39,7 @@ div[role="presentation"] {
 }
 
 .modal__user {
+    display: none;
     top: 50%;
     left: 50%;
     position: absolute;
@@ -51,7 +52,12 @@ div[role="presentation"] {
     max-height: min-content !important;
     border-radius: 10px;
     background-color: #fff;
-    pointer-events: none;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+.modal__user.active {
+    display: block !important;
 }
 
 .modal__name {
@@ -61,14 +67,15 @@ div[role="presentation"] {
     gap: 5px;
 }
 
-.modal__link {
+.modal__link__container {
     display: flex;
     align-items: center;
     padding: 10px 20px;
     cursor: pointer;
 }
 
-.modal__link a {
+.modal__link__container a {
+    padding: 0;
     font-size: 1.2rem;
     font-weight: 500;
     text-decoration: none;
