@@ -31,7 +31,14 @@ div[role="presentation"] {
     display: block !important;
 }
 
-.modal {
+.modal__data {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+.modal__user {
     top: 50%;
     left: 50%;
     position: absolute;
@@ -40,21 +47,40 @@ div[role="presentation"] {
 
     width: 80vw;
     max-width: 400px;
+    height: min-content !important;
+    max-height: min-content !important;
     border-radius: 10px;
+    background-color: #fff;
+    pointer-events: none;
+}
+
+.modal__name {
+    display: flex;
+    flex-direction: column;
+    padding-left: none;
+    gap: 5px;
 }
 
 .modal__link {
     display: flex;
     align-items: center;
-    padding: 10px;
-    background-color: #f5f5f5;
+    padding: 10px 20px;
     cursor: pointer;
-    border-top: 2px solid #e5e7e9;
 }
 
 .modal__link a {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     text-decoration: none;
     color: #3D4455
+}
+
+.modal__back {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: var(--kolor-wcag);
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
 }

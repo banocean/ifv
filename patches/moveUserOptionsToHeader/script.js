@@ -1,4 +1,5 @@
-const toggleModal = () => {
+const toggleModal = (e) => {
+    console.log(e.target)
     document.querySelector(".modal-background").classList.toggle("active");
 }
 
@@ -8,6 +9,10 @@ const moveUserOptionsToHeader = () => {
     document.querySelector(".header__hamburger__icon button").click();
 
     const userAvatar = document.querySelector(".user .MuiAvatar-root img")
+    const userData = {
+        fullname: document.querySelector(".side_important-text.side_student").textContent,
+        username: document.querySelector(".user div:nth-child(2)").lastChild.textContent
+    }
 
     document.querySelector(".user").click()
     const userLinks = document.querySelectorAll(".user__links a")
@@ -20,16 +25,38 @@ const moveUserOptionsToHeader = () => {
     const modalElement = document.createElement("div");
 
     modalBackground.classList.add("modal-background");
-    modalElement.classList.add("modal");
+    modalElement.classList.add("modal__user");
+
+    const userDataElement = document.createElement("div");
+    userDataElement.classList.add("modal__data");
+
+    const avatarElement = userAvatar.cloneNode(true)
+    avatarElement.style.width = "50px"
+    avatarElement.style.height = "50px"
+    userDataElement.appendChild(avatarElement)
+
+    const nameElement = document.createElement("div");
+    nameElement.classList.add("modal__name");
+    nameElement.innerHTML = `<span style="font-size: 20px">${userData?.fullname}</span><span style="font-size: 1rem;">${userData?.username}</span>`
+    userDataElement.appendChild(nameElement)
+
+    modalElement.appendChild(userDataElement)
+
     userLinks.forEach(link => {
         const linkContainer = document.createElement("div")
         linkContainer.classList.add("modal__link")
         linkContainer.appendChild(link)
         modalElement.appendChild(linkContainer)
     });
-    modalElement.style.maxHeight = userLinks.length * 36 + "px"
+
+    const backButton = document.createElement("span")
+    backButton.classList.add("modal__back")
+    backButton.innerHTML = "Anuluj"
+    modalElement.appendChild(backButton)
+
 
     modalBackground.addEventListener("click", toggleModal)
+    modalElement.addEventListener("click", e => null)
     userAvatar.addEventListener("click", toggleModal)
 
     modalBackground.appendChild(modalElement)
