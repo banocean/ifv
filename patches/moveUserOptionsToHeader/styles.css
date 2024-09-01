@@ -97,4 +97,8 @@
         font-weight: 500;
         cursor: pointer;
     }
+
+    .header__logo-product > img {
+        width: auto !important;
+    }
 }
