@@ -78,15 +78,12 @@ const allowedHostnames = [
 ];
 
 async function run() {
-  let config = (await chrome.storage.sync.get("options"))?.options ?? {
-    ...patches.reduce(
-      (acc, patch) => ({
-        ...acc,
-        [patch.name]: { description: patch.description, enable: true },
-      }),
-      {}
-    ),
-  };
+  let config = (await chrome.storage.sync.get("options"))?.options ?? {};
+
+  patches.forEach(patch => {
+    if (config[patch.name] !== undefined) return;
+    config[patch.name] = { description: patch.description, enable: true };
+  });
 
   chrome.storage.sync.set({ options: config });
 
