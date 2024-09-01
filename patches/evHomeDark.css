@@ -1,0 +1,73 @@
+*:not(.material-symbols-outlined) {
+    background-color: #121212;
+    color: #fff;
+    border-color: #444 !important;
+}
+
+.material-symbols-outlined {
+    color: #fff;
+}
+
+.option-box-icon > .material-symbols-outlined,
+.material-symbols-outlined > .material-symbols-outlined,
+.account-management-avatar > .material-symbols-outlined,
+.icon-elevated-level-1 > .material-symbols-outlined {
+    color: #000;
+}
+
+.box-access-title,
+.form-focused-title,
+.link-simple,
+.button-simple,
+label,
+input,
+.user-data-personal,
+.user-title,
+.step-list > li,
+.step-list > li::before,
+.profiles-hint {
+    color: #fff !important;
+}
+
+.box-simple,
+.center-box,
+.center-box-wide,
+.account-option-box-selected,
+.account-data-container,
+.key-row,
+.profiles-info,
+.hint-rectangle {
+    background-color: #121212 !important;
+}
+
+.main-box-empty {
+    background: #121212 !important;
+}
+
+.box-color *,
+.user-avatar *,
+.access-row--add,
+.access-row--add * {
+    background-color: #006bd6;
+    border: none !important;
+}
+
+.user-avatar,
+.access-row--add {
+    border-color: transparent !important;
+}
+
+.access-empty-data,
+.consent-row,
+.key-subtitle,
+.two-factor-description,
+.form-focused-subtitle {
+    color: #eaeaea !important;
+}
+
+.button-secondary,
+.data-edit,
+.data-delete {
+    background-color: #353535 !important;
+    color: #fff !important;
+}
