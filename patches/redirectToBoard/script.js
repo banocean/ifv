@@ -37,6 +37,5 @@ function setUpRedirectToBoard() {
 window.modules.push({
     isLoaded: getLogoElement,
     onlyOnReloads: true,
-    run: setUpRedirectToBoard,
-    doesRunHere: () => !!window.location.hostname.match(/^(dziennik-)?(wiadomosci|uczen).*/)
+    run: setUpRedirectToBoard
 })

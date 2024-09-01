@@ -15,6 +15,13 @@ const patches = [
     files: {
       css: ["hideWCAG.css"],
     },
+    hosts: [
+      "eduvulcan.pl",
+      "uczen.eduvulcan.pl",
+      "wiadomosci.eduvulcan.pl",
+      "dziennik-uczen.vulcan.net.pl",
+      "dziennik-wiadomosci.vulcan.net.pl",
+    ],
   },
   {
     name: "Align Detailed Grades Button",
@@ -22,6 +29,7 @@ const patches = [
     files: {
       css: ["alignDetailedGradesButton.css"],
     },
+    hosts: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "Hide Tutors From Board",
@@ -29,6 +37,7 @@ const patches = [
     files: {
       css: ["hideTutorsFromBoard.css"],
     },
+    hosts: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "Display Full Name",
@@ -36,6 +45,12 @@ const patches = [
     files: {
       js: ["displayFullName.js"],
     },
+    hosts: [
+      "uczen.eduvulcan.pl",
+      "wiadomosci.eduvulcan.pl",
+      "dziennik-uczen.vulcan.net.pl",
+      "dziennik-wiadomosci.vulcan.net.pl",
+    ],
   },
   {
     name: "Redirect To Board",
@@ -44,6 +59,12 @@ const patches = [
       js: ["redirectToBoard/script.js"],
       css: ["redirectToBoard/styles.css"],
     },
+    hosts: [
+      "uczen.eduvulcan.pl",
+      "wiadomosci.eduvulcan.pl",
+      "dziennik-uczen.vulcan.net.pl",
+      "dziennik-wiadomosci.vulcan.net.pl",
+    ],
   },
   {
     name: "Auto redirect to login page in eduVulcan",
@@ -51,6 +72,7 @@ const patches = [
     files: {
       js: ["redirectToEVLogin.js"],
     },
+    hosts: ["eduvulcan.pl"],
   },
   {
     name: "Hide unneeded tiles in eduVulcan home",
@@ -59,6 +81,7 @@ const patches = [
     files: {
       css: ["cleanUpEduVulcanHome.css"],
     },
+    hosts: ["eduvulcan.pl"],
   },
   {
     name: "Hide Help On Dashboard",
@@ -66,22 +89,26 @@ const patches = [
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
+    hosts: ["uczen.eduvulcan.pl"],
   },
   {
     name: "PWA Support",
     description: "Gives ability to install page as PWA",
     files: {
       js: ["pwa.js"],
-    }
+    },
+    hosts: ["eduvulcan.pl", "uczen.eduvulcan.pl", "wiadomosci.eduvulcan.pl"],
   },
   {
     name: "Attendance statistics in separate tab",
-    description: "Makes attendance page more readable by moving statistics to separate tab",
+    description:
+      "Makes attendance page more readable by moving statistics to separate tab",
     files: {
       css: ["attendance/styles.css"],
-      js: ["attendance/tabs.js"]
-    }
-  }
+      js: ["attendance/tabs.js"],
+    },
+    hosts: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+  },
 ];
 
 let config = {
@@ -127,11 +154,13 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
   chrome.scripting.insertCSS({
     target: { tabId: tabId },
-    files: patches.reduce((acc, patch) => {
-      if (config[patch.name].enable && patch.files?.css?.length)
-        return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
-      return acc
-    }, []),
+    files: patches
+      .filter((patch) => patch.hosts.includes(tabHostname))
+      .reduce((acc, patch) => {
+        if (config[patch.name].enable && patch.files?.css?.length)
+          return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
+        return acc
+      }, []),
   });
 
   const [{ result: isInitiated }] = await chrome.scripting.executeScript({
@@ -147,11 +176,13 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
   if (!isInitiated) await chrome.scripting.executeScript({
     target: { tabId },
-    files: patches.reduce((acc, patch) => {
-      if (config[patch.name].enable && patch.files?.js?.length)
-        return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
-      return acc;
-    }, []),
+    files: patches
+      .filter((patch) => patch.hosts.includes(tabHostname))
+      .reduce((acc, patch) => {
+        if (config[patch.name].enable && patch.files?.js?.length)
+          return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
+        return acc;
+      }, []),
   })
 
   chrome.scripting.executeScript({

@@ -38,6 +38,5 @@ window.modules.push({
         `.${isMessagesPage() ? "account__name span" : "side_student"}`,
     ),
     onlyOnReloads: true,
-    run: displayFullName,
-    doesRunHere: () => !!window.location.hostname.match(/^(dziennik-)?(wiadomosci|uczen).*/)
+    run: displayFullName
 })
