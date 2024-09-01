@@ -4,7 +4,6 @@ const toggleModal = (e) => {
 };
 
 const moveUserOptionsToHeader = () => {
-    /* Open Aside */
     document.querySelector(".app").classList.add("hideAside");
     document.querySelector(".header__hamburger__icon button").click();
 
@@ -25,7 +24,6 @@ const moveUserOptionsToHeader = () => {
     document.querySelector(".user").click();
     const userLinks = document.querySelectorAll(".user__links a");
 
-    /* Close Aside */
     document.querySelector(".close-button").click();
     document.querySelector(".app").classList.remove("hideAside");
 
