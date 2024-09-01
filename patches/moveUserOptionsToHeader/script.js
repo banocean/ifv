@@ -1,6 +1,6 @@
 const toggleModal = (e) => {
     document.querySelector(".modal-background").classList.toggle("active");
-    document.querySelector(".modal__user").classList.toggle("active");
+    document.querySelector(".modal-user").classList.toggle("active");
 };
 
 const moveUserOptionsToHeader = () => {
@@ -17,7 +17,7 @@ const moveUserOptionsToHeader = () => {
                   .reverse()
                   .join(" ")
             : document.querySelector(".side_important-text.side_student")
-                  .textContent,
+                  ?.textContent,
         username: document.querySelector(".user div:nth-child(2)").lastChild
             .textContent,
     };
@@ -33,10 +33,10 @@ const moveUserOptionsToHeader = () => {
     const modalElement = document.createElement("div");
 
     modalBackground.classList.add("modal-background");
-    modalElement.classList.add("modal__user");
+    modalElement.classList.add("modal-user");
 
     const userDataElement = document.createElement("div");
-    userDataElement.classList.add("modal__data");
+    userDataElement.classList.add("modal-data");
 
     const avatarElement = userAvatar.cloneNode(true);
     avatarElement.style.width = "50px";
@@ -44,7 +44,7 @@ const moveUserOptionsToHeader = () => {
     userDataElement.appendChild(avatarElement);
 
     const nameElement = document.createElement("div");
-    nameElement.classList.add("modal__name");
+    nameElement.classList.add("modal-name");
     nameElement.innerHTML = `<span style="font-size: 20px">${userData?.fullname}</span><span style="font-size: 1rem;">${userData?.username}</span>`;
     userDataElement.appendChild(nameElement);
 
@@ -52,15 +52,18 @@ const moveUserOptionsToHeader = () => {
 
     userLinks.forEach((link) => {
         const linkContainer = document.createElement("div");
-        linkContainer.classList.add("modal__link__container");
+        linkContainer.classList.add("modal-link-container");
         linkContainer.appendChild(link);
         modalElement.appendChild(linkContainer);
     });
 
+    const backButtonContainer = document.createElement("div");
+    backButtonContainer.classList.add("modal-back-container");
     const backButton = document.createElement("span");
-    backButton.classList.add("modal__back");
+    backButton.classList.add("modal-cancel");
     backButton.innerHTML = "Anuluj";
-    modalElement.appendChild(backButton);
+    backButtonContainer.appendChild(backButton);
+    modalElement.appendChild(backButtonContainer);
 
     modalBackground.addEventListener("click", toggleModal);
     backButton.addEventListener("click", toggleModal);

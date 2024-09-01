@@ -31,14 +31,7 @@ div[role="presentation"] {
     display: block !important;
 }
 
-.modal__data {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-}
-
-.modal__user {
+.modal-user {
     display: none;
     top: 50%;
     left: 50%;
@@ -53,28 +46,40 @@ div[role="presentation"] {
     border-radius: 10px;
     background-color: #fff;
     z-index: 100;
-    pointer-events: auto;
+    padding: 10px;
 }
 
-.modal__user.active {
+.modal-user.active {
     display: block !important;
 }
 
-.modal__name {
+.modal-data {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.modal-name {
     display: flex;
     flex-direction: column;
     padding-left: none;
     gap: 5px;
 }
 
-.modal__link__container {
+.modal-link-container,.modal-back-container {
     display: flex;
     align-items: center;
     padding: 10px 20px;
     cursor: pointer;
 }
 
-.modal__link__container a {
+.modal-back-container {
+    justify-content: flex-end;
+}
+
+.modal-link-container a {
     padding: 0;
     font-size: 1.2rem;
     font-weight: 500;
@@ -82,11 +87,9 @@ div[role="presentation"] {
     color: #3D4455
 }
 
-.modal__back {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: var(--kolor-wcag);
+.modal-cancel {
+    text-align: right;
+    color: #e33f4a;
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
