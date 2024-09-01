@@ -82,7 +82,7 @@ const patches = [
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
-    allowedHostsCss: ["uczen.eduvulcan.pl"],
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "PWA Support",
