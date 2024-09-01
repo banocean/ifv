@@ -98,7 +98,7 @@ const patches = [
       "Makes attendance page more readable by moving statistics to separate tab",
     files: {
       css: ["attendance/styles.css"],
-      js: ["attendance/tabs.js"],
+      js: ["attendance/tabs.js"]
     },
     allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
@@ -108,6 +108,15 @@ const patches = [
     files: {
       js: ["fixResizing.js"],
     }
+  },
+  {
+    name: "Mobile Navigation",
+    description: "Replaces aside with more readable bottom navigation bar designed (mobile only)",
+    files: {
+      css: ["newMobileNavbar/styles.css"],
+      js: ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
+    },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   }
 ];
 
