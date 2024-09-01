@@ -1,18 +1,27 @@
+:root {
+    --primary-background: #121212;
+    --secondary-background: #1d1d1d;
+    --component-background: #212121;
+    --secondary--component--background: #242424;
+    --primary-text: white;
+    --secondary-text: color-mix(in srgb, black 20%, white 100%)
+}
+
 *:not(.material-symbols-outlined) {
-    background-color: #121212;
-    color: #fff;
-    border-color: #444 !important;
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    border-color: var(--secondary--component--background) !important;
 }
 
 .material-symbols-outlined {
-    color: #fff;
+    color: var(--primary-text);
 }
 
 .option-box-icon > .material-symbols-outlined,
 .material-symbols-outlined > .material-symbols-outlined,
 .account-management-avatar > .material-symbols-outlined,
 .icon-elevated-level-1 > .material-symbols-outlined {
-    color: #000;
+    color: var(--primary-background);
 }
 
 .box-access-title,
@@ -26,7 +35,7 @@ input,
 .step-list > li,
 .step-list > li::before,
 .profiles-hint {
-    color: #fff !important;
+    color: var(--primary-text) !important;
 }
 
 .box-simple,
@@ -37,11 +46,11 @@ input,
 .key-row,
 .profiles-info,
 .hint-rectangle {
-    background-color: #121212 !important;
+    background-color: var(--primary-background) !important;
 }
 
 .main-box-empty {
-    background: #121212 !important;
+    background: var(--primary-background) !important;
 }
 
 .box-color *,
@@ -61,13 +70,16 @@ input,
 .consent-row,
 .key-subtitle,
 .two-factor-description,
-.form-focused-subtitle {
-    color: #eaeaea !important;
+.form-focused-subtitle,
+.option-box-description,
+.user-data-label,
+.user-subtitle {
+    color: var(--secondary-text) !important;
 }
 
 .button-secondary,
 .data-edit,
 .data-delete {
-    background-color: #353535 !important;
-    color: #fff !important;
+    background-color: var(--secondary--component--background) !important;
+    color: var(--primary-text) !important;
 }
