@@ -1,0 +1,117 @@
+body {
+    background: #18181b;
+    color: white;
+    width: 350px;
+    margin: 10px;
+}
+
+/* Main */
+
+h1 {
+    margin: 5px 0;
+    color: #fafafa;
+    text-align: center;
+}
+
+h2 {
+    color: #d4d4d8;
+    font-size: small;
+    font-weight: normal;
+    text-align: center;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Option */
+
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 0;
+    padding: 10px;
+    border-radius: 7px;
+    background: #27272a;
+    gap: 10px;
+    cursor: pointer;
+}
+
+label .desc {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #a1a1aa;
+    line-height: 16px;
+}
+
+label .title {
+    font-size: 15px;
+    color: #f4f4f5;
+    line-height: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Toggle */
+/* https://uiverse.io/ClawHack1/itchy-bobcat-18 */
+
+.toggle-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.toggle-wrapper .toggle-switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #52525b;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-wrapper .toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.toggle-wrapper .toggle-input:checked + .toggle-switch::before {
+    transform: translateX(16px);
+}
+
+.toggle-wrapper .toggle-input:checked + .toggle-switch {
+    background-color: #16a34a;
+}
+
+.toggle-wrapper .toggle-input:checked + .toggle-switch::before {
+    transform: translateX(16px);
+}
+
+/* Footer */
+
+.footer {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer a {
+    color: #a1a1aa;
+}
