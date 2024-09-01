@@ -3,9 +3,27 @@ const toggleModal = (e) => {
     document.querySelector(".modal-user").classList.toggle("active");
 };
 
-const moveUserOptionsToHeader = () => {
-    document.querySelector(".app").classList.add("hideAside");
-    document.querySelector(".header__hamburger__icon button").click();
+const moveUserOptionsToHeader = async () => {
+    let isAlreadyVisible = document.querySelector("aside")
+    if (!isAlreadyVisible) document.querySelector(".app").classList.add("hideAside");
+    if (!isAlreadyVisible)
+        document.querySelector(".header__hamburger__icon button").click();
+
+    const selector = window.location.hostname.includes("wiadomosci")
+        ? ".account_name span" : ".side_important-text.side_student"
+    if (!document.querySelector(selector)) {
+        let resolve
+        const wait = new Promise((r) => resolve = r)
+        const observer = new MutationObserver((mutations, observer) => {
+            if (!document.querySelector(selector)) return
+            resolve()
+            observer.disconnect()
+        })
+        observer.observe(document.body, { subtree: true, childList: true })
+        await wait
+    }
+
+    console.log("test")
 
     const userAvatar = document.querySelector(".user .MuiAvatar-root img");
     const userData = {
@@ -24,8 +42,10 @@ const moveUserOptionsToHeader = () => {
     document.querySelector(".user").click();
     const userLinks = document.querySelectorAll(".user__links a");
 
-    document.querySelector(".close-button").click();
-    document.querySelector(".app").classList.remove("hideAside");
+    if (!isAlreadyVisible) {
+        document.querySelector(".close-button").click();
+        document.querySelector(".app").classList.remove("hideAside");
+    }
 
     const modalBackground = document.createElement("div");
     const modalElement = document.createElement("div");
@@ -49,7 +69,6 @@ const moveUserOptionsToHeader = () => {
     modalElement.appendChild(userDataElement);
 
     userLinks.forEach((link) => {
-        link.href = "javascript:void(0)";
         const linkContainer = document.createElement("div");
         linkContainer.classList.add("modal-link-container");
         linkContainer.appendChild(link);
@@ -76,7 +95,10 @@ const moveUserOptionsToHeader = () => {
 };
 
 window.modules.push({
-    isLoaded: () => document.querySelector(".header__logo-product")?.firstChild,
+    isLoaded: () => {
+        return document.querySelector(".header__logo-product")?.firstChild
+            && document.querySelector(".header__hamburger__icon button")
+    },
     onlyOnReloads: true,
     run: moveUserOptionsToHeader,
     doesRunHere: () =>
