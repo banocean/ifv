@@ -15,7 +15,7 @@ const patches = [
     files: {
       css: ["hideWCAG.css"],
     },
-    hosts: [
+    allowedHostsCss: [
       "eduvulcan.pl",
       "uczen.eduvulcan.pl",
       "wiadomosci.eduvulcan.pl",
@@ -29,7 +29,7 @@ const patches = [
     files: {
       css: ["alignDetailedGradesButton.css"],
     },
-    hosts: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "Hide Tutors From Board",
@@ -37,7 +37,7 @@ const patches = [
     files: {
       css: ["hideTutorsFromBoard.css"],
     },
-    hosts: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "Display Full Name",
@@ -45,7 +45,7 @@ const patches = [
     files: {
       js: ["displayFullName.js"],
     },
-    hosts: [
+    allowedHostsCss: [
       "uczen.eduvulcan.pl",
       "wiadomosci.eduvulcan.pl",
       "dziennik-uczen.vulcan.net.pl",
@@ -59,7 +59,7 @@ const patches = [
       js: ["redirectToBoard/script.js"],
       css: ["redirectToBoard/styles.css"],
     },
-    hosts: [
+    allowedHostsCss: [
       "uczen.eduvulcan.pl",
       "wiadomosci.eduvulcan.pl",
       "dziennik-uczen.vulcan.net.pl",
@@ -72,7 +72,7 @@ const patches = [
     files: {
       js: ["redirectToEVLogin.js"],
     },
-    hosts: ["eduvulcan.pl"],
+    allowedHostsCss: ["eduvulcan.pl"],
   },
   {
     name: "Hide unneeded tiles in eduVulcan home",
@@ -81,7 +81,7 @@ const patches = [
     files: {
       css: ["cleanUpEduVulcanHome.css"],
     },
-    hosts: ["eduvulcan.pl"],
+    allowedHostsCss: ["eduvulcan.pl"],
   },
   {
     name: "Hide Help On Dashboard",
@@ -89,7 +89,7 @@ const patches = [
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
-    hosts: ["uczen.eduvulcan.pl"],
+    allowedHostsCss: ["uczen.eduvulcan.pl"],
   },
   {
     name: "PWA Support",
@@ -97,7 +97,7 @@ const patches = [
     files: {
       js: ["pwa.js"],
     },
-    hosts: ["eduvulcan.pl", "uczen.eduvulcan.pl", "wiadomosci.eduvulcan.pl"],
+    allowedHostsCss: ["eduvulcan.pl", "uczen.eduvulcan.pl", "wiadomosci.eduvulcan.pl"],
   },
   {
     name: "Attendance statistics in separate tab",
@@ -107,7 +107,7 @@ const patches = [
       css: ["attendance/styles.css"],
       js: ["attendance/tabs.js"],
     },
-    hosts: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
 ];
 
@@ -155,7 +155,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   chrome.scripting.insertCSS({
     target: { tabId: tabId },
     files: patches
-      .filter((patch) => patch.hosts.includes(tabHostname))
+      .filter((patch) => patch.allowedHostsCss.includes(tabHostname))
       .reduce((acc, patch) => {
         if (config[patch.name].enable && patch.files?.css?.length)
           return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
