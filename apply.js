@@ -81,6 +81,14 @@ const patches = [
       css: ["attendance/styles.css"],
       js: ["attendance/tabs.js"]
     }
+  },
+  {
+    name: "Move user options to header",
+    description: "Moves user avatar to header that opens dropdown with user options",
+    files: {
+      js: ["moveUserOptionsToHeader/script.js"],
+      css: ["moveUserOptionsToHeader/styles.css"]
+    },
   }
 ];
 
