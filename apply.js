@@ -102,6 +102,13 @@ const patches = [
     },
     allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
+  {
+    name: "Reload on resize",
+    description: "Reloads page while changing between desktop and mobile layouts",
+    files: {
+      js: ["fixResizing.js"],
+    }
+  }
 ];
 
 const allowedHostnames = [
