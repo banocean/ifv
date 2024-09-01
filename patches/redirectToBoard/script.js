@@ -17,7 +17,7 @@ function setUpRedirectToBoard() {
             logoElement.onclick = () => (window.location.href = url);
             logoElement.style = "cursor: pointer;";
         }
-    } else if (isMobile()) {
+    } else if (isMobile() && !!document.querySelector(".tablica")) {
         if (isEduVulcan()) logoElement.href = "javascript:void(0)";
 
         logoElement.onclick = () => {
@@ -29,8 +29,10 @@ function setUpRedirectToBoard() {
     } else {
         if (isEduVulcan()) logoElement.href = "javascript:void(0)";
         else logoElement.style = "cursor: pointer;";
-        logoElement.onclick = () =>
+        logoElement.onclick = () => {
             document.querySelector(".tablica a").click();
+            if (isMobile()) document.querySelector(".header__hamburger__icon button").click();
+        }
     }
 }
 
