@@ -117,6 +117,14 @@ const patches = [
       js: ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
     },
     allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    name: "Hide weekends in monthly calendars",
+    description: "Hides weekends in monthly calendars in timetable, exams and homework views.",
+    files: {
+      css: ["hideWeekends.css"],
+    },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   }
 ];
 

@@ -1,0 +1,10 @@
+.plan-scheduler__body-cell:nth-of-type(6),
+.plan-scheduler__body-cell:nth-of-type(7),
+.plan-scheduler__header-cell:nth-of-type(6),
+.plan-scheduler__header-cell:nth-of-type(7),
+.scheduler-simple__header-cell:nth-of-type(6),
+.scheduler-simple__header-cell:nth-of-type(7),
+.scheduler-simple__body-cell:nth-of-type(6),
+.scheduler-simple__body-cell:nth-of-type(7) {
+    display: none !important;
+}
