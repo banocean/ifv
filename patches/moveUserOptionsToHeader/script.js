@@ -71,7 +71,16 @@ const moveUserOptionsToHeader = async () => {
     userLinks.forEach((link) => {
         const linkContainer = document.createElement("div");
         linkContainer.classList.add("modal-link-container");
-        linkContainer.appendChild(link);
+
+        const linkText = document.createElement("span");
+        linkText.innerHTML = link.textContent;
+
+        linkText.addEventListener("click", () => {
+            link.click();
+            toggleModal();
+        })
+
+        linkContainer.appendChild(linkText);
         modalElement.appendChild(linkContainer);
     });
 
