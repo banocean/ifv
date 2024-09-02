@@ -155,7 +155,7 @@ async function run() {
   });
 
   chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-    if (changeInfo.status !== "loading" || !/^http/.test(tab.url)) return;
+    if (changeInfo.status !== "complete" || !/^http/.test(tab.url)) return;
     const tabHostname = (new URL(tab.url)).hostname;
     if (!allowedHostnames.includes(tabHostname)) return;
     chrome.scripting.insertCSS({
