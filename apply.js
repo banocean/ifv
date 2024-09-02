@@ -123,6 +123,7 @@ const patches = [
 const allowedHostnames = [
   "dziennik-uczen.vulcan.net.pl",
   "dziennik-wiadomosci.vulcan.net.pl",
+  "dziennik-logowanie.vulcan.net.pl",
   "uczen.eduvulcan.pl",
   "wiadomosci.eduvulcan.pl",
   "eduvulcan.pl",
