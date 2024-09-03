@@ -14,7 +14,8 @@ const patches = [
     description: "Hides footer (mobile only)",
     files: {
       css: ["hideFooter.css"]
-    }
+    },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
   },
   {
     name: "Hide WCAG",
@@ -29,6 +30,7 @@ const patches = [
     files: {
       css: ["alignDetailedGradesButton.css"],
     },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "Hide Tutors From Board",
@@ -36,6 +38,7 @@ const patches = [
     files: {
       css: ["hideTutorsFromBoard.css"],
     },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "Display Full Name",
@@ -51,6 +54,12 @@ const patches = [
       js: ["redirectToBoard/script.js"],
       css: ["redirectToBoard/styles.css"],
     },
+    allowedHostsCss: [
+      "uczen.eduvulcan.pl",
+      "wiadomosci.eduvulcan.pl",
+      "dziennik-uczen.vulcan.net.pl",
+      "dziennik-wiadomosci.vulcan.net.pl",
+    ],
   },
   {
     name: "Auto redirect to login page in eduVulcan",
@@ -66,6 +75,7 @@ const patches = [
     files: {
       css: ["cleanUpEduVulcanHome.css"],
     },
+    allowedHostsCss: ["eduvulcan.pl"],
   },
   {
     name: "Hide Help On Dashboard",
@@ -73,21 +83,40 @@ const patches = [
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
   },
   {
     name: "PWA Support",
     description: "Gives ability to install page as PWA",
     files: {
       js: ["pwa.js"],
-    }
+    },
   },
   {
     name: "Attendance statistics in separate tab",
-    description: "Makes attendance page more readable by moving statistics to separate tab",
+    description:
+      "Makes attendance page more readable by moving statistics to separate tab",
     files: {
       css: ["attendance/styles.css"],
       js: ["attendance/tabs.js"]
+    },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+  },
+  {
+    name: "Reload on resize",
+    description: "Reloads page while changing between desktop and mobile layouts",
+    files: {
+      js: ["fixResizing.js"],
     }
+  },
+  {
+    name: "Mobile Navigation",
+    description: "Replaces aside with more readable bottom navigation bar designed (mobile only)",
+    files: {
+      css: ["newMobileNavbar/styles.css"],
+      js: ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
+    },
+    allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
     name: "Dark theme",
@@ -96,101 +125,113 @@ const patches = [
   }
 ];
 
-let config = {
-  ...patches.reduce(
-    (acc, patch) => ({
-      ...acc,
-      [patch.name]: { description: patch.description, enable: true },
-    }),
-    {}
-  ),
-};
+const allowedHostnames = [
+  "dziennik-uczen.vulcan.net.pl",
+  "dziennik-wiadomosci.vulcan.net.pl",
+  "dziennik-logowanie.vulcan.net.pl",
+  "uczen.eduvulcan.pl",
+  "wiadomosci.eduvulcan.pl",
+  "eduvulcan.pl",
+];
 
-chrome.storage.sync.set({ options: config });
+async function run() {
+  let config = (await chrome.storage.sync.get("options"))?.options ?? {};
 
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-  if (namespace !== "sync") return;
-  config = changes.options.newValue;
-  chrome.permissions.getAll((permissions) => {
-    const hostPatterns = permissions.origins || [];
+  patches.forEach(patch => {
+    if (config[patch.name] !== undefined) return;
+    config[patch.name] = { description: patch.description, enable: true };
+  });
 
-    hostPatterns.forEach((pattern) => {
-      chrome.tabs.query({ url: pattern }, (tabs) => {
-        tabs.forEach((tab) => {
-          chrome.tabs.reload(tab.id);
+  chrome.storage.sync.set({ options: config });
+
+  chrome.storage.onChanged.addListener(function (changes, namespace) {
+    if (namespace !== "sync") return;
+    config = changes.options.newValue;
+    chrome.permissions.getAll((permissions) => {
+      const hostPatterns = permissions.origins || [];
+
+      hostPatterns.forEach((pattern) => {
+        chrome.tabs.query({ url: pattern }, (tabs) => {
+          tabs.forEach((tab) => {
+            chrome.tabs.reload(tab.id);
+          });
         });
       });
     });
   });
-});
 
-const allowedHostnames = [
-  "dziennik-uczen.vulcan.net.pl",
-  "dziennik-wiadomosci.vulcan.net.pl",
-  "uczen.eduvulcan.pl",
-  "wiadomosci.eduvulcan.pl",
-  "eduvulcan.pl"
-]
+  chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+    if (changeInfo.status !== "complete" || !/^http/.test(tab.url)) return;
+    const tabHostname = (new URL(tab.url)).hostname;
+    if (!allowedHostnames.includes(tabHostname)) return;
+    chrome.scripting.insertCSS({
+      target: { tabId: tabId },
+      files: patches
+        .filter((patch) => !patch.allowedHostsCss || patch.allowedHostsCss.includes(tabHostname))
+        .reduce((acc, patch) => {
+          if (config[patch.name].enable && patch.files?.css?.length)
+            return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
+          return acc;
+        }, []),
+    });
 
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.status !== "loading" || !/^http/.test(tab.url)) return
-  const tabHostname = (new URL(tab.url)).hostname
-  if (!allowedHostnames.includes(tabHostname)) return
-
-  chrome.scripting.insertCSS({
-    target: { tabId: tabId },
-    files: patches.reduce((acc, patch) => {
-      if (config[patch.name].enable && patch.files?.css?.length)
-        return [...acc, ...patch.files.css.map((file) => `patches/${file}`)];
-      return acc
-    }, []),
-  });
-
-  const [{ result: isInitiated }] = await chrome.scripting.executeScript({
-    target: { tabId },
-    func: () => {
-      if (!window.modules) {
-        window.modules = []
-        return false
-      }
-      return true
-    }
-  })
-
-  if (!isInitiated) await chrome.scripting.executeScript({
-    target: { tabId },
-    files: patches.reduce((acc, patch) => {
-      if (config[patch.name].enable && patch.files?.js?.length)
-        return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
-      return acc;
-    }, []),
-  })
-
-  chrome.scripting.executeScript({
-    target: { tabId },
-    func: () => {
-      if (!window.modules.length) return console.warn("Script tried executing before all files loaded or all patches are disabled")
-      const isFirstRun = !window.iWasThere; // :)
-      window.iWasThere = true
-
-      for (const { onlyOnReloads, doesRunHere, isLoaded, run } of window.modules) {
-        if (onlyOnReloads && !isFirstRun) continue
-        if (doesRunHere !== undefined && !doesRunHere()) continue
-
-        if (isLoaded === undefined) run()
-        else if (isLoaded()) run()
-        else {
-          const observer = new MutationObserver((mutationsList, observer) => {
-            if (!isLoaded()) return
-            observer.disconnect();
-            run();
-          });
-          observer.observe(document.body, {
-            subtree: true,
-            childList: true
-          })
+    const [{ result: isInitiated }] = await chrome.scripting.executeScript({
+      target: { tabId },
+      func: () => {
+        if (!window.modules) {
+          window.modules = [];
+          return false;
         }
-      }
-    }
+        return true;
+      },
+    });
+
+    if (!isInitiated)
+      await chrome.scripting.executeScript({
+        target: { tabId },
+        files: patches.reduce((acc, patch) => {
+          if (config[patch.name].enable && patch.files?.js?.length)
+            return [...acc, ...patch.files.js.map((file) => `patches/${file}`)];
+          return acc;
+        }, []),
+      });
+
+    chrome.scripting.executeScript({
+      target: { tabId },
+      func: () => {
+        if (!window.modules.length)
+          return console.warn(
+            "Script tried executing before all files loaded or all patches are disabled"
+          );
+        const isFirstRun = !window.iWasThere; // :)
+        window.iWasThere = true;
+
+        for (const {
+          onlyOnReloads,
+          doesRunHere,
+          isLoaded,
+          run,
+        } of window.modules) {
+          if (onlyOnReloads && !isFirstRun) continue;
+          if (doesRunHere !== undefined && !doesRunHere()) continue;
+
+          if (isLoaded === undefined) run();
+          else if (isLoaded()) run();
+          else {
+            const observer = new MutationObserver((mutationsList, observer) => {
+              if (!isLoaded()) return;
+              observer.disconnect();
+              run();
+            });
+            observer.observe(document.body, {
+              subtree: true,
+              childList: true,
+            });
+          }
+        }
+      },
+    });
   });
-});
+}
+
+run();
