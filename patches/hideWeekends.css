@@ -16,3 +16,17 @@
 .frequency-scheduler__header-cell:nth-of-type(7) {
     display: none !important;
 }
+
+.plan-scheduler-cell__unavailable > div,
+.scheduler-simple-cell--disabled > div,
+.frequency-scheduler-cell--unavailable > div {
+    min-height: 0 !important;
+    padding: 0 !important;
+}
+
+.plan-scheduler-cell__unavailable,
+.scheduler-simple-cell--disabled,
+.frequency-scheduler-cell--unavailable {
+    padding: 0 !important;
+    margin: 0 !important;
+}
