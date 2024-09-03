@@ -9,6 +9,10 @@
 .scheduler__body-cell:nth-of-type(6),
 .scheduler__body-cell:nth-of-type(7),
 .scheduler__header-cell:nth-of-type(6),
-.scheduler__header-cell:nth-of-type(7) {
+.scheduler__header-cell:nth-of-type(7),
+.frequency-scheduler__body-cell:nth-of-type(6),
+.frequency-scheduler__body-cell:nth-of-type(7),
+.frequency-scheduler__header-cell:nth-of-type(6),
+.frequency-scheduler__header-cell:nth-of-type(7) {
     display: none !important;
 }
