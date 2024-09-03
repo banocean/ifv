@@ -6,7 +6,7 @@
  * @property {string[]} [files.css] - An array of CSS file names (optional).
  * @property {string[]} [files.js] - An array of JS file names (optional).
  */
-
+/* */
 /** @type {Patch[]} */
 const patches = [
   {
@@ -121,7 +121,9 @@ const patches = [
   {
     name: "Dark theme",
     description: "Changes site's theme to dark",
-    css: ["theme.css"]
+    files: {
+      css: ["darkTheme/colors.css", "darkTheme/main.css"]
+    }
   }
 ];
 

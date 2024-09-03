@@ -1,12 +1,3 @@
-:root {
-    --primary-background: #121212;
-    --secondary-background: #1d1d1d;
-    --component-background: #212121;
-    --secondary--component--background: #242424;
-    --primary-text: white;
-    --secondary-text: color-mix(in srgb, black 20%, white 100%)
-}
-
 *:not(.material-symbols-outlined) {
     background-color: var(--primary-background);
     color: var(--primary-text);
