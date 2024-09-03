@@ -117,6 +117,11 @@ const patches = [
       js: ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
     },
     allowedHostsCss: ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    name: "Dark theme",
+    description: "Changes site's theme to dark",
+    css: ["theme.css"]
   }
 ];
 

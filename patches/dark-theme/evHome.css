@@ -1,0 +1,85 @@
+:root {
+    --primary-background: #121212;
+    --secondary-background: #1d1d1d;
+    --component-background: #212121;
+    --secondary--component--background: #242424;
+    --primary-text: white;
+    --secondary-text: color-mix(in srgb, black 20%, white 100%)
+}
+
+*:not(.material-symbols-outlined) {
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    border-color: var(--secondary--component--background) !important;
+}
+
+.material-symbols-outlined {
+    color: var(--primary-text);
+}
+
+.option-box-icon > .material-symbols-outlined,
+.material-symbols-outlined > .material-symbols-outlined,
+.account-management-avatar > .material-symbols-outlined,
+.icon-elevated-level-1 > .material-symbols-outlined {
+    color: var(--primary-background);
+}
+
+.box-access-title,
+.form-focused-title,
+.link-simple,
+.button-simple,
+label,
+input,
+.user-data-personal,
+.user-title,
+.step-list > li,
+.step-list > li::before,
+.profiles-hint {
+    color: var(--primary-text) !important;
+}
+
+.box-simple,
+.center-box,
+.center-box-wide,
+.account-option-box-selected,
+.account-data-container,
+.key-row,
+.profiles-info,
+.hint-rectangle {
+    background-color: var(--primary-background) !important;
+}
+
+.main-box-empty {
+    background: var(--primary-background) !important;
+}
+
+.box-color *,
+.user-avatar *,
+.access-row--add,
+.access-row--add * {
+    background-color: #006bd6;
+    border: none !important;
+}
+
+.user-avatar,
+.access-row--add {
+    border-color: transparent !important;
+}
+
+.access-empty-data,
+.consent-row,
+.key-subtitle,
+.two-factor-description,
+.form-focused-subtitle,
+.option-box-description,
+.user-data-label,
+.user-subtitle {
+    color: var(--secondary-text) !important;
+}
+
+.button-secondary,
+.data-edit,
+.data-delete {
+    background-color: var(--secondary--component--background) !important;
+    color: var(--primary-text) !important;
+}

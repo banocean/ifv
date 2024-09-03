@@ -1,0 +1,119 @@
+:root {
+    --primary-background: #121212;
+    --secondary-background: #1d1d1d;
+    --component-background: #212121;
+    --secondary--component--background: #242424;
+    --primary-text: white;
+    --secondary-text: color-mix(in srgb, black 20%, white 100%)
+}
+
+main > section {
+    background-color: var(--primary-background) !important;
+    color: white !important;
+}
+
+main > header {
+    background-color: var(--primary-background) !important;
+    border-bottom: 0 !important;
+}
+
+footer {
+    border: 0 !important;
+}
+
+footer > * > div {
+    background-color: var(--primary-background) !important;
+    border: 0 !important;
+}
+
+aside, aside > header {
+    background-color: var(--secondary-background) !important;
+}
+
+aside > header {
+    border: 0 !important;
+}
+
+.fonts > li > a {
+    color: var(--secondary-text) !important;
+}
+
+.languages-desktop {
+    border: 0 !important;
+}
+
+.user {
+    border: 0 !important;
+}
+
+main > * > * > .content-container {
+    background-color: var(--component-background) !important;
+}
+
+.box-shaded:not(#kafel-pomoc-pomigracyjna) {
+    background-color: var(--component-background) !important;
+    color: var(--secondary-text) !important;
+}
+
+.user__section > a > div > span, .user__section > a > svg {
+    color: var(--secondary-text) !important;
+}
+
+.header__hamburger__icon > button > span > svg {
+    color: white !important;
+}
+
+.side_studentContext {
+    display: none !important;
+}
+
+.wiadomosci_svg__icon_4 {
+    fill: white
+}
+
+.tile__header, .tile__header > div > a {
+    color: var(--secondary-text) !important;
+}
+
+.content-container .tile .tile__header,
+.content-container .box-shaded,
+.tile__content__title,
+.tile__content__title,
+.tile__teachers__item,
+.tile__list__borders li {
+    border: 0 !important;
+}
+
+
+
+ul .tile__teachers {
+    padding: 0 !important;
+}
+
+.app-footer .app-footer__row a, .tile__teacher__type, .tile__teacher__type, .tile__important-text {
+    color: var(--secondary-text) !important;
+}
+
+.tile__teacher__name {
+    color: var(--primary-text) !important;
+}
+
+.content-container {
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3) !important;
+}
+
+.box-shaded {
+    box-shadow: rgb(0 0 0 / 45%) 0px 8px 24px !important;
+}
+
+.tile__empty-bg, .timetable__grid .column.wolne.current {
+    background: repeating-linear-gradient(45deg, #222222, #222222 10px, var(--secondary--component--background) 10px, var(--secondary--component--background) 12px) !important;
+}
+
+.timetable__grid .column.wolne {
+    border-radius: 0 !important;
+}
+
+.logoEduVulcan_ciemne_r_svg__cls-1 {
+    fill: white !important;
+}
