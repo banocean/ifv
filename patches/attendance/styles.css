@@ -1,3 +1,7 @@
+.attendance-tabs > button:disabled {
+    opacity: 50%;
+}
+
 .attendance-tabs > button:first-of-type {
     margin-right: 10px;
 }
