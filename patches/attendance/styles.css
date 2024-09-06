@@ -1,12 +1,5 @@
-.attendance-tabs > button {
-    padding-inline: 15px;
-    padding-block: 10px;
-    font-size: 15px;
-    background: var(--kolor-wcag);
-    border: 0;
-    cursor: pointer;
-    border-radius: 25px;
-    font-family: "WorkSans", Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.attendance-tabs > button:disabled {
+    opacity: 50%;
 }
 
 .attendance-tabs > button:first-of-type {
