@@ -10,42 +10,42 @@
 /** @type {Patch[]} */
 const patches = [
   {
-    name: "Hide footer",
+    name: chrome.i18n.getMessage("hideFooter"),
     description: "Hides footer (mobile only)",
     files: {
       css: ["hideFooter.css"]
     }
   },
   {
-    name: "Hide WCAG",
+    name: chrome.i18n.getMessage("hideWCAG"),
     description: "todo",
     files: {
       css: ["hideWCAG.css"],
     },
   },
   {
-    name: "Align Detailed Grades Button",
+    name: chrome.i18n.getMessage("alignDetailedGradesButton"),
     description: "todo",
     files: {
       css: ["alignDetailedGradesButton.css"],
     },
   },
   {
-    name: "Hide Tutors From Board",
+    name: chrome.i18n.getMessage("hideTutorsFromBoard"),
     description: "todo",
     files: {
       css: ["hideTutorsFromBoard.css"],
     },
   },
   {
-    name: "Display Full Name",
+    name: chrome.i18n.getMessage("displayFullName"),
     description: "todo",
     files: {
       js: ["displayFullName.js"],
     },
   },
   {
-    name: "Redirect To Board",
+    name: chrome.i18n.getMessage("redirectToBoard"),
     description: "todo",
     files: {
       js: ["redirectToBoard/script.js"],
@@ -53,37 +53,37 @@ const patches = [
     },
   },
   {
-    name: "Auto redirect to login page in eduVulcan",
+    name: chrome.i18n.getMessage("redirectToEVLogin"),
     description: "todo",
     files: {
       js: ["redirectToEVLogin.js"],
     },
   },
   {
-    name: "Hide unneeded tiles in eduVulcan home",
+    name: chrome.i18n.getMessage("cleanUpEVHome"),
     description:
-      "Hides eduVulcan app download links tile, eduVulcan banner and ribbon.",
+    chrome.i18n.getMessage("cleanUpEVHomeDescription"),
     files: {
       css: ["cleanUpEduVulcanHome.css"],
     },
   },
   {
-    name: "Hide Help On Dashboard",
-    description: 'Hides "Do you need help" tile',
+    name: chrome.i18n.getMessage("hideHelpOnDashboard"),
+    description: chrome.i18n.getMessage("hideHelpOnDashboardDescription"),
     files: {
       css: ["hideHelpOnDashboard.css"],
     },
   },
   {
-    name: "PWA Support",
-    description: "Gives ability to install page as PWA",
+    name: chrome.i18n.getMessage("pwa"),
+    description: chrome.i18n.getMessage("pwaDescription"),
     files: {
       js: ["pwa.js"],
     }
   },
   {
-    name: "Attendance statistics in separate tab",
-    description: "Makes attendance page more readable by moving statistics to separate tab",
+    name: chrome.i18n.getMessage("attendanceTabs"),
+    description: chrome.i18n.getMessage("attendanceTabsDescription"),
     files: {
       css: ["attendance/styles.css"],
       js: ["attendance/tabs.js"]

@@ -1,0 +1,56 @@
+{
+    "refreshInfo": {
+        "message": "Zmiana dowolnej z poniższych opcji spowoduje odświeżenie otwartych stron."
+    },
+    "vulcanInfo": {
+        "message": "Nie jesteśmy stowarzyszeni, powiązani, autoryzowani, wspierani ani w żaden sposób oficjalnie powiązani z firmą VULCAN sp. z o.o. ani żadną z jej spółek zależnych lub stowarzyszonych."
+    },
+    "hideFooter": {
+        "message": "Ukryj stopkę"
+    },
+    "hideFooterDescription": {
+        "message": "Ukrywa stopkę (tylko urządzenia mobilne)"
+    },
+    "hideWCAG": {
+        "message": "Ukryj WCAG"
+    },
+    "alignDetailedGradesButton": {
+        "message": "Wyrównaj przycisk szczegółów w ocenach"
+    },
+    "hideTutorsFromBoard": {
+        "message": "Ukryj wychowawców z tablicy"
+    },
+    "displayFullName": {
+        "message": "Wyświetl imię i nazwisko"
+    },
+    "redirectToBoard": {
+        "message": "Przejdź do tablicy"
+    },
+    "redirectToEVLogin": {
+        "message": "Automatyczne przekierowanie do logowania eduVULCAN"
+    },
+    "cleanUpEVHome": {
+        "message": "Ukryj niepotrzebne kafelki na stronie głównej eduVULCAN"
+    },
+    "cleanUpEVHomeDescription": {
+        "message": "Ukrywa kafel z linkami do pobrania aplikacji, baner i wstążkę"
+    },
+    "hideHelpOnDashboard": {
+        "message": "Ukryj pomoc w widoku tablicy"
+    },
+    "hideHelpOnDashboardDescription": {
+        "message": "Ukrywa kafel \"Cze potrzebujesz pomocy?\""
+    },
+    "pwa": {
+        "message": "Wsparcie dla PWA"
+    },
+    "pwaDescription": {
+        "message": "Daje możliwość zainstalowania strony jako PWA"
+    },
+    "attendanceTabs": {
+        "message": "Statystyki frekwencji w oddzielnej zakładki"
+    },
+    "attendanceTabsDescription": {
+        "message": "Sprawia że widok frekwencji staje się czytelniejszy przez przeniesienie statystyk do oddzielniej zakładki"
+    }
+}

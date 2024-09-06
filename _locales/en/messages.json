@@ -1,0 +1,56 @@
+{
+    "refreshInfo": {
+        "message": "Changing any option below will refresh opened pages."
+    },
+    "vulcanInfo": {
+        "message": "We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with VULCAN sp. z o.o., or any of its subsidiaries or its affiliates."
+    },
+    "hideFooter": {
+        "message": "Hide footer"
+    },
+    "hideFooterDescription": {
+        "message": "Hides footer (mobile only)"
+    },
+    "hideWCAG": {
+        "message": "Hide WCAG"
+    },
+    "alignDetailedGradesButton": {
+        "message": "Align Detailed Grades Button"
+    },
+    "hideTutorsFromBoard": {
+        "message": "Hide Tutors From Board"
+    },
+    "displayFullName": {
+        "message": "Display Full Name"
+    },
+    "redirectToBoard": {
+        "message": "Redirect to board"
+    },
+    "redirectToEVLogin": {
+        "message": "Auto redirect to login page in eduVULCAN"
+    },
+    "cleanUpEVHome": {
+        "message": "Hide unneeded tiles in eduVULCAN home"
+    },
+    "cleanUpEVHomeDescription": {
+        "message": "Hides eduVULCAN app download links tile, eduVulcan banner and ribbon"
+    },
+    "hideHelpOnDashboard": {
+        "message": "Hide Help On Dashboard"
+    },
+    "hideHelpOnDashboardDescription": {
+        "message": "Hides \"Do you need help?\" tile"
+    },
+    "pwa": {
+        "message": "PWA Support"
+    },
+    "pwaDescription": {
+        "message": "Gives ability to install page as PWA"
+    },
+    "attendanceTabs": {
+        "message": "Attendance statistics in separate tab"
+    },
+    "attendanceTabsDescription": {
+        "message": "Makes attendance page more readable by moving statistics to separate tab"
+    }
+}
