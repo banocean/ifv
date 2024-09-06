@@ -130,7 +130,7 @@ const run = () => {
 
 let alreadyClicked = false;
 
-window.modules.push({
+window.appendModule({
     run,
     doesRunHere: () => window.location.hostname.match(/^(dziennik-)?(uczen).*/) && window.innerWidth < 1024,
     onlyOnReloads: true,

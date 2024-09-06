@@ -10,7 +10,7 @@
     "*://dziennik-wiadomosci.vulcan.net.pl/*",
     "*://uczen.eduvulcan.pl/*",
     "*://wiadomosci.eduvulcan.pl/*",
-    "*://dziennik-logowanie.vulcan.net.pl/",
+    "*://dziennik-logowanie.vulcan.net.pl/*",
     "*://eduvulcan.pl/*"
   ],
 
@@ -25,15 +25,44 @@
     }
   },
 
-  "web_accessible_resources": [{
-    "resources": ["patches/*", "patches.json"],
-    "matches": ["<all_urls>"]
-  }],
-  "content_scripts": [{
-    "js": ["apply.js"],
-    "matches": ["<all_urls>"]
-  }],
-
+  "web_accessible_resources": [
+    {
+      "resources": ["patches/*", "patches.json"],
+      "matches": [
+        "*://dziennik-uczen.vulcan.net.pl/*",
+        "*://dziennik-wiadomosci.vulcan.net.pl/*",
+        "*://uczen.eduvulcan.pl/*",
+        "*://wiadomosci.eduvulcan.pl/*",
+        "*://dziennik-logowanie.vulcan.net.pl/*",
+        "*://eduvulcan.pl/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "js": ["execute.js"],
+      "matches": [
+        "*://dziennik-uczen.vulcan.net.pl/*",
+        "*://dziennik-wiadomosci.vulcan.net.pl/*",
+        "*://uczen.eduvulcan.pl/*",
+        "*://wiadomosci.eduvulcan.pl/*",
+        "*://dziennik-logowanie.vulcan.net.pl/*",
+        "*://eduvulcan.pl/*"
+      ],
+      "world": "MAIN"
+    },
+    {
+      "js": ["apply.js"],
+      "matches": [
+        "*://dziennik-uczen.vulcan.net.pl/*",
+        "*://dziennik-wiadomosci.vulcan.net.pl/*",
+        "*://uczen.eduvulcan.pl/*",
+        "*://wiadomosci.eduvulcan.pl/*",
+        "*://dziennik-logowanie.vulcan.net.pl/",
+        "*://eduvulcan.pl/*"
+      ]
+    }
+  ],
   "action": {
     "default_popup": "popup/index.html"
   },

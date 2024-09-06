@@ -33,7 +33,7 @@ function displayFullName() {
     );
 }
 
-window.modules.push({
+window.appendModule({
     isLoaded: () => document.querySelector(
         `.${isMessagesPage() ? "account__name span" : "side_student"}`,
     ),
