@@ -25,10 +25,14 @@
     }
   },
 
-  "background": {
-    "scripts": ["apply.js"],
-    "service_worker": "apply.js"
-  },
+  "web_accessible_resources": [{
+    "resources": ["patches/*", "patches.json"],
+    "matches": ["<all_urls>"]
+  }],
+  "content_scripts": [{
+    "js": ["apply.js"],
+    "matches": ["<all_urls>"]
+  }],
 
   "action": {
     "default_popup": "popup/index.html"
