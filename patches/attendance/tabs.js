@@ -39,7 +39,7 @@ const isRendered = () =>
         && !!document.querySelector("h1")
 
 
-window.modules.push({
+window.appendModule({
     isLoaded: isRendered,
     run: createSelector,
     onlyOnReloads: false,
