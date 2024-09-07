@@ -1,5 +1,4 @@
-<h1 align="center">Improvements for VULCAN</h1>
-
+# Improvements for VULCAN
 
 Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
