@@ -28,7 +28,7 @@ const getConfig = async () =>
 chrome.storage.onChanged.addListener((changes, namespace) => {
     if (
         !changes.options?.oldValue ||
-        changes.options?.oldValue === changes.options?.newValue
+        JSON.stringify(changes.options?.oldValue) === JSON.stringify(changes.options?.newValue)
     )
         return;
     if (namespace !== "sync") return;
