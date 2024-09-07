@@ -1,9 +1,8 @@
-<div style="text-align: center;">
-<img src="./assets/logo/logo-128-red.png" width="48" />
+<p align="center">
+    <img src="./assets/logo/logo-128-red.png" width="72" />
+</p>
+<h1 align="center">Improvements for VULCAN</h1>
 
-# Improvements for VULCAN
-
-</div>
 
 Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
