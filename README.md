@@ -1,6 +1,3 @@
-<p align="center">
-    <img src="./assets/logo/logo-128-red.png" width="72" />
-</p>
 <h1 align="center">Improvements for VULCAN</h1>
 
 
