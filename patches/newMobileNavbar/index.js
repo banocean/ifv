@@ -74,6 +74,7 @@ const run = () => {
                 more.style.display = "none"
                 document.querySelector(".header__hamburger__icon button").click()
                 document.querySelector("div#root").scroll(0,0)
+                setHighlights()
             })
         } else {
             const detailedOptionsPage = document.createElement("div")
