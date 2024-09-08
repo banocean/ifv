@@ -1,5 +1,13 @@
 [
   {
+      "name": "Arrows",
+      "description": "Replaces x with arrows",
+      "files": {
+          "css": ["arrows.css"]
+      },
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
     "name": "Hide footer",
     "description": "Hides footer (mobile only)",
     "files": {
