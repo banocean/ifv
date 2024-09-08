@@ -59,6 +59,13 @@
     }
   },
   {
+    "name": "Auto redirect to login page in Dziennik VULCAN",
+    "description": "todo",
+    "files": {
+      "js": ["redirectToDVLogin.js"]
+    }
+  },
+  {
     "name": "Hide unneeded tiles in eduVulcan home",
     "description": "Hides eduVulcan app download links tile, eduVulcan banner and ribbon.",
     "files": {
