@@ -4,12 +4,13 @@ function move() {
     messages.style.float = "right"
     messages.style.padding = "20px"
     messages.style.marginLeft = "auto"
+    messages.querySelector(".MuiBadge-anchorOriginTopRightRectangle").style.transitionDuration = "0ms"
     
     document.querySelector(".header_logo_tools-container").appendChild(messages)
 }
 
-window.appendModule({
-    run:move,
+window.appendModule({   
+    run: move,
     doesRunHere: () => window.location.hostname.match(/^(dziennik-)?(uczen).*/) && window.innerWidth < 1024,
     onlyOnReloads: true,
     isLoaded: () => {
