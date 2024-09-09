@@ -1,5 +1,12 @@
 [
   {
+      "name": "Move messages button",
+      "description": "Moves messages button to header (mobile only)",
+      "files": {
+          "js": ["messagesButton.js"]
+      }
+  },
+  {
     "name": "Hide footer",
     "description": "Hides footer (mobile only)",
     "files": {
