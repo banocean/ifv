@@ -1,5 +1,4 @@
 const isEduVulcan = () => !window.location.hostname.startsWith("dziennik");
-const isMobile = () => window.innerWidth < 1024;
 
 const getLogoElement = () =>
     document.querySelector(".header__logo-product")?.firstChild;
