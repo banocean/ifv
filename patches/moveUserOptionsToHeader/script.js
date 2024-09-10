@@ -23,8 +23,6 @@ const moveUserOptionsToHeader = async () => {
         await wait
     }
 
-    console.log("test")
-
     const userAvatar = document.querySelector(".user .MuiAvatar-root img");
     const userData = {
         fullName: window.location.hostname.includes("wiadomosci")

@@ -1,12 +1,11 @@
 async function move() {
     const inner = await window.getFromAside(
-        () => {
-            let r = document.querySelector(".messages")?.innerHTML
-            debugger
-            return r
+        async () => {
+            await window.waitForRender(() => document.querySelector(".messages"))
+            return document.querySelector(".messages")?.innerHTML
         }
     )
-    debugger
+
     const messages = document.createElement("div");
     messages.innerHTML = inner;
     messages.style.float = "right";
@@ -27,5 +26,5 @@ window.appendModule({
         window.location.hostname.match(/^(dziennik-)?(uczen).*/) &&
         window.innerWidth < 1024,
     onlyOnReloads: true,
-    // isLoaded: () => !!document.querySelector(".header__hamburger__icon")
+    isLoaded: () => !!document.querySelector(".header__hamburger__icon")
 });
