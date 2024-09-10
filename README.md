@@ -2,8 +2,6 @@
 
 Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
-**_We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with VULCAN sp. z o.o., or any of its subsidiaries or its affiliates._**
-
 ## Features
 
 <details>
