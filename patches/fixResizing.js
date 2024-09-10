@@ -6,7 +6,7 @@ const startListening = () => {
     });
 }
 
-window.modules.push({
+window.appendModule({
     run: startListening,
     onlyOnReloads: true,
     doesRunHere: () => window.location.hostname !== "eduvulcan.pl"

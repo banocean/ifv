@@ -36,7 +36,7 @@ function setUpRedirectToBoard() {
     }
 }
 
-window.modules.push({
+window.appendModule({
     isLoaded: getLogoElement,
     onlyOnReloads: true,
     run: setUpRedirectToBoard,
