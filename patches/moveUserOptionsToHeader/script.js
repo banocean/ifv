@@ -27,7 +27,7 @@ const moveUserOptionsToHeader = async () => {
 
     const userAvatar = document.querySelector(".user .MuiAvatar-root img");
     const userData = {
-        fullname: window.location.hostname.includes("wiadomosci")
+        fullName: window.location.hostname.includes("wiadomosci")
             ? document
                   .querySelector(".account__name span")
                   ?.firstChild?.textContent?.split(" ")
@@ -103,9 +103,9 @@ const moveUserOptionsToHeader = async () => {
         .appendChild(userAvatar);
 };
 
-window.modules.push({
+window.appendModule({
     isLoaded: () => {
-        return document.querySelector(".header__logo-product")?.firstChild
+        document.querySelector(".header__logo-product")?.firstChild
             && document.querySelector(".header__hamburger__icon button")
     },
     onlyOnReloads: true,

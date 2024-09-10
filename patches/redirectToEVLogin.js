@@ -2,8 +2,8 @@ function redirectToLoginPage() {
     window.location.pathname = "/logowanie";
 }
 
+alert("test")
 window.appendModule({
-    isLoaded: () => true,
     onlyOnReloads: true,
     run: redirectToLoginPage,
     doesRunHere: () =>

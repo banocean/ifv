@@ -1,11 +1,18 @@
 const modules = [];
-window.appendModule = (...args) => {
-    modules.push(...args);
+let loadedScripts = 0;
+const incrementCounter = () => {
+    loadedScripts++
     if (
-        document.querySelectorAll(".injected-script").length === modules.length
+        document.querySelectorAll(".injected-script").length === loadedScripts
     ) {
         execute();
     }
+}
+
+window.skipModule = incrementCounter
+window.appendModule = (...args) => {
+    modules.push(...args);
+    incrementCounter();
 };
 
 const execute = () => {

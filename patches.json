@@ -3,14 +3,14 @@
         "name": "Move messages button",
         "description": "Moves messages button to header (mobile only)",
         "files": {
-            "js": ["messagesButton.js"]
+            "js": ["messagesButton.js", "apis/aside.js", "apis/waitForElement.js"]
         }
     },
     {
         "name": "Move user options to header",
         "description": "Moves user avatar to header that opens dropdown with user options (mobile only)",
         "files": {
-            "js": ["moveUserOptionsToHeader/script.js"],
+            "js": ["moveUserOptionsToHeader/script.js", "apis/aside.js", "apis/waitForElement.js"],
             "css": ["moveUserOptionsToHeader/styles.css"]
         }
     },
