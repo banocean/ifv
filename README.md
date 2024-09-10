@@ -35,7 +35,10 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 </details>
 <details>
     <summary>Displaying full name</summary>
-    TODO
+
+| Before:                                                         | After:                                                         |
+| --------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="./readme-assets/fnameBefore.png" width="300px" /> | <img src="./readme-assets/fnameAfter.png" width="300px" /> |
 </details>
 <details>
     <summary>Clean student dashobard</summary>
