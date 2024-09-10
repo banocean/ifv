@@ -8,7 +8,11 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
 <details>
     <summary>Mobile navigation</summary>
-    TODO
+
+| Before:                                                         | After:                                                         |
+| --------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="./readme-assets/mobileNavBefore.png" width="300px" /> | <img src="./readme-assets/mobileNavAfter.png" width="300px" /> |
+
 </details>
 <details>
     <summary>PWA support</summary>
@@ -21,7 +25,10 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 </details>
 <details>
     <summary>Hiding weekends in monthy calendars</summary>
-    TODO
+    
+| Before:                                                      | After:                                                      |
+| ------------------------------------------------------------ | ----------------------------------------------------------- |
+| <img src="./readme-assets/hideWeekendsBefore.png" width="300px" /> | <img src="./readme-assets/hideWeekendsAfter.png" width="300px" /> |
 </details>
 <details>
     <summary>Displaying full name</summary>
@@ -34,7 +41,11 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
 <details>
     <summary>Clean eduVULCAN home</summary>
-    TODO
+
+| Before:                                                      | After:                                                      |
+| ------------------------------------------------------------ | ----------------------------------------------------------- |
+| <img src="./readme-assets/evHomeBefore.png" width="300px" /> | <img src="./readme-assets/evHomeAfter.png" width="300px" /> |
+
 </details>
 
 <details>
