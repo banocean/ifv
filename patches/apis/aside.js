@@ -1,5 +1,5 @@
 const getAsideElement = async () => {
-    if (window.asideMode === "hidden") {
+    if (window.asideMode === "hidden" && document.querySelector("aside")) {
         return document.querySelector("aside")
     } else {
         document.querySelector(".header__hamburger__icon button").click();
@@ -19,7 +19,10 @@ const closeAside = () => {
 
 window.clickOnAside = async (selector) => {
     const aside = await getAsideElement()
-    aside.querySelector(selector)
+    aside.querySelector(selector)?.click()
+    if (!document.querySelector("aside") && window.asideMode === "hidden") {
+        document.querySelector(".header__hamburger__icon button").click();
+    }
 }
 
 window.getFromAside = async (fn) => {
