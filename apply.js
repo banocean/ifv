@@ -36,7 +36,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 });
 
 const getPatchesFiles = (patches, config) => {
-    return patches
+    return [...new Set(patches
         .flatMap((patch) => {
             const result = [];
             if (config[patch.name].enable) {
@@ -58,7 +58,7 @@ const getPatchesFiles = (patches, config) => {
             }
             return result;
         })
-        .flat();
+        .flat())];
 };
 
 async function run() {
