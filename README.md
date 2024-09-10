@@ -42,7 +42,14 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 </details>
 <details>
     <summary>Clean student dashobard</summary>
-    TODO
+
+Before:
+
+<img src="./readme-assets/whiteboardBefore.png" width="800px" />
+
+After:
+
+<img src="./readme-assets/whiteboardAfter.png" width="800px" />
 </details>
 
 <details>
