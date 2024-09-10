@@ -11,12 +11,12 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
 | Before:                                                         | After:                                                         |
 | --------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="./readme-assets/mobileNavBefore.png" width="300px" /> | <img src="./readme-assets/mobileNavAfter.png" width="300px" /> |
+| <img src="./screenshots/mobileNavBefore.png" width="300px" /> | <img src="./screenshots/mobileNavAfter.png" width="300px" /> |
 
 </details>
 <details>
     <summary>PWA support</summary>
-    <img src="./readme-assets/pwa.png" width="300px" />
+    <img src="./screenshots/pwa.png" width="300px" />
 </details>
 
 <details>
@@ -24,32 +24,32 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
 | Before:                                                      | After:                                                      |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| <img src="./readme-assets/attendanceBefore.png" width="300px" /> | <img src="./readme-assets/attendanceAfter.png" width="300px" /> |
+| <img src="./screenshots/attendanceBefore.png" width="300px" /> | <img src="./screenshots/attendanceAfter.png" width="300px" /> |
 </details>
 <details>
     <summary>Hiding weekends in monthy calendars</summary>
     
 | Before:                                                      | After:                                                      |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| <img src="./readme-assets/hideWeekendsBefore.png" width="300px" /> | <img src="./readme-assets/hideWeekendsAfter.png" width="300px" /> |
+| <img src="./screenshots/hideWeekendsBefore.png" width="300px" /> | <img src="./screenshots/hideWeekendsAfter.png" width="300px" /> |
 </details>
 <details>
     <summary>Displaying full name</summary>
 
 | Before:                                                         | After:                                                         |
 | --------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="./readme-assets/fnameBefore.png" width="300px" /> | <img src="./readme-assets/fnameAfter.png" width="300px" /> |
+| <img src="./screenshots/fnameBefore.png" width="300px" /> | <img src="./screenshots/fnameAfter.png" width="300px" /> |
 </details>
 <details>
     <summary>Clean student dashobard</summary>
 
 Before:
 
-<img src="./readme-assets/whiteboardBefore.png" width="800px" />
+<img src="./screenshots/whiteboardBefore.png" width="800px" />
 
 After:
 
-<img src="./readme-assets/whiteboardAfter.png" width="800px" />
+<img src="./screenshots/whiteboardAfter.png" width="800px" />
 </details>
 
 <details>
@@ -57,7 +57,7 @@ After:
 
 | Before:                                                      | After:                                                      |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| <img src="./readme-assets/evHomeBefore.png" width="300px" /> | <img src="./readme-assets/evHomeAfter.png" width="300px" /> |
+| <img src="./screenshots/evHomeBefore.png" width="300px" /> | <img src="./screenshots/evHomeAfter.png" width="300px" /> |
 
 </details>
 
