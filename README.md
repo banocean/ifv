@@ -1,6 +1,10 @@
 # Improvements for VULCAN
 
-Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
+Browser extension with improvements for eduVULCAN and Dziennik VULCAN.
+
+## Installation
+Not yet 😢<br>
+[Setting up project for development](#development-workflow)
 
 ## Features
 
@@ -67,6 +71,14 @@ After:
 - Redirecting to board
 - Auto redirecting to eduVULCAN login page
 </details>
+
+## Development Workflow
+### Firefox
+To load addon from files in Firefox, you need to go to `about:debugging#/runtime/this-firefox` and click `Load Temporary Add-on...`. After that you need to select manifest.json file in file picker.<br>
+<img src="./screenshots/firefoxDebug.png">
+### Chrome
+To load extension from files in Chrome, you need to go to `chrome://extensions/` and click `Load unpacked` (with developer mode enabled)<br>
+<img src="./screenshots/chromeDebug.png">
 
 ## License
 
