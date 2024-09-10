@@ -16,7 +16,7 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 </details>
 <details>
     <summary>PWA support</summary>
-    TODO
+    <img src="./readme-assets/pwa.png" width="300px" />
 </details>
 
 <details>
