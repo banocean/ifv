@@ -12,7 +12,7 @@ function injectWebManifest() {
     document.head.appendChild(metaLink);
 }
 
-window.modules.push({
+window.appendModule({
     isLoaded: () => true,
     onlyOnReloads: true,
     run: injectWebManifest,
