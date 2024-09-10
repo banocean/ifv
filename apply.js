@@ -85,6 +85,10 @@ async function run() {
         else element.classList.add("injected-script");
         document.head.appendChild(element);
     }
+
+    const flag = document.createElement("div")
+    flag.classList.add("flag-scripts-injected")
+    document.head.appendChild(flag)
 }
 
 run();

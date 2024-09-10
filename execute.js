@@ -1,12 +1,11 @@
 const modules = [];
 let loadedScripts = 0;
+
+const isEverythingLoaded = () => document.querySelectorAll(".injected-script").length === loadedScripts;
+
 const incrementCounter = () => {
     loadedScripts++
-    if (
-        document.querySelectorAll(".injected-script").length === loadedScripts
-    ) {
-        execute();
-    }
+    if (isEverythingLoaded()) execute();
 }
 
 window.skipModule = incrementCounter
@@ -46,6 +45,6 @@ const execute = () => {
 window.history.pushState = new Proxy(window.history.pushState, {
     apply: (target, a, args) => {
         target.apply(a, args);
-        execute();
+        if (document.querySelectorAll(".flag-scripts-injected") && isEverythingLoaded()) execute();
     },
 });
