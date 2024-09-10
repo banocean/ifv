@@ -21,7 +21,10 @@ Browser extention with improvements for eduVULCAN and Dziennik VULCAN.
 
 <details>
     <summary>Attendance statistics in separate tab</summary>
-    TODO
+
+| Before:                                                      | After:                                                      |
+| ------------------------------------------------------------ | ----------------------------------------------------------- |
+| <img src="./readme-assets/attendanceBefore.png" width="300px" /> | <img src="./readme-assets/attendanceAfter.png" width="300px" /> |
 </details>
 <details>
     <summary>Hiding weekends in monthy calendars</summary>
