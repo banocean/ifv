@@ -4,22 +4,68 @@
     "version": "0.1",
     "name": "Improvements for Vulcan",
 
-    "permissions": ["storage", "activeTab", "scripting", "tabs"],
-    "host_permissions": [
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": [
+    "*://dziennik-uczen.vulcan.net.pl/*",
+    "*://dziennik-wiadomosci.vulcan.net.pl/*",
+    "*://uczen.eduvulcan.pl/*",
+    "*://wiadomosci.eduvulcan.pl/*",
+    "*://dziennik-logowanie.vulcan.net.pl/*",
+    "*://eduvulcan.pl/*"
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "j.skup.test@gmail.com",
+      "strict_min_version": "128.0"
+    },
+    "gecko_android": {
+      "id": "j.skup.test@gmail.com",
+      "strict_min_version": "128.0"
+    }
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["patches/*", "patches.json"],
+      "matches": [
         "*://dziennik-uczen.vulcan.net.pl/*",
         "*://dziennik-wiadomosci.vulcan.net.pl/*",
         "*://uczen.eduvulcan.pl/*",
         "*://wiadomosci.eduvulcan.pl/*",
+        "*://dziennik-logowanie.vulcan.net.pl/*",
         "*://eduvulcan.pl/*"
-    ],
-
-    "background": {
-        "service_worker": "apply.js"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "js": ["execute.js"],
+      "matches": [
+        "*://dziennik-uczen.vulcan.net.pl/*",
+        "*://dziennik-wiadomosci.vulcan.net.pl/*",
+        "*://uczen.eduvulcan.pl/*",
+        "*://wiadomosci.eduvulcan.pl/*",
+        "*://dziennik-logowanie.vulcan.net.pl/*",
+        "*://eduvulcan.pl/*"
+      ],
+      "world": "MAIN"
     },
-
-    "action": {
-        "default_popup": "popup/index.html"
-    },
+    {
+      "js": ["apply.js"],
+      "matches": [
+        "*://dziennik-uczen.vulcan.net.pl/*",
+        "*://dziennik-wiadomosci.vulcan.net.pl/*",
+        "*://uczen.eduvulcan.pl/*",
+        "*://wiadomosci.eduvulcan.pl/*",
+        "*://dziennik-logowanie.vulcan.net.pl/",
+        "*://eduvulcan.pl/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/index.html"
+  },
 
     "icons": {
         "128": "assets/logo/logo-128-red.png",
