@@ -67,11 +67,11 @@
     "default_popup": "popup/index.html"
   },
 
-    "icons": {
-        "128": "assets/logo/logo-128-red.png",
-        "192": "assets/logo/logo-192-red.png",
-        "512": "assets/logo/logo-512-red.png"
-    },
+  "icons": {
+    "128": "assets/logo/logo-128-red.png",
+    "192": "assets/logo/logo-192-red.png",
+    "512": "assets/logo/logo-512-red.png"
+  },
     
-    "default_locale": "pl"
+  "default_locale": "pl"
 }
