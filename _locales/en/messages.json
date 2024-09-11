@@ -5,6 +5,10 @@
     "vulcanInfo": {
         "message": "We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with VULCAN sp. z o.o., or any of its subsidiaries or its affiliates."
     },
+    "messagesButton": { "message": "Move messages button" },
+    "messagesButtonDescription": {
+        "message": "Moves messages button to header (mobile only)"
+    },
     "hideFooter": {
         "message": "Hide footer"
     },
@@ -20,8 +24,8 @@
     "hideTutorsFromBoard": {
         "message": "Hide Tutors From Board"
     },
-    "displayFullName": {
-        "message": "Display Full Name"
+    "displayFullID": {
+        "message": "Display Full ID"
     },
     "redirectToBoard": {
         "message": "Redirect to board"
@@ -52,5 +56,13 @@
     },
     "attendanceTabsDescription": {
         "message": "Makes attendance page more readable by moving statistics to separate tab"
+    },
+    "newMobileNavbar": { "message": "Mobile navigation" },
+    "newMobileNavbarDescription": {
+        "message": "Replaces aside with more readable bottom navigation bar designed (mobile only)"
+    },
+    "hideWeekends": { "message": "Hide weekends in monthly calendars" },
+    "hideWeekendsDescription": {
+        "message": "Hides weekends in monthly calendars in timetable, exams and homework views."
     }
 }
