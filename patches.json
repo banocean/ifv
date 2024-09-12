@@ -8,6 +8,13 @@
       "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
   },
   {
+      "name": "Move messages button",
+      "description": "Moves messages button to header (mobile only)",
+      "files": {
+          "js": ["messagesButton.js"]
+      }
+  },
+  {
     "name": "Hide footer",
     "description": "Hides footer (mobile only)",
     "files": {
