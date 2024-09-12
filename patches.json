@@ -9,7 +9,7 @@
   },
   {
     "name": "Hide WCAG",
-    "description": "todo",
+    "description": "Hide WCAG buttons.",
     "files": {
       "css": ["hideWCAG.css"]
     }
@@ -53,14 +53,14 @@
   },
   {
     "name": "Auto redirect to login page in eduVulcan",
-    "description": "todo",
+    "description": "Auto redirect to login page in eduVulcan",
     "files": {
       "js": ["redirectToEVLogin.js"]
     }
   },
   {
     "name": "Auto redirect to login page in Dziennik VULCAN",
-    "description": "todo",
+    "description": "Auto redirect to login page in Dziennik VULCAN",
     "files": {
       "js": ["redirectToDVLogin.js"]
     }

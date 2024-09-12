@@ -8,6 +8,5 @@ window.appendModule({
     run: redirectToLoginPage,
     doesRunHere: () =>
         window.location.hostname === "dziennik-uczen.vulcan.net.pl"
-		&& (typeof window.location.pathname.split("/")[2] === 'undefined'
-		|| window.location.pathname.split("/")[2] === "")
+		&& !window.location.pathname.split("/")[2]
 });
