@@ -1,0 +1,18 @@
+#wizard1 {
+    order: 2;
+}
+
+.form-focused-subtitle:has(#titlestep),
+#wizard1 > .flex-col.form-gap.form-margin,
+#wizard1 > .flex-col.gap-3.my-2 {
+    display: none !important;
+}
+
+#wizard2 {
+    order: 3;
+    display: block !important;
+}
+
+#btPrev {
+    display: none;
+}
