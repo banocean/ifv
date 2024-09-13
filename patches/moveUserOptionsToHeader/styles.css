@@ -7,14 +7,6 @@
         display: none !important;
     }
 
-    /* .user__section {
-        display: none !important;
-    } */
-
-    /* div[role="presentation"] {
-        display: none !important;
-    } */
-
     .header_logo_tools_user-wrapper img {
         width: 45px;
         height: 45px;
@@ -102,11 +94,24 @@
         cursor: pointer;
     }
 
-    .header__logo-product>img {
+    .header__logo-product > img {
         width: auto !important;
     }
 
     header.app__header {
         height: 60px;
+    }
+
+    .user-avatar {
+        background: #f8d6d8;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.8rem;
     }
 }

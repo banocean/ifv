@@ -10,7 +10,7 @@
         "name": "Move user options to header",
         "description": "Moves user avatar to header that opens dropdown with user options (mobile only)",
         "files": {
-            "js": ["moveUserOptionsToHeader/script.js", "apis/aside.js", "apis/waitForElement.js"],
+            "js": ["moveUserOptionsToHeader/script.js", "apis/aside.js", "apis/waitForElement.js", "apis/getUserData.js"],
             "css": ["moveUserOptionsToHeader/styles.css"]
         }
     },

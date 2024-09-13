@@ -1,49 +1,18 @@
-const toggleModal = (e) => {
+const toggleModal = () => {
     document.querySelector(".modal-background").classList.toggle("active");
     document.querySelector(".modal-user").classList.toggle("active");
 };
 
 const moveUserOptionsToHeader = async () => {
-    let isAlreadyVisible = document.querySelector("aside")
-    if (!isAlreadyVisible) document.querySelector(".app").classList.add("hideAside");
-    if (!isAlreadyVisible)
-        document.querySelector(".header__hamburger__icon button").click();
-
-    const selector = window.location.hostname.includes("wiadomosci")
-        ? ".account_name span" : ".side_important-text.side_student"
-    if (!document.querySelector(selector)) {
-        let resolve
-        const wait = new Promise((r) => resolve = r)
-        const observer = new MutationObserver((mutations, observer) => {
-            if (!document.querySelector(selector)) return
-            resolve()
-            observer.disconnect()
-        })
-        observer.observe(document.body, { subtree: true, childList: true })
-        await wait
-    }
-
-    const userAvatar = document.querySelector(".user .MuiAvatar-root img");
-    const userData = {
-        fullName: window.location.hostname.includes("wiadomosci")
-            ? document
-                  .querySelector(".account__name span")
-                  ?.firstChild?.textContent?.split(" ")
-                  .reverse()
-                  .join(" ")
-            : document.querySelector(".side_important-text.side_student")
-                  ?.textContent,
-        username: document.querySelector(".user div:nth-child(2)").lastChild
-            .textContent,
-    };
-
-    document.querySelector(".user").click();
-    const userLinks = document.querySelectorAll(".user__links a");
-
-    if (!isAlreadyVisible) {
-        document.querySelector(".close-button").click();
-        document.querySelector(".app").classList.remove("hideAside");
-    }
+    const userLinks = await window.getFromAside(async () => {
+        const user = document.querySelector(".user")
+        if (user) {
+            user.click()
+            await window.waitForRender(() => document.querySelector(".user__links"))
+            return document.querySelectorAll(".user__links a")
+        }
+    })
+    const userData = await window.getUserData()
 
     const modalBackground = document.createElement("div");
     const modalElement = document.createElement("div");
@@ -54,14 +23,14 @@ const moveUserOptionsToHeader = async () => {
     const userDataElement = document.createElement("div");
     userDataElement.classList.add("modal-data");
 
-    const avatarElement = userAvatar.cloneNode(true);
-    avatarElement.style.width = "50px";
-    avatarElement.style.height = "50px";
-    userDataElement.appendChild(avatarElement);
+    const userAvatar = document.createElement("div");
+    userAvatar.innerHTML = `<span>${userData.fullName[0]}</span>`
+    userAvatar.classList.add("user-avatar")
+    userDataElement.appendChild(userAvatar.cloneNode(true));
 
     const nameElement = document.createElement("div");
     nameElement.classList.add("modal-name");
-    nameElement.innerHTML = `<span style="font-size: 20px">${userData?.fullname}</span><span style="font-size: 1rem;">${userData?.username}</span>`;
+    nameElement.innerHTML = `<span style="font-size: 20px">${userData?.fullName}</span><span style="font-size: 1rem;">${userData?.username}</span>`;
     userDataElement.appendChild(nameElement);
 
     modalElement.appendChild(userDataElement);
@@ -102,10 +71,8 @@ const moveUserOptionsToHeader = async () => {
 };
 
 window.appendModule({
-    isLoaded: () => {
-        document.querySelector(".header__logo-product")?.firstChild
-            && document.querySelector(".header__hamburger__icon button")
-    },
+    isLoaded: () => document.querySelector(".header__logo-product")?.firstChild
+        && document.querySelector(".header__hamburger__icon button"),
     onlyOnReloads: true,
     run: moveUserOptionsToHeader,
     doesRunHere: () =>
