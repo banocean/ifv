@@ -2,7 +2,8 @@
     order: 2;
 }
 
-.form-focused-subtitle:has(#titlestep),
+.form-focused-subtitle,
+.form-subtitle,
 #wizard1 > .flex-col.form-gap.form-margin,
 #wizard1 > .flex-col.gap-3.my-2 {
     display: none !important;
