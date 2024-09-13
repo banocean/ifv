@@ -125,7 +125,7 @@
     "name": "Login and password together",
     "description": "Show login and password fields together in login.",
     "files": {
-      "js": ["loginPasswordTogether/hideBtNext.js", "loginPasswordTogether/moveLinksEV.js"],
+      "js": ["loginPasswordTogether/hideBtNext.js", "loginPasswordTogether/moveLinksEV.js", "loginPasswordTogether/autocompleteDL.js"],
       "css": ["loginPasswordTogether/styles.css"]
     },
     "allowedHostsCss": ["eduvulcan.pl", "dziennik-logowanie.vulcan.net.pl"]
