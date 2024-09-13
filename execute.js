@@ -45,6 +45,6 @@ const execute = () => {
 window.history.pushState = new Proxy(window.history.pushState, {
     apply: (target, a, args) => {
         target.apply(a, args);
-        if (document.querySelectorAll(".flag-scripts-injected") && isEverythingLoaded()) execute();
+        if (modules.length !== 0 && isEverythingLoaded()) execute();
     },
 });
