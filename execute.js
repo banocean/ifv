@@ -1,14 +1,15 @@
 const modules = [];
 let loadedScripts = 0;
 
-const isEverythingLoaded = () => document.querySelectorAll(".injected-script").length === loadedScripts;
+const isEverythingLoaded = () =>
+    document.querySelectorAll(".injected-script").length === loadedScripts;
 
 const incrementCounter = () => {
-    loadedScripts++
+    loadedScripts++;
     if (isEverythingLoaded()) execute();
-}
+};
 
-window.skipModule = incrementCounter
+window.skipModule = incrementCounter;
 window.appendModule = (...args) => {
     modules.push(...args);
     incrementCounter();
