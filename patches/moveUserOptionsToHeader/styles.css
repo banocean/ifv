@@ -1,6 +1,6 @@
 @media screen and (max-width: 1023px) {
     .user__section,
-    aside *[role="presentation"] {
+    div:has(.user__links__conatainer) {
         display: none !important;
     }
 
