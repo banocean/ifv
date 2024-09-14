@@ -103,6 +103,10 @@
         height: 60px;
     }
 
+    body.blue .user-avatar {
+        background: #38817f !important;
+    }
+
     .user-avatar {
         background: #f8d6d8;
         height: 40px;
