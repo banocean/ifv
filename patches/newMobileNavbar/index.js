@@ -1,4 +1,4 @@
-window.asideMode = "hidden"
+if (window.location.hostname.match(/^(dziennik-)?(uczen).*/)) window.asideMode = "hidden"
 
 const getPages = (selector = "aside > section > .MuiList-root > ul") => {
     if (!document.querySelector("aside")) return []
