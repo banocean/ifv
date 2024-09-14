@@ -1,8 +1,13 @@
+let asideReads = 0;
+
 const getAsideElement = async () => {
     if (window.asideMode === "hidden" && document.querySelector("aside")) {
         return document.querySelector("aside");
     }
-    document.querySelector(".header__hamburger__icon button").click();
+
+    asideReads++;
+    if (!document.querySelector("aside"))
+        document.querySelector(".header__hamburger__icon button").click();
     await window.waitForRender(() => document.querySelector("aside"));
     document.querySelector("aside").classList.add("hideAside");
     return document.querySelector("aside");
@@ -11,7 +16,8 @@ const getAsideElement = async () => {
 const closeAside = () => {
     const closeButton = document.querySelector("aside .close-button");
     if (window.asideMode !== "hidden") {
-        if (closeButton) closeButton.click();
+        asideReads--;
+        if (closeButton && asideReads <= 0) closeButton.click();
         document.querySelector("aside")?.classList?.remove("hideAside");
     }
 };
@@ -21,7 +27,7 @@ window.clickOnAside = async (selector) => {
     aside.querySelector(selector)?.click();
     if (!document.querySelector("aside") && window.asideMode === "hidden") {
         document.querySelector(".header__hamburger__icon button").click();
-    }
+    } else asideReads--;
 };
 
 window.getFromAside = async (fn) => {
