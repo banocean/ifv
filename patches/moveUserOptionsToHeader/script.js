@@ -5,14 +5,16 @@ const toggleModal = () => {
 
 const moveUserOptionsToHeader = async () => {
     const userLinks = await window.getFromAside(async () => {
-        const user = document.querySelector(".user")
+        const user = document.querySelector(".user");
         if (user) {
-            user.click()
-            await window.waitForRender(() => document.querySelector(".user__links"))
-            return document.querySelectorAll(".user__links a")
+            user.click();
+            await window.waitForRender(() =>
+                document.querySelector(".user__links"),
+            );
+            return document.querySelectorAll(".user__links a");
         }
-    })
-    const userData = await window.getUserData()
+    });
+    const userData = await window.getUserData();
 
     const modalBackground = document.createElement("div");
     const modalElement = document.createElement("div");
@@ -24,8 +26,8 @@ const moveUserOptionsToHeader = async () => {
     userDataElement.classList.add("modal-data");
 
     const userAvatar = document.createElement("div");
-    userAvatar.innerHTML = `<span>${userData.fullName[0]}</span>`
-    userAvatar.classList.add("user-avatar")
+    userAvatar.innerHTML = `<span>${userData.fullName[0]}</span>`;
+    userAvatar.classList.add("user-avatar");
     userDataElement.appendChild(userAvatar.cloneNode(true));
 
     const nameElement = document.createElement("div");
@@ -45,7 +47,7 @@ const moveUserOptionsToHeader = async () => {
         linkText.addEventListener("click", () => {
             link.click();
             toggleModal();
-        })
+        });
 
         linkContainer.appendChild(linkText);
         modalElement.appendChild(linkContainer);
@@ -71,8 +73,9 @@ const moveUserOptionsToHeader = async () => {
 };
 
 window.appendModule({
-    isLoaded: () => document.querySelector(".header__logo-product")?.firstChild
-        && document.querySelector(".header__hamburger__icon button"),
+    isLoaded: () =>
+        document.querySelector(".header__logo-product")?.firstChild &&
+        document.querySelector(".header__hamburger__icon button"),
     onlyOnReloads: true,
     run: moveUserOptionsToHeader,
     doesRunHere: () =>

@@ -1,5 +1,6 @@
 @media screen and (max-width: 1023px) {
-    .user__section {
+    .user__section,
+    aside *[role="presentation"] {
         display: none !important;
     }
 
@@ -83,7 +84,7 @@
         font-size: 1.2rem;
         font-weight: 500;
         text-decoration: none;
-        color: #3D4455
+        color: #3d4455;
     }
 
     .modal-cancel {
