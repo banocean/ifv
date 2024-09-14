@@ -4,9 +4,9 @@ window.getUserData = async () => {
             () =>
                 document.querySelector(
                     window.location.hostname.includes("wiadomosci")
-                        ? ".account__name span > *"
+                        ? ".account__name span"
                         : ".side_important-text.side_student",
-                ) && document.querySelector(".user__links__conatainer"),
+                ) && document.querySelector(".user div:nth-child(2)"),
         );
 
         return {
