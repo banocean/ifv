@@ -1,5 +1,6 @@
 #wizard1 {
     order: 2;
+    display: block !important;
 }
 
 .form-focused-subtitle,
