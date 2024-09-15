@@ -43,7 +43,7 @@ Not yet 😢<br>
 | <img src="./screenshots/fnameBefore.png" width="300px" /> | <img src="./screenshots/fnameAfter.png" width="300px" /> |
 </details>
 <details>
-    <summary>Clean student dashobard</summary>
+    <summary>Clean student dashboard</summary>
 
 Before:
 
