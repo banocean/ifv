@@ -105,6 +105,7 @@
 
     body.blue .user-avatar {
         background: #38817f !important;
+        color: #ffffff;
     }
 
     .user-avatar {
