@@ -3,7 +3,6 @@ function redirectToLoginPage() {
 }
 
 window.appendModule({
-    isLoaded: () => true,
     onlyOnReloads: true,
     run: redirectToLoginPage,
     doesRunHere: () =>
