@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    document.querySelector("#refreshInfo").textContent = chrome.i18n.getMessage("refreshInfo");
+    document.querySelector("#vulcanInfo").textContent = chrome.i18n.getMessage("vulcanInfo");
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
     const optionsDOM = document.querySelector(".options");
     for (const [key, value] of Object.entries(config)) {
