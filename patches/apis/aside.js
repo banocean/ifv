@@ -22,13 +22,15 @@ const closeAside = () => {
     }
 };
 
-window.clickOnAside = async (selector) => {
+window.executeActionOnAside = async (fn) => {
     const aside = await getAsideElement();
-    aside.querySelector(selector)?.click();
+    await fn(aside)
     if (!document.querySelector("aside") && window.asideMode === "hidden") {
         document.querySelector(".header__hamburger__icon button").click();
     } else asideReads--;
-};
+}
+
+window.clickOnAside = (selector) => window.executeActionOnAside((aside) => aside.querySelector(selector)?.click());
 
 window.getFromAside = async (fn) => {
     const aside = await getAsideElement();

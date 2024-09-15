@@ -37,7 +37,7 @@ const moveUserOptionsToHeader = async () => {
 
     modalElement.appendChild(userDataElement);
 
-    userLinks.forEach((link) => {
+    userLinks.forEach((link, i) => {
         const linkContainer = document.createElement("div");
         linkContainer.classList.add("modal-link-container");
 
@@ -45,7 +45,11 @@ const moveUserOptionsToHeader = async () => {
         linkText.innerHTML = link.textContent;
 
         linkText.addEventListener("click", () => {
-            link.click();
+            window.executeActionOnAside(async () => {
+                document.querySelector(".user").click();
+                await window.waitForRender(() => document.querySelector(".user__links"));
+                document.querySelectorAll(".user__links a")[i].click()
+            })
             toggleModal();
         });
 
