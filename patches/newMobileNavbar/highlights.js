@@ -15,7 +15,7 @@ const setHighlights = () => {
     }
 }
 
-window.modules.push({
+window.appendModule({
     run: setHighlights,
     onlyOnReloads: false,
     isLoaded: () => document.querySelector(".bottom-navigation-bar")?.children?.length,

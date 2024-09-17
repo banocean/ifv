@@ -1,5 +1,6 @@
 const selector = document.createElement("div")
-selector.innerHTML = "<button disabled>Frekwencja</button><button>Statystyki</button>"
+selector.innerHTML =
+    '<button class="MuiButtonBase-root MuiButton-root MuiButton-contained default-button primary-button" disabled><span class="MuiButton-label">Frekwencja</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained default-button primary-button"><span class="MuiButton-label">Statystyki</span></button>';
 selector.classList.add("attendance-tabs")
 
 const createSelector = () => {
@@ -38,7 +39,7 @@ const isRendered = () =>
         && !!document.querySelector("h1")
 
 
-window.modules.push({
+window.appendModule({
     isLoaded: isRendered,
     run: createSelector,
     onlyOnReloads: false,
