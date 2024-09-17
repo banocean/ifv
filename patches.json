@@ -12,7 +12,8 @@
     "files": {
       "js": ["hideSubjectsWithNoGrades/script.js"],
       "css": ["hideSubjectsWithNoGrades/styles.css"]
-    }
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
     "name": "Hide footer",
