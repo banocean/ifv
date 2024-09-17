@@ -1,0 +1,3 @@
+div.hide-subjects article:has(.tile__content:first-of-type:empty) {
+    display: none !important;
+}
