@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "description": "Zmienia problematyczne elementy stron usług eduVULCAN oraz Dziennik Vulcan",
-  "version": "0.1",
+  "version": "0.2",
   "name": "Improvements for Vulcan",
 
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
