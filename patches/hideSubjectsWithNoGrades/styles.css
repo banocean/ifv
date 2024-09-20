@@ -1,3 +1,30 @@
 div.hide-subjects article:has(.tile__content:first-of-type:empty) {
     display: none !important;
 }
+
+.hidden-subjects-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+    margin-inline: 10px;
+    font-size: 14px;
+}
+
+.hidden-subjects-info > button {
+    padding: 10px;
+    background: none;
+    box-shadow: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #27272a;
+    display: flex;
+    align-items: center;
+}
+
+.hidden-subjects-info > button > img {
+    height: 20px;
+    width: 20px;
+    filter: invert(0.8);
+}
