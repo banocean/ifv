@@ -3,11 +3,10 @@
 Browser extension with improvements for eduVULCAN and Dziennik VULCAN.
 
 ## Installation
-<img src="./assets/add to firefox.svg">
-<img src="./assets/add to chrome.svg"><br>
+<a href="https://banocean.com/assets/releases/latest.xpi"><img src="./assets/add to firefox.svg"></a><a href="https://ifv.banocean.com/downloads/chrome"><img src="./assets/add to chrome.svg"></a>
 
 [Installation guide [PL]](https://ifv.banocean.com)
-[Setting up project for development](#development-workflow)
+[Adding extension to browsers for development](#development-workflow)
 
 ## Features
 
