@@ -3,7 +3,52 @@
 Browser extension with improvements for eduVULCAN and Dziennik VULCAN.
 
 ## Installation
-Not yet 😢<br>
+<style>
+.add-to-firefox {
+            background: #20123a;
+            border: 1px solid #20123a;
+            color: white;
+            margin-right: 10px;
+        }
+
+        .installation-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .installation-links > * {
+            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .add-to-chrome {
+            border: 1px solid black;
+            color: black;
+        }
+
+        a > div {
+            display: flex;
+            border: 0;
+            height: 50px;
+            padding-block: 5px;
+            padding-inline: 10px;
+            font-size: 16px;
+            justify-items: center;
+            align-items: center;
+            width: min-content;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        a > div > img {
+            height: 30px;
+            margin-right: 10px;
+        }
+</style>
+<div class="installation-links">
+<a href="https://ifv.banocean.com/download/chrome"><div class="add-to-firefox"><img src="./assets/icons/Fx-Browser-icon-fullColor.svg" alt="firefox logo">Add&nbsp;to&nbsp;Firefox</div></a>
+<a><div class="add-to-chrome"><img src="./assets/icons/Google_Chrome_icon_(February_2022).svg" alt="chrome logo">Add&nbsp;to&nbsp;Chrome</div></a>
+</div>
 [Setting up project for development](#development-workflow)
 
 ## Features
