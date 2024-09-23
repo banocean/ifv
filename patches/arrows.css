@@ -16,10 +16,12 @@
         padding: 0 !important;
         margin: 0 0 0 10px !important;
         border: none !important;
+        width: 40px !important;
+        height: 40px !important;
     }
     
     .close-button:not(.close-button aside) > span:first-of-type {
-        display: none;
+        display: none !important;
     }
     
     .close-button:not(.close-button aside) > span:last-of-type {
@@ -29,7 +31,7 @@
     }
 
     .close-button:not(.close-button aside) > span > svg {
-        display: none;
+        display: none !important;
     }
     
 }
