@@ -3,3 +3,14 @@
         display: none;
     }
 }
+
+.modal__footer{
+    display: block !important;
+    margin-bottom: 70px !important;
+    background: none !important;
+    border-top: none !important;
+}
+
+.modal-full-width > .modal__footer {
+    display: block !important;
+}
