@@ -1,3 +1,13 @@
 .wcag-mobile, .wcag-tools, .wcag-controls {
     display: none !important;
 }
+
+@media screen and (min-width: 1024px) {
+    .header__tools:not(:has(.messages)) > .languages-desktop {
+        margin-right: 0 !important;
+    }
+
+    .header_logo_tools-container:has(.header__tools:not(:has(.messages))) + .user__section {
+        border-left: 0 !important;
+    }
+}
