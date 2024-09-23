@@ -7,7 +7,7 @@
         color: black !important;
     }
     
-    .close-button:not(.close-button aside) {
+    .close-button:not(aside .close-button) {
         background-color: white !important;
         box-shadow: none !important;
         position: absolute !important;
@@ -20,17 +20,17 @@
         height: 40px !important;
     }
     
-    .close-button:not(.close-button aside) > span:first-of-type {
+    .close-button:not(aside .close-button) > span:first-of-type {
         display: none !important;
     }
     
-    .close-button:not(.close-button aside) > span:last-of-type {
+    .close-button:not(aside .close-button) > span:last-of-type {
         content: url("https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
         filter: invert(0.8);
         height: 40px;
     }
 
-    .close-button:not(.close-button aside) > span > svg {
+    .close-button:not(aside .close-button) > span > svg {
         display: none !important;
     }
     
