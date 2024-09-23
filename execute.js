@@ -1,11 +1,18 @@
 const modules = [];
+let loadedScripts = 0;
+
+const isEverythingLoaded = () =>
+    document.querySelectorAll(".injected-script").length === loadedScripts;
+
+const incrementCounter = () => {
+    loadedScripts++;
+    if (isEverythingLoaded()) execute();
+};
+
+window.skipModule = incrementCounter;
 window.appendModule = (...args) => {
     modules.push(...args);
-    if (
-        document.querySelectorAll(".injected-script").length === modules.length
-    ) {
-        execute();
-    }
+    incrementCounter();
 };
 
 const execute = () => {
@@ -39,6 +46,6 @@ const execute = () => {
 window.history.pushState = new Proxy(window.history.pushState, {
     apply: (target, a, args) => {
         target.apply(a, args);
-        execute();
+        if (modules.length !== 0 && isEverythingLoaded()) execute();
     },
 });

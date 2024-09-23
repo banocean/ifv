@@ -28,7 +28,8 @@ const getConfig = async () =>
 chrome.storage.onChanged.addListener((changes, namespace) => {
     if (
         !changes.options?.oldValue ||
-        JSON.stringify(changes.options?.oldValue) === JSON.stringify(changes.options?.newValue)
+        JSON.stringify(changes.options?.oldValue) ===
+            JSON.stringify(changes.options?.newValue)
     )
         return;
     if (namespace !== "sync") return;
@@ -36,29 +37,35 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 });
 
 const getPatchesFiles = (patches, config) => {
-    return patches
-        .flatMap((patch) => {
-            const result = [];
-            if (config[patch.name].enable) {
-                if (patch.files?.js?.length)
-                    result.push(
-                        patch.files.js.map((file) => `patches/${file}`),
-                    );
-                if (
-                    (!patch.allowedHostsCss ||
-                        patch.allowedHostsCss.includes(
-                            window.location.hostname,
-                        )) &&
-                    patch.files?.css?.length
-                ) {
-                    result.push(
-                        patch.files.css.map((file) => `patches/${file}`),
-                    );
-                }
-            }
-            return result;
-        })
-        .flat();
+    return [
+        ...new Set(
+            patches
+                .flatMap((patch) => {
+                    const result = [];
+                    if (config[patch.name].enable) {
+                        if (patch.files?.js?.length)
+                            result.push(
+                                patch.files.js.map((file) => `patches/${file}`),
+                            );
+                        if (
+                            (!patch.allowedHostsCss ||
+                                patch.allowedHostsCss.includes(
+                                    window.location.hostname,
+                                )) &&
+                            patch.files?.css?.length
+                        ) {
+                            result.push(
+                                patch.files.css.map(
+                                    (file) => `patches/${file}`,
+                                ),
+                            );
+                        }
+                    }
+                    return result;
+                })
+                .flat(),
+        ),
+    ];
 };
 
 async function run() {

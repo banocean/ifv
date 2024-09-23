@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "description": "Zmienia problematyczne elementy strony usługi \"Dziennik Vulcan\"",
-  "version": "0.1",
+  "description": "Poprawia uciążliwe elementy stron usług eduVULCAN oraz Dziennik Vulcan",
+  "version": "0.2",
   "name": "Improvements for Vulcan",
 
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
@@ -17,11 +17,13 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "j.skup.test@gmail.com",
-      "strict_min_version": "128.0"
+      "strict_min_version": "128.0",
+      "update_url": "https://ifv.banocean.com/updates.json"
     },
     "gecko_android": {
       "id": "j.skup.test@gmail.com",
-      "strict_min_version": "128.0"
+      "strict_min_version": "128.0",
+      "update_url": "https://ifv.banocean.com/updates.json"
     }
   },
 
@@ -58,7 +60,7 @@
         "*://dziennik-wiadomosci.vulcan.net.pl/*",
         "*://uczen.eduvulcan.pl/*",
         "*://wiadomosci.eduvulcan.pl/*",
-        "*://dziennik-logowanie.vulcan.net.pl/",
+        "*://dziennik-logowanie.vulcan.net.pl/*",
         "*://eduvulcan.pl/*"
       ]
     }
