@@ -15,6 +15,7 @@
         cursor: pointer;
         padding: 0 !important;
         margin: 0 0 0 10px !important;
+        border: none !important;
     }
     
     .close-button > span:first-of-type {
