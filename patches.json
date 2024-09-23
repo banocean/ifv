@@ -1,7 +1,7 @@
 [
   {
-      "name": "Arrows",
-      "description": "Replaces x with arrows",
+      "name": "Change close button icon",
+      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to (mobile only)",
       "files": {
           "css": ["arrows.css"]
       },
