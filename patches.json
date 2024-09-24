@@ -1,5 +1,13 @@
 [
   {
+      "name": "Change close button icon",
+      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to (mobile only)",
+      "files": {
+          "css": ["arrows.css"]
+      },
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
       "name": "Move messages button",
       "description": "Moves messages button to header (mobile only)",
       "files": {
