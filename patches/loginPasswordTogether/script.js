@@ -7,18 +7,24 @@ function hideBtNext() {
     document.querySelector("#btNext").remove();
 }
 
-function moveNodes() {
+function moveEVLinks() {
     const linksEl = document.querySelector("#wizard1 > div > .flex-row:has(a)");
-    const wizard2 = document.querySelector("#wizard2")
+    document.querySelector("#wizard2").appendChild(linksEl);
+}
 
-    wizard2.appendChild(linksEl);
-    wizard2.insertBefore(wizard2, document.querySelector("#wizard1"));
+function swapLoginInput() {
+    const wizard2 = document.querySelector("#wizard2")
+    wizard2.parentElement.insertBefore(document.querySelector("#wizard1"), wizard2);
+    // Force firefox to check inputs again
+    const centerBox = document.querySelector(".center-box")
+    centerBox.innerHTML = centerBox.innerHTML
 }
 
 function fixLoginPage() {
     setAutocomplete()
     hideBtNext()
     moveNodes()
+    swapLoginInput()
 }
 
 window.appendModule({
