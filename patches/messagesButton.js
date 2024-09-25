@@ -1,6 +1,13 @@
-function move() {
+async function move() {
+    const inner = await window.getFromAside(
+        async () => {
+            await window.waitForRender(() => document.querySelector(".messages"))
+            return document.querySelector(".messages")?.innerHTML
+        }
+    )
+
     const messages = document.createElement("div");
-    messages.innerHTML = document.querySelector(".messages").innerHTML;
+    messages.innerHTML = inner;
     messages.style.float = "right";
     messages.style.padding = "20px";
     messages.style.marginLeft = "auto";
@@ -19,13 +26,5 @@ window.appendModule({
         window.location.hostname.match(/^(dziennik-)?(uczen).*/) &&
         window.innerWidth < 1024,
     onlyOnReloads: true,
-    isLoaded: () => {
-        return (
-            !!document.querySelector(".header__hamburger__icon") &&
-            !!document.querySelector("aside") &&
-            getPages().length > 1 &&
-            document.querySelector(".header_logo_tools-container") &&
-            document.querySelector(".messages")
-        );
-    },
+    isLoaded: () => !!document.querySelector(".header__hamburger__icon")
 });
