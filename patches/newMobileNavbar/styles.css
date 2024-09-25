@@ -68,7 +68,13 @@
 
 @media screen and (max-width: 1023px) {
     .modal {
-        width: 100vw;
+        width: 100vw !important;
+        height: calc(100svh - var(--bottom-navbar-height)) !important;
+    }
+
+    .modal__footer {
+        background: none !important;
+        border-top: 0 !important
     }
 
     aside, .header__hamburger__icon {
