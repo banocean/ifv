@@ -23,7 +23,7 @@ function swapLoginInput() {
 function fixLoginPage() {
     setAutocomplete()
     hideBtNext()
-    moveNodes()
+    if(window.location.hostname === "eduvulcan.pl") moveEVLinks()
     swapLoginInput()
 }
 
@@ -31,5 +31,8 @@ window.appendModule({
     isLoaded: () => document.querySelector("#Haslo"),
     onlyOnReloads: true,
     run: fixLoginPage,
-    doesRunHere: () => window.location.hostname === "eduvulcan.pl",
+    doesRunHere: () =>
+        ["eduvulcan.pl", "dziennik-logowanie.vulcan.net.pl"].includes(
+            window.location.hostname
+        ),
 });
