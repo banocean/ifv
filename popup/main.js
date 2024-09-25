@@ -1,5 +1,18 @@
+const fetchPatches = async () => {
+    const patchesResponse = await fetch(chrome.runtime.getURL("patches.json"));
+    return await patchesResponse.json();
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
+    const patches = await fetchPatches();
+
+    patches.forEach((patch) => {
+        if (config[patch.name] !== undefined) return;
+        config[patch.name] = { description: patch.description, enable: true };
+    });
+    chrome.storage.sync.set({ options: config });
+
     const optionsDOM = document.querySelector(".options");
     for (const [key, value] of Object.entries(config)) {
         const option = document.createElement("label");
