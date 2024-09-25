@@ -12,7 +12,7 @@ const hideEmptyFinalGradesInfo = async (i) => {
     const container = getSemestersContainer()[i]
     const subjects = container.querySelectorAll("article")
     for (const subject of subjects) {
-        const finalGrades = document.querySelector(".tile__content:last-of-type")
+        const finalGrades = subject.querySelector(".tile__content:last-of-type")
         const predictedFinalGrade  = finalGrades.children[0]
         const finalGrade = finalGrades.children[1]
         if (!predictedFinalGrade.querySelector(".info-text > span")?.innerText?.trim()) {
