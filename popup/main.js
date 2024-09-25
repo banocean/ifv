@@ -3,6 +3,8 @@ const fetchPatches = async () => {
     return await patchesResponse.json();
 };
 
+if (/\bMobile\b/.test(navigator.userAgent)) document.body.classList.add("mobile")
+
 document.addEventListener("DOMContentLoaded", async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
     const patches = await fetchPatches();
