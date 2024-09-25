@@ -9,7 +9,7 @@ const moveUserOptionsToHeader = async () => {
         if (user) {
             user.click();
             await window.waitForRender(() =>
-                document.querySelector(".user__links"),
+                document.querySelector(".user__links a"),
             );
             return document.querySelectorAll(".user__links a");
         }
