@@ -1,5 +1,20 @@
 [
   {
+      "name": "Change close button icon",
+      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to (mobile only)",
+      "files": {
+          "css": ["arrows.css"]
+      },
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
+      "name": "Move messages button",
+      "description": "Moves messages button to header (mobile only)",
+      "files": {
+          "js": ["messagesButton.js"]
+      }
+  },
+  {
     "name": "Hide footer",
     "description": "Hides footer (mobile only)",
     "files": {
@@ -120,5 +135,14 @@
       "css": ["hideWeekends.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    "name": "Move user options to header",
+    "description": "Moves user avatar to header that opens dropdown with user options (mobile only)",
+    "files": {
+      "js": ["moveUserOptionsToHeader/script.js", "apis/aside.js", "apis/waitForElement.js", "apis/getUserData.js"],
+      "css": ["moveUserOptionsToHeader/styles.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
   }
 ]

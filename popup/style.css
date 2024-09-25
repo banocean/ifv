@@ -3,7 +3,11 @@ body {
     font-family: Cantarell, Arial, sans-serif;
     color: white;
     width: 350px;
-    margin: 10px;
+    padding: 10px;
+}
+
+body.mobile {
+    width: 100% !important;
 }
 
 /* Main */
