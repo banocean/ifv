@@ -6,6 +6,7 @@ const renderVisibilityButtons = () => {
 }
 
 const getSemestersContainer = () => document.querySelector("section > section > .mobile__frame > .content-container").children
+const getRowValue = (node)  => node?.querySelector(".info-text > span")?.innerText?.trim()
 
 const hideEmptyFinalGradesInfo = async (i) => {
     await window.waitForRender(() => getSemestersContainer()[i].querySelector("article"), document.querySelector("section > section > .mobile__frame > .content-container"))
@@ -15,13 +16,19 @@ const hideEmptyFinalGradesInfo = async (i) => {
         const finalGrades = subject.querySelector(".tile__content:last-of-type")
         const predictedFinalGrade  = finalGrades.children[0]
         const finalGrade = finalGrades.children[1]
-        if (!predictedFinalGrade.querySelector(".info-text > span")?.innerText?.trim()) {
-            predictedFinalGrade.style.display = "none !important"
-            if (!subject.querySelector(".border-b-1:empty")) debugger
+
+        const predictedFinalGradeValue = getRowValue(predictedFinalGrade)
+        const finalGradeValue = getRowValue(finalGrade)
+
+        if (predictedFinalGrade && !predictedFinalGradeValue) predictedFinalGrade.style.display = "none"
+        if (finalGrade && !finalGradeValue) {
+            if (predictedFinalGrade) predictedFinalGrade.style.borderBottom = "none"
+            finalGrade.style.display = "none"
         }
 
-        if (!finalGrade.querySelector(".info-text > span")?.innerHTML?.trim()) {
-            finalGrade.style.display = "none"
+        if (!finalGradeValue && !predictedFinalGradeValue) {
+            finalGrades.style.display = "none"
+            subject.querySelector(".tile__content.border-b-1").style.borderBottom = "none"
         }
     }
 }

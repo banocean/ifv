@@ -8,10 +8,10 @@
   },
   {
     "name": "Hide subjects with no grades",
-    "descriptions": "Hides subjects without any grades",
+    "description": "Hides subjects without any grades",
     "files": {
-      "js": ["hideSubjectsWithNoGrades/script.js"],
-      "css": ["hideSubjectsWithNoGrades/styles.css"]
+      "js": ["hideSubjectsWithNoGrades/finalGrades.js"],
+      "css": ["hideSubjectsWithNoGrades/normalGrades.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
