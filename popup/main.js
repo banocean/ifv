@@ -5,6 +5,17 @@ const fetchPatches = async () => {
 
 if (/\bMobile\b/.test(navigator.userAgent)) document.body.classList.add("mobile")
 
+const filterInput = document.querySelector(".filter > input")
+filterInput.addEventListener("change", () => {
+    const filter = filterInput.value.toLowerCase();
+    Array.from(document.querySelector(".options").children).forEach((option) => {
+        console.log(option.querySelector(".title").innerText)
+        option.style.display =
+            option.querySelector(".title").innerText.toLowerCase().includes(filter)
+                || option.querySelector(".desc").innerText.includes(filter) ? "flex" : "none"
+    })
+})
+
 document.addEventListener("DOMContentLoaded", async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
     const patches = await fetchPatches();
