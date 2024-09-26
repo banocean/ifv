@@ -4,6 +4,7 @@
     "start_url": "https://eduvulcan.pl/",
     "display": "standalone",
     "orientation": "portrait",
+    "background_color": "#006BD6",
     "icons": [
         {
             "src": "https://raw.githubusercontent.com/BanOcean/ifv/main/assets/logo/logo-128-blue.png",
