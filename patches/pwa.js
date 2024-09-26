@@ -2,18 +2,24 @@ function injectWebManifest() {
     const metaLink = document.createElement("link");
 
     metaLink.setAttribute("rel", "manifest");
-    metaLink.setAttribute(
-        "href",
-        window.location.hostname === "uczen.eduvulcan.pl"
-            ? `https://ifv-pwa.banocean.com/eduvulcan/${
-                  window.location.pathname.split("/")[1]
-              }`
-            : `https://ifv-pwa.banocean.com/dziennik/${
-                  window.location.pathname.split("/")[1]
-              }`
-    );
+    metaLink.setAttribute("href", getManifestLink(window.location.hostname));
 
     document.head.appendChild(metaLink);
+}
+
+function getManifestLink(hostname) {
+    switch (hostname) {
+        case "eduvulcan.pl":
+            return "https://raw.githubusercontent.com/banocean/ifv/main/pwa/manifest-eduvulcan.json";
+        case "uczen.eduvulcan.pl":
+            return `https://ifv-pwa.banocean.com/eduvulcan/${
+                window.location.pathname.split("/")[1]
+            }`;
+        case "dziennik-uczen.vulcan.net.pl":
+            return `https://ifv-pwa.banocean.com/dziennik/${
+                window.location.pathname.split("/")[1]
+            }`;
+    }
 }
 
 window.appendModule({
@@ -21,7 +27,9 @@ window.appendModule({
     onlyOnReloads: true,
     run: injectWebManifest,
     doesRunHere: () =>
-        ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"].includes(
-            window.location.hostname
-        ),
+        [
+            "eduvulcan.pl",
+            "uczen.eduvulcan.pl",
+            "dziennik-uczen.vulcan.net.pl",
+        ].includes(window.location.hostname),
 });
