@@ -15,6 +15,15 @@
       }
   },
   {
+    "name": "Hide subjects with no grades",
+    "description": "Hides subjects without any grades",
+    "files": {
+      "js": ["hideSubjectsWithNoGrades/finalGrades.js"],
+      "css": ["hideSubjectsWithNoGrades/normalGrades.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
     "name": "Hide footer",
     "description": "Hides footer (mobile only)",
     "files": {

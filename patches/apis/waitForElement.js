@@ -1,4 +1,4 @@
-window.waitForRender = async (fn) => {
+window.waitForRender = async (fn, target = document.body) => {
     let resolve;
     const wait = new Promise((r) => (resolve = r));
     const observer = new MutationObserver((mutations, observer) => {
@@ -6,7 +6,7 @@ window.waitForRender = async (fn) => {
         resolve();
         observer.disconnect();
     });
-    observer.observe(document.body, { subtree: true, childList: true });
+    observer.observe(target, { subtree: true, childList: true });
 
     const lastTry = fn();
     if (!lastTry) {
