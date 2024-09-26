@@ -9,12 +9,28 @@ const filterInput = document.querySelector(".filter > input")
 filterInput.addEventListener("change", () => {
     const filter = filterInput.value.toLowerCase();
     Array.from(document.querySelector(".options").children).forEach((option) => {
-        console.log(option.querySelector(".title").innerText)
         option.style.display =
             option.querySelector(".title").innerText.toLowerCase().includes(filter)
                 || option.querySelector(".desc").innerText.includes(filter) ? "flex" : "none"
     })
-})
+});
+
+(async () => {
+    const changeAllButton = document.querySelector(".filter > button")
+    let nextApplyAllAction = ((await chrome.storage.sync.get("nextApplyAllAction")) || false)
+    const toggleChangeAllButton = () => {
+        chrome.storage.sync.set({ "nextApplyAllAction": !nextApplyAllAction })
+        document.querySelectorAll(".options input").forEach((option) => {
+            option.checked = nextApplyAllAction
+        })
+        setButtonName()
+        nextApplyAllAction = !nextApplyAllAction
+    }
+    const setButtonName = () => document.querySelector(".filter > button").innerHTML = nextApplyAllAction ? "Disable&nbsp;All" : "Enable&nbsp;All"
+
+    setButtonName()
+    changeAllButton.addEventListener("click", toggleChangeAllButton)
+})()
 
 document.addEventListener("DOMContentLoaded", async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
