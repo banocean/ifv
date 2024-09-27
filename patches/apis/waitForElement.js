@@ -1,4 +1,4 @@
-window.waitForRender = async (fn, target = document.body) => {
+export const waitForRender = async (fn, target = document.body) => {
     let resolve;
     const wait = new Promise((r) => (resolve = r));
     const observer = new MutationObserver((mutations, observer) => {
@@ -13,5 +13,3 @@ window.waitForRender = async (fn, target = document.body) => {
         await wait;
     }
 };
-
-window.skipModule();

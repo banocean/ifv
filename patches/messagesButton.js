@@ -1,7 +1,10 @@
+import { waitForRender } from "./apis/waitForElement.js";
+import { getFromAside } from "./apis/aside.js";
+
 async function move() {
-    const inner = await window.getFromAside(
+    const inner = await getFromAside(
         async () => {
-            await window.waitForRender(() => document.querySelector(".messages"))
+            await waitForRender(() => document.querySelector(".messages"))
             return document.querySelector(".messages")?.innerHTML
         }
     )

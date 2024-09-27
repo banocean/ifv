@@ -1,3 +1,5 @@
+import { waitForRender } from "../apis/waitForElement.js";
+
 const SEMESTERS = 2;
 const renderVisibilityButtons = () => {
     for (let i = 0; i < SEMESTERS; i++) {
@@ -13,7 +15,7 @@ const getRowValue = (node) =>
     node?.querySelector(".info-text > span")?.innerText?.trim();
 
 const hideEmptyFinalGradesInfo = async (i) => {
-    await window.waitForRender(
+    await waitForRender(
         () => getSemestersContainer()[i].querySelector("article"),
         document.querySelector(
             "section > section > .mobile__frame > .content-container",
