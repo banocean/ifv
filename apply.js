@@ -7,15 +7,6 @@
  * @property {string[]} [files.js] - An array of JS file names (optional).
  */
 
-const allowedHostnames = [
-    "dziennik-uczen.vulcan.net.pl",
-    "dziennik-wiadomosci.vulcan.net.pl",
-    "dziennik-logowanie.vulcan.net.pl",
-    "uczen.eduvulcan.pl",
-    "wiadomosci.eduvulcan.pl",
-    "eduvulcan.pl",
-];
-
 /** @returns {Promise<Patch[]>} */
 const fetchPatches = async () => {
     const patchesResponse = await fetch(chrome.runtime.getURL("patches.json"));
@@ -89,7 +80,10 @@ async function run() {
         );
         if (filePath.endsWith(".css"))
             element.setAttribute("rel", "stylesheet");
-        else element.classList.add("injected-script");
+        else {
+            element.setAttribute("type", "module");
+            element.classList.add("injected-script");
+        }
         document.head.appendChild(element);
     }
 }

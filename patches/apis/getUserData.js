@@ -1,6 +1,9 @@
-window.getUserData = async () => {
-    return await window.getFromAside(async () => {
-        await window.waitForRender(
+import { waitForRender } from "./waitForElement.js";
+import { getFromAside } from "./aside.js";
+
+export const getUserData = async () => {
+    return await getFromAside(async () => {
+        await waitForRender(
             () =>
                 document.querySelector(
                     window.location.hostname.includes("wiadomosci")
@@ -23,5 +26,3 @@ window.getUserData = async () => {
         };
     });
 };
-
-window.skipModule();
