@@ -1,3 +1,6 @@
+import { getFromAside } from "../apis/aside.js";
+import { waitForRender } from "../apis/waitForElement.js";
+
 if (window.location.hostname.match(/^(dziennik-)?(uczen).*/)) window.asideMode = "hidden"
 
 const getPages = (selector = "aside > section > .MuiList-root > ul") => {
@@ -50,8 +53,8 @@ const run = async () => {
         setHighlights()
     })
 
-    await window.getFromAside(() => null) // We need aside to just load
-    await window.waitForRender(() => getPages().length > 1)
+    await getFromAside(() => null) // We need aside to just load
+    await waitForRender(() => getPages().length > 1)
 
     const navPages = ["tablica", "oceny", "frekwencja", "planZajec"]
     const pages = getPages()

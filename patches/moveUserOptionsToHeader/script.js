@@ -1,20 +1,24 @@
+import { waitForRender } from "../apis/waitForElement.js";
+import { executeActionOnAside, getFromAside } from "../apis/aside.js";
+import { getUserData } from "../apis/getUserData.js";
+
 const toggleModal = () => {
     document.querySelector(".modal-background").classList.toggle("active");
     document.querySelector(".modal-user").classList.toggle("active");
 };
 
 const moveUserOptionsToHeader = async () => {
-    const userLinks = await window.getFromAside(async () => {
+    const userLinks = await getFromAside(async () => {
         const user = document.querySelector(".user");
         if (user) {
             user.click();
-            await window.waitForRender(() =>
+            await waitForRender(() =>
                 document.querySelector(".user__links a"),
             );
             return document.querySelectorAll(".user__links a");
         }
     });
-    const userData = await window.getUserData();
+    const userData = await getUserData();
 
     const modalBackground = document.createElement("div");
     const modalElement = document.createElement("div");
@@ -45,9 +49,9 @@ const moveUserOptionsToHeader = async () => {
         linkText.innerHTML = link.textContent;
 
         linkText.addEventListener("click", () => {
-            window.executeActionOnAside(async () => {
+            executeActionOnAside(async () => {
                 document.querySelector(".user").click();
-                await window.waitForRender(() => document.querySelector(".user__links"));
+                await waitForRender(() => document.querySelector(".user__links"));
                 document.querySelectorAll(".user__links a")[i].click()
             })
             toggleModal();
