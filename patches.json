@@ -24,6 +24,13 @@
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
+    "name": "Hide empty exam results",
+    "description": "Hides exam results instead of showing no data (mobile only)",
+    "files": {
+      "css": ["hideEmptyExamResults.css"]
+    }
+  },
+  {
     "name": "Hide footer",
     "description": "Hides footer (mobile only)",
     "files": {
