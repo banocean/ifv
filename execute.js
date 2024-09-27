@@ -6,7 +6,6 @@ const isEverythingLoaded = () =>
 
 window.appendModule = (...args) => {
     modules.push(...args);
-    incrementCounter();
     loadedScripts++;
     if (isEverythingLoaded()) execute();
 };
