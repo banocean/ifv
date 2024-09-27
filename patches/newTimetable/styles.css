@@ -1,0 +1,31 @@
+.timetable {
+    margin-inline: 15px;
+}
+
+.timetable .lesson {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.lesson > div:first-of-type {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.lesson > article {
+    display: flex;
+    padding: 15px;
+    align-content: center;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 10px;
+    cursor: pointer
+}
+
+.lesson > article > .info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
