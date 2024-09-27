@@ -1,5 +1,6 @@
 import { getFromAside } from "../apis/aside.js";
 import { waitForRender } from "../apis/waitForElement.js";
+import { setHighlights } from "./highlights.js";
 
 if (window.location.hostname.match(/^(dziennik-)?(uczen).*/)) window.asideMode = "hidden"
 
