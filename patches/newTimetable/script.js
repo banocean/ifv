@@ -1,3 +1,4 @@
+import { waitForRender } from "../apis/waitForElement.js";
 const mapData = () =>
     Array.from(document.querySelectorAll(".app__content section")).map(
         (element) => {
@@ -64,7 +65,7 @@ const openAll = async () => {
     const container = document.querySelectorAll(".app__content .MuiPaper-root")
     for (const element of container) {
         if (isOpened(element)) element.querySelector(".accordion__full-width__header")?.click()
-        await window.waitForRender(() => isOpened(element), element)
+        await waitForRender(() => isOpened(element), element)
     }
 }
 
