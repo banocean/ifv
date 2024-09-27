@@ -158,7 +158,7 @@
     "name": "Move user options to header",
     "description": "Moves user avatar to header that opens dropdown with user options (mobile only)",
     "files": {
-      "js": ["moveUserOptionsToHeader/script.js", "apis/aside.js", "apis/waitForElement.js", "apis/getUserData.js"],
+      "js": ["moveUserOptionsToHeader/script.js"],
       "css": ["moveUserOptionsToHeader/styles.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]

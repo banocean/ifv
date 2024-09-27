@@ -4,15 +4,10 @@ let loadedScripts = 0;
 const isEverythingLoaded = () =>
     document.querySelectorAll(".injected-script").length === loadedScripts;
 
-const incrementCounter = () => {
-    loadedScripts++;
-    if (isEverythingLoaded()) execute();
-};
-
-window.skipModule = incrementCounter;
 window.appendModule = (...args) => {
     modules.push(...args);
-    incrementCounter();
+    loadedScripts++;
+    if (isEverythingLoaded()) execute();
 };
 
 const execute = () => {
