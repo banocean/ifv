@@ -1,31 +1,84 @@
+html {
+    /*color-scheme: light dark;*/
+    /*;*/
+}
+
+body {
+    color-scheme: only light;
+}
+
 .timetable {
-    margin-inline: 15px;
+    padding: 0 !important;
+    margin-inline: 10px !important;
 }
 
 .timetable .lesson {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    line-height: 16px;
 }
 
 .lesson > div:first-of-type {
     font-size: 30px;
     display: flex;
     align-items: center;
+    color: light-dark(#1b1b1f, #f5feff);
+    width: 18px;
 }
 
 .lesson > article {
     display: flex;
     padding: 15px;
     align-content: center;
-    background: white;
     border-radius: 10px;
     width: 100%;
     margin-left: 10px;
-    cursor: pointer
+    cursor: pointer;
+    background: light-dark(#efedf1, #192123);
 }
 
-.lesson > article > .info {
+.lesson .subject {
+    color: light-dark(#1b1b1f, #dbe4e7);
+    font-size: 13px;
+}
+
+.lesson .info {
     display: flex;
     flex-direction: column;
     margin-right: 10px;
+    color: #a1aaac;
+}
+
+.lesson .additional-info {
+    color: #a1aaac;
+    font-size: smaller;
+}
+
+.lesson.canceled > article {
+    background: light-dark(#f9dedc, #8c1d18);
+}
+
+.lesson.canceled .subject {
+    text-decoration: line-through;
+    color: light-dark(#410e0b, #f9dedc);
+}
+
+.lesson.canceled .info, .lesson.canceled .additional-info {
+    color: light-dark(#784c4a, #d9a5a1);
+}
+
+.lesson.canceled > div:first-of-type {
+    color: light-dark(#b3261e, #f2b8b5);
+}
+
+.lesson.substitute > article {
+    background: light-dark(#e7e4bd, #65683c);
+}
+
+.lesson.substitute .info, .lesson.substitute .additional-info {
+     color: light-dark(#58574e, #b8bfb4);
+ }
+
+.lesson.substitute > div:first-of-type {
+    color: light-dark(#6d5e0f, #65683c);
 }
