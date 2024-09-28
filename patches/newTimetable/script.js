@@ -61,7 +61,7 @@ const mapData = () =>
         }
     );
 
-const isOpened = (element) => element.querySelector(".MuiCollapse-root")?.style?.minHeight === "0px"
+const isOpened = (element) => element.querySelector(".MuiCollapse-root")?.style?.height !== "0px"
 
 const openAll = async () => {
     const container = document.querySelectorAll(".app__content .MuiPaper-root")
