@@ -71,9 +71,17 @@ const openAll = async () => {
     }
 }
 
+const mapStartingHours = (data) => {
+    const all = new Set()
+    for (const day of data) if (day.lessons) for (const lesson of day.lessons) if (lesson.startingHour) all.add(lesson.startingHour)
+    const result = [...all].sort()
+    const [firstHour, firstMinutes] = (result[0] || "08:00" ).split(":")
+    return Number(firstHour) <= 7 && Number(firstMinutes) <= 30 ? result : ["7:00", ...result]
+}
+
 let today = new Date();
 
-const renderDay = (data) => {
+const renderDay = (data, startingHours) => {
     const element = document.createElement("section")
     element.classList.add("timetable")
 
@@ -84,7 +92,13 @@ const renderDay = (data) => {
     } else {
         for (const lesson of data.lessons) {
             const lessonElement = document.createElement("div")
-            lessonElement.innerHTML = "<div>1</div><article><div class='info'><span></span><span></span></div><div class='data'></div></article>"
+            lessonElement.innerHTML = `
+                <div>${startingHours.findIndex((h) => h === lesson.startingHour)}</div>
+                <article>
+                    <div class='info'><span></span><span></span></div>
+                    <div class='data'></div>
+                </article>
+            `
             const lessonDataElement = lessonElement.querySelector(".data")
 
             const timeContainer = lessonElement.querySelector(".info")
@@ -117,8 +131,8 @@ const run = async () => {
     document.querySelector("section.app__content").style.display = "none"
     await openAll()
     const currentData = mapData()
-
-    document.querySelector("main.app__main").appendChild(renderDay(currentData[0]))
+    const startingHours = mapStartingHours(currentData)
+    document.querySelector(".app__content").appendChild(renderDay(currentData[0], startingHours))
 }
 
 window.appendModule({
