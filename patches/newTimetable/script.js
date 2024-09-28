@@ -66,7 +66,7 @@ const isOpened = (element) => element.querySelector(".MuiCollapse-root")?.style?
 const openAll = async () => {
     const container = document.querySelectorAll(".app__content .MuiPaper-root")
     for (const element of container) {
-        if (isOpened(element)) element.querySelector(".accordion__full-width__header")?.click()
+        if (!isOpened(element)) element.querySelector(".accordion__full-width__header h2")?.click()
         await waitForRender(() => isOpened(element), element)
     }
 }
