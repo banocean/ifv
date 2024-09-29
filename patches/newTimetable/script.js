@@ -1,7 +1,7 @@
 import { waitForRender } from "../apis/waitForElement.js";
 
 const mapData = () =>
-    Array.from(document.querySelectorAll(".app__content section")).map(
+    Array.from(document.querySelectorAll(".app__content .MuiPaper-root")).map(
         (element) => {
             return {
                 note: element.querySelector(".plan-zajec__accordion__wolne")?.innerText,
@@ -12,7 +12,7 @@ const mapData = () =>
                     ),
                 ).map((lesson) => {
                     const hoursText = (
-                        lesson.querySelector(".position__lesson__hours")
+                        lesson.querySelector(".position__lesson__hours, .conflicted--details--hours")
                             ?.innerText || "  "
                     ).split(" ");
                     const startingHour = hoursText[0];
@@ -79,8 +79,6 @@ const mapStartingHours = (data) => {
     return Number(firstHour) <= 7 && Number(firstMinutes) <= 30 ? result : ["7:00", ...result]
 }
 
-let today = new Date();
-
 const renderDay = (data, startingHours) => {
     const element = document.createElement("section")
     element.classList.add("timetable")
@@ -110,8 +108,8 @@ const renderDay = (data, startingHours) => {
 
             if (lesson.type === "conflicted") {
                 lessonDataElement.innerHTML = `
-                    <span class='conflict-title'>Wpisane jest więcej niż jedna lekcja</span>
-                    <span class='conflict-description'>Kliknij by dowiedzieć się więcej</span>
+                    <span class='conflict-title'>Wpisana jest więcej niż jedna lekcja</span>
+                    <span class='conflict-description'>Kliknij, by dowiedzieć się więcej</span>
                 `
             } else {
                 lessonDataElement.innerHTML = `<div class="subject"></div> <div class="additional-info"></div>`
@@ -127,16 +125,97 @@ const renderDay = (data, startingHours) => {
     return element
 }
 
-const run = async () => {
-    document.querySelector("section.app__content").style.display = "none"
-    await openAll()
-    const currentData = mapData()
-    const startingHours = mapStartingHours(currentData)
-    document.querySelector(".app__content").appendChild(renderDay(currentData[0], startingHours))
+let currentIndex = 0
+let data = []
+
+const renderMove = (startingHours, direction = 1) => {
+    document.querySelector("#root").scroll(0,0)
+    const target = currentIndex + direction
+    if (target >= data.length || target < 0) {
+        if (target < 0) {
+            currentIndex = 5
+        } else {
+            currentIndex = 0
+        }
+    } else {
+        currentIndex = target
+    }
+
+    document.querySelector(".timetable").replaceWith(renderDay(data[currentIndex], startingHours))
+    document.querySelector(".date-selector > div > span").innerText = data[currentIndex].day
 }
 
+const updateReactInput = (input, value) => {
+    const setValue = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(input), 'value').set;
+    const event = new Event('input', { bubbles: true });
+
+    setValue.call(input, value);
+    input.dispatchEvent(event);
+}
+
+const renderDaySwitch = (startingHours) => {
+    const element = document.createElement("div")
+    element.innerHTML = `
+        <input type="date">
+        <div>
+            <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/redesigned-timetable/assets/icons/chevron_left_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
+            <span>${data[currentIndex].day}</span>
+            <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/redesigned-timetable/assets/icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
+        </div>
+    `
+
+    element.querySelector("img:first-of-type").addEventListener("click", () => renderMove(startingHours, -1))
+    element.querySelector("img:last-of-type").addEventListener("click", () => renderMove(startingHours, 1))
+    element.classList.add("date-selector")
+
+    const datePicker = element.querySelector("input");
+    element.querySelector("span").addEventListener("click", () => datePicker.showPicker())
+    datePicker.addEventListener("change", async () => {
+        if (!datePicker.value) return
+        updateReactInput(document.querySelector(".week-selector input"), datePicker.value)
+
+        await waitForRender(isLoaded)
+        await openAll()
+
+        data = mapData()
+        currentIndex = Math.max(getWeekStartingMonday(datePicker.valueAsDate.getDay()), data.length - 1)
+        renderDay(data[currentIndex], startingHours)
+    })
+
+    datePicker.min = document.querySelector(".week-selector input").min
+    datePicker.max = document.querySelector(".week-selector input").max
+
+    return element
+}
+
+const dayNames = ["poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota", "niedziela"]
+const getWeekStartingMonday = (i) => i === 0 ? 6 : i - 1
+
+const run = async () => {
+    document.querySelector("section.app__content .app__content__header").style.display = "none"
+    document.querySelector("section.app__content .mobile__frame > div").style.display = "none"
+
+    await openAll()
+    data = mapData()
+    const startingHours = mapStartingHours(data)
+
+    const today = new Date()
+    const day = getWeekStartingMonday(today.getDay())
+    const i = data.findIndex((timetableDay) => (timetableDay.day || "-, ").split(", ")[0].toLowerCase() === dayNames[day]);
+
+    currentIndex = i && i !== -1 ? i : Math.min(day, data.length - 1)
+
+    document.querySelector("section.app__content .mobile__frame")
+        .appendChild(renderDay(data[currentIndex], startingHours))
+    document.querySelector("section.app__content .mobile__frame")
+        .appendChild(renderDaySwitch(startingHours))
+}
+
+const isLoaded = () => document.querySelector(".app__content .MuiCollapse-root")?.style?.minHeight
+    && document.querySelector("section.app__content .mobile__frame .plan-zajec") && !document.querySelector(".spinner")
+
 window.appendModule({
-    isLoaded: () => document.querySelectorAll(".app__content .MuiPaper-root"),
+    isLoaded,
     onlyOnReloads: false,
     run,
     doesRunHere: () => window.location.pathname.endsWith("planZajec")
