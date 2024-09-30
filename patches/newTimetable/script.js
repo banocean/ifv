@@ -1,4 +1,59 @@
 import { waitForRender } from "../apis/waitForElement.js";
+import { SelectorRenderer } from "../apis/bottomDateSelector/index.js";
+
+const normalizeLesson = (lesson) => {
+    const hoursText = (
+        lesson.querySelector(".position__lesson__hours, .conflicted--details--hours")
+            ?.innerText || "  "
+    ).split(" ");
+    const startingHour = hoursText[0];
+    const endingHour = hoursText[2];
+
+    const subjectText =
+        lesson
+            .querySelector(".position__lesson__subject")
+            ?.innerText?.split(" Grupa-") || [];
+
+    const annotationText = lesson.querySelector(
+        ".plan-position__adnotation-title",
+    )?.innerText;
+
+    const type = lesson.classList.contains(
+        "cell--multi--conflicted",
+    )
+        ? "conflicted"
+        : lesson.querySelector(".zastepstwo")
+            ? "substitute"
+            : lesson.querySelector(".odwolane")
+                ? "canceled"
+                : annotationText
+                    ? "unknown"
+                    : "normal";
+
+    return {
+        originalElement: lesson,
+        type,
+        subject: subjectText[0],
+        group: subjectText[1],
+        teacher: lesson.querySelector(".position__lesson__teacher")?.innerText,
+        classroom: [
+            ...(lesson.querySelector(
+                ".position__lesson__subject + span",
+            )?.innerText || ""),
+        ]
+            .filter((c) => !"()".includes(c))
+            .join(""),
+        annotationText,
+        startingHour,
+        endingHour,
+    };
+
+}
+const mapDay = (element) => Array.from(
+    element.querySelectorAll(
+        ".cell--single, .cell--multi--conflicted",
+    ),
+).map(normalizeLesson)
 
 const mapData = () =>
     Array.from(document.querySelectorAll(".app__content .MuiPaper-root")).map(
@@ -6,61 +61,10 @@ const mapData = () =>
             return {
                 note: element.querySelector(".plan-zajec__accordion__wolne")?.innerText,
                 day: element.querySelector(".MuiAccordionSummary-content > h2")?.innerText,
-                lessons: Array.from(
-                    element.querySelectorAll(
-                        ".cell--single, .cell--multi--conflicted",
-                    ),
-                ).map((lesson) => {
-                    const hoursText = (
-                        lesson.querySelector(".position__lesson__hours, .conflicted--details--hours")
-                            ?.innerText || "  "
-                    ).split(" ");
-                    const startingHour = hoursText[0];
-                    const endingHour = hoursText[2];
-
-                    const subjectText =
-                        lesson
-                            .querySelector(".position__lesson__subject")
-                            ?.innerText?.split(" Grupa-") || [];
-
-                    const annotationText = lesson.querySelector(
-                        ".plan-position__adnotation-title",
-                    )?.innerText;
-
-                    const type = lesson.classList.contains(
-                        "cell--multi--conflicted",
-                    )
-                        ? "conflicted"
-                        : lesson.querySelector(".zastepstwo")
-                            ? "substitute"
-                            : lesson.querySelector(".odwolane")
-                                ? "canceled"
-                                : annotationText
-                                    ? "unknown"
-                                    : "normal";
-
-                    return {
-                        originalElement: lesson,
-                        type,
-                        subject: subjectText[0],
-                        group: subjectText[1],
-                        teacher: lesson.querySelector(".position__lesson__teacher")?.innerText,
-                        classroom: [
-                            ...(lesson.querySelector(
-                                ".position__lesson__subject + span",
-                            )?.innerText || ""),
-                        ]
-                            .filter((c) => !"()".includes(c))
-                            .join(""),
-                        annotationText,
-                        startingHour,
-                        endingHour,
-                    };
-                }),
+                lessons: mapDay(element)
             }
         }
     );
-
 const isOpened = (element) => element.querySelector(".MuiCollapse-root")?.style?.height !== "0px"
 
 const openAll = async () => {
@@ -79,16 +83,23 @@ const mapStartingHours = (data) => {
     return Number(firstHour) <= 7 && Number(firstMinutes) <= 30 ? result : ["7:00", ...result]
 }
 
-const renderDay = (data, startingHours) => {
+const getStartingHours = () => JSON.parse(localStorage.getItem("startingHours") || "[]")
+
+const renderDay = async (data) => {
+    await openAll()
+
+    const startingHours = getStartingHours()
+    const lessons = mapDay(data.element)
     const element = document.createElement("section")
     element.classList.add("timetable")
 
-    if (data.lessons.length < 1) {
+    if (lessons.length < 1) {
         const infoElement = document.createElement("div")
-        infoElement.innerHTML = "<div><span>Nie ma lekcji 😎</span><span></span></div>"
+        infoElement.innerHTML = "<div><span>Nie ma lekcji 😎</span><br><span></span></div>"
         if (data.note) infoElement.querySelector("span:last-of-type").innerText = data.note
+        element.appendChild(infoElement)
     } else {
-        for (const lesson of data.lessons) {
+        for (const lesson of lessons) {
             const lessonElement = document.createElement("div")
             lessonElement.innerHTML = `
                 <div>${startingHours.findIndex((h) => h === lesson.startingHour)}</div>
@@ -114,7 +125,7 @@ const renderDay = (data, startingHours) => {
             } else {
                 lessonDataElement.innerHTML = `<div class="subject"></div> <div class="additional-info"></div>`
                 lessonDataElement.querySelector(".subject").innerText = lesson.subject
-                lessonDataElement.querySelector(".additional-info").innerText = `${lesson.classroom} ${lesson.teacher.split(" ").reverse().join(" ")}`
+                lessonDataElement.querySelector(".additional-info").innerText = `${lesson.classroom} ${lesson.teacher?.split(" ")?.reverse()?.join(" ")}`
             }
 
             lessonElement.addEventListener("click", () => lesson.originalElement.querySelector("button").click())
@@ -125,90 +136,14 @@ const renderDay = (data, startingHours) => {
     return element
 }
 
-let currentIndex = 0
-let data = []
-
-const renderMove = (startingHours, direction = 1) => {
-    document.querySelector("#root").scroll(0,0)
-    const target = currentIndex + direction
-    if (target >= data.length || target < 0) {
-        if (target < 0) {
-            currentIndex = 5
-        } else {
-            currentIndex = 0
-        }
-    } else {
-        currentIndex = target
-    }
-
-    document.querySelector(".timetable").replaceWith(renderDay(data[currentIndex], startingHours))
-    document.querySelector(".date-selector > div > span").innerText = data[currentIndex].day
-}
-
-const updateReactInput = (input, value) => {
-    const setValue = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(input), 'value').set;
-    const event = new Event('input', { bubbles: true });
-
-    setValue.call(input, value);
-    input.dispatchEvent(event);
-}
-
-const renderDaySwitch = (startingHours) => {
-    const element = document.createElement("div")
-    element.innerHTML = `
-        <input type="date">
-        <div>
-            <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/redesigned-timetable/assets/icons/chevron_left_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
-            <span>${data[currentIndex].day}</span>
-            <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/redesigned-timetable/assets/icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
-        </div>
-    `
-
-    element.querySelector("img:first-of-type").addEventListener("click", () => renderMove(startingHours, -1))
-    element.querySelector("img:last-of-type").addEventListener("click", () => renderMove(startingHours, 1))
-    element.classList.add("date-selector")
-
-    const datePicker = element.querySelector("input");
-    element.querySelector("span").addEventListener("click", () => datePicker.showPicker())
-    datePicker.addEventListener("change", async () => {
-        if (!datePicker.value) return
-        updateReactInput(document.querySelector(".week-selector input"), datePicker.value)
-
-        await waitForRender(isLoaded)
-        await openAll()
-
-        data = mapData()
-        currentIndex = Math.max(getWeekStartingMonday(datePicker.valueAsDate.getDay()), data.length - 1)
-        renderDay(data[currentIndex], startingHours)
-    })
-
-    datePicker.min = document.querySelector(".week-selector input").min
-    datePicker.max = document.querySelector(".week-selector input").max
-
-    return element
-}
-
-const dayNames = ["poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota", "niedziela"]
-const getWeekStartingMonday = (i) => i === 0 ? 6 : i - 1
-
 const run = async () => {
     document.querySelector("section.app__content .app__content__header").style.display = "none"
     document.querySelector("section.app__content .mobile__frame > div").style.display = "none"
 
     await openAll()
-    data = mapData()
-    const startingHours = mapStartingHours(data)
+    localStorage.setItem("startingHours", JSON.stringify(mapStartingHours(mapData())))
 
-    const today = new Date()
-    const day = getWeekStartingMonday(today.getDay())
-    const i = data.findIndex((timetableDay) => (timetableDay.day || "-, ").split(", ")[0].toLowerCase() === dayNames[day]);
-
-    currentIndex = i && i !== -1 ? i : Math.min(day, data.length - 1)
-
-    document.querySelector("section.app__content .mobile__frame")
-        .appendChild(renderDay(data[currentIndex], startingHours))
-    document.querySelector("section.app__content .mobile__frame")
-        .appendChild(renderDaySwitch(startingHours))
+    new SelectorRenderer(renderDay)
 }
 
 const isLoaded = () => document.querySelector(".app__content .MuiCollapse-root")?.style?.minHeight

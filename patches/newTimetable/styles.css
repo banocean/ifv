@@ -3,19 +3,35 @@ html {
     /*;*/
 }
 
+:root {
+    --background-primary: light-dark(white, #0b1517);
+    --background-navigation: light-dark(white, #152528);
+}
+
 body {
     color-scheme: only light;
-    --background-navigation: light-dark(white, #152528)
 }
 
 .app__main {
-    background: white !important;
+    background: var(--background-primary) !important;
     height: auto;
 }
 
 .timetable {
     padding: 0 !important;
     margin-inline: 10px !important;
+}
+
+.timetable:not(:has(.lesson)) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100svh - 62px - 40px - 20px - var(--bottom-navbar-height));
+    text-align: center;
+}
+
+.timetable .no-lessons-title {
+    font-size: 24px;
 }
 
 .timetable .lesson {
@@ -41,11 +57,19 @@ body {
     margin-left: 10px;
     cursor: pointer;
     background: light-dark(#efedf1, #192123);
+    overflow: hidden;
 }
 
 .lesson .subject {
     color: light-dark(#1b1b1f, #dbe4e7);
     font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap !important;
+}
+
+.lesson .data {
+    overflow: inherit;
 }
 
 .lesson .info {
