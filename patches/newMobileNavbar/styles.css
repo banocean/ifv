@@ -3,7 +3,7 @@
 }
 
 .list-modal {
-    height: 100vh;
+    height: 100svh;
     width: 100%;
     position: fixed;
     top: 0;
@@ -39,7 +39,7 @@
 
 .list-modal > div:last-of-type {
     overflow-y: auto;
-    height: calc(100vh - 60px - var(--bottom-navbar-height));
+    height: calc(100svh - 60px - var(--bottom-navbar-height));
 }
 
 .list-modal > div:last-of-type > div {
@@ -68,7 +68,13 @@
 
 @media screen and (max-width: 1023px) {
     .modal {
-        width: 100vw;
+        width: 100vw !important;
+        height: calc(100svh - var(--bottom-navbar-height)) !important;
+    }
+
+    .modal__footer {
+        background: none !important;
+        border-top: 0 !important
     }
 
     aside, .header__hamburger__icon {
@@ -81,7 +87,7 @@
 
     div#root {
         overflow: auto;
-        height: calc(100vh - 60px - var(--bottom-navbar-height));
+        height: calc(100svh - 60px - var(--bottom-navbar-height));
         top: 60px;
         position: fixed;
     }
@@ -98,7 +104,7 @@
         display: flex;
         justify-content: space-around;
         position: fixed;
-        top: calc(100vh - var(--bottom-navbar-height));
+        top: calc(100svh - var(--bottom-navbar-height));
         height: var(--bottom-navbar-height);
         width: 100%;
         align-items: center;

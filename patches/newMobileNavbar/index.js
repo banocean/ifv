@@ -1,3 +1,8 @@
+import { getFromAside } from "../apis/aside.js";
+import { waitForRender } from "../apis/waitForElement.js";
+
+if (window.location.hostname.match(/^(dziennik-)?(uczen).*/)) window.asideMode = "hidden"
+
 const getPages = (selector = "aside > section > .MuiList-root > ul") => {
     if (!document.querySelector("aside")) return []
     return Array.from(
@@ -33,8 +38,7 @@ const navIcons = {
     "planZajec": "calendar_clock"
 }
 
-const run = () => {
-    document.querySelector(".header__hamburger__icon button").click()
+const run = async () => {
 
     const nav = document.createElement("nav")
     nav.classList.add("bottom-navigation-bar")
@@ -49,6 +53,9 @@ const run = () => {
         more.style.display = "none"
         setHighlights()
     })
+
+    await getFromAside(() => null) // We need aside to just load
+    await waitForRender(() => getPages().length > 1)
 
     const navPages = ["tablica", "oceny", "frekwencja", "planZajec"]
     const pages = getPages()
@@ -74,6 +81,8 @@ const run = () => {
                 more.style.display = "none"
                 document.querySelector(".header__hamburger__icon button").click()
                 document.querySelector("div#root").scroll(0,0)
+
+                setHighlights()
             })
         } else {
             const detailedOptionsPage = document.createElement("div")
@@ -128,19 +137,9 @@ const run = () => {
     document.body.appendChild(more)
 }
 
-let alreadyClicked = false;
-
-window.modules.push({
+window.appendModule({
     run,
     doesRunHere: () => window.location.hostname.match(/^(dziennik-)?(uczen).*/) && window.innerWidth < 1024,
     onlyOnReloads: true,
-    isLoaded: () => {
-        if (!document.querySelector("aside") && !alreadyClicked) {
-            alreadyClicked = true
-            document.querySelector(".header__hamburger__icon button").click()
-        }
-
-        return !!document.querySelector(".header__hamburger__icon") &&
-            !!document.querySelector("aside") && getPages().length > 1
-    }
+    isLoaded: () => !!document.querySelector(".header__hamburger__icon")
 })

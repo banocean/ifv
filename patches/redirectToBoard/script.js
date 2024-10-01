@@ -1,5 +1,6 @@
+import { clickOnAside } from "../apis/aside.js";
+
 const isEduVulcan = () => !window.location.hostname.startsWith("dziennik");
-const isMobile = () => window.innerWidth < 1024;
 
 const getLogoElement = () =>
     document.querySelector(".header__logo-product")?.firstChild;
@@ -17,26 +18,14 @@ function setUpRedirectToBoard() {
             logoElement.onclick = () => (window.location.href = url);
             logoElement.style = "cursor: pointer;";
         }
-    } else if (isMobile() && !!document.querySelector(".tablica")) {
-        if (isEduVulcan()) logoElement.href = "javascript:void(0)";
-
-        logoElement.onclick = () => {
-            document.querySelector(".app").classList.add("hideAside");
-            document.querySelector(".header__hamburger__icon button").click();
-            document.querySelector(".tablica a").click();
-            document.querySelector(".app").classList.remove("hideAside");
-        };
     } else {
         if (isEduVulcan()) logoElement.href = "javascript:void(0)";
         else logoElement.style = "cursor: pointer;";
-        logoElement.onclick = () => {
-            document.querySelector(".tablica a").click();
-            if (isMobile()) document.querySelector(".header__hamburger__icon button").click();
-        }
+        logoElement.addEventListener("click", () => clickOnAside(".tablica a"))
     }
 }
 
-window.modules.push({
+window.appendModule({
     isLoaded: getLogoElement,
     onlyOnReloads: true,
     run: setUpRedirectToBoard,
