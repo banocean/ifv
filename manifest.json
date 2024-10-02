@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
   "description": "Poprawia uciążliwe elementy stron usług eduVULCAN oraz Dziennik Vulcan",
-  "version": "0.2",
+  "version": "0.3",
   "name": "Improvements for Vulcan",
 
-  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "permissions": ["storage"],
   "host_permissions": [
     "*://dziennik-uczen.vulcan.net.pl/*",
     "*://dziennik-wiadomosci.vulcan.net.pl/*",

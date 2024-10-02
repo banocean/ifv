@@ -1,3 +1,5 @@
+import { clickOnAside } from "../apis/aside.js";
+
 const isEduVulcan = () => !window.location.hostname.startsWith("dziennik");
 
 const getLogoElement = () =>
@@ -19,7 +21,7 @@ function setUpRedirectToBoard() {
     } else {
         if (isEduVulcan()) logoElement.href = "javascript:void(0)";
         else logoElement.style = "cursor: pointer;";
-        logoElement.addEventListener("click", () => window.clickOnAside(".tablica a"))
+        logoElement.addEventListener("click", () => clickOnAside(".tablica a"))
     }
 }
 
