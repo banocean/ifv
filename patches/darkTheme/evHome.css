@@ -1,18 +1,20 @@
-*:not(.material-symbols-outlined) {
+body {
     background-color: var(--primary-background);
-    color: var(--primary-text);
-    border-color: var(--secondary--component--background) !important;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined:not(.icon-add > .material-symbols-outlined) {
     color: var(--primary-text);
+}
+
+.user-data-label.message-hint + a {
+    background: white !important;
 }
 
 .option-box-icon > .material-symbols-outlined,
 .material-symbols-outlined > .material-symbols-outlined,
 .account-management-avatar > .material-symbols-outlined,
 .icon-elevated-level-1 > .material-symbols-outlined {
-    color: var(--primary-background);
+    color: var(--primary-background) !important;
 }
 
 .box-access-title,
@@ -25,31 +27,36 @@ input,
 .user-title,
 .step-list > li,
 .step-list > li::before,
-.profiles-hint {
+.profiles-hint,
+.option-box-header,
+.switch-companion,
+.welcome-intro,
+.welcome-title,
+.box-app-title,
+#vulcan-website-link,
+.footer-content,
+h1,
+h2,
+th,
+.header-user-title,
+.footer-links > a,
+.page-information {
     color: var(--primary-text) !important;
 }
 
 .box-simple,
+.box-app,
 .center-box,
 .center-box-wide,
 .account-option-box-selected,
 .account-data-container,
 .key-row,
 .profiles-info,
-.hint-rectangle {
-    background-color: var(--primary-background) !important;
-}
-
-.main-box-empty {
-    background: var(--primary-background) !important;
-}
-
-.box-color *,
-.user-avatar *,
-.access-row--add,
-.access-row--add * {
-    background-color: #006bd6;
-    border: none !important;
+.hint-rectangle,
+.account-option-box-narrow,
+.panelLogin {
+    background-color: var(--secondary-background) !important;
+    border-color: transparent !important;
 }
 
 .user-avatar,
@@ -64,13 +71,46 @@ input,
 .form-focused-subtitle,
 .option-box-description,
 .user-data-label,
-.user-subtitle {
+.user-subtitle,
+.welcome-description,
+.box-app > div:nth-child(2),
+.center-box,
+.user-data-personal-light,
+.user-data-help,
+.data-table td,
+.description-dark {
     color: var(--secondary-text) !important;
 }
 
-.button-secondary,
 .data-edit,
 .data-delete {
-    background-color: var(--secondary--component--background) !important;
+    background-color: var(--secondary-background) !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
     color: var(--primary-text) !important;
+}
+
+.main-box-empty {
+    background: var(--primary-background) !important;
+    border-radius: 10px;
+    color: var(--primary-text) !important;
+}
+
+.data-table tbody tr:nth-child(2n+1) td {
+    background-color: var(--secondary--component--background) !important;
+}
+
+.data-table tr {
+    border-width: 0 !important;
+}
+
+.data-table tfoot .pagination .disabled * {
+    background: var(--primary-background) !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
+input[type="text"], input[type="password"] {
+    background: var(--secondary--component--background) !important;
+    border-color: transparent !important;
 }
