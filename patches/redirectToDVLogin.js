@@ -12,17 +12,11 @@ window.appendModule({
 
 const pathSegment = window.location.pathname.split("/")[1];
 
-const newSpanContent = `
-  Nie pamiętasz loginu lub hasła? Możemy wysłać na Twój <nobr>e-mail</nobr> link do zresetowania dostępu. 
-  Przejdź do <a href="https://dziennik-logowanie.vulcan.net.pl/${pathSegment}/PasswordReset/UnlockRequest" class="link-simple">formularza</a> 
-  lub użyj <a href="https://uonetplus.vulcan.net.pl/${pathSegment}" class="link-simple">innej metody logowania</a>
-`;
-
-const targetSpan = document.querySelector('div.flex-col:nth-child(4) > span:nth-child(3)');
+const targetSpan = document.querySelector('.input-components ~ .form-gap > span');
 
 if (targetSpan) {
-  targetSpan.innerHTML = newSpanContent;
-}
-
-
-
+  const spanText = targetSpan.textContent;
+    const newText = spanText.slice(0, -1);
+    const additionalText = ` lub użyj <a href="https://uonetplus.vulcan.net.pl/${pathSegment}" class="link-simple">innej metody logowania</a>`;
+    targetSpan.innerHTML = `${newText}${additionalText}`;
+  }
