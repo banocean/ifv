@@ -23,6 +23,18 @@
     min-width: inherit !important;
 }
 
+@media screen and (max-width: 1023px) {
+    .part-business-content-bottom {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .box-color {
+        margin-top: 0 !important;
+    }
+}
+
 @media screen and (min-width: 1200px) {
     #main-layout {
         display: flex !important;
