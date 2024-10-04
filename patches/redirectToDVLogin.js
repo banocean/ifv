@@ -18,13 +18,11 @@ const newSpanContent = `
   lub użyj <a href="https://uonetplus.vulcan.net.pl/${pathSegment}" class="link-simple">innej metody logowania</a>
 `;
 
-const spanElements = document.querySelectorAll('span');
+const targetSpan = document.querySelector('div.flex-col:nth-child(4) > span:nth-child(3)');
 
-spanElements.forEach(span => {
-  if (span.querySelector('nobr')) {
-    span.innerHTML = newSpanContent;
-  }
-});
+if (targetSpan) {
+  targetSpan.innerHTML = newSpanContent;
+}
 
 
 
