@@ -90,8 +90,8 @@
     }
   },
   {
-    "name": "Auto redirect to login page in Dziennik VULCAN",
-    "description": "Auto redirect to login page in Dziennik VULCAN",
+    "name": "Auto redirect to login page in Dziennik Vulcan",
+    "description": "Auto redirect to login page in Dziennik Vulcan",
     "files": {
       "js": ["redirectToDVLogin.js"]
     }
