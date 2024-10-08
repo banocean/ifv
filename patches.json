@@ -47,7 +47,7 @@
   },
   {
     "name": "Align Detailed Grades Button",
-    "description": "todo",
+    "description": "Aligns detailed grades button with other buttons",
     "files": {
       "css": ["alignDetailedGradesButton.css"]
     },
@@ -55,7 +55,7 @@
   },
   {
     "name": "Hide Tutors From Board",
-    "description": "todo",
+    "description": "Hides tutors from board",
     "files": {
       "css": ["hideTutorsFromBoard.css"]
     },
@@ -63,14 +63,15 @@
   },
   {
     "name": "Display Full Name",
-    "description": "todo",
+    "description": "Shows the user's name under the nickname (desktop only)",
+    
     "files": {
       "js": ["displayFullName.js"]
     }
   },
   {
     "name": "Redirect To Board",
-    "description": "todo",
+    "description": "Redirects to board after login",
     "files": {
       "js": ["redirectToBoard/script.js"],
       "css": ["redirectToBoard/styles.css"]
