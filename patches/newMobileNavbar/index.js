@@ -39,6 +39,7 @@ const navIcons = {
 }
 
 const run = async () => {
+
     const nav = document.createElement("nav")
     nav.classList.add("bottom-navigation-bar")
 
@@ -80,6 +81,7 @@ const run = async () => {
                 more.style.display = "none"
                 document.querySelector(".header__hamburger__icon button").click()
                 document.querySelector("div#root").scroll(0,0)
+
                 setHighlights()
             })
         } else {
@@ -134,7 +136,6 @@ const run = async () => {
     document.body.appendChild(nav)
     document.body.appendChild(more)
 }
-
 
 window.appendModule({
     run,
