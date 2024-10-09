@@ -1,0 +1,152 @@
+html {
+    /*color-scheme: light dark;*/
+    /*;*/
+}
+
+:root {
+    --background-primary: light-dark(white, #0b1517);
+    --background-navigation: light-dark(white, #152528);
+}
+
+body {
+    color-scheme: only light;
+}
+
+.app__main {
+    background: var(--background-primary) !important;
+    height: auto;
+}
+
+.timetable {
+    padding: 0 !important;
+    margin-inline: 10px !important;
+}
+
+.timetable:not(:has(.lesson)) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100svh - 62px - 40px - 20px - var(--bottom-navbar-height));
+    text-align: center;
+}
+
+.timetable .no-lessons-title {
+    font-size: 24px;
+}
+
+.timetable .lesson {
+    display: flex;
+    margin-bottom: 5px;
+    line-height: 16px;
+}
+
+.lesson > div:first-of-type {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    color: light-dark(#1b1b1f, #f5feff);
+    width: 18px;
+}
+
+.lesson > article {
+    display: flex;
+    padding: 15px;
+    align-content: center;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 10px;
+    cursor: pointer;
+    background: light-dark(#efedf1, #192123);
+    overflow: hidden;
+}
+
+.lesson .subject {
+    color: light-dark(#1b1b1f, #dbe4e7);
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap !important;
+}
+
+.lesson .data {
+    overflow: inherit;
+}
+
+.lesson .info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    color: #a1aaac;
+}
+
+.lesson .additional-info {
+    color: #a1aaac;
+    font-size: smaller;
+}
+
+.lesson.canceled > article {
+    background: light-dark(#f9dedc, #8c1d18);
+}
+
+.lesson.canceled .subject {
+    text-decoration: line-through;
+    color: light-dark(#410e0b, #f9dedc);
+}
+
+.lesson.canceled .info, .lesson.canceled .additional-info {
+    color: light-dark(#784c4a, #d9a5a1);
+}
+
+.lesson.canceled > div:first-of-type {
+    color: light-dark(#b3261e, #f2b8b5);
+}
+
+.lesson.substitute > article {
+    background: light-dark(#e7e4bd, #65683c);
+}
+
+.lesson.substitute .info, .lesson.substitute .additional-info {
+     color: light-dark(#58574e, #b8bfb4);
+ }
+
+.lesson.substitute > div:first-of-type {
+    color: light-dark(#6d5e0f, #65683c);
+}
+
+.date-selector > div {
+    height: 40px;
+    position: fixed;
+    margin-bottom: var(--bottom-navbar-height);
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background: var(--background-navigation);
+    border-top: 2px solid #e5e7e9;
+    z-index: 100;
+    align-items: center;
+}
+
+.date-selector > input {
+    display: none;
+}
+
+div#root:has(.date-selector) {
+    height: calc(100svh - 60px - var(--bottom-navbar-height) - 40px);
+}
+
+.date-selector > div > img {
+    filter: invert(0.8);
+    height: 35px;
+    cursor: pointer;
+}
+
+.date-selector > div > span {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+body:has(.date-selector):not(:has(.modal)) .bottom-navigation-bar {
+    border-top: 0 !important;
+}
