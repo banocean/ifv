@@ -45,7 +45,7 @@ body {
     display: flex;
     align-items: center;
     color: light-dark(#1b1b1f, #f5feff);
-    width: 18px;
+    min-width: 18px;
 }
 
 .lesson > article {
