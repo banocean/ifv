@@ -16,7 +16,7 @@ export class SelectorRenderer {
         this.renderContent = renderContentFn;
         this.currentWeekDay = 0
 
-        this.#render().then(() => console.debug(""))
+        this.#render().then(() => console.debug("Rendered date selector"))
     }
 
     #createSelector(dayName) {
@@ -36,7 +36,7 @@ export class SelectorRenderer {
 
         const datePicker = element.querySelector("input");
         datePicker.addEventListener(
-            "change", async () => this.#setDay(datePicker.value, datePicker.valueAsDate)
+            "change", () => this.#setDay(datePicker.value, datePicker.valueAsDate)
         )
 
         element.querySelector("img:first-of-type")
@@ -78,7 +78,7 @@ export class SelectorRenderer {
         if (!value || !valueDate) return
         updateReactInput(document.querySelector(".week-selector input"), value)
 
-        await waitForRender(() => this.#isDayListLoaded)
+        await waitForRender(() => this.#isDayListLoaded())
 
         this.currentWeekDay = Math.min(getWeekStartingMonday(valueDate.getDay()), this.cachedWeek.length - 1)
         await this.#render()
@@ -119,7 +119,7 @@ export class SelectorRenderer {
                 document.querySelector(".week-selector > button:last-of-type").click()
             }
 
-            await waitForRender(() => this.#isDayListLoaded)
+            await waitForRender(() => this.#isDayListLoaded())
         } else {
             this.currentWeekDay = target
         }
