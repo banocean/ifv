@@ -88,6 +88,10 @@ const getStartingHours = () => JSON.parse(localStorage.getItem("startingHours") 
 const renderDay = async (data) => {
     await openAll()
 
+    if (!data.note) {
+        await waitForRender(() => document.querySelector(".details-btn--position-r-bottom"))
+    }
+
     const startingHours = getStartingHours()
     const lessons = mapDay(data.element)
     const element = document.createElement("section")
