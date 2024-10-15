@@ -168,7 +168,7 @@
     "description": "Changes styles and navigation on timetable page",
     "files": {
       "js": ["newTimetable/script.js"],
-      "css": ["newTimetable/styles.css"]
+      "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
     }
   }
 ]

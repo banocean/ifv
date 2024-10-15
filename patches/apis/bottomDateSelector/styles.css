@@ -1,0 +1,37 @@
+.date-selector > div {
+    height: 40px;
+    position: fixed;
+    margin-bottom: var(--bottom-navbar-height);
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background: var(--background-navigation);
+    border-top: 2px solid #e5e7e9;
+    z-index: 100;
+    align-items: center;
+}
+
+.date-selector > input {
+    display: none;
+}
+
+div#root:has(.date-selector) {
+    height: calc(100svh - 60px - var(--bottom-navbar-height) - 40px);
+}
+
+.date-selector > div > img {
+    filter: invert(0.8);
+    height: 35px;
+    cursor: pointer;
+}
+
+.date-selector > div > span {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+body:has(.date-selector):not(:has(.modal)) .bottom-navigation-bar {
+    border-top: 0 !important;
+}
