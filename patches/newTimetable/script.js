@@ -12,7 +12,7 @@ const normalizeLesson = (lesson) => {
     const subjectText =
         lesson
             .querySelector(".position__lesson__subject")
-            ?.innerText?.split(" Grupa-") || [];
+            ?.innerText?.split(/ Grupa-| \|/) || [];
 
     const annotationText = lesson.querySelector(
         ".plan-position__adnotation-title",
