@@ -123,8 +123,8 @@ const renderDay = async (data) => {
 
             if (lesson.type === "conflicted") {
                 lessonDataElement.innerHTML = `
-                    <span class='conflict-title'>Wpisana jest więcej niż jedna lekcja</span>
-                    <span class='conflict-description'>Kliknij, by dowiedzieć się więcej</span>
+                    <div class='subject'>Wpisana jest więcej niż jedna lekcja</div>
+                    <div class='additional-info'>Kliknij, aby wyświetlić</div>
                 `
             } else {
                 lessonDataElement.innerHTML = `<div class="subject"></div> <div class="additional-info"></div>`
