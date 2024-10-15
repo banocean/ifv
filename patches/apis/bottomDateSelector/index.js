@@ -3,6 +3,14 @@ import { waitForRender } from "../waitForElement.js";
 const dayNames = ["poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota", "niedziela"]
 const getWeekStartingMonday = (i) => i === 0 ? 6 : i - 1
 
+const getWeek = (date) => {
+    const DAY = 24 * 60 * 60 * 1000
+    const firstDay = new Date(`${date.getFullYear()}-01-01`)
+    return Math.floor((date.getTime() - firstDay.getTime()) / DAY / 7)
+}
+
+const isSameWeek = (date, comparedDate) => getWeek(date) === getWeek(comparedDate)
+
 const updateReactInput = (input, value) => {
     const setValue = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(input), 'value').set;
     const event = new Event('input', { bubbles: true });
@@ -73,12 +81,14 @@ export class SelectorRenderer {
     }
 
     async #setDay(value, valueDate) {
-        this.#setChecking()
+        if(!isSameWeek(document.querySelector(".week-selector input").valueAsDate, valueDate)) {
+            this.#setChecking()
 
-        if (!value || !valueDate) return
-        updateReactInput(document.querySelector(".week-selector input"), value)
+            if (!value || !valueDate) return
+            updateReactInput(document.querySelector(".week-selector input"), value)
 
-        await waitForRender(() => this.#isDayListLoaded())
+            await waitForRender(() => this.#isDayListLoaded())
+        }
 
         this.currentWeekDay = Math.min(getWeekStartingMonday(valueDate.getDay()), this.cachedWeek.length - 1)
         await this.#render()
