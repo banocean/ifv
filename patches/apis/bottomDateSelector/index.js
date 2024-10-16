@@ -71,9 +71,7 @@ export class SelectorRenderer {
     }
 
     #isDayListLoaded() {
-        return document.querySelectorAll(".app__content .MuiPaper-root").length > 0 &&
-            !document.querySelector(".spinner") && this.#isWeekChanged()
-
+        return !document.querySelector(".spinner") && this.#isWeekChanged()
     }
 
     #isWeekChanged() {

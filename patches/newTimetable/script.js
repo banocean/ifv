@@ -151,7 +151,7 @@ const run = async () => {
 }
 
 const isLoaded = () => document.querySelector(".app__content .MuiCollapse-root")?.style?.minHeight
-    && document.querySelector("section.app__content .mobile__frame .plan-zajec") && !document.querySelector(".spinner")
+    && document.querySelector("section.app__content .mobile__frame .plan-zajec") && !document.querySelector(".spinner") && document.querySelector(".position__lesson__hours, .conflicted--details--hours")
 
 window.appendModule({
     isLoaded,
