@@ -88,7 +88,8 @@ body {
     color: light-dark(#410e0b, #f9dedc);
 }
 
-.lesson.canceled .info, .lesson.canceled .additional-info {
+.lesson.canceled .info,
+.lesson.canceled .additional-info {
     color: light-dark(#784c4a, #d9a5a1);
 }
 
@@ -100,9 +101,10 @@ body {
     background: light-dark(#e7e4bd, #65683c);
 }
 
-.lesson.substitute .info, .lesson.substitute .additional-info {
-     color: light-dark(#58574e, #b8bfb4);
- }
+.lesson.substitute .info,
+.lesson.substitute .additional-info {
+    color: light-dark(#58574e, #b8bfb4);
+}
 
 .lesson.substitute > div:first-of-type {
     color: light-dark(#6d5e0f, #65683c);
