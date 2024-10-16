@@ -92,6 +92,20 @@ export class SelectorRenderer {
         await this.#render()
     }
 
+    async #setupAutoRender() {
+        if (this.observer) return
+        this.observer = new MutationObserver(async () => {
+            const content = await this.renderContent(this.cachedWeek[this.currentWeekDay])
+            content.classList.add("day-content")
+            document.querySelector(".day-content").replaceWith(content)
+        })
+
+        this.observer.observe(document.querySelector(".content-container__tab-subheader:has(.week-selector) + div"), {
+            childList: true,
+            subtree: true
+        })
+    }
+
     async #render() {
         let replaceable = document.querySelector(".day-content")
         if (!replaceable) {
@@ -107,6 +121,8 @@ export class SelectorRenderer {
         if (document.querySelector(".date-selector")) {
             this.#updateSelectorDate(this.cachedWeek[this.currentWeekDay].day)
         } else document.querySelector("section.app__content .mobile__frame").appendChild(this.#createSelector(this.cachedWeek[this.currentWeekDay].day))
+
+        this.#setupAutoRender()
     }
 
     #setChecking() {
