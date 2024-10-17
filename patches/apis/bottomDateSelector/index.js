@@ -9,6 +9,7 @@ const dayNames = [
     "sobota",
     "niedziela",
 ];
+
 const getWeekStartingMonday = (i) => (i === 0 ? 6 : i - 1);
 
 const getWeek = (date) => {
@@ -34,7 +35,7 @@ const updateReactInput = (input, value) => {
 export class SelectorRenderer {
     constructor(renderContentFn) {
         this.renderContent = renderContentFn;
-        this.currentWeekDay = 0;
+
 
         this.#render().then(() => console.debug("Rendered date selector"));
     }
@@ -157,6 +158,13 @@ export class SelectorRenderer {
         }
 
         this.cachedWeek = this.#getDaysDropdowns();
+
+        if (this.currentWeekDay === undefined) {
+            const today = new Date()
+            const day = getWeekStartingMonday(today.getDay())
+            this.currentWeekDay = this.cachedWeek.findIndex((timetableDay) => (timetableDay.day || "-, ").split(", ")[0].toLowerCase() === dayNames[day]);
+        }
+
         const content = await this.renderContent(
             this.cachedWeek[this.currentWeekDay],
         );
