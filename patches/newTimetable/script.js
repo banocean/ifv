@@ -108,7 +108,7 @@ const renderDay = async (data) => {
     if (lessons.length < 1) {
         const infoElement = document.createElement("div");
         infoElement.innerHTML =
-            "<div><span>Nie ma lekcji 😎</span><br><span></span></div>";
+            "<div><span class='no-lessons-title'>Nie ma lekcji 😎</span><br><span></span></div>";
         if (data.note)
             infoElement.querySelector("span:last-of-type").innerText =
                 data.note;
