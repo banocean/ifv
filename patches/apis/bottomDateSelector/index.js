@@ -45,9 +45,9 @@ export class SelectorRenderer {
         element.innerHTML = `
             <input type="date">
             <div>
-                <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/redesigned-timetable/assets/icons/chevron_left_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
+                <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/chevron_left_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
                 <span></span>
-                <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/redesigned-timetable/assets/icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
+                <img src='https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/chevron_right_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg'>
             </div>
         `;
 
