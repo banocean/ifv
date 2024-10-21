@@ -1,7 +1,7 @@
 [
   {
       "name": "Change close button icon",
-      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to (mobile only).",
+      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to. (mobile only)",
       "files": {
           "css": ["arrows.css"]
       },
@@ -9,7 +9,7 @@
   },
   {
       "name": "Move messages button",
-      "description": "Moves messages button to header (mobile only).",
+      "description": "Moves messages button to header. (mobile only)",
       "files": {
           "js": ["messagesButton.js"]
       }
@@ -25,14 +25,14 @@
   },
   {
     "name": "Hide empty exam results",
-    "description": "Hides exam results instead of showing no data (mobile only).",
+    "description": "Hides exam results instead of showing no data. (mobile only)",
     "files": {
       "css": ["hideEmptyExamResults.css"]
     }
   },
   {
     "name": "Hide footer",
-    "description": "Hides footer (mobile only).",
+    "description": "Hides footer. (mobile only)",
     "files": {
       "css": ["hideFooter.css"]
     },
@@ -63,7 +63,7 @@
   },
   {
     "name": "Display Full Name",
-    "description": "Shows the user's name under the nickname (desktop only).",
+    "description": "Shows the user's name under the nickname. (desktop only)",
     
     "files": {
       "js": ["displayFullName.js"]
@@ -138,7 +138,7 @@
   },
   {
     "name": "Mobile Navigation",
-    "description": "Replaces aside with more readable bottom navigation bar designed (mobile only).",
+    "description": "Replaces aside with more readable bottom navigation bar designed. (mobile only)",
     "files": {
       "css": ["newMobileNavbar/styles.css"],
       "js": ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
@@ -164,7 +164,7 @@
   },
   {
     "name": "Move user options to header",
-    "description": "Moves user avatar to header that opens dropdown with user options (mobile only).",
+    "description": "Moves user avatar to header that opens dropdown with user options. (mobile only)",
     "files": {
       "js": ["moveUserOptionsToHeader/script.js"],
       "css": ["moveUserOptionsToHeader/styles.css"]
