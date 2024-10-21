@@ -3,7 +3,38 @@ const fetchPatches = async () => {
     return await patchesResponse.json();
 };
 
-if (/\bMobile\b/.test(navigator.userAgent)) document.body.classList.add("mobile")
+if (/\bMobile\b/.test(navigator.userAgent)) document.body.classList.add("mobile");
+
+const filterInput = document.querySelector(".filter > input");
+
+filterInput.addEventListener("input", () => {
+    const filter = filterInput.value.toLowerCase();
+    Array.from(document.querySelector(".options").children).forEach((option) => {
+        option.style.display =
+            option.querySelector(".title").innerText.toLowerCase().includes(filter)
+                || option.querySelector(".desc").innerText.toLowerCase().includes(filter) 
+                ? "flex" : "none";
+    });
+});
+
+(async () => {
+    const changeAllButton = document.querySelector(".filter > button");
+    let nextApplyAllAction = ((await chrome.storage.sync.get("nextApplyAllAction")) || false);
+    
+    const toggleChangeAllButton = () => {
+        chrome.storage.sync.set({ "nextApplyAllAction": !nextApplyAllAction });
+        document.querySelectorAll(".options input").forEach((option) => {
+            option.checked = nextApplyAllAction;
+        });
+        setButtonName();
+        nextApplyAllAction = !nextApplyAllAction;
+    };
+
+    const setButtonName = () => document.querySelector(".filter > button").innerHTML = nextApplyAllAction ? "Disable&nbsp;All" : "Enable&nbsp;All";
+
+    setButtonName();
+    changeAllButton.addEventListener("click", toggleChangeAllButton);
+})();
 
 document.addEventListener("DOMContentLoaded", async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
@@ -28,9 +59,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             <div class="toggle-switch"></div>
         </div>
     `;
-        option.querySelector("input").id = key
+        option.querySelector("input").id = key;
         optionsDOM.appendChild(option);
     }
+
     optionsDOM.addEventListener("change", async (e) => {
         const target = e.target;
         if (target.tagName === "INPUT") {
