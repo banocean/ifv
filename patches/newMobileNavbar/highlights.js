@@ -1,4 +1,4 @@
-const setHighlights = () => {
+export const setHighlights = () => {
     let i;
     if (document.querySelector(".more-popup").style.display === "block") i = 4
     else if (window.location.pathname.endsWith("tablica")) i = 0

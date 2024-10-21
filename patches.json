@@ -170,5 +170,13 @@
       "css": ["moveUserOptionsToHeader/styles.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
+    "name": "Resigned timetable",
+    "description": "Changes styles and navigation on timetable page. (mobile only)",
+    "files": {
+      "js": ["newTimetable/script.js"],
+      "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
+    }
   }
 ]
