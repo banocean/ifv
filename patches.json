@@ -178,5 +178,13 @@
       "js": ["newTimetable/script.js"],
       "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
     }
+  },
+  {
+    "name": "School info tweaks",
+    "description": "Changes styles on school info and teacher list pages.",
+    "files": {
+      "js": ["schoolInfoTweaks/script.js"],
+      "css": ["schoolInfoTweaks/styles.css"]
+    }
   }
 ]

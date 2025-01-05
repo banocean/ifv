@@ -1,0 +1,14 @@
+.content-container:not(.podreczniki__container):has(.tile-container) {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tile:has(.tile__content:empty) {
+    display: none;
+}
+
+.school__one-teacher > div {
+    margin: 0 !important;
+}
