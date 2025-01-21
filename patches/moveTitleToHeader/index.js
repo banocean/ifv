@@ -20,7 +20,7 @@ function move() {
     observer.observe(document.querySelector(".app__content"), { characterData: true, childList: true, subtree: true })
 
     const button = document.querySelector(".go_to_dashboard") || createButton()
-    button.innerHTML = "<img src='https://raw.githubusercontent.com/wozniaczek123/ifv/refs/heads/move-title/assets/icons/reply_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg'> Tablica"
+    button.innerHTML = "<img src='https://raw.githubusercontent.com/banocean/ifv/main/assets/icons/reply_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg'> Tablica"
     button.classList.add("hidden")
     document.body.appendChild(button)
 
