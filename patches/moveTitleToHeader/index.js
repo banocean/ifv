@@ -15,20 +15,28 @@ function updateTitle() {
 function move() {
     const header = document.querySelector('.header__logo-product')
     updateTitle()
-    
+
     const observer = new MutationObserver(updateTitle)
     observer.observe(document.querySelector(".app__content"), { characterData: true, childList: true, subtree: true })
-    
+
     const button = document.querySelector(".go_to_dashboard") || createButton()
     button.innerHTML = "<img src='https://raw.githubusercontent.com/wozniaczek123/ifv/refs/heads/move-title/assets/icons/reply_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg'> Tablica"
     button.classList.add("hidden")
     document.body.appendChild(button)
-    
+
     header.addEventListener("click", () => {
         button.classList.toggle("hidden")
     })
-    
-    button.addEventListener("click", () => clickOnAside(".tablica a"))
+
+    button.addEventListener("click", async () => {
+        button.classList.toggle("hidden")
+        if (!!window.location.hostname.match(/^(dziennik-)?wiadomosci.*/)) {
+            location.replace(`https://${window.location.hostname.replace(
+                "wiadomosci",
+                "uczen"
+            )}/${window.location.pathname.split("/")[1]}/App`)
+        } else await clickOnAside(".tablica a")
+    })
 }
 
 window.appendModule({
