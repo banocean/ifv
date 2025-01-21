@@ -15,8 +15,16 @@
         "Apple Color Emoji",
         "Segoe UI Emoji",
         "Segoe UI Symbol";
-    font-size: 27px;
     margin-left: 16px !important;
+}
+
+.header__logo-product > span {
+    font-size: 24px;
+    text-wrap: nowrap;
+    max-width: calc(100vw - 128px - 16px);
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .app__content__header {

@@ -7,7 +7,7 @@ function createButton() {
 }
 
 function updateTitle() {
-    const header = document.querySelector(".header__logo-product");
+    const header = document.querySelector(".header__logo-product > span");
     const title = document.querySelector(
         ".app__content__header__h1_subtitle > h1",
     );
@@ -17,6 +17,7 @@ function updateTitle() {
 
 function move() {
     const header = document.querySelector(".header__logo-product");
+    header.appendChild(document.createElement("span"));
     updateTitle();
 
     const observer = new MutationObserver(updateTitle);
