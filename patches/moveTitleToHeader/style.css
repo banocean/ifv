@@ -1,9 +1,20 @@
-.header__logo-product > img{
+.header__logo-product > img {
     display: none;
 }
 
 .header__logo-product {
-    font-family: WorkSans, Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family:
+        WorkSans,
+        Graphik,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
     font-size: 27px;
     margin-left: 16px !important;
 }
@@ -13,9 +24,20 @@
 }
 
 .go_to_dashboard {
-    font-family: WorkSans, Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family:
+        WorkSans,
+        Graphik,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
     font-size: 24px;
-    color: #3D4455;
+    color: #3d4455;
     position: fixed;
     top: 50px;
     left: 16px;
@@ -40,7 +62,7 @@
     height: 24px;
     width: 24px;
     opacity: 70%;
-    transform: translateY(-3px);  
+    transform: translateY(-3px);
 }
 
 .hidden {
