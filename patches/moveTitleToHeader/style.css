@@ -28,9 +28,11 @@
     border-width: 0 2px 2px 2px;
 }
 
-header.app__header {
-    border-width: 0 !important;
-    box-shadow: none !important;
+@media screen and (max-width: 1023px) {
+    header.app__header {
+        border-width: 0 !important;
+        box-shadow: none !important;
+    }
 }
 
 .go_to_dashboard > img {
