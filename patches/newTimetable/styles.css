@@ -1,0 +1,111 @@
+:root {
+    --background-primary: light-dark(white, #0b1517);
+    --background-navigation: light-dark(white, #152528);
+}
+
+body {
+    color-scheme: only light;
+}
+
+.app__main {
+    background: var(--background-primary) !important;
+    height: auto;
+}
+
+.timetable {
+    padding: 0 !important;
+    margin-inline: 10px !important;
+}
+
+.timetable:not(:has(.lesson)) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100svh - 62px - 40px - 20px - var(--bottom-navbar-height));
+    text-align: center;
+}
+
+.timetable .no-lessons-title {
+    font-size: 24px;
+}
+
+.timetable .lesson {
+    display: flex;
+    margin-bottom: 5px;
+    line-height: 16px;
+}
+
+.lesson > div:first-of-type {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    color: light-dark(#1b1b1f, #f5feff);
+    min-width: 18px;
+}
+
+.lesson > article {
+    display: flex;
+    padding: 15px;
+    align-content: center;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 10px;
+    cursor: pointer;
+    background: light-dark(#efedf1, #192123);
+    overflow: hidden;
+}
+
+.lesson .subject {
+    color: light-dark(#1b1b1f, #dbe4e7);
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap !important;
+}
+
+.lesson .data {
+    overflow: inherit;
+}
+
+.lesson .info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    color: #a1aaac;
+}
+
+.lesson .additional-info {
+    color: #a1aaac;
+    font-size: smaller;
+}
+
+.lesson.canceled > article {
+    background: light-dark(#f9dedc, #8c1d18);
+}
+
+.lesson.canceled .subject {
+    text-decoration: line-through;
+    color: light-dark(#410e0b, #f9dedc);
+}
+
+.lesson.canceled .info,
+.lesson.canceled .additional-info {
+    color: light-dark(#784c4a, #d9a5a1);
+}
+
+.lesson.canceled > div:first-of-type {
+    color: light-dark(#b3261e, #f2b8b5);
+}
+
+.lesson.substitute > article {
+    background: light-dark(#e7e4bd, #65683c);
+}
+
+.lesson.substitute .info,
+.lesson.substitute .additional-info {
+    color: light-dark(#58574e, #b8bfb4);
+}
+
+.lesson.substitute > div:first-of-type {
+    color: light-dark(#6d5e0f, #65683c);
+}

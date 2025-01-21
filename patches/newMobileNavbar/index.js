@@ -1,5 +1,6 @@
 import { getFromAside } from "../apis/aside.js";
 import { waitForRender } from "../apis/waitForElement.js";
+import { setHighlights } from "./highlights.js";
 
 if (window.location.hostname.match(/^(dziennik-)?(uczen).*/)) window.asideMode = "hidden"
 
@@ -121,7 +122,7 @@ const run = async () => {
     const moreButton = document.createElement("div")
     moreButton.innerHTML = `
         <div>
-            <img src="https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg">
+            <img src="https://raw.githubusercontent.com/banocean/ifv/main/assets/icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg">
         </div>
         <div>Więcej</div>
         `
