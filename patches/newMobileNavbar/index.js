@@ -126,10 +126,13 @@ const run = async () => {
         </div>
         <div>Więcej</div>
         `
+
     moreButton.addEventListener("click", () => {
         more.style.display = "block"
+        history.pushState({ ...history.state, ...{ wiecej: 1 }}, "", `${location.pathname}#wiecej`)
         setHighlights()
     })
+
     nav.appendChild(moreButton)
 
     document.body.appendChild(nav)
