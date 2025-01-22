@@ -1,5 +1,14 @@
 [
   {
+      "name": "Move title to header",
+      "description": "Moves title to header (mobile only)",
+      "files": {
+          "css": ["moveTitleToHeader/style.css"],
+          "js": ["moveTitleToHeader/index.js"]
+      },
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
       "name": "Change close button icon",
       "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to. (mobile only)",
       "files": {
