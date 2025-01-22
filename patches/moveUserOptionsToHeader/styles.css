@@ -37,7 +37,6 @@
         position: absolute;
         overflow: hidden;
         transform: translate(-50%, -50%);
-
         width: 80vw;
         max-width: 400px;
         height: min-content !important;
@@ -63,8 +62,16 @@
     .modal-name {
         display: flex;
         flex-direction: column;
-        padding-left: none;
+        padding-left: 0;
         gap: 5px;
+    }
+    
+    .modal-name > span {
+        font-size: 20px;
+        overflow: hidden;
+        width: calc(80vw - 116px);
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
     }
 
     .modal-link-container,
@@ -111,7 +118,7 @@
     .user-avatar {
         background: #f8d6d8;
         height: 40px;
-        width: 40px;
+        min-width: 40px;
         border-radius: 50%;
         margin-right: 16px;
         display: flex;
