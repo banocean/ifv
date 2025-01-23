@@ -129,7 +129,7 @@ const run = async () => {
 
     moreButton.addEventListener("click", () => {
         more.style.display = "block"
-        history.pushState({ ...history.state, ...{ wiecej: 1 }}, "", `${location.pathname}#wiecej`)
+        history.pushState({ ...history.state, ...{ more: true }}, "", `${location.pathname}#more`)
         setHighlights()
     })
 
