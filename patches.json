@@ -187,5 +187,13 @@
       "js": ["newTimetable/script.js"],
       "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
     }
+  },
+  {
+    "name": "Redisigned attendance",
+    "description": "Changes styles and navigation on attendance page.",
+    "files": {
+      "js": ["newAttendance/justifyButton.js"],
+      "css": ["newAttendance/style.css"]
+    }
   }
 ]

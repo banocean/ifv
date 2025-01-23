@@ -1,0 +1,27 @@
+.justify-abstence {
+    padding-inline: 15px;
+    border-radius: 15px;
+    border: 0;
+    position: fixed;
+    z-index: 100;
+    color: white;
+    background: #314578;
+    font-weight: 500;
+    font-family: "WorkSans",Graphik,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    padding-block: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 80px;
+    right: 10px;
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+.justify-abstence > img {
+    margin-right: 10px;
+}
+
+.frequency__legend {
+    display: none !important;
+}
