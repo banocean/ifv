@@ -73,7 +73,6 @@
   {
     "name": "Display Full Name",
     "description": "Shows the user's name under the nickname. (desktop only)",
-
     "files": {
       "js": ["displayFullName.js"]
     }
