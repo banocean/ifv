@@ -19,6 +19,26 @@ const whereToApply = [
             // { buttonPushingHistory: "button.scheduler-cell-item", closeButtonIndex: 2 }
         ]
     },
+    {
+        endpoint: ["odebrane", "wyslane", "kopie"], buttons: [
+            { buttonPushingHistory: "div.message--details", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.goto", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 }
+        ]
+    },
+    {
+        endpoint: "usuniete", buttons: [
+            { buttonPushingHistory: "div.message--details", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.goto", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.message-tools__restore", closeButtonIndex: 0 }
+        ]
+    },
+    {
+        endpoint: "ustawienia", buttons: [
+            { buttonPushingHistory: "button.primary-button", closeButtonIndex: 0 }
+        ]
+    }
 ];
 
 const fixGoingBack = () => {
@@ -35,16 +55,22 @@ const fixGoingBack = () => {
             document.querySelector('.modal-user').classList.remove('active');
             document.querySelector('.modal-background').classList.remove('active');
         }
-        setHighlights();
+        if (!location.hostname.includes('wiadomosci')) {
+            setHighlights();
+        }
     });
 
     let lastPathname;
 
     const observer = new MutationObserver(() => {
-        const { endpoint, buttons } = whereToApply.find((e) => location.pathname.includes(e.endpoint)) || {};
+        const { endpoint, buttons } = whereToApply.find((e) =>
+            Array.isArray(e.endpoint)
+                ? e.endpoint.some(ep => location.pathname.includes(ep))
+                : location.pathname.includes(e.endpoint)
+        ) || {};
 
         if (endpoint !== undefined && lastPathname !== location.pathname) {
-            setupButtonListeners(endpoint, buttons);
+            setupButtonListeners(buttons);
         }
         lastPathname = location.pathname;
     });
@@ -55,16 +81,14 @@ const fixGoingBack = () => {
     });
 };
 
-const setupButtonListeners = async (endpoint, buttons) => {
+const setupButtonListeners = async (buttons) => {
     for (const { buttonPushingHistory, closeButtonIndex } of buttons) {
         await waitForRender(() => document.querySelector(buttonPushingHistory));
         document.querySelectorAll(buttonPushingHistory).forEach((e) => {
             e.addEventListener('click', async () => {
                 history.pushState({ ...history.state, details: true }, '', `${location.pathname}#`);
                 addEventListener('popstate', () => {
-                    if (location.pathname.endsWith(endpoint)) {
-                        document.querySelectorAll('.close-button')[closeButtonIndex]?.click();
-                    }
+                    document.querySelectorAll('.close-button')[closeButtonIndex]?.click();
                 }, { once: true });
                 await waitForRender(() => document.querySelectorAll('.close-button')[closeButtonIndex]);
                 document.querySelectorAll('.close-button')[closeButtonIndex].addEventListener('click', () => {
@@ -85,6 +109,8 @@ window.appendModule({
         [
             "eduvulcan.pl",
             "uczen.eduvulcan.pl",
+            "wiadomosci.eduvulcan.pl",
             "dziennik-uczen.vulcan.net.pl",
+            "dziennik-wiadomosci.vulcan.net.pl"
         ].includes(window.location.hostname),
 });
