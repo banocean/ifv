@@ -23,7 +23,8 @@ const whereToApply = [
         endpoint: ["odebrane", "wyslane", "kopie"], buttons: [
             { buttonPushingHistory: "div.message--details", closeButtonIndex: 0 },
             { buttonPushingHistory: "button.goto", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 }
+            { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.new-message-button", closeButtonIndex: 0 },
         ]
     },
     {
@@ -31,12 +32,13 @@ const whereToApply = [
             { buttonPushingHistory: "div.message--details", closeButtonIndex: 0 },
             { buttonPushingHistory: "button.goto", closeButtonIndex: 0 },
             { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.message-tools__restore", closeButtonIndex: 0 }
+            { buttonPushingHistory: "button.message-tools__restore", closeButtonIndex: 0 },
+            { buttonPushingHistory: "button.new-message-button", closeButtonIndex: 0 },
         ]
     },
     {
         endpoint: "ustawienia", buttons: [
-            { buttonPushingHistory: "button.primary-button", closeButtonIndex: 0 }
+            { buttonPushingHistory: ".content__buttons-area > button.primary-button", closeButtonIndex: 0 },
         ]
     }
 ];
