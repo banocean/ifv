@@ -86,7 +86,7 @@ const fixGoingBack = () => {
 const setupButtonListeners = async (buttons) => {
     for (const { buttonPushingHistory, closeButtonIndex } of buttons) {
         await waitForRender(() => document.querySelector(buttonPushingHistory));
-        document.querySelectorAll(buttonPushingHistory).forEach((e) => {
+        document.querySelectorAll(buttonPushingHistory)?.forEach((e) => {
             e.addEventListener('click', async () => {
                 history.pushState({ ...history.state, details: true }, '', `${location.pathname}#`);
                 addEventListener('popstate', () => {
