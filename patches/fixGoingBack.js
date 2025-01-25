@@ -1,49 +1,7 @@
 import { waitForRender } from './apis/waitForElement.js';
 import { setHighlights } from './newMobileNavbar/highlights.js';
 
-const whereToApply = [
-    {
-        endpoint: "oceny", buttons: [
-            { buttonPushingHistory: "button.grades__button__one-grade", closeButtonIndex: 2 },
-            { buttonPushingHistory: "button.details-btn--appearance", closeButtonIndex: 2 }
-        ]
-    },
-    {
-        endpoint: "planZajec", buttons: [
-            { buttonPushingHistory: "button.details-btn--position-r-bottom", closeButtonIndex: 1 }
-        ]
-    },
-    {
-        endpoint: "sprawdzianyZadaniaDomowe", buttons: [
-            { buttonPushingHistory: "button.scheduler-simple-cell__all-plans-btn", closeButtonIndex: 1 },
-            // { buttonPushingHistory: "button.scheduler-cell-item", closeButtonIndex: 2 }
-        ]
-    },
-    {
-        endpoint: ["odebrane", "wyslane", "kopie"], buttons: [
-            { buttonPushingHistory: "div.message--details", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.goto", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.new-message-button", closeButtonIndex: 0 },
-        ]
-    },
-    {
-        endpoint: "usuniete", buttons: [
-            { buttonPushingHistory: "div.message--details", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.goto", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.message-tools__delete", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.message-tools__restore", closeButtonIndex: 0 },
-            { buttonPushingHistory: "button.new-message-button", closeButtonIndex: 0 },
-        ]
-    },
-    {
-        endpoint: "ustawienia", buttons: [
-            { buttonPushingHistory: ".content__buttons-area > button.primary-button", closeButtonIndex: 0 },
-        ]
-    }
-];
-
-const fixGoingBack = () => {
+const fixGoingBack = async () => {
     addEventListener('popstate', (e) => {
         if (e.state?.more) {
             document.querySelector('.more-popup').style.display = "block";
@@ -62,45 +20,43 @@ const fixGoingBack = () => {
         }
     });
 
-    let lastPathname;
-
-    const observer = new MutationObserver(() => {
-        const { endpoint, buttons } = whereToApply.find((e) =>
-            Array.isArray(e.endpoint)
-                ? e.endpoint.some(ep => location.pathname.includes(ep))
-                : location.pathname.includes(e.endpoint)
-        ) || {};
-
-        if (endpoint !== undefined && lastPathname !== location.pathname) {
-            setupButtonListeners(buttons);
-        }
-        lastPathname = location.pathname;
-    });
-
+    const observer = new MutationObserver(mutationHandler);
     observer.observe(document.body, {
-        childList: true,
-        subtree: true
+        childList: true
     });
 };
 
-const setupButtonListeners = async (buttons) => {
-    for (const { buttonPushingHistory, closeButtonIndex } of buttons) {
-        await waitForRender(() => document.querySelector(buttonPushingHistory));
-        document.querySelectorAll(buttonPushingHistory)?.forEach((e) => {
-            e.addEventListener('click', async () => {
-                history.pushState({ ...history.state, details: true }, '', `${location.pathname}#`);
-                addEventListener('popstate', () => {
-                    document.querySelectorAll('.close-button')[closeButtonIndex]?.click();
-                }, { once: true });
-                await waitForRender(() => document.querySelectorAll('.close-button')[closeButtonIndex]);
-                document.querySelectorAll('.close-button')[closeButtonIndex].addEventListener('click', () => {
-                    if (history.state?.details) {
-                        history.back();
-                    }
-                });
+const mutationHandler = async (mutationList) => {
+    for (const mutation of mutationList) {
+        const modals = document.querySelectorAll('.MuiDrawer-modal');
+        const modal = modals[modals.length - 1] || undefined;
+
+        if (modal && modal.getAttribute('data-has-listener') !== 'true') {
+            history.pushState({ ...history.state, details: true }, '', `${location.pathname}#`);
+            modal.setAttribute('data-has-listener', 'true');
+
+            for (const e of modals) {
+                if (e === modal) continue;
+                e.removeAttribute('data-has-listener');
+            }
+
+            await waitForRender(() => modal.querySelector('.close-button'));
+            const closeButton = modal.querySelector('.close-button');
+
+            addEventListener('popstate', popstateHandler(closeButton), { once: true });
+
+            closeButton?.addEventListener('click', () => {
+                if (history.state?.details) {
+                    history.back();
+                }
             });
-        });
+        }
     }
+};
+
+const popstateHandler = (e) => () => {
+    if (e?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.getAttribute('data-has-listener') !== 'true') return;
+    e?.click();
 };
 
 window.appendModule({
