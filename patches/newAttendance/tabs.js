@@ -1,10 +1,11 @@
 const selector = document.createElement("div")
-selector.innerHTML =
+if (window.innerWidth >= 1024) selector.innerHTML =
     '<button class="MuiButtonBase-root MuiButton-root MuiButton-contained default-button primary-button" disabled><span class="MuiButton-label">Frekwencja</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained default-button primary-button"><span class="MuiButton-label">Statystyki</span></button>';
+else selector.innerHTML = '<button disabled>Frekwencja</button><button><span>Statystyki</span></button>'
 selector.classList.add("attendance-tabs")
 
 const createSelector = () => {
-    document.querySelector("h1").replaceWith(selector)
+    document.querySelector(".app__content > .mobile__frame").appendChild(selector)
     changeStatsVisibility(false)
 }
 
@@ -36,8 +37,6 @@ const isAttendancePage = () => window.location.pathname.endsWith("frekwencja")
 const isRendered = () =>
     !!document.querySelector(".content-container:has(.statistics)")
         && !!document.querySelector(".tabsview")
-        && !!document.querySelector("h1")
-
 
 window.appendModule({
     isLoaded: isRendered,

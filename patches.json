@@ -130,15 +130,6 @@
     }
   },
   {
-    "name": "Attendance statistics in separate tab",
-    "description": "Makes attendance page more readable by moving statistics to separate tab.",
-    "files": {
-      "css": ["attendance/styles.css"],
-      "js": ["attendance/tabs.js"]
-    },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
-  },
-  {
     "name": "Reload on resize",
     "description": "Reloads page while changing between desktop and mobile layouts.",
     "files": {
@@ -192,7 +183,7 @@
     "name": "Redisigned attendance",
     "description": "Changes styles and navigation on attendance page.",
     "files": {
-      "js": ["newAttendance/justifyButton.js"],
+      "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
       "css": ["newAttendance/style.css"]
     }
   }
