@@ -70,5 +70,5 @@ window.appendModule({
             "wiadomosci.eduvulcan.pl",
             "dziennik-uczen.vulcan.net.pl",
             "dziennik-wiadomosci.vulcan.net.pl"
-        ].includes(window.location.hostname),
+        ].includes(window.location.hostname) && window.innerWidth < 1024,
 });
