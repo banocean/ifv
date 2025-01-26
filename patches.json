@@ -184,7 +184,8 @@
     "files": {
       "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
       "css": ["newAttendance/style.css"]
-    }
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"] 
   },
   {
     "name": "Fix going back in history",
