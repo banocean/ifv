@@ -118,7 +118,7 @@ const run = async () => {
             })
 
             addEventListener('popstate', (e) => {
-                if (e.state?.moreDetails === true) {
+                if (e.state?.moreDetails) {
                     detailedOptionsPage.style.display = "block"
                 } else {
                     detailedOptionsPage.style.display = "none"
