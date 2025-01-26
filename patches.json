@@ -73,7 +73,6 @@
   {
     "name": "Display Full Name",
     "description": "Shows the user's name under the nickname. (desktop only)",
-    
     "files": {
       "js": ["displayFullName.js"]
     }
@@ -185,6 +184,13 @@
     "files": {
       "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
       "css": ["newAttendance/style.css"]
+    }
+  },
+  {
+    "name": "Fix going back in history",
+    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
+    "files": {
+      "js": ["fixGoingBack.js"]
     }
   }
 ]
