@@ -1,0 +1,131 @@
+.justify-abstence {
+    padding-inline: 15px;
+    border-radius: 15px;
+    border: 0;
+    position: fixed;
+    z-index: 100;
+    color: white;
+    background: #314578;
+    font-weight: 500;
+    font-family:
+        "WorkSans",
+        Graphik,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    padding-block: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 80px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.justify-abstence > img {
+    margin-right: 10px;
+}
+
+.content__header > .toolbar {
+    display: none;
+}
+
+.frequency__legend {
+    display: none !important;
+}
+
+@media screen and (min-width: 1024px) {
+    .attendance-tabs > button:first-of-type {
+        margin-right: 10px;
+    }
+
+    .attendance-tabs > button:disabled {
+        opacity: 50%;
+    }
+}
+
+.tabsview.stats > div:first-of-type {
+    display: none !important;
+}
+
+.tabsview.stats > .tabsview__tabs > div > div > div:not(:last-of-type) {
+    display: none;
+}
+
+.tabsview.attendance-init:not(.stats)
+    > .tabsview__tabs
+    > div
+    > div
+    > div:last-of-type {
+    display: none;
+}
+
+.tabsview.attendance-init > div:first-of-type {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1023px) {
+    .app__content:has(.attendance-tabs) {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .attendance-tabs {
+        position: fixed;
+        background: white;
+        top: 60px;
+        z-index: 100;
+        transform: translateX(-5px);
+        width: 100vw;
+    }
+
+    .attendance-tabs > button {
+        width: 50%;
+        color: var(--kolor-brand);
+        font-weight: 600;
+        padding: 0;
+        margin: 0;
+        background: none;
+        height: 40px;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .attendance-tabs > div:not(:last-of-type) {
+        width: 40vw;
+        margin-left: 5vw;
+        height: 3px;
+        background: var(--kolor-brand);
+        border-radius: 3px;
+        transition: 100ms all ease-in-out;
+        position: relative;
+        z-index: 101;
+        top: 1px;
+    }
+
+    .attendance-tabs:has(button:first-of-type:not(:disabled))
+        > div:not(:last-of-type) {
+        transform: translateX(50vw);
+    }
+
+    .attendance-tabs > div:last-of-type {
+        position: relative;
+        width: 100vw;
+        border-bottom: 2px solid #e5e7e9;
+        cursor: pointer;
+    }
+
+    div#root:has(.attendance-tabs) {
+        height: calc(
+            100svh - 60px - 44px - var(--bottom-navbar-height)
+        ) !important;
+        top: 104px;
+    }
+}
