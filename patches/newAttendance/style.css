@@ -7,14 +7,25 @@
     color: white;
     background: #314578;
     font-weight: 500;
-    font-family: "WorkSans",Graphik,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family:
+        "WorkSans",
+        Graphik,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol";
     padding-block: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     bottom: 80px;
     right: 10px;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 16px;
 }
 
@@ -34,7 +45,7 @@
     .attendance-tabs > button:first-of-type {
         margin-right: 10px;
     }
-    
+
     .attendance-tabs > button:disabled {
         opacity: 50%;
     }
@@ -48,7 +59,11 @@
     display: none;
 }
 
-.tabsview.attendance-init:not(.stats) > .tabsview__tabs > div > div > div:last-of-type {
+.tabsview.attendance-init:not(.stats)
+    > .tabsview__tabs
+    > div
+    > div
+    > div:last-of-type {
     display: none;
 }
 
@@ -82,7 +97,7 @@
         border: 0;
         cursor: pointer;
     }
-    
+
     .attendance-tabs > div:not(:last-of-type) {
         width: 40vw;
         margin-left: 5vw;
@@ -92,11 +107,12 @@
         transition: 100ms all ease-in-out;
         position: relative;
         z-index: 101;
-        top: 1px; 
+        top: 1px;
     }
-    
-    .attendance-tabs:has(button:first-of-type:not(:disabled)) > div:not(:last-of-type) {
-        transform: translateX(50vw); 
+
+    .attendance-tabs:has(button:first-of-type:not(:disabled))
+        > div:not(:last-of-type) {
+        transform: translateX(50vw);
     }
 
     .attendance-tabs > div:last-of-type {
@@ -105,9 +121,11 @@
         border-bottom: 2px solid #e5e7e9;
         cursor: pointer;
     }
-    
+
     div#root:has(.attendance-tabs) {
-        height: calc(100svh - 60px - 44px - var(--bottom-navbar-height)) !important; 
+        height: calc(
+            100svh - 60px - 44px - var(--bottom-navbar-height)
+        ) !important;
         top: 104px;
     }
 }
