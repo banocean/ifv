@@ -1,15 +1,6 @@
 import { waitForRender } from './apis/waitForElement.js';
-import { setHighlights } from './newMobileNavbar/highlights.js';
 
 const fixGoingBack = async () => {
-    addEventListener('popstate', (e) => {
-        if (document.querySelector('.modal-user').classList.contains('active')) {
-            history.forward();
-            document.querySelector('.modal-user').classList.remove('active');
-            document.querySelector('.modal-background').classList.remove('active');
-        }
-    });
-
     const observer = new MutationObserver(mutationHandler);
     observer.observe(document.body, {
         childList: true

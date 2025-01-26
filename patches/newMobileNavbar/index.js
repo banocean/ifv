@@ -148,6 +148,7 @@ addEventListener('popstate', (e) => {
             e.style.display = "none";
         });
     }
+    setHighlights()
 })
 
 window.appendModule({
