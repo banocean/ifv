@@ -50,7 +50,8 @@ const run = async () => {
     more.style.display = "none"
 
     more.querySelector("img").addEventListener("click", () => {
-        more.style.display = "none"
+        more.style.display = "none";
+        history.back()
         setHighlights()
     })
 
@@ -92,7 +93,7 @@ const run = async () => {
 
             detailedOptionsPage.querySelector("h1").innerText = page.name
             detailedOptionsPage.querySelector("img").addEventListener("click", () => {
-                detailedOptionsPage.style.display = "none"
+                history.back()
             })
 
             for (let i = 0; i < page.items.length; i++) {
@@ -102,9 +103,9 @@ const run = async () => {
                 element.querySelector(".icon").style.content = page.icon
                 element.querySelector(".name").innerText = option.firstChild.innerText
                 element.addEventListener("click", () => {
-                    Array.from(document.querySelectorAll(`.${itemClass} .items a`))[i].click()
                     detailedOptionsPage.style.display = "none"
                     more.style.display = "none"
+                    Array.from(document.querySelectorAll(`.${itemClass} .items a`))[i].click()
                     document.querySelector(".header__hamburger__icon button").click()
                     document.querySelector("div#root").scroll(0,0)
                 })
@@ -113,6 +114,15 @@ const run = async () => {
 
             item.addEventListener("click", () => {
                 detailedOptionsPage.style.display = "block"
+                history.pushState({ ...history.state, moreDetails: true }, "", `${location.pathname}#${itemClass}`)
+            })
+
+            addEventListener('popstate', (e) => {
+                if (e.state?.moreDetails) {
+                    detailedOptionsPage.style.display = "block"
+                } else {
+                    detailedOptionsPage.style.display = "none"
+                }
             })
 
             document.body.appendChild(detailedOptionsPage)
@@ -126,16 +136,31 @@ const run = async () => {
         </div>
         <div>Więcej</div>
         `
+
     moreButton.addEventListener("click", () => {
         more.style.display = "block"
+        history.pushState({ ...history.state, more: true }, "", `${location.pathname}#more`)
         setHighlights()
     })
+
     nav.appendChild(moreButton)
 
     document.body.appendChild(nav)
     document.body.appendChild(more)
 }
 
+addEventListener('popstate', (e) => {
+    if (e.state?.moreDetails !== true) {
+        if (e.state?.more) {
+            document.querySelector('.more-popup').style.display = "block";
+        } else {
+            document.querySelectorAll('.list-modal').forEach((e) => {
+                e.style.display = "none";
+            });
+        }
+    }
+    setHighlights()
+})
 
 window.appendModule({
     run,
