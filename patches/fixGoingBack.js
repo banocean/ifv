@@ -3,20 +3,10 @@ import { setHighlights } from './newMobileNavbar/highlights.js';
 
 const fixGoingBack = async () => {
     addEventListener('popstate', (e) => {
-        if (e.state?.more) {
-            document.querySelector('.more-popup').style.display = "block";
-        } else {
-            document.querySelectorAll('.list-modal').forEach((e) => {
-                e.style.display = "none";
-            });
-        }
         if (document.querySelector('.modal-user').classList.contains('active')) {
             history.forward();
             document.querySelector('.modal-user').classList.remove('active');
             document.querySelector('.modal-background').classList.remove('active');
-        }
-        if (!location.hostname.includes('wiadomosci')) {
-            setHighlights();
         }
     });
 

@@ -50,7 +50,8 @@ const run = async () => {
     more.style.display = "none"
 
     more.querySelector("img").addEventListener("click", () => {
-        more.style.display = "none"
+        more.style.display = "none";
+        history.back()
         setHighlights()
     })
 
@@ -139,6 +140,15 @@ const run = async () => {
     document.body.appendChild(more)
 }
 
+addEventListener('popstate', (e) => {
+    if (e.state?.more) {
+        document.querySelector('.more-popup').style.display = "block";
+    } else {
+        document.querySelectorAll('.list-modal').forEach((e) => {
+            e.style.display = "none";
+        });
+    }
+})
 
 window.appendModule({
     run,
