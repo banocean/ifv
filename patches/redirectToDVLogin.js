@@ -19,8 +19,8 @@ const targetSpan = document.querySelector(
 );
 
 if (targetSpan) {
-  const spanText = targetSpan.textContent;
-  const newText = spanText.slice(0, -1);
-  const additionalText = ` lub użyj <a href="https://uonetplus.vulcan.net.pl/${pathSegment}" class="link-simple">innej metody logowania</a>`;
-  targetSpan.innerHTML = `${newText}${additionalText}`;
+  const spanHTML = targetSpan.innerHTML;
+  const newHTML = spanHTML.slice(0, -1);
+  const additionalText = `lub użyj <a href="https://uonetplus.vulcan.net.pl/${pathSegment}" class="link-simple">innej metody logowania</a>`;
+  targetSpan.innerHTML = `${newHTML} ${additionalText}`;
 }
