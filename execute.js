@@ -38,9 +38,18 @@ const execute = () => {
     }
 };
 
+let lastLocation = location.pathname;
+
 window.history.pushState = new Proxy(window.history.pushState, {
     apply: (target, a, args) => {
+        const isPathnameChanged = args.length >= 3 ? location.pathname !== args[2].split("#")[0] : true
+        if(args.length >= 3) lastLocation = args[2].split("#")[0]
         target.apply(a, args);
-        if (modules.length !== 0 && isEverythingLoaded()) execute();
+        if (modules.length !== 0 && isEverythingLoaded() && isPathnameChanged) execute();
     },
 });
+
+window.addEventListener("popstate", (event) => {
+    const isPathnameChanged = location.pathname !== lastLocation
+    if (modules.length !== 0 && isEverythingLoaded() && isPathnameChanged) execute();
+})
