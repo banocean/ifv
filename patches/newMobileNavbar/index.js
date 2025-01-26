@@ -93,7 +93,7 @@ const run = async () => {
 
             detailedOptionsPage.querySelector("h1").innerText = page.name
             detailedOptionsPage.querySelector("img").addEventListener("click", () => {
-                detailedOptionsPage.style.display = "none"
+                history.back()
             })
 
             for (let i = 0; i < page.items.length; i++) {
@@ -114,6 +114,13 @@ const run = async () => {
 
             item.addEventListener("click", () => {
                 detailedOptionsPage.style.display = "block"
+                history.pushState({ ...history.state, moreDetails: true }, "", `${location.pathname}#${itemClass}`)
+            })
+
+            addEventListener('popstate', (e) => {
+                if (e.state?.moreDetails !== true) {
+                    detailedOptionsPage.style.display = "none"
+                }
             })
 
             document.body.appendChild(detailedOptionsPage)
@@ -141,12 +148,14 @@ const run = async () => {
 }
 
 addEventListener('popstate', (e) => {
-    if (e.state?.more) {
-        document.querySelector('.more-popup').style.display = "block";
-    } else {
-        document.querySelectorAll('.list-modal').forEach((e) => {
-            e.style.display = "none";
-        });
+    if (e.state?.moreDetails !== true) {
+        if (e.state?.more) {
+            document.querySelector('.more-popup').style.display = "block";
+        } else {
+            document.querySelectorAll('.list-modal').forEach((e) => {
+                e.style.display = "none";
+            });
+        }
     }
     setHighlights()
 })
