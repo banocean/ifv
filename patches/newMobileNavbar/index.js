@@ -103,9 +103,9 @@ const run = async () => {
                 element.querySelector(".icon").style.content = page.icon
                 element.querySelector(".name").innerText = option.firstChild.innerText
                 element.addEventListener("click", () => {
-                    Array.from(document.querySelectorAll(`.${itemClass} .items a`))[i].click()
                     detailedOptionsPage.style.display = "none"
                     more.style.display = "none"
+                    Array.from(document.querySelectorAll(`.${itemClass} .items a`))[i].click()
                     document.querySelector(".header__hamburger__icon button").click()
                     document.querySelector("div#root").scroll(0,0)
                 })
@@ -118,7 +118,9 @@ const run = async () => {
             })
 
             addEventListener('popstate', (e) => {
-                if (e.state?.moreDetails !== true) {
+                if (e.state?.moreDetails === true) {
+                    detailedOptionsPage.style.display = "block"
+                } else {
                     detailedOptionsPage.style.display = "none"
                 }
             })
