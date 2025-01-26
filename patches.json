@@ -189,7 +189,7 @@
   },
   {
     "name": "Fix going back in history",
-    "description": "Allows to use the browser's back button to return to the expected location. (mobile only)",
+    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
     "files": {
       "js": ["fixGoingBack.js"]
     }
