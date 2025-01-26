@@ -163,6 +163,7 @@ export class SelectorRenderer {
             const today = new Date()
             const day = getWeekStartingMonday(today.getDay())
             this.currentWeekDay = this.cachedWeek.findIndex((timetableDay) => (timetableDay.day || "-, ").split(", ")[0].toLowerCase() === dayNames[day]);
+            if (this.currentWeekDay === -1) this.currentWeekDay = this.cachedWeek.length - 1; 
         }
 
         const content = await this.renderContent(
