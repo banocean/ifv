@@ -55,7 +55,7 @@ const mutationHandler = async (mutationList) => {
 };
 
 const popstateHandler = (e) => () => {
-    if (e?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.getAttribute('data-has-listener') !== 'true') return;
+    if (e?.closest("div[role=presentation].MuiDrawer-modal")?.getAttribute('data-has-listener') !== 'true') return;
     e?.click();
 };
 
