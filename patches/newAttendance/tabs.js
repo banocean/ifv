@@ -1,11 +1,12 @@
 const selector = document.createElement("div")
 if (window.innerWidth >= 1024) selector.innerHTML =
     '<button class="MuiButtonBase-root MuiButton-root MuiButton-contained default-button primary-button" disabled><span class="MuiButton-label">Frekwencja</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-contained default-button primary-button"><span class="MuiButton-label">Statystyki</span></button>';
-else selector.innerHTML = '<button disabled>Frekwencja</button><button><span>Statystyki</span></button>'
+else selector.innerHTML = '<button disabled>Frekwencja</button><button><span>Statystyki</span></button><div></div><div></div>'
 selector.classList.add("attendance-tabs")
 
 const createSelector = () => {
-    document.querySelector(".app__content > .mobile__frame").appendChild(selector)
+    const container = window.innerWidth < 1024 ? ".app__content > .mobile__frame" : ".app__content > .desktop__frame"
+    document.querySelector(container).insertBefore(selector, document.querySelector(container + "> *"))
     changeStatsVisibility(false)
 }
 

@@ -1,5 +1,4 @@
 const createButton = () => {
-    console.debug("test")
     const button = document.createElement("button")
     button.classList.add("justify-abstence")
     button.innerHTML = `<img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/excuse-attendance-button/assets/icons/stylus_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"> Usprawiedliw`
