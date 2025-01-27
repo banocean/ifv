@@ -1,5 +1,5 @@
 .scheduler-cell--current, .frequency-scheduler-cell--current, .plan-scheduler-cell__current {
-    background-color: rgba(200, 200, 210, 0.15);
+    background-color: rgba(200, 200, 210, 0.25);
 }
 .scheduler-cell--current .scheduler-cell__number, .frequency-scheduler-cell--current .frequency-scheduler-cell__footer, .plan-scheduler-cell__current .plan-scheduler-cell__footer-day {
     background-color: #e12d39;
