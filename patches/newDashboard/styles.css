@@ -1,0 +1,32 @@
+@media screen and (max-width: 1023px) {
+    .content-container:has(.plan-zajec) {
+        margin: 0 !important;
+    }
+    
+    .content-container:has(.plan-zajec), .content-container:has(.plan-zajec) > .tile-container {
+        padding: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+    }
+    
+    .box-shaded {
+        background-color: #f8f9fc !important; 
+        box-shadow: none !important;
+        border-width: 0 !important;
+    }
+    
+    .tile__header h2 {
+        font-weight: bold;
+    }
+    
+    .tile__header .toolbar {
+        display: none;
+    }
+    
+    .content-container .tile .tile__header {
+        padding-top: 10px;
+        padding-left: 10px;
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+}
