@@ -185,7 +185,7 @@
       "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
       "css": ["newAttendance/style.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"] 
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
     "name": "Fix going back in history",
@@ -193,5 +193,13 @@
     "files": {
       "js": ["fixGoingBack.js"]
     }
+  },
+  {
+    "name": "Highlight today",
+    "description": "Highlights today's date in the calendar.",
+    "files": {
+      "css": ["highlightToday.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   }
 ]
