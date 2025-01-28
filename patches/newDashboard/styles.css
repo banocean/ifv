@@ -23,10 +23,24 @@
         display: none;
     }
     
+    .tile__header.flex__items > .flex__item-auto {
+        display: flex;
+        align-items: center;
+    }
+    
+    .tile__header.flex__items > .flex__item-auto > img {
+        filter: invert(0.8);
+        margin-right: 5px;
+    }
+    
     .content-container .tile .tile__header {
         padding-top: 10px;
         padding-left: 10px;
         border-bottom: 0;
         padding-bottom: 0;
+    }
+    
+    .tile.box:has(.lucky-number__circle.lucky-number__circle-1) {
+        display: none;
     }
 }

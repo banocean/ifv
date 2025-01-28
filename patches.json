@@ -191,7 +191,7 @@
     "name": "Redisigned attendance",
     "description": "Changes styles and navigation on attendance page.",
     "files": {
-      "js": [],
+      "js": ["newDashboard/index.js"],
       "css": ["newDashboard/styles.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]   
