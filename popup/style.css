@@ -10,18 +10,40 @@ body.mobile {
     width: 100% !important;
 }
 
-.filter > input::placeholder {
-    color: white;
-}
-
-.filter > input {
+.filter > div {
     width: 100%;
     height: 20px;
-    padding: 5px;
     color: white;
     border: none;
     border-radius: 5px;
     background: #27272a;
+    padding: 5px;
+    display: flex;
+}
+
+.filter > div > svg {
+    position: relative;
+    top: 1px;
+}
+
+.filter > div > input::placeholder {
+    color: #8e8e8e;
+}
+
+.filter > div > input {
+    width: 100%;
+    height: 100%;
+    color: white;
+    border: none;
+    background: transparent;
+}
+
+.filter > div:focus-within, .filter > div:hover {
+    background: #3f3f46;
+}
+
+.filter > div > input:focus, .filter > div > input:hover {
+    outline: none;
 }
 
 .filter > button {
@@ -35,11 +57,29 @@ body.mobile {
     border-radius: 5px;
 }
 
+.filter > button:hover {
+    background: #3f3f46;
+}
+
 .filter {
     width: 100%;
     display: flex;
     align-items: stretch;
+    margin-bottom: 5px;
+}
+
+.categories {
+    width: 100%;
+    height: 30px;
     margin-bottom: 15px;
+    background: #27272a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.categories:hover {
+    background: #3f3f46;
 }
 
 /* Main */
@@ -75,6 +115,10 @@ label {
     background: #27272a;
     gap: 10px;
     cursor: pointer;
+}
+
+label:hover {
+    background: #3f3f46;
 }
 
 label .desc {
@@ -123,7 +167,7 @@ label .title {
     top: 2px;
     left: 2px;
     background-color: #fff;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
     transition: transform 0.3s;
 }
 
