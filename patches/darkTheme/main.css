@@ -1,3 +1,7 @@
+* {
+    box-shadow: none !important;
+}
+
 main > section {
     background-color: var(--primary-background) !important;
     color: white !important;
@@ -9,12 +13,12 @@ main > header {
 }
 
 footer {
-    border: 0 !important;
+    border-color: #464646 !important;
 }
 
 footer > * > div {
     background-color: var(--primary-background) !important;
-    border: 0 !important;
+    border-color: #464646 !important;
 }
 
 aside, aside > header {
@@ -22,7 +26,7 @@ aside, aside > header {
 }
 
 aside > header {
-    border: 0 !important;
+    border-color: #464646 !important;
 }
 
 .fonts > li > a {
@@ -30,19 +34,19 @@ aside > header {
 }
 
 .languages-desktop {
-    border: 0 !important;
+    border-color: #464646 !important;
 }
 
 .user {
-    border: 0 !important;
+    border-color: #464646 !important;
 }
 
 main > * > * > .content-container {
     background-color: var(--component-background) !important;
 }
 
-.box-shaded:not(#kafel-pomoc-pomigracyjna) {
-    background-color: var(--component-background) !important;
+.box-shaded:not(#kafel-pomoc-pomigracyjna), .tile__grades > .tile__grades__item {
+    background-color: var(--secondary--component--background) !important;
     color: var(--secondary-text) !important;
 }
 
@@ -63,7 +67,7 @@ main > * > * > .content-container {
 }
 
 .tile__header, .tile__header > div > a {
-    color: var(--secondary-text) !important;
+    color: var(--tertiary-text) !important;
 }
 
 .content-container .tile .tile__header,
@@ -72,7 +76,7 @@ main > * > * > .content-container {
 .tile__content__title,
 .tile__teachers__item,
 .tile__list__borders li {
-    border: 0 !important;
+    border-color: #464646 !important;
 }
 
 
@@ -89,14 +93,6 @@ ul .tile__teachers {
     color: var(--primary-text) !important;
 }
 
-.content-container {
-    box-shadow: inset 0 0 6px rgba(0,0,0,.3) !important;
-}
-
-.box-shaded {
-    box-shadow: rgb(0 0 0 / 45%) 0px 8px 24px !important;
-}
-
 .tile__empty-bg, .timetable__grid .column.wolne.current {
     background: repeating-linear-gradient(45deg, #222222, #222222 10px, var(--secondary--component--background) 10px, var(--secondary--component--background) 12px) !important;
 }
@@ -107,4 +103,35 @@ ul .tile__teachers {
 
 .logoEduVulcan_ciemne_r_svg__cls-1 {
     fill: white !important;
+}
+.tile__content {
+    background-color: var(--secondary--component--background) !important;
+    color: var(--primary-text) !important;
+}
+li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
+    background-color: var(--tertiary--component--background) !important;
+    color: var(--primary-text) !important;
+}
+.tile__grades__subject {
+    color: var(--secondary-text) !important;
+}
+.tile__list__rectangle-boxes li {
+    border-color: #464646;
+    border-radius: 6px;
+}
+.plan-zajec .background_item, .plan-zajec .background_item:last-of-type {
+    border-color: #7c7c7c;
+}
+.tile__list__rectangle__ribbon {
+    background-color: var(--evBlue);
+}
+.tile__header {
+    background-color: var(--tertiary--component--background);
+}
+.cell--single > .plan-position {
+    color: black;
+    filter: brightness(0.8) invert(1) hue-rotate(180deg) saturate(170%);
+}
+.timetable__grid .column.current {
+    background-color: rgba(200, 200, 210, 0.068);
 }
