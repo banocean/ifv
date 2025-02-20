@@ -11,19 +11,19 @@ body.mobile {
 }
 
 .filter > div {
+    box-sizing: border-box;
     width: 100%;
-    height: 20px;
     color: white;
     border: none;
     border-radius: 5px;
     background: #27272a;
-    padding: 5px;
+    padding-left: 5px;
     display: flex;
+    align-items: center;
 }
 
 .filter > div > svg {
     position: relative;
-    top: 1px;
 }
 
 .filter > div > input::placeholder {
@@ -31,11 +31,12 @@ body.mobile {
 }
 
 .filter > div > input {
+    box-sizing: border-box;
     width: 100%;
-    height: 100%;
     color: white;
     border: none;
     background: transparent;
+    padding-block: 7px;
 }
 
 .filter > div:focus-within, .filter > div:hover {
@@ -47,8 +48,10 @@ body.mobile {
 }
 
 .filter > button {
+    box-sizing: border-box;
     width: min-content;
-    padding: 5px;
+    height: 100%;
+    padding: 5px 10px;
     background: #27272a;
     color: white;
     margin-left: 5px;
@@ -63,12 +66,14 @@ body.mobile {
 
 .filter {
     width: 100%;
+    height: 30px;
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
     margin-bottom: 5px;
 }
 
 .categories {
+    box-sizing: border-box;
     width: 100%;
     height: 30px;
     margin-bottom: 15px;
@@ -76,6 +81,7 @@ body.mobile {
     color: white;
     border: none;
     border-radius: 5px;
+    text-align: center;
 }
 
 .categories:hover {
