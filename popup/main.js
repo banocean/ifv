@@ -69,7 +69,12 @@ const render = async () => {
 
     const optionsDOM = document.querySelector(".options");
     optionsDOM.innerHTML = "";
-    for (const [key, value] of Object.entries(config)) {
+
+    const sortedEntries = Object.entries(config).sort((a, b) =>
+        a[0].localeCompare(b[0], 'pl')
+    );
+
+    for (const [key, value] of sortedEntries) {
         const option = document.createElement("label");
         option.innerHTML = `
             <div style="flex: 1;">
