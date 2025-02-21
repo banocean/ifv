@@ -85,6 +85,12 @@ const render = async () => {
             await chrome.storage.sync.set({ options: config });
         }
     });
+
+    const { category } = await chrome.storage.local.get(['category']) || {};
+    if (category) {
+        categories.value = category;
+        categories.dispatchEvent(new Event("input"));
+    }
 };
 
 (async () => {
@@ -104,6 +110,8 @@ const render = async () => {
             config[patch.name] = {
                 description: patch.description,
                 enable: nextApplyAllAction,
+                mobileOnly: patch.mobileOnly,
+                desktopOnly: patch.desktopOnly,
             };
         });
 
@@ -121,12 +129,4 @@ const render = async () => {
     changeAllButton.addEventListener("click", toggleAllButton);
 })();
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await render();
-
-    const { category } = await chrome.storage.local.get(['category']) || {};
-    if (category) {
-        categories.value = category;
-        categories.dispatchEvent(new Event("input"));
-    }
-});
+document.addEventListener("DOMContentLoaded", render);
