@@ -84,8 +84,12 @@ body.mobile {
     background: #3f3f46;
 }
 
-label.hidden {
+label.category-hidden {
     display: none;
+}
+
+label.search-hidden {
+    display: none !important;
 }
 
 #clear {

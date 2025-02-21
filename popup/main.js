@@ -12,32 +12,26 @@ const categories = document.querySelector(".categories");
 filterInput.addEventListener("input", () => {
     const filter = filterInput.value.toLowerCase();
 
-    Array.from(document.querySelectorAll(".options > *:not(.hidden)")).forEach(
+    Array.from(document.querySelectorAll(".options > *")).forEach(
         (option) => {
-            option.style.display =
-                option
-                    .querySelector(".title")
-                    .innerText.toLowerCase()
-                    .includes(filter) ||
-                    option
-                        .querySelector(".desc")
-                        .innerText.toLowerCase()
-                        .includes(filter)
-                    ? "flex"
-                    : "none";
+            if (option.querySelector(".title").innerText.toLowerCase().includes(filter) || option.querySelector(".desc").innerText.toLowerCase().includes(filter)) {
+                option.classList.remove("search-hidden");
+            } else {
+                option.classList.add("search-hidden");
+            }
         },
     );
 });
 
 categories.addEventListener("input", () => {
     if (categories.value === "mobile") {
-        document.querySelectorAll(".mobileOnly").forEach((e) => e.classList.remove("hidden"));
-        document.querySelectorAll(".desktopOnly").forEach((e) => e.classList.add("hidden"));
+        document.querySelectorAll(".mobileOnly").forEach((e) => e.classList.remove("category-hidden"));
+        document.querySelectorAll(".desktopOnly").forEach((e) => e.classList.add("category-hidden"));
     } else if (categories.value === "desktop") {
-        document.querySelectorAll(".mobileOnly").forEach((e) => e.classList.add("hidden"));
-        document.querySelectorAll(".desktopOnly").forEach((e) => e.classList.remove("hidden"));
+        document.querySelectorAll(".mobileOnly").forEach((e) => e.classList.add("category-hidden"));
+        document.querySelectorAll(".desktopOnly").forEach((e) => e.classList.remove("category-hidden"));
     } else {
-        document.querySelectorAll("label").forEach((e) => e.classList.remove("hidden"));
+        document.querySelectorAll("label").forEach((e) => e.classList.remove("category-hidden"));
     }
     chrome.storage.local.set({ category: categories.value });
 });
