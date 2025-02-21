@@ -47,7 +47,7 @@ const render = async () => {
 
     patches.forEach((patch) => {
         if (config[patch.name] !== undefined) return;
-        config[patch.name] = { description: patch.description, enable: true, mobileOnly: patch.mobileOnly, desktopOnly: patch.desktopOnly };
+        config[patch.name] = { description: patch.description, enable: true, devices: patch.devices };
     });
     chrome.storage.sync.set({ options: config });
 
@@ -65,16 +65,16 @@ const render = async () => {
                 <p class="title">${key}</p>
                 <p class="desc">${value.description}</p>
             </div>
-            ${value.mobileOnly ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is mobile only"><path d="M400-160h160v-40H400v40ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm0-80h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg>` : ""}
-            ${value.desktopOnly ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is desktop only"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>` : ""}
+            ${value.devices === "mobileOnly" ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is mobile only"><path d="M400-160h160v-40H400v40ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm0-80h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg>` : ""}
+            ${value.devices === "desktopOnly" ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is desktop only"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>` : ""}
             <div class="toggle-wrapper">
                 <input class="toggle-input" type="checkbox" ${value.enable ? "checked" : ""}>
                 <div class="toggle-switch"></div>
             </div>
         `;
         option.querySelector("input").id = key;
-        if (value.mobileOnly) option.classList.add("mobileOnly");
-        if (value.desktopOnly) option.classList.add("desktopOnly");
+        if (value.devices === "mobileOnly") option.classList.add("mobileOnly");
+        if (value.devices === "desktopOnly") option.classList.add("desktopOnly");
         optionsDOM.appendChild(option);
     }
 
@@ -110,8 +110,7 @@ const render = async () => {
             config[patch.name] = {
                 description: patch.description,
                 enable: nextApplyAllAction,
-                mobileOnly: patch.mobileOnly,
-                desktopOnly: patch.desktopOnly,
+                devices: patch.devices
             };
         });
 
