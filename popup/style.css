@@ -22,10 +22,6 @@ body.mobile {
     align-items: center;
 }
 
-.filter > div > svg {
-    position: relative;
-}
-
 .filter > div > input::placeholder {
     color: #8e8e8e;
 }
@@ -86,6 +82,30 @@ body.mobile {
 
 .categories:hover {
     background: #3f3f46;
+}
+
+label.hidden {
+    display: none;
+}
+
+#clear {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-block: 6px;
+    padding-left: 2px;
+    padding-right: 5px;
+    border-radius: 50%;
+}
+
+#clear > svg {
+    transition: fill 100ms;
+}
+
+#clear:hover > svg {
+    fill: #c2c2c2;
 }
 
 /* Main */

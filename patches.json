@@ -5,14 +5,16 @@
       "files": {
           "css": ["arrows.css"]
       },
-      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
+      "mobileOnly": true
   },
   {
       "name": "Move messages button",
       "description": "Moves messages button to header. (mobile only)",
       "files": {
           "js": ["messagesButton.js"]
-      }
+      },
+      "mobileOnly": true
   },
   {
     "name": "Hide subjects with no grades",
@@ -28,7 +30,8 @@
     "description": "Hides exam results instead of showing no data. (mobile only)",
     "files": {
       "css": ["hideEmptyExamResults.css"]
-    }
+    },
+    "mobileOnly": true
   },
   {
     "name": "Hide footer",
@@ -36,7 +39,8 @@
     "files": {
       "css": ["hideFooter.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
+    "mobileOnly": true
   },
   {
     "name": "Hide WCAG",
@@ -64,10 +68,10 @@
   {
     "name": "Display Full Name",
     "description": "Shows the user's name under the nickname. (desktop only)",
-    
     "files": {
       "js": ["displayFullName.js"]
-    }
+    },
+    "desktopOnly": true
   },
   {
     "name": "Redirect To Board",
@@ -143,7 +147,8 @@
       "css": ["newMobileNavbar/styles.css"],
       "js": ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    "mobileOnly": true
   },
   {
     "name": "Hide weekends in monthly calendars",
@@ -169,7 +174,8 @@
       "js": ["moveUserOptionsToHeader/script.js"],
       "css": ["moveUserOptionsToHeader/styles.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
+    "mobileOnly": true
   },
   {
     "name": "Resigned timetable",
@@ -177,6 +183,7 @@
     "files": {
       "js": ["newTimetable/script.js"],
       "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
-    }
+    },
+    "mobileOnly": true
   }
 ]

@@ -10,60 +10,51 @@ const filterInput = document.querySelector(".filter > div > input");
 const categories = document.querySelector(".categories");
 
 filterInput.addEventListener("input", () => {
-    const filterValue = filterInput.value.toLowerCase();
-    const excludeTerms = [];
-    const includeTerms = [];
+    const filter = filterInput.value.toLowerCase();
 
-    if (Array.from(categories.querySelectorAll('option')).some(option => option.value === filterValue)) {
-        categories.value = filterValue;
-    } else {
-        categories.value = "custom";
-    }
-
-    filterValue.split(' ').forEach(term => {
-        if (term.startsWith('!')) {
-            excludeTerms.push(term.slice(1));
-        } else if (term) {
-            includeTerms.push(term);
-        }
-    });
-
-    Array.from(document.querySelector(".options").children).forEach(
+    Array.from(document.querySelectorAll(".options > *:not(.hidden)")).forEach(
         (option) => {
-            const title = option.querySelector(".title").innerText.toLowerCase();
-            const desc = option.querySelector(".desc").innerText.toLowerCase();
-            const text = title + ' ' + desc;
-
-            const includesAll = includeTerms.length === 0 ||
-                includeTerms.every(term => text.includes(term));
-
-            const excludesAll = excludeTerms.every(term => !text.includes(term));
-
-            option.style.display = (includesAll && excludesAll) ? "flex" : "none";
+            option.style.display =
+                option
+                    .querySelector(".title")
+                    .innerText.toLowerCase()
+                    .includes(filter) ||
+                    option
+                        .querySelector(".desc")
+                        .innerText.toLowerCase()
+                        .includes(filter)
+                    ? "flex"
+                    : "none";
         },
     );
 });
 
 categories.addEventListener("input", () => {
-    filterInput.value = categories.value;
-    filterInput.dispatchEvent(new Event("input"));
+    if (categories.value === "mobile") {
+        document.querySelectorAll(".mobileOnly").forEach((e) => e.classList.remove("hidden"));
+        document.querySelectorAll(".desktopOnly").forEach((e) => e.classList.add("hidden"));
+    } else if (categories.value === "desktop") {
+        document.querySelectorAll(".mobileOnly").forEach((e) => e.classList.add("hidden"));
+        document.querySelectorAll(".desktopOnly").forEach((e) => e.classList.remove("hidden"));
+    } else {
+        document.querySelectorAll("label").forEach((e) => e.classList.remove("hidden"));
+    }
     chrome.storage.local.set({ category: categories.value });
 });
 
-addEventListener("DOMContentLoaded", () => {
-    chrome.storage.local.get(['category']).then(({ category }) => {
-        if (category) categories.value = category;
-        categories.dispatchEvent(new Event("input"));
-    });
+document.querySelector("#clear").addEventListener("click", async () => {
+    filterInput.value = "";
+    filterInput.dispatchEvent(new Event("input"));
 });
 
 const render = async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
+    config = {};
     const patches = await fetchPatches();
 
     patches.forEach((patch) => {
         if (config[patch.name] !== undefined) return;
-        config[patch.name] = { description: patch.description, enable: true };
+        config[patch.name] = { description: patch.description, enable: true, mobileOnly: patch.mobileOnly, desktopOnly: patch.desktopOnly };
     });
     chrome.storage.sync.set({ options: config });
 
@@ -81,12 +72,16 @@ const render = async () => {
                 <p class="title">${key}</p>
                 <p class="desc">${value.description}</p>
             </div>
+            ${value.mobileOnly ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is mobile only"><path d="M400-160h160v-40H400v40ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm0-80h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg>` : ""}
+            ${value.desktopOnly ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is desktop only"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>` : ""}
             <div class="toggle-wrapper">
                 <input class="toggle-input" type="checkbox" ${value.enable ? "checked" : ""}>
                 <div class="toggle-switch"></div>
             </div>
         `;
         option.querySelector("input").id = key;
+        if (value.mobileOnly) option.classList.add("mobileOnly");
+        if (value.desktopOnly) option.classList.add("desktopOnly");
         optionsDOM.appendChild(option);
     }
 
@@ -133,4 +128,12 @@ const render = async () => {
     changeAllButton.addEventListener("click", toggleAllButton);
 })();
 
-document.addEventListener("DOMContentLoaded", render);
+document.addEventListener("DOMContentLoaded", async () => {
+    await render();
+
+    const { category } = await chrome.storage.local.get(['category']) || {};
+    if (category) {
+        categories.value = category;
+        categories.dispatchEvent(new Event("input"));
+    }
+});
