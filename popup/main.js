@@ -90,6 +90,12 @@ const render = async () => {
     if (category) {
         categories.value = category;
         categories.dispatchEvent(new Event("input"));
+    } else if (/\bMobile\b/.test(navigator.userAgent)) {
+        categories.value = "mobile";
+        categories.dispatchEvent(new Event("input"));
+    } else {
+        categories.value = "desktop";
+        categories.dispatchEvent(new Event("input"));
     }
 };
 
