@@ -168,4 +168,9 @@
     iframe {
         filter: invert(1) hue-rotate(180deg);
     }
+    #btAssertion {
+        background-color: var(--secondary--component--background);
+        color: var(--primary-text);
+        border: none;
+    }
 }

@@ -13,12 +13,12 @@ main > header {
 }
 
 footer {
-    border-color: #464646 !important;
+    border-color: var(--borders) !important;
 }
 
 footer > * > div {
     background-color: var(--primary-background) !important;
-    border-color: #464646 !important;
+    border-color: var(--borders) !important;
 }
 
 aside, aside > header {
@@ -26,7 +26,7 @@ aside, aside > header {
 }
 
 aside > header {
-    border-color: #464646 !important;
+    border-color: var(--borders) !important;
 }
 
 .fonts > li > a {
@@ -34,15 +34,19 @@ aside > header {
 }
 
 .languages-desktop {
-    border-color: #464646 !important;
+    border-color: var(--borders) !important;
 }
 
 .user {
-    border-color: #464646 !important;
+    border-color: var(--borders) !important;
 }
 
-main > * > * > .content-container {
+main > * > * .content-container, .p-datatable .p-datatable-tbody > tr, .p-datatable .p-datatable-thead > tr > th {
     background-color: var(--component-background) !important;
+}
+
+.tabsview__header {
+    background-color: var(--secondary--component--background) !important;
 }
 
 .box-shaded:not(#kafel-pomoc-pomigracyjna), .tile__grades > .tile__grades__item {
@@ -75,8 +79,9 @@ main > * > * > .content-container {
 .tile__content__title,
 .tile__content__title,
 .tile__teachers__item,
-.tile__list__borders li {
-    border-color: #464646 !important;
+.tile__list__borders li,
+.tile__grades__item--colors {
+    border-color: var(--borders) !important;
 }
 
 
@@ -116,14 +121,14 @@ li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
     color: var(--secondary-text) !important;
 }
 .tile__list__rectangle-boxes li {
-    border-color: #464646;
+    border-color: var(--borders);
     border-radius: 6px;
 }
 .plan-zajec .background_item, .plan-zajec .background_item:last-of-type {
     border-color: #7c7c7c;
 }
 .tile__list__rectangle__ribbon {
-    background-color: var(--evBlue);
+    background-color: #656587;
 }
 .tile__header {
     background-color: var(--tertiary--component--background);
@@ -134,4 +139,42 @@ li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
 }
 .timetable__grid .column.current {
     background-color: rgba(200, 200, 210, 0.068);
+}
+.last-login__mark {
+    filter: invert(1) hue-rotate(180deg);
+}
+.selectedtab {
+    color: var(--evBlue) !important;
+}
+.table-component--decorated .p-datatable-wrapper table .p-datatable-tbody td {
+    color: var(--secondary-text);
+}
+.tabsview__header {
+    border-color: var(--borders);
+}
+.p-datatable .p-datatable-tbody > tr > td {
+    border-color: var(--borders);
+}
+.p-datatable-wrapper table .p-datatable-thead th {
+    color: var(--tertiary-text);
+}
+.p-datatable-wrapper table .p-datatable-thead {
+    border-color: var(--borders);
+}
+.table-component--decorated .p-datatable-wrapper table .p-datatable-tbody tr {
+    border-color: var(--borders);
+}
+.p-datatable .p-datatable-thead > tr > th {
+    border-color: var(--borders);
+}
+.app .grades__button__one-grade, .modal .grades__button__one-grade {
+    background-color: var(--tertiary--component--background);
+    color: var(--primary-text);
+    border-color: var(--borders);
+}
+.grades__button__content {
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+}
+body .button--default:hover, .app .button--default:hover, .modal .button--default:hover, .details .button--default:hover {
+    background-color: var(--hover);
 }
