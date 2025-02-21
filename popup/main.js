@@ -49,7 +49,6 @@ document.querySelector("#clear").addEventListener("click", async () => {
 
 const render = async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
-    config = {};
     const patches = await fetchPatches();
 
     patches.forEach((patch) => {
