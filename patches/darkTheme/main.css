@@ -124,9 +124,6 @@ li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
     border-color: var(--borders);
     border-radius: 6px;
 }
-.plan-zajec .background_item, .plan-zajec .background_item:last-of-type {
-    border-color: #7c7c7c;
-}
 .tile__list__rectangle__ribbon {
     background-color: #656587;
 }
@@ -177,4 +174,71 @@ li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
 }
 body .button--default:hover, .app .button--default:hover, .modal .button--default:hover, .details .button--default:hover {
     background-color: var(--hover);
+}
+.app .week-selector .week-selector__week-previous, .app .week-selector .week-selector__week-next, body .week-selector .week-selector__week-previous, body .week-selector .week-selector__week-next, .month-selector .month-selector__month-previous, .month-selector .month-selector__month-next {
+    background-color: var(--tertiary--component--background);
+    color: var(--primary-text);
+    border-color: var(--borders);
+}
+.icon_4, .previous_icon_svg__icon_4, .next_icon_svg__icon_4 {
+    fill: var(--secondary-text);
+}
+.app .week-selector .week-selector__week-current *, body .week-selector .week-selector__week-current * {
+    color: var(--secondary-text);
+}
+.frequency__legend .frekwencja-symbol__nazwa {
+    color: var(--secondary-text);
+}
+.column > .column__header > h2 > .day__number, .column > .column__header > h2 > .day__name {
+    color: var(--tertiary-text);
+}
+.background .background_item, .background .background_item:last-of-type {
+    border-color: var(--hr-borders);
+}
+.frequency-position__one-item {
+    background-color: var(--tertiary--component--background) !important;
+}
+.position__lesson__hours.position__lesson__hours--normal-state {
+    color: var(--tertiary-text);
+}
+.frequency__legend {
+    background-color: var(--secondary-background);
+    border-color: var(--borders);
+}
+.frequency-scheduler .frequency-scheduler__body-row .frequency-scheduler__body-cell {
+    border-color: var(--borders);
+}
+.frequency-scheduler .frequency-scheduler__body-row .frequency-scheduler__body-cell .frequency-scheduler-cell__footer {
+    color: var(--primary-text);
+}
+.frequency-scheduler .frequency-scheduler__header-cell {
+    color: var(--tertiary-text);
+}
+.month-selector .month-selector__month-current {
+    color: var(--secondary-text);
+}
+.content__header__info-big {
+    color: var(--tertiary-text);
+}
+.content__header {
+    background-color: var(--secondary--component--background);
+    border-color: var(--borders);
+}
+.content__header__info-subheader {
+    color: var(--secondary-text);
+}
+.content__box {
+    border-color: var(--borders);
+}
+.statistics table .p-datatable-tbody td:first-of-type {
+    color: var(--secondary-text);
+}
+.p-datatable .p-datatable-tbody > tr {
+    color: var(--primary-text);
+}
+.statistics__summary__circle {
+    border-color: var(--tertiary-text);
+}
+.summary__number {
+    border-color: var(--tertiary-text);
 }
