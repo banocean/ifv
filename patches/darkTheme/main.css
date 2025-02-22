@@ -9,7 +9,7 @@ main > section {
 
 main > header {
     background-color: var(--primary-background) !important;
-    border-bottom: 0 !important;
+    border-color: var(--borders) !important;
 }
 
 footer {
@@ -98,12 +98,48 @@ ul .tile__teachers {
     color: var(--primary-text) !important;
 }
 
-.tile__empty-bg, .timetable__grid .column.wolne.current {
-    background: repeating-linear-gradient(45deg, #222222, #222222 10px, var(--secondary--component--background) 10px, var(--secondary--component--background) 12px) !important;
+.tile__empty-bg, .timetable__grid .column.wolne.current, .timetable__grid .column.wolne {
+    background: repeating-linear-gradient(45deg, #222, #222 10px, var(--tertiary--component--background) 12px, var(--tertiary--component--background) 12px);
+    border: 1px solid var(--borders);
+}
+
+.plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day {
+    background: repeating-linear-gradient(45deg, #222, #222 10px, var(--tertiary--component--background) 12px, var(--tertiary--component--background) 12px);
+    border-color: var(--borders);
+}
+
+.plan-scheduler .plan-scheduler__body-row .plan-scheduler__body-cell {
+    border-color: var(--borders);
+}
+
+.plan-scheduler .plan-scheduler__body-row .plan-scheduler__body-cell .plan-scheduler-cell__footer {
+    color: var(--primary-text);
+}
+
+.tile__content > .tile__empty-bg {
+    border: none !important;
+    border-radius: none !important;
+}
+
+.tile__empty-bg {
+    border-radius: 10px;
+}
+
+.timetable__grid .column.wolne:first-of-type, .timetable__grid .column:not(.wolne) + .column.wolne {
+    border-top-left-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+    border-right: none;
+}
+
+.timetable__grid .column.wolne:last-of-type, .timetable__grid .column.wolne:has(+ .column:not(.wolne)) {
+    border-top-right-radius: 16px !important;
+    border-bottom-right-radius: 16px !important;
+    border: 1px solid var(--borders);
 }
 
 .timetable__grid .column.wolne {
     border-radius: 0 !important;
+    border-right: none;
 }
 
 .logoEduVulcan_ciemne_r_svg__cls-1 {
@@ -130,9 +166,12 @@ li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
 .tile__header {
     background-color: var(--tertiary--component--background);
 }
-.cell--single > .plan-position {
+.cell--single > .plan-position, .cell--multi--conflicted, .plan-scheduler-cell__position {
     color: black;
     filter: brightness(0.8) invert(1) hue-rotate(180deg) saturate(170%);
+}
+.cell--single > .plan-position > .details-btn--appearance, .cell--multi--conflicted > div > .conflicted--details--button {
+    filter:  invert(1) hue-rotate(180deg);
 }
 .timetable__grid .column.current {
     background-color: rgba(200, 200, 210, 0.068);
@@ -169,7 +208,7 @@ li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
     color: var(--primary-text);
     border-color: var(--borders);
 }
-.grades__button__content {
+.grades__button__content, .grades__button__content-new {
     filter: invert(1) hue-rotate(180deg) brightness(1.2);
 }
 body .button--default:hover, .app .button--default:hover, .modal .button--default:hover, .details .button--default:hover {
@@ -194,6 +233,7 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 }
 .background .background_item, .background .background_item:last-of-type {
     border-color: var(--hr-borders);
+    color: var(--tertiary-text);
 }
 .frequency-position__one-item {
     background-color: var(--tertiary--component--background) !important;
@@ -241,4 +281,22 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 }
 .summary__number {
     border-color: var(--tertiary-text);
+}
+.plan-position__adnotation.zastepstwo {
+    background-color: #715109;
+}
+.grades__button__content-new {
+    background-color: transparent;
+}
+.app .grades__button__one-grade:has(.grades__button__content-new), .modal .grades__button__one-grade:has(.grades__button__content-new) {
+    border-color: color-mix(in srgb, var(--evBlue), #000 40%);
+}
+.timetable__grid .column__header .swieto {
+    color: var(--primary-text);
+}
+.plan-scheduler__body-cell {
+    background-color: var(--secondary--component--background);
+}
+.plan-scheduler .plan-scheduler__header-cell {
+    color: var(--tertiary-text);
 }
