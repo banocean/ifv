@@ -300,3 +300,15 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 .plan-scheduler .plan-scheduler__header-cell {
     color: var(--tertiary-text);
 }
+.p-datatable .p-sortable-column:not(.p-highlight):not(.p-sortable-disabled):hover, .p-datatable .p-sortable-column.p-highlight {
+    color: var(--secondary-text);
+}
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: var(--tertiary-text);
+}
+.p-datatable .p-sortable-column:not(.p-highlight):not(.p-sortable-disabled):hover .p-sortable-column-icon, .p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: var(--secondary-text);
+}
+.p-datatable .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover, .p-datatable .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover .p-sortable-column-icon {
+    color: var(--primary-text);
+}
