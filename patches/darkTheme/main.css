@@ -312,3 +312,9 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 .p-datatable .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover, .p-datatable .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover .p-sortable-column-icon {
     color: var(--primary-text);
 }
+.note__label {
+    color: var(--tertiary-text);
+}
+.app .border-b-2, .app .content-container .border-b-2, .modal .border-b-2, .modal .content-container .border-b-2 {
+    border-color: var(--borders);
+}
