@@ -346,3 +346,15 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 .scheduler .scheduler__body-row .scheduler-cell--disabled {
     background-color: transparent;
 }
+.info-label {
+    color: var(--secondary-text);
+}
+.info-text {
+    color: var(--primary-text);
+}
+.content-container .box__title, .content-container .box__title__first-of-type, .content-container .info-row {
+    border-color: var(--borders);
+}
+.content-container .box-shaded {
+    overflow: hidden;
+}
