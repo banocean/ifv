@@ -318,3 +318,31 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 .app .border-b-2, .app .content-container .border-b-2, .modal .border-b-2, .modal .content-container .border-b-2 {
     border-color: var(--borders);
 }
+.content-container > .content__header.first-header__date-selector {
+    margin-top: 0;
+}
+.content-container:has(> .content__header.first-header__date-selector) {
+    padding-top: 0;
+}
+.content-container {
+    overflow: hidden;
+}
+.content__header .content__header__one-name {
+    color: var(--evBlue);
+    padding-block: 16px;
+    padding-inline: 31px;
+    margin-top: 3px;
+}
+.scheduler .scheduler__header-cell {
+    color: var(--tertiary-text);
+}
+.scheduler .scheduler__body-row .scheduler__body-cell .scheduler-cell__number {
+    color: var(--primary-text);
+}
+.scheduler .scheduler__body-row .scheduler__body-cell {
+    border-color: var(--borders);
+    background-color: var(--secondary--component--background);
+}
+.scheduler .scheduler__body-row .scheduler-cell--disabled {
+    background-color: transparent;
+}

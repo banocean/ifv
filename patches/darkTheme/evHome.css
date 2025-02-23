@@ -161,9 +161,11 @@
     .pagination > .page-item > .page-link {
         background-color: var(--secondary--component--background);
         color: var(--primary-text);
+        border-color: var(--borders);
     }
     .pagination > .page-item > .page-link:hover {
         background-color: var(--hover);
+        border-color: var(--borders);
     }
     iframe {
         filter: invert(1) hue-rotate(180deg);
@@ -172,5 +174,22 @@
         background-color: var(--secondary--component--background);
         color: var(--primary-text);
         border: none;
+    }
+    .user-links {
+        border-color: var(--hr-borders);
+    }
+    .button-secondary {
+        background-color: var(--secondary--component--background);
+        color: var(--secondary-text);
+        border-color: var(--borders);
+    }
+    .button-secondary:hover {
+        background-color: var(--hover);
+        border-color: var(--borders);
+        color: var(--primary-text);
+    }
+    .input-components input:read-only, .input-components textarea:read-only {
+        background-color: var(--primary--component--background);
+        border-color: var(--borders);
     }
 }
