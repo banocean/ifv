@@ -403,3 +403,6 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
     background-color: var(--tertiary--component--background);
     color: var(--primary-text);
 }
+.app .simple_link.office__link {
+    color: var(--tertiary-text);
+}
