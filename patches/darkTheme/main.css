@@ -358,3 +358,15 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 .content-container .box-shaded {
     overflow: hidden;
 }
+.app .border-b-1, .app .content-container .border-b-1, .modal .border-b-1, .modal .content-container .border-b-1 {
+    border-color: var(--borders);
+}
+.app .teachers__message {
+    background-color: var(--secondary--component--background);
+}
+.wiadomosci_nauczyciele_svg__st_brand, .konto_svg__st_brand, .klodka_svg__st_brand, .podrecznik_svg__st_brand, .ostatnie_zmiany_svg__st_brand, .file_download_svg__st_brand, .file_sending_svg__st_brand, .scalanie_kont_red_svg__st_brand {
+    fill: color-mix(in srgb, var(--evBlue), #000 20%);
+}
+.app .teachers__message:hover {
+    background-color: var(--hover);
+}
