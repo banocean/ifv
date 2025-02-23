@@ -116,9 +116,8 @@ ul .tile__teachers {
     color: var(--primary-text);
 }
 
-.tile__content > .tile__empty-bg {
+.tile__content > .tile__empty-bg, .tile__content > .tile__grades > .tile__empty-bg {
     border: none !important;
-    border-radius: none !important;
 }
 
 .tile__empty-bg {
@@ -258,7 +257,7 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
     color: var(--secondary-text);
 }
 .content__header__info-big {
-    color: var(--tertiary-text);
+    color: #bdbdbd;
 }
 .content__header {
     background-color: var(--secondary--component--background);
@@ -321,7 +320,7 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 .content-container > .content__header.first-header__date-selector {
     margin-top: 0;
 }
-.content-container:has(> .content__header.first-header__date-selector) {
+.content-container:has(> .content__header.first-header__date-selector), .content-container.podreczniki__container {
     padding-top: 0;
 }
 .content-container {
@@ -347,10 +346,10 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
     background-color: transparent;
 }
 .info-label {
-    color: var(--secondary-text);
+    color: var(--tertiary-text);
 }
 .info-text {
-    color: var(--primary-text);
+    color: var(--secondary-text);
 }
 .content-container .box__title, .content-container .box__title__first-of-type, .content-container .info-row {
     border-color: var(--borders);
@@ -369,4 +368,38 @@ body .button--default:hover, .app .button--default:hover, .modal .button--defaul
 }
 .app .teachers__message:hover {
     background-color: var(--hover);
+}
+.content-container.podreczniki__container > .content__header {
+    margin-top: 0;
+}
+.app .combobox label.MuiInputLabel-shrink:not(.Mui-error), .app .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error), .app .combobox .combo-row .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error), .modal .combobox label.MuiInputLabel-shrink:not(.Mui-error), .modal .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error), .modal .combobox .combo-row .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error), div .combobox label.MuiInputLabel-shrink:not(.Mui-error), div .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error), div .combobox .combo-row .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error) {
+    background-color: var(--tertiary--component--background);
+}
+.app .combobox label.MuiInputLabel-shrink:not(.Mui-error), .app .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error), .app .combobox .combo-row .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error), .modal .combobox label.MuiInputLabel-shrink:not(.Mui-error), .modal .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error), .modal .combobox .combo-row .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error), div .combobox label.MuiInputLabel-shrink:not(.Mui-error), div .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error), div .combobox .combo-row .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error) {
+    color: var(--primary-text);
+}
+.app .combobox .editor__form fieldset, .app .combobox fieldset {
+    border-color: var(--borders);
+}
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--borders);
+}
+.MuiInputBase-input {
+    color: var(--secondary-text);
+}
+.app .combobox .editor__form .Mui-focused fieldset, .app .combobox .editor__row .Mui-focused fieldset, .app .combobox .combo-row .MuiOutlinedInput-root.Mui-focused fieldset, .modal .combobox .editor__form .Mui-focused fieldset, .modal .combobox .editor__row .Mui-focused fieldset, .modal .combobox .combo-row .MuiOutlinedInput-root.Mui-focused fieldset, div .combobox .editor__form .Mui-focused fieldset, div .combobox .editor__row .Mui-focused fieldset, div .combobox .combo-row .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: var(--evBlue);
+}
+.app .combobox .combo-row .MuiOutlinedInput-root.Mui-focused:hover fieldset {
+    border-color: var(--evBlue);
+}
+.podreczniki__container .MuiSvgIcon-root {
+    fill: var(--secondary-text);
+}
+.MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover {
+    background-color: var(--hover);
+}
+.MuiPaper-root:has(> .MuiList-root.MuiMenu-list.MuiList-padding) {
+    background-color: var(--tertiary--component--background);
+    color: var(--primary-text);
 }
