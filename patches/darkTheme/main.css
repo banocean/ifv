@@ -585,3 +585,13 @@ form .MuiSvgIcon-root {
 .modal__content .p-datatable .p-datatable-thead > tr > th {
     background-color: var(--secondary--component--background) !important;
 }
+.MuiPaper-root:has(> .user__links__conatainer) {
+    background-color: var(--tertiary--component--background);
+    border: 1px solid var(--borders);
+}
+.MuiPaper-root:has(> .user__links__conatainer) .user__links {
+    border-color: var(--borders);
+}
+.MuiPaper-root:has(> .user__links__conatainer) .user__links a {
+    color: var(--primary-text);
+}
