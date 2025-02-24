@@ -1,4 +1,8 @@
 @media (prefers-color-scheme: dark) {
+    * {
+        box-shadow: none !important;
+    }
+
     body {
         background-color: var(--primary-background);
         color: var(--primary-text);
@@ -56,8 +60,8 @@
     .hint-rectangle,
     .account-option-box-narrow,
     .panelLogin {
-        background-color: var(--secondary-background) !important;
-        border-color: transparent !important;
+        background-color: var(--component-background) !important;
+        border-color: var(--borders);
     }
 
     .user-avatar,
@@ -113,7 +117,7 @@
 
     input[type="text"], input[type="password"] {
         background: var(--secondary--component--background) !important;
-        border-color: transparent !important;
+        border-color: var(--borders);
     }
     .product-name {
         color: var(--evBlue);
@@ -169,11 +173,6 @@
     }
     iframe {
         filter: invert(1) hue-rotate(180deg);
-    }
-    #btAssertion {
-        background-color: var(--secondary--component--background);
-        color: var(--primary-text);
-        border: none;
     }
     .user-links {
         border-color: var(--hr-borders);

@@ -169,7 +169,7 @@
     "files": {
       "css": ["darkTheme/main.css", "darkTheme/colors.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
   },
   {
     "name": "Dark theme for eduVulcan homepage",
