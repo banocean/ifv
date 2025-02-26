@@ -119,7 +119,7 @@
         border: 1px solid var(--borders);
     }
 
-    .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day {
+    .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day, .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day.plan-scheduler-cell__current, .modal__free-day {
         background: repeating-linear-gradient(
             45deg,
             #222,
@@ -560,17 +560,17 @@
         border-color: var(--borders);
     }
     .modal__header {
-        background-color: var(--secondary--component--background);
-        border-color: var(--borders);
-        color: var(--primary-text);
+        background-color: var(--secondary--component--background) !important;
+        border-color: var(--borders) !important;
+        color: var(--primary-text) !important;
     }
     .modal .modal__content {
         background-color: var(--component-background);
         color: var(--primary-text);
     }
     .modal__footer {
-        background-color: var(--secondary--component--background);
-        border-color: var(--borders);
+        background-color: var(--secondary--component--background) !important;
+        border-top: 1px solid var(--borders) !important;
     }
     .modal .details__content__box {
         background-color: var(--secondary--component--background);
@@ -713,6 +713,107 @@
     .MuiFormControlLabel-root.checkboxgroup__selectAll {
         background-color: var(--secondary--component--background);
         border-color: var(--borders);
+        color: var(--primary-text);
+    }
+    .bottom-navigation-bar {
+        background-color: var(--secondary-background);
+        border-color: var(--borders);
+        color: var(--primary-text);
+    }
+    .bottom-navigation-bar > div > div > img:not(.highlight) {
+        filter: none;
+    }
+    .app .accordion__full-width__header, body .accordion__full-width__header {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+        color: var(--secondary-text);
+        border-bottom: none;
+    }
+    .app .accordion__full-width__header, body .accordion__full-width__header:last-of-type {
+        border-bottom: 1px solid var(--borders);
+    }
+    body {
+        background-color: var(--primary-background);
+    }
+    .modal-user {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+    }
+    .modal-link-container span {
+        color: var(--secondary-text);
+    }
+    .close-button:not(aside .close-button) {
+        background-color: transparent !important;
+    }
+    .close-button:not(aside .close-button) > span:last-of-type {
+        filter: invert(0);
+    }
+    .app .accordion__full-width__content, body .accordion__full-width__content, .tabsview__tabs .content-container__tab-subheader, .mobile__frame .tabsview__tabs .content-container__tab-subheader {
+        border-bottom: none;
+    }
+    .MuiCollapse-root {
+        background-color: var(--component-background);
+        color: var(--primary-text);
+        border: 1px solid var(--borders);
+    }
+    .nav-list .MuiCollapse-root {
+        background-color: transparent;
+        border: none;
+    }
+    .modal__free-day__header {
+        border-color: var(--borders);
+    }
+    .list-modal {
+        background-color: var(--primary-background);
+        color: var(--primary-text);
+    }
+    .list-modal > div:first-of-type {
+        background-color: var(--secondary-background);
+        border-color: var(--borders);
+    }
+    .list-modal > div:first-of-type > img {
+        filter: invert(0);
+    }
+    .list-modal > div:last-of-type > div {
+        color: var(--secondary-text);
+        border-color: var(--borders);
+    }
+    .list-modal > div:last-of-type > div > .icon {
+        filter: invert(0.2);
+    }
+    .scheduler-simple .scheduler-simple__header-cell {
+        color: var(--tertiary-text);
+    }
+    .scheduler-simple .scheduler-simple__body-row .scheduler-simple__body-cell .scheduler-simple-cell__number {
+        color: var(--primary-text);
+    }
+    .scheduler-simple .scheduler-simple__body-row .scheduler-simple__body-cell {
+        border-color: var(--borders);
+    }
+    .modal .daily-tasks-simple__row::before {
+        background-color: var(--secondary--component--background);
+        border-color: var(--borders);
+    }
+    .message {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+    }
+    .app .simple_link, .modal .simple_link {
+        color: var(--secondary-text);
+    }
+    .adresaci__wrapper .adresaci__control .adresat__wyszukiwarka .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error) {
+        background-color: var(--tertiary--component--background) !important;
+        color: var(--primary-text) !important;
+    }
+    body .account__chip {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+    }
+    .adresat__wyszukiwarka .account__details .account__unit {
+        color: var(--secondary-text);
+    }
+    .MuiPaper-root {
+        background-color: var(--component-background);
         color: var(--primary-text);
     }
 }
