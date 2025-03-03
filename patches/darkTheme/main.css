@@ -1017,4 +1017,12 @@
         background-color: var(--component-background);
         color: var(--primary-text);
     }
+
+    .student-photo__upload-info {
+        color: var(--secondary-text);
+    }
+
+    .parent__header {
+        color: var(--primary-text);
+    }
 }
