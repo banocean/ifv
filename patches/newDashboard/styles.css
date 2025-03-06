@@ -43,4 +43,35 @@
     .tile.box:has(.lucky-number__circle.lucky-number__circle-1) {
         display: none;
     }
+    
+    .dashboard-info-toolbar {
+        display: flex;
+        height: 50px;
+        gap: 10px;
+    }
+    
+    .dashboard-info-toolbar > div {
+        padding: 10px;
+        background: #f8f9fc;
+        border-radius: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+    }
+    
+    .dashboard-info-toolbar > div > img {
+        filter: invert(0.8);
+        margin-right: 5px;
+        height: 28px;
+    }
+    
+    .dashboard-info-toolbar > div > span {
+        margin-right: 5px; 
+    }
+    
+    .content-container > .tile-container, .content-container > .tile-container > .tile-subcontainer {
+        gap: 10px !important;
+    }
 }

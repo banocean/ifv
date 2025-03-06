@@ -1,3 +1,5 @@
+import {waitForRender} from "../apis/waitForElement.js";
+
 const icons = [
         ["Dzisiejszy plan zajęć", "calendar_clock_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"],
         ["Oceny od ostatniego logowania", "counter_6_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"],
@@ -25,8 +27,42 @@ const applyIcons = () => {
     }
 }
 
+const changeTitles = () => {
+    
+}
+
+const createToolbar = async () => {
+    const element = document.createElement("div")
+    element.classList.add("dashboard-info-toolbar")
+    element.innerHTML = `
+        <div>
+            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/star_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
+            <span>-</span>
+        </div>
+        <div>
+            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/event_note_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
+            <span>-</span>
+        </div>
+        <div>
+            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/mail_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
+            <span>-</span>
+        </div>
+    </div>`
+    
+    const container = document.querySelector(".content-container > .tile-container > .tile-subcontainer")
+    container.insertBefore(element, container.firstChild)
+    
+    const getLuckyNumber = () => document.querySelector(".lucky-number__circle.lucky-number__number > span")?.innerText
+    waitForRender(getLuckyNumber).then(() => element.querySelector("div:first-of-type > span").innerText = getLuckyNumber())
+    
+    const getAmountOfMessages = () => document.querySelector("a[title=\"Przejdź do modułu wiadomości\"] .MuiBadge-anchorOriginTopRightRectangle").innerText
+    waitForRender(getAmountOfMessages).then(() => element.querySelector("div:last-of-type > span").innerText = getAmountOfMessages())
+    
+    
+}
+
 window.appendModule({
-    run: applyIcons,
+    run: () => { applyIcons(); createToolbar(); },
     doesRunHere: () => window.location.href.endsWith("tablica"),
     onlyOnReloads: false,
     isLoaded: () =>
