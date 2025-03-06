@@ -21,8 +21,8 @@ const mutationHandler = async (mutationList) => {
                 e.removeAttribute('data-has-listener');
             }
 
-            await waitForRender(() => modal.querySelector('.close-button'));
-            const closeButton = modal.querySelector('.close-button');
+            await waitForRender(() => modal.querySelector('.modal-button--close'));
+            const closeButton = modal.querySelector('.modal-button--close');
 
             addEventListener('popstate', popstateHandler(closeButton), { once: true });
 
