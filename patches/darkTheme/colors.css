@@ -1,8 +1,14 @@
 :root {
     --primary-background: #121212;
     --secondary-background: #1d1d1d;
-    --component-background: #212121;
+    --component-background: #1a1a1a;
     --secondary--component--background: #242424;
+    --tertiary--component--background: #2d2d2d;
     --primary-text: white;
-    --secondary-text: color-mix(in srgb, black 20%, white 100%)
+    --secondary-text: color-mix(in srgb, black 20%, white 100%);
+    --tertiary-text: #b3b3d3;
+    --evBlue: #47b2ff;
+    --hr-borders: #5d5d5d;
+    --hover: rgba(60, 61, 65, 0.75);
+    --borders: #464646;
 }

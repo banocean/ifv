@@ -1,6 +1,11 @@
 @media (prefers-color-scheme: dark) {
+    * {
+        box-shadow: none !important;
+    }
+
     body {
         background-color: var(--primary-background);
+        color: var(--primary-text);
     }
 
     .material-symbols-outlined:not(.icon-add > .material-symbols-outlined) {
@@ -13,7 +18,6 @@
 
     .option-box-icon > .material-symbols-outlined,
     .material-symbols-outlined > .material-symbols-outlined,
-    .account-management-avatar > .material-symbols-outlined,
     .icon-elevated-level-1 > .material-symbols-outlined {
         color: var(--primary-background) !important;
     }
@@ -56,8 +60,8 @@
     .hint-rectangle,
     .account-option-box-narrow,
     .panelLogin {
-        background-color: var(--secondary-background) !important;
-        border-color: transparent !important;
+        background-color: var(--component-background) !important;
+        border-color: var(--borders);
     }
 
     .user-avatar,
@@ -97,7 +101,7 @@
         color: var(--primary-text) !important;
     }
 
-    .data-table tbody tr:nth-child(2n+1) td {
+    .data-table tbody tr:nth-child(2n + 1) td {
         background-color: var(--secondary--component--background) !important;
     }
 
@@ -111,8 +115,105 @@
         color: white !important;
     }
 
-    input[type="text"], input[type="password"] {
+    input[type="text"],
+    input[type="password"] {
         background: var(--secondary--component--background) !important;
-        border-color: transparent !important;
+        border-color: var(--borders);
+    }
+
+    .product-name {
+        color: var(--evBlue);
+    }
+
+    .link-create-account {
+        color: var(--evBlue);
+    }
+
+    svg,
+    img[src*=".svg"] {
+        filter: invert(1) hue-rotate(180deg) !important;
+    }
+
+    .connected-account-name {
+        color: var(--secondary-text) !important;
+    }
+
+    .access-list {
+        border-bottom-color: var(--hr-borders);
+    }
+
+    .connected-account {
+        border-top-color: var(--hr-borders);
+    }
+
+    .access-row--add {
+        color: var(--evBlue);
+    }
+
+    .access-row--add:hover {
+        background-color: var(--hover);
+    }
+
+    .access-row--add > .icon-add {
+        color: var(--evBlue);
+        outline-color: var(--evBlue);
+    }
+
+    .header-dropdown-content {
+        background-color: var(--secondary--component--background);
+    }
+
+    .header-dropdown-content .user-links-0:hover,
+    .header-dropdown-content .user-links:hover {
+        background-color: var(--hover);
+    }
+
+    .account-management-avatar {
+        background-color: var(--secondary--component--background);
+    }
+
+    .payment-active-box {
+        background-color: var(--secondary--component--background);
+    }
+
+    .options-box-header {
+        color: var(--primary-text);
+    }
+
+    .pagination > .page-item > .page-link {
+        background-color: var(--secondary--component--background);
+        color: var(--primary-text);
+        border-color: var(--borders);
+    }
+
+    .pagination > .page-item > .page-link:hover {
+        background-color: var(--hover);
+        border-color: var(--borders);
+    }
+
+    iframe {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .user-links {
+        border-color: var(--hr-borders);
+    }
+
+    .button-secondary {
+        background-color: var(--secondary--component--background);
+        color: var(--secondary-text);
+        border-color: var(--borders);
+    }
+
+    .button-secondary:hover {
+        background-color: var(--hover);
+        border-color: var(--borders);
+        color: var(--primary-text);
+    }
+
+    .input-components input:read-only,
+    .input-components textarea:read-only {
+        background-color: var(--primary--component--background);
+        border-color: var(--borders);
     }
 }

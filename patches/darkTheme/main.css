@@ -1,110 +1,1028 @@
-main > section {
-    background-color: var(--primary-background) !important;
-    color: white !important;
-}
+@media (prefers-color-scheme: dark) {
+    * {
+        box-shadow: none !important;
+    }
 
-main > header {
-    background-color: var(--primary-background) !important;
-    border-bottom: 0 !important;
-}
+    main > section {
+        background-color: var(--primary-background) !important;
+        color: white !important;
+    }
 
-footer {
-    border: 0 !important;
-}
+    main > header {
+        background-color: var(--primary-background) !important;
+        border-color: var(--borders) !important;
+    }
 
-footer > * > div {
-    background-color: var(--primary-background) !important;
-    border: 0 !important;
-}
+    footer {
+        border-color: var(--borders) !important;
+    }
 
-aside, aside > header {
-    background-color: var(--secondary-background) !important;
-}
+    footer > * > div {
+        background-color: var(--primary-background) !important;
+        border-color: var(--borders) !important;
+    }
 
-aside > header {
-    border: 0 !important;
-}
+    aside,
+    aside > header {
+        background-color: var(--secondary-background) !important;
+    }
 
-.fonts > li > a {
-    color: var(--secondary-text) !important;
-}
+    aside > header {
+        border-color: var(--borders) !important;
+    }
 
-.languages-desktop {
-    border: 0 !important;
-}
+    .fonts > li > a {
+        color: var(--secondary-text) !important;
+    }
 
-.user {
-    border: 0 !important;
-}
+    .languages-desktop {
+        border-color: var(--borders) !important;
+    }
 
-main > * > * > .content-container {
-    background-color: var(--component-background) !important;
-}
+    .user {
+        border-color: var(--borders) !important;
+    }
 
-.box-shaded:not(#kafel-pomoc-pomigracyjna) {
-    background-color: var(--component-background) !important;
-    color: var(--secondary-text) !important;
-}
+    main > * > * .content-container,
+    .p-datatable .p-datatable-tbody > tr,
+    .p-datatable .p-datatable-thead > tr > th {
+        background-color: var(--component-background) !important;
+    }
 
-.user__section > a > div > span, .user__section > a > svg {
-    color: var(--secondary-text) !important;
-}
+    .tabsview__header {
+        background-color: var(--secondary--component--background) !important;
+    }
 
-.header__hamburger__icon > button > span > svg {
-    color: white !important;
-}
+    .box-shaded:not(#kafel-pomoc-pomigracyjna),
+    .tile__grades > .tile__grades__item {
+        background-color: var(--secondary--component--background) !important;
+        color: var(--secondary-text) !important;
+    }
 
-.side_studentContext {
-    display: none !important;
-}
+    .user__section > a > div > span,
+    .user__section > a > svg {
+        color: var(--secondary-text) !important;
+    }
 
-.wiadomosci_svg__icon_4 {
-    fill: white
-}
+    .header__hamburger__icon > button > span > svg {
+        color: white !important;
+    }
 
-.tile__header, .tile__header > div > a {
-    color: var(--secondary-text) !important;
-}
+    .side_studentContext {
+        display: none !important;
+    }
 
-.content-container .tile .tile__header,
-.content-container .box-shaded,
-.tile__content__title,
-.tile__content__title,
-.tile__teachers__item,
-.tile__list__borders li {
-    border: 0 !important;
-}
+    .wiadomosci_svg__icon_4 {
+        fill: white;
+    }
 
+    .tile__header,
+    .tile__header > div > a {
+        color: var(--tertiary-text) !important;
+    }
 
+    .content-container .tile .tile__header,
+    .content-container .box-shaded,
+    .tile__content__title,
+    .tile__content__title,
+    .tile__teachers__item,
+    .tile__list__borders li,
+    .tile__grades__item--colors {
+        border-color: var(--borders) !important;
+    }
 
-ul .tile__teachers {
-    padding: 0 !important;
-}
+    ul .tile__teachers {
+        padding: 0 !important;
+    }
 
-.app-footer .app-footer__row a, .tile__teacher__type, .tile__teacher__type, .tile__important-text {
-    color: var(--secondary-text) !important;
-}
+    .app-footer .app-footer__row a,
+    .tile__teacher__type,
+    .tile__teacher__type,
+    .tile__important-text {
+        color: var(--secondary-text) !important;
+    }
 
-.tile__teacher__name {
-    color: var(--primary-text) !important;
-}
+    .tile__teacher__name {
+        color: var(--primary-text) !important;
+    }
 
-.content-container {
-    box-shadow: inset 0 0 6px rgba(0,0,0,.3) !important;
-}
+    .tile__empty-bg,
+    .timetable__grid .column.wolne.current,
+    .timetable__grid .column.wolne {
+        background: repeating-linear-gradient(
+            45deg,
+            #222,
+            #222 10px,
+            var(--tertiary--component--background) 12px,
+            var(--tertiary--component--background) 12px
+        );
+        border: 1px solid var(--borders);
+    }
 
-.box-shaded {
-    box-shadow: rgb(0 0 0 / 45%) 0px 8px 24px !important;
-}
+    .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day,
+    .plan-scheduler
+        .plan-scheduler__body-row
+        .plan-scheduler-cell__free-day.plan-scheduler-cell__current,
+    .modal__free-day {
+        background: repeating-linear-gradient(
+            45deg,
+            #222,
+            #222 10px,
+            var(--tertiary--component--background) 12px,
+            var(--tertiary--component--background) 12px
+        );
+        border-color: var(--borders);
+    }
 
-.tile__empty-bg, .timetable__grid .column.wolne.current {
-    background: repeating-linear-gradient(45deg, #222222, #222222 10px, var(--secondary--component--background) 10px, var(--secondary--component--background) 12px) !important;
-}
+    .plan-scheduler .plan-scheduler__body-row .plan-scheduler__body-cell {
+        border-color: var(--borders);
+    }
 
-.timetable__grid .column.wolne {
-    border-radius: 0 !important;
-}
+    .plan-scheduler
+        .plan-scheduler__body-row
+        .plan-scheduler__body-cell
+        .plan-scheduler-cell__footer {
+        color: var(--primary-text);
+    }
 
-.logoEduVulcan_ciemne_r_svg__cls-1 {
-    fill: white !important;
+    .tile__content > .tile__empty-bg,
+    .tile__content > .tile__grades > .tile__empty-bg {
+        border: none !important;
+    }
+
+    .tile__empty-bg {
+        border-radius: 10px;
+    }
+
+    .timetable__grid .column.wolne:first-of-type,
+    .timetable__grid .column:not(.wolne) + .column.wolne {
+        border-top-left-radius: 16px !important;
+        border-bottom-left-radius: 16px !important;
+        border-right: none;
+    }
+
+    .timetable__grid .column.wolne:last-of-type,
+    .timetable__grid .column.wolne:has(+ .column:not(.wolne)) {
+        border-top-right-radius: 16px !important;
+        border-bottom-right-radius: 16px !important;
+        border: 1px solid var(--borders);
+    }
+
+    .timetable__grid .column.wolne {
+        border-radius: 0 !important;
+        border-right: none;
+    }
+
+    .logoEduVulcan_ciemne_r_svg__cls-1 {
+        fill: white !important;
+    }
+
+    .tile__content {
+        background-color: var(--secondary--component--background) !important;
+        color: var(--primary-text) !important;
+    }
+
+    li > .box-shaded:not(#kafel-pomoc-pomigracyjna) {
+        background-color: var(--tertiary--component--background) !important;
+        color: var(--primary-text) !important;
+    }
+
+    .tile__grades__subject {
+        color: var(--secondary-text) !important;
+    }
+
+    .tile__list__rectangle-boxes li {
+        border-color: var(--borders);
+        border-radius: 6px;
+    }
+
+    .tile__list__rectangle__ribbon {
+        background-color: #656587;
+    }
+
+    .tile__header {
+        background-color: var(--tertiary--component--background);
+    }
+
+    .cell--single > .plan-position,
+    .cell--multi--conflicted,
+    .plan-scheduler-cell__position,
+    .modal__content > div > .plan-position {
+        color: black;
+        filter: brightness(0.8) invert(1) hue-rotate(180deg) saturate(170%);
+    }
+
+    .cell--single > .plan-position > .details-btn--appearance,
+    .cell--multi--conflicted > div > .conflicted--details--button,
+    .modal__content > div > .plan-position > .details-btn--appearance {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .timetable__grid .column.current {
+        background-color: rgba(200, 200, 210, 0.068);
+    }
+
+    .last-login__mark {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .selectedtab {
+        color: var(--evBlue) !important;
+    }
+
+    .table-component--decorated
+        .p-datatable-wrapper
+        table
+        .p-datatable-tbody
+        td {
+        color: var(--secondary-text);
+    }
+
+    .tabsview__header {
+        border-color: var(--borders);
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td {
+        border-color: var(--borders);
+    }
+
+    .p-datatable-wrapper table .p-datatable-thead th {
+        color: var(--tertiary-text);
+    }
+
+    .p-datatable-wrapper table .p-datatable-thead {
+        border-color: var(--borders);
+    }
+
+    .table-component--decorated
+        .p-datatable-wrapper
+        table
+        .p-datatable-tbody
+        tr {
+        border-color: var(--borders);
+    }
+
+    .p-datatable .p-datatable-thead > tr > th {
+        border-color: var(--borders);
+    }
+
+    .app .grades__button__one-grade,
+    .modal .grades__button__one-grade {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+        border-color: var(--borders);
+    }
+
+    .grades__button__content,
+    .grades__button__content-new {
+        filter: invert(1) hue-rotate(180deg) brightness(1.2);
+    }
+
+    body .button--default:hover,
+    .app .button--default:hover,
+    .modal .button--default:hover,
+    .details .button--default:hover {
+        background-color: var(--hover);
+    }
+
+    .app .week-selector .week-selector__week-previous,
+    .app .week-selector .week-selector__week-next,
+    body .week-selector .week-selector__week-previous,
+    body .week-selector .week-selector__week-next,
+    .month-selector .month-selector__month-previous,
+    .month-selector .month-selector__month-next {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+        border-color: var(--borders);
+    }
+
+    .icon_4,
+    .previous_icon_svg__icon_4,
+    .next_icon_svg__icon_4 {
+        fill: var(--secondary-text);
+    }
+
+    .app .week-selector .week-selector__week-current *,
+    body .week-selector .week-selector__week-current * {
+        color: var(--secondary-text);
+    }
+
+    .frequency__legend .frekwencja-symbol__nazwa {
+        color: var(--secondary-text);
+    }
+
+    .column > .column__header > h2 > .day__number,
+    .column > .column__header > h2 > .day__name {
+        color: var(--tertiary-text);
+    }
+
+    .background .background_item,
+    .background .background_item:last-of-type {
+        border-color: var(--hr-borders);
+        color: var(--tertiary-text);
+    }
+
+    .frequency-position__one-item {
+        background-color: var(--tertiary--component--background) !important;
+    }
+
+    .position__lesson__hours.position__lesson__hours--normal-state {
+        color: var(--tertiary-text);
+    }
+
+    .frequency__legend {
+        background-color: var(--secondary-background);
+        border-color: var(--borders);
+    }
+
+    .frequency-scheduler
+        .frequency-scheduler__body-row
+        .frequency-scheduler__body-cell {
+        border-color: var(--borders);
+    }
+
+    .frequency-scheduler
+        .frequency-scheduler__body-row
+        .frequency-scheduler__body-cell
+        .frequency-scheduler-cell__footer {
+        color: var(--primary-text);
+    }
+
+    .frequency-scheduler .frequency-scheduler__header-cell {
+        color: var(--tertiary-text);
+    }
+
+    .month-selector .month-selector__month-current {
+        color: var(--secondary-text);
+    }
+
+    .content__header__info-big {
+        color: #bdbdbd;
+    }
+
+    .content__header {
+        background-color: var(--secondary--component--background);
+        border-color: var(--borders);
+    }
+
+    .content__header__info-subheader {
+        color: var(--secondary-text);
+    }
+
+    .content__box {
+        border-color: var(--borders);
+    }
+
+    .statistics table .p-datatable-tbody td:first-of-type {
+        color: var(--secondary-text);
+    }
+
+    .p-datatable .p-datatable-tbody > tr {
+        color: var(--primary-text);
+    }
+
+    .statistics__summary__circle {
+        border-color: var(--tertiary-text);
+    }
+
+    .summary__number {
+        border-color: var(--tertiary-text);
+    }
+
+    .plan-position__adnotation.zastepstwo {
+        background-color: #715109;
+    }
+
+    .plan-position__adnotation.przeniesienie {
+        background-color: #8951cc;
+    }
+
+    .grades__button__content-new {
+        background-color: transparent;
+    }
+
+    .app .grades__button__one-grade:has(.grades__button__content-new),
+    .modal .grades__button__one-grade:has(.grades__button__content-new) {
+        border-color: color-mix(in srgb, var(--evBlue), #000 40%);
+    }
+
+    .timetable__grid .column__header .swieto {
+        color: var(--primary-text);
+    }
+
+    .plan-scheduler__body-cell {
+        background-color: var(--secondary--component--background);
+    }
+
+    .plan-scheduler .plan-scheduler__header-cell {
+        color: var(--tertiary-text);
+    }
+
+    .p-datatable
+        .p-sortable-column:not(.p-highlight):not(.p-sortable-disabled):hover,
+    .p-datatable .p-sortable-column.p-highlight {
+        color: var(--secondary-text);
+    }
+
+    .p-datatable .p-sortable-column .p-sortable-column-icon {
+        color: var(--tertiary-text);
+    }
+
+    .p-datatable
+        .p-sortable-column:not(.p-highlight):not(.p-sortable-disabled):hover
+        .p-sortable-column-icon,
+    .p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+        color: var(--secondary-text);
+    }
+
+    .p-datatable .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover,
+    .p-datatable
+        .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover
+        .p-sortable-column-icon {
+        color: var(--primary-text);
+    }
+
+    .note__label {
+        color: var(--tertiary-text);
+    }
+
+    .app .border-b-2,
+    .app .content-container .border-b-2,
+    .modal .border-b-2,
+    .modal .content-container .border-b-2 {
+        border-color: var(--borders);
+    }
+
+    .content-container > .content__header.first-header__date-selector {
+        margin-top: 0;
+    }
+
+    .content-container:has(> .content__header.first-header__date-selector),
+    .content-container.podreczniki__container {
+        padding-top: 0;
+    }
+
+    .content-container {
+        overflow: hidden;
+    }
+
+    .content__header .content__header__one-name {
+        color: var(--evBlue);
+        padding-block: 16px;
+        padding-inline: 31px;
+        margin-top: 3px;
+    }
+
+    .scheduler .scheduler__header-cell {
+        color: var(--tertiary-text);
+    }
+
+    .scheduler
+        .scheduler__body-row
+        .scheduler__body-cell
+        .scheduler-cell__number {
+        color: var(--primary-text);
+    }
+
+    .scheduler .scheduler__body-row .scheduler__body-cell {
+        border-color: var(--borders);
+        background-color: var(--secondary--component--background);
+    }
+
+    .scheduler .scheduler__body-row .scheduler-cell--disabled {
+        background-color: transparent;
+    }
+
+    .info-label {
+        color: var(--tertiary-text);
+    }
+
+    .info-text {
+        color: var(--secondary-text);
+    }
+
+    .content-container .box__title,
+    .content-container .box__title__first-of-type,
+    .content-container .info-row {
+        border-color: var(--borders);
+    }
+
+    .content-container .box-shaded {
+        overflow: hidden;
+    }
+
+    .app .border-b-1,
+    .app .content-container .border-b-1,
+    .modal .border-b-1,
+    .modal .content-container .border-b-1 {
+        border-color: var(--borders);
+    }
+
+    .app .teachers__message {
+        background-color: var(--secondary--component--background);
+    }
+
+    .wiadomosci_nauczyciele_svg__st_brand,
+    .konto_svg__st_brand,
+    .klodka_svg__st_brand,
+    .podrecznik_svg__st_brand,
+    .ostatnie_zmiany_svg__st_brand,
+    .file_download_svg__st_brand,
+    .file_sending_svg__st_brand,
+    .scalanie_kont_red_svg__st_brand {
+        fill: color-mix(in srgb, var(--evBlue), #000 20%);
+    }
+
+    .app .teachers__message:hover {
+        background-color: var(--hover);
+    }
+
+    .content-container.podreczniki__container > .content__header {
+        margin-top: 0;
+    }
+
+    .app .combobox label.MuiInputLabel-shrink:not(.Mui-error),
+    .app .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error),
+    .app
+        .combobox
+        .combo-row
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error),
+    .modal .combobox label.MuiInputLabel-shrink:not(.Mui-error),
+    .modal .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error),
+    .modal
+        .combobox
+        .combo-row
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error),
+    div .combobox label.MuiInputLabel-shrink:not(.Mui-error),
+    div .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error),
+    div
+        .combobox
+        .combo-row
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error) {
+        background-color: var(--tertiary--component--background);
+    }
+
+    .app .combobox label.MuiInputLabel-shrink:not(.Mui-error),
+    .app .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error),
+    .app
+        .combobox
+        .combo-row
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error),
+    .modal .combobox label.MuiInputLabel-shrink:not(.Mui-error),
+    .modal .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error),
+    .modal
+        .combobox
+        .combo-row
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error),
+    div .combobox label.MuiInputLabel-shrink:not(.Mui-error),
+    div .combobox .editor__form label.MuiInputLabel-shrink:not(.Mui-error),
+    div
+        .combobox
+        .combo-row
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error) {
+        color: var(--primary-text);
+    }
+
+    .app .combobox .editor__form fieldset,
+    .app .combobox fieldset,
+    .modal .modal__box-shaded fieldset,
+    .modal .modal__box-shaded.editor__row fieldset,
+    .modal .editor__form .editor__row .form__box:hover fieldset {
+        border-color: var(--borders);
+    }
+
+    .modal .combobox .MuiSelect-root:focus {
+        background-color: var(--secondary--component--background);
+    }
+
+    .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+        border-color: var(--borders);
+    }
+
+    .MuiInputBase-input {
+        color: var(--secondary-text);
+    }
+
+    .app .combobox .editor__form .Mui-focused fieldset,
+    .app .combobox .editor__row .Mui-focused fieldset,
+    .app .combobox .combo-row .MuiOutlinedInput-root.Mui-focused fieldset,
+    .modal .combobox .editor__form .Mui-focused fieldset,
+    .modal .combobox .editor__row .Mui-focused fieldset,
+    .modal .combobox .combo-row .MuiOutlinedInput-root.Mui-focused fieldset,
+    div .combobox .editor__form .Mui-focused fieldset,
+    div .combobox .editor__row .Mui-focused fieldset,
+    div .combobox .combo-row .MuiOutlinedInput-root.Mui-focused fieldset {
+        border-color: var(--evBlue);
+    }
+
+    .modal .modal__box-shaded .MuiInputBase-root {
+        background-color: var(--secondary--component--background);
+    }
+
+    .app .combobox .combo-row .MuiOutlinedInput-root.Mui-focused:hover fieldset,
+    div .combobox .combo-row .MuiOutlinedInput-root.Mui-focused:hover fieldset {
+        border-color: var(--evBlue) !important;
+    }
+
+    .podreczniki__container .MuiSvgIcon-root,
+    form .MuiSvgIcon-root {
+        fill: var(--secondary-text);
+    }
+
+    .MuiListItem-root.Mui-selected,
+    .MuiListItem-root.Mui-selected:hover {
+        background-color: var(--hover);
+    }
+
+    .MuiPaper-root:has(> .MuiList-root.MuiMenu-list.MuiList-padding) {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+    }
+
+    .app .simple_link.office__link {
+        color: var(--tertiary-text);
+    }
+
+    .app .border-t-1,
+    .app .content-container .border-t-1,
+    .modal .border-t-1,
+    .modal .content-container .border-t-1 {
+        border-color: var(--borders);
+    }
+
+    .modal__header {
+        background-color: var(--secondary--component--background) !important;
+        border-color: var(--borders) !important;
+        color: var(--primary-text) !important;
+    }
+
+    .modal .modal__content {
+        background-color: var(--component-background);
+        color: var(--primary-text);
+    }
+
+    .modal__footer {
+        background-color: var(--secondary--component--background) !important;
+        border-top: 1px solid var(--borders) !important;
+    }
+
+    .modal .details__content__box {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+    }
+
+    .modal .details__content__box__header,
+    .details .details__content__box__header {
+        border-color: var(--borders);
+    }
+
+    .nauczyciel_details_svg__st0,
+    .nauczyciele_details_svg__st0,
+    .sala_svg__st0 {
+        fill: var(--tertiary-text);
+    }
+
+    .modal__plan-details__row > svg {
+        color: var(--tertiary-text) !important;
+    }
+
+    .details__content__box__header {
+        background-color: var(--tertiary--component--background);
+    }
+
+    .modal__content .p-datatable .p-datatable-tbody > tr {
+        background-color: var(--secondary--component--background) !important;
+    }
+
+    .modal__content .p-datatable .p-datatable-thead > tr > th {
+        background-color: var(--secondary--component--background) !important;
+    }
+
+    .MuiPaper-root:has(> .user__links__conatainer) {
+        background-color: var(--tertiary--component--background);
+        border: 1px solid var(--borders);
+    }
+
+    .MuiPaper-root:has(> .user__links__conatainer) .user__links {
+        border-color: var(--borders);
+    }
+
+    .MuiPaper-root:has(> .user__links__conatainer) .user__links a {
+        color: var(--primary-text);
+    }
+
+    .row-wiadomosc-nieprzeczytana td.column--temat {
+        color: var(--evBlue);
+    }
+
+    .row-wiadomosc-nieprzeczytana td {
+        color: var(--tertiary-text);
+    }
+
+    .app .simple-checkbox__box.MuiCheckbox-root,
+    .modal .simple-checkbox__box.MuiCheckbox-root,
+    body .simple-checkbox__box.MuiCheckbox-root {
+        color: var(--tertiary-text);
+    }
+
+    .MuiIconButton-root[aria-label="Message importance"] {
+        color: var(--tertiary-text);
+    }
+
+    .MuiIconButton-root {
+        color: var(--primary-text);
+    }
+
+    .MuiButton-contained.Mui-disabled {
+        background-color: var(--secondary--component--background);
+        color: color-mix(in srgb, var(--secondary-text), #000 40%);
+        cursor: not-allowed;
+    }
+
+    .app .daily-tasks ol li.daily-tasks__row::before,
+    .modal .daily-tasks ol li.daily-tasks__row::before {
+        background-color: var(--secondary--component--background);
+        border-color: var(--borders);
+    }
+
+    body .button--default,
+    .app .button--default,
+    .modal .button--default,
+    .details .button--default {
+        background-color: var(--secondary--component--background);
+        color: var(--evBlue);
+        border-color: var(--borders);
+    }
+
+    body .button--default:hover,
+    .app .button--default:hover,
+    .modal .button--default:hover,
+    .details .button--default:hover {
+        background-color: var(--hover);
+        color: var(--evBlue);
+        border-color: var(--borders);
+    }
+
+    .app .textbox .editor__form fieldset,
+    .app .textbox fieldset {
+        border-color: var(--borders);
+    }
+
+    .app .textbox .MuiInputLabel-root:not(.Mui-error),
+    .modal .textbox .MuiInputLabel-root:not(.Mui-error),
+    div .textbox .MuiInputLabel-root:not(.Mui-error),
+    .adresaci__control .MuiInputLabel-root:not(.Mui-error) {
+        color: var(--secondary-text);
+    }
+
+    div .textbox .MuiInputLabel-shrink:not(.Mui-error) {
+        background-color: var(--tertiary--component--background) !important;
+        color: var(--primary-text) !important;
+    }
+
+    .textbox .MuiOutlinedInput-root.Mui-focused fieldset,
+    .textbox .MuiOutlinedInput-root.Mui-focused:hover fieldset {
+        border-color: var(--evBlue) !important;
+    }
+
+    .adresaci__control .MuiInputLabel-root.Mui-focused:not(.Mui-error) {
+        background-color: var(--tertiary--component--background) !important;
+        color: var(--primary-text) !important;
+    }
+
+    .p-editor-container .p-editor-toolbar {
+        background-color: var(--tertiary--component--background);
+    }
+
+    .p-editor-container .p-editor-content .ql-editor {
+        background-color: var(--secondary--component--background);
+        color: var(--primary-text);
+    }
+
+    .p-editor-container .p-editor-toolbar.ql-snow,
+    .p-editor-container .p-editor-content.ql-snow {
+        border-color: var(--borders);
+    }
+
+    .p-editor-container .p-editor-toolbar.ql-snow .ql-stroke {
+        stroke: var(--tertiary-text);
+    }
+
+    .p-editor-container .ql-snow.ql-toolbar button:hover,
+    .p-editor-container .ql-snow.ql-toolbar button:focus {
+        stroke: var(--secondary-text);
+        color: var(--secondary-text);
+    }
+
+    .ql-editor.ql-blank::before {
+        color: var(--secondary-text);
+    }
+
+    .modal .message-details {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+    }
+
+    .modal .message-details .info-row {
+        border-color: var(--borders);
+    }
+
+    .recipients .recipients__content .adresat__grupa {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+        color: var(--primary-text);
+    }
+
+    .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined {
+        color: var(--secondary-text);
+    }
+
+    .checkboxgroup .checkboxgroup__legend {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+    }
+
+    .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
+        border-color: var(--borders);
+    }
+
+    .chosen-recipients__label {
+        background-color: var(--tertiary--component--background);
+    }
+
+    .modal .switch .search-panel > div,
+    .modal .editor__form label + div,
+    .modal .modal__box-shaded .MuiInputBase-root,
+    .modal .modal__box-shaded .checkboxgroup,
+    .modal .attachment__list-item-shaded,
+    .modal .simple-checkbox,
+    .details .switch .search-panel > div,
+    .details .editor__form label + div,
+    .details .modal__box-shaded .MuiInputBase-root,
+    .details .modal__box-shaded .checkboxgroup,
+    .details .attachment__list-item-shaded,
+    .details .simple-checkbox {
+        background-color: var(--secondary--component--background);
+    }
+
+    .app .editor__form .form__box,
+    .modal .editor__form .form__box {
+        background-color: var(--secondary--component--background);
+        border-color: var(--borders);
+    }
+
+    .MuiFormControlLabel-root.checkboxgroup__selectAll {
+        background-color: var(--secondary--component--background);
+        border-color: var(--borders);
+        color: var(--primary-text);
+    }
+
+    .bottom-navigation-bar {
+        background-color: var(--secondary-background);
+        border-color: var(--borders);
+        color: var(--primary-text);
+    }
+
+    .bottom-navigation-bar > div > div > img:not(.highlight) {
+        filter: none;
+    }
+
+    .app .accordion__full-width__header,
+    body .accordion__full-width__header {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+        color: var(--secondary-text);
+        border-bottom: none;
+    }
+
+    .app .accordion__full-width__header,
+    body .accordion__full-width__header:last-of-type {
+        border-bottom: 1px solid var(--borders);
+    }
+
+    body {
+        background-color: var(--primary-background);
+    }
+
+    .modal-user {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+    }
+
+    .modal-link-container span {
+        color: var(--secondary-text);
+    }
+
+    .close-button:not(aside .close-button) {
+        background-color: transparent !important;
+    }
+
+    .close-button:not(aside .close-button) > span:last-of-type {
+        filter: invert(0);
+    }
+
+    .app .accordion__full-width__content,
+    body .accordion__full-width__content,
+    .tabsview__tabs .content-container__tab-subheader,
+    .mobile__frame .tabsview__tabs .content-container__tab-subheader {
+        border-bottom: none;
+    }
+
+    .MuiCollapse-root {
+        background-color: var(--component-background);
+        color: var(--primary-text);
+        border: 1px solid var(--borders);
+    }
+
+    .nav-list .MuiCollapse-root {
+        background-color: transparent;
+        border: none;
+    }
+
+    .modal__free-day__header {
+        border-color: var(--borders);
+    }
+
+    .list-modal {
+        background-color: var(--primary-background);
+        color: var(--primary-text);
+    }
+
+    .list-modal > div:first-of-type {
+        background-color: var(--secondary-background);
+        border-color: var(--borders);
+    }
+
+    .list-modal > div:first-of-type > img {
+        filter: invert(0);
+    }
+
+    .list-modal > div:last-of-type > div {
+        color: var(--secondary-text);
+        border-color: var(--borders);
+    }
+
+    .list-modal > div:last-of-type > div > .icon {
+        filter: invert(0.2);
+    }
+
+    .scheduler-simple .scheduler-simple__header-cell {
+        color: var(--tertiary-text);
+    }
+
+    .scheduler-simple
+        .scheduler-simple__body-row
+        .scheduler-simple__body-cell
+        .scheduler-simple-cell__number {
+        color: var(--primary-text);
+    }
+
+    .scheduler-simple .scheduler-simple__body-row .scheduler-simple__body-cell {
+        border-color: var(--borders);
+    }
+
+    .modal .daily-tasks-simple__row::before {
+        background-color: var(--secondary--component--background);
+        border-color: var(--borders);
+    }
+
+    .message {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+    }
+
+    .app .simple_link,
+    .modal .simple_link {
+        color: var(--secondary-text);
+    }
+
+    .adresaci__wrapper
+        .adresaci__control
+        .adresat__wyszukiwarka
+        .MuiInputLabel-root.MuiInputLabel-shrink:not(.Mui-error) {
+        background-color: var(--tertiary--component--background) !important;
+        color: var(--primary-text) !important;
+    }
+
+    body .account__chip {
+        background-color: var(--tertiary--component--background);
+        color: var(--primary-text);
+    }
+
+    .adresat__wyszukiwarka .account__details .account__unit {
+        color: var(--secondary-text);
+    }
+
+    .MuiPaper-root {
+        background-color: var(--component-background);
+        color: var(--primary-text);
+    }
+
+    .student-photo__upload-info {
+        color: var(--secondary-text);
+    }
+
+    .parent__header {
+        color: var(--primary-text);
+    }
 }
