@@ -22,3 +22,36 @@
 .header-part-2 {
     min-width: inherit !important;
 }
+
+@media screen and (max-width: 1023px) {
+    .part-business-content-bottom {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .box-color {
+        margin-top: 0 !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #main-layout {
+        display: flex !important;
+        flex: auto !important;
+        -ms-flex-direction: column !important;
+        flex-direction: column !important;
+    }
+
+    .main-content {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left:90px !important;
+        padding-right:90px !important;
+        width: auto !important;
+    }
+
+    .box-color {
+        flex-direction: column !important;
+    }
+}
