@@ -1025,4 +1025,42 @@
     .parent__header {
         color: var(--primary-text);
     }
+
+    div.header__logo-product {
+        color: var(--secondary-text) !important;
+    }
+    main.app__main {
+        background: var(--primary-background) !important;
+    }
+    div.attendance-tabs {
+        background: var(--primary-background) !important;
+    }
+    div.attendance-tabs > div {
+        border-bottom: 0 !important;
+    }
+    .date-selector > div {
+        background: var(--secondary-background) !important;
+        border-top: 2px solid var(--borders) !important;
+    }
+    div.lesson.normal > article, div.lesson.conflicted > article {
+        background-color: var(--component-background) !important;
+    }
+    div.lesson.canceled > article {
+        background-color: color-mix(in srgb, var(--component-background) 80%, red 20%) !important;
+    }
+    div.lesson.substitute > article {
+        background-color: color-mix(in srgb, var(--component-background) 60%, #FF0 20%) !important;
+    }
+    div.lesson.normal > div, div.lesson.conflicted > div {
+        color: var(--primary-text) !important;
+    }
+    div.subject {
+        color: var(--primary-text) !important;
+    }
+    div.additional-info {
+        color: var(--secondary-text) !important;
+    }
+    div.info {
+        color: var(--secondary-text) !important;
+    }
 }
