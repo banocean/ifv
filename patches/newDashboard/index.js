@@ -1,4 +1,5 @@
 import {waitForRender} from "../apis/waitForElement.js";
+import {mapDay} from "../apis/mapTimetable.js";
 
 const icons = [
         ["Dzisiejszy plan zajęć", "calendar_clock_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"],
@@ -31,7 +32,49 @@ const changeTitles = () => {
     
 }
 
+let maxLessons = 0;
+const renderTimetable = () => {
+    const timetableElement = document.querySelector(".plan-zajec")
+    const timetable = mapDay(timetableElement)
+    if (timetable.length < maxLessons) return
+    maxLessons = timetable.length
+
+    const elements = timetable.map((lesson) => {
+        const element = document.createElement("li")
+        if (lesson.type === "conflicted") {
+            element.innerText = `Więcej pozycji`
+        } else {
+            element.classList.add(lesson.type)
+            element.innerText = `${lesson.subject} (${lesson.classroom}) ${
+                lesson.type === "unknown" ? lesson.annotationText : ""
+            }`
+        }
+        return element
+    })
+
+    const container = document.createElement("ol")
+    container.classList.add("lessons-container")
+    container.append(...elements)
+
+    const existingContainer = document.querySelector(".lessons-container");
+    if (existingContainer) {
+        existingContainer.remove()
+    }
+
+    timetableElement.parentElement.insertBefore(container, timetableElement)
+}
+
+const replaceTimetable = async () => {
+    await waitForRender(() => document.querySelector(".plan-zajec"))
+    renderTimetable()
+    const observer = new MutationObserver(renderTimetable)
+    observer.observe(document.querySelector(".plan-zajec"), { childList: true, subtree: true })
+}
+
 const createToolbar = async () => {
+    const getContainer = () => document.querySelector(".content-container > .tile-container > .tile-subcontainer")
+    await waitForRender(getContainer)
+    
     const element = document.createElement("div")
     element.classList.add("dashboard-info-toolbar")
     element.innerHTML = `
@@ -62,8 +105,13 @@ const createToolbar = async () => {
 }
 
 window.appendModule({
-    run: () => { applyIcons(); createToolbar(); },
-    doesRunHere: () => window.location.href.endsWith("tablica"),
+    run: () => {
+        applyIcons();
+        createToolbar();
+        replaceTimetable();
+        },
+    doesRunHere: () => window.location.href.endsWith("tablica")
+        && window.innerWidth < 1024,
     onlyOnReloads: false,
     isLoaded: () =>
         document.querySelector(".plan-zajec") &&
