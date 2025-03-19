@@ -1063,4 +1063,16 @@
     div.info {
         color: var(--secondary-text) !important;
     }
+    .modal-button--close > span:last-of-type {
+        filter: invert(0);
+    }
+    .modal-button--close {
+        background-color: transparent !important;
+    }
+    .date-selector > div > img {
+        filter: invert(0.2);
+    }
+    .attendance-tabs > button {
+        color: color-mix(in srgb, var(--kolor-brand), #fff 30%);
+    }
 }
