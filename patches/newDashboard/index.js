@@ -92,7 +92,7 @@ const createToolbar = async () => {
         </div>
     </div>`
     
-    const container = document.querySelector(".content-container > .tile-container > .tile-subcontainer")
+    const container = getContainer()
     container.insertBefore(element, container.firstChild)
     
     const getLuckyNumber = () => document.querySelector(".lucky-number__circle.lucky-number__number > span")?.innerText
@@ -100,8 +100,9 @@ const createToolbar = async () => {
     
     const getAmountOfMessages = () => document.querySelector("a[title=\"Przejdź do modułu wiadomości\"] .MuiBadge-anchorOriginTopRightRectangle").innerText
     waitForRender(getAmountOfMessages).then(() => element.querySelector("div:last-of-type > span").innerText = getAmountOfMessages())
-    
-    
+    element.querySelector("div:last-of-type").addEventListener("click", () => {
+        document.querySelector("a[title=\"Przejdź do modułu wiadomości\"]")?.click()
+    })
 }
 
 window.appendModule({
