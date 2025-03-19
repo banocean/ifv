@@ -24,12 +24,12 @@ const applyIcons = () => {
             ?.querySelector(".tile__header.flex__items > .flex__item-auto")
         
         if (container) container.insertBefore(icon, container.firstChild)
-        else console.debug(`Tile ${key} not found`)
+        else return console.debug(`Tile ${key} not found`)
+        
+        container.parentElement?.parentElement?.addEventListener("click", () => {
+            container.parentElement.querySelector("a.tile__link")?.click()
+        })
     }
-}
-
-const changeTitles = () => {
-    
 }
 
 let maxLessons = 0;
