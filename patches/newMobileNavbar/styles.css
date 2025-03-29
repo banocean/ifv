@@ -155,3 +155,13 @@
 main.app__main {
     width: 100vw !important;
 }
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+.app__mobile {
+    flex: 1;
+    min-height: 100%;
+}

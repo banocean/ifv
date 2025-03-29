@@ -1,0 +1,17 @@
+.scheduler-simple-cell--current, .scheduler-cell--current, .frequency-scheduler-cell--current, .plan-scheduler-cell__current {
+    background-color: rgba(200, 200, 210, 0.25);
+}
+.scheduler-simple-cell--current .scheduler-simple-cell__number, .scheduler-cell--current .scheduler-cell__number, .frequency-scheduler-cell--current .frequency-scheduler-cell__footer, .plan-scheduler-cell__current .plan-scheduler-cell__footer-day {
+    background-color: #e12d39;
+    color: #ffffff !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 43px;
+    border-radius: 50px;
+}
+.scheduler-simple-cell--current .scheduler-simple-cell__number {
+    width: 30px;
+    height: 30px;
+}

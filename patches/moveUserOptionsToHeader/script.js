@@ -69,15 +69,28 @@ const moveUserOptionsToHeader = async () => {
     backButtonContainer.appendChild(backButton);
     modalElement.appendChild(backButtonContainer);
 
-    modalBackground.addEventListener("click", toggleModal);
-    backButton.addEventListener("click", toggleModal);
-    userAvatar.addEventListener("click", toggleModal);
+    modalBackground.addEventListener("click", () => {
+        history.back();
+    });
+    backButton.addEventListener("click", () => {
+        history.back();
+    });
+    userAvatar.addEventListener("click", () => {
+        toggleModal();
+        history.pushState({ ...history.state, userModal: true }, "", `${location.pathname}#user-modal`);
+    });
 
     document.body.appendChild(modalElement);
     document.body.appendChild(modalBackground);
     document
         .querySelector(".header_logo_tools_user-wrapper")
         .appendChild(userAvatar);
+
+    addEventListener('popstate', (e) => {
+        if (document.querySelector(".modal-user").classList.contains("active")) {
+            toggleModal();
+        }
+    });
 };
 
 window.appendModule({

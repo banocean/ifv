@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "description": "Poprawia uciążliwe elementy stron usług eduVULCAN oraz Dziennik Vulcan",
-  "version": "0.3",
+  "version": "0.4",
   "name": "Improvements for Vulcan",
 
   "permissions": ["storage"],
