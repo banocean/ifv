@@ -45,43 +45,41 @@ const render = async () => {
     let config = (await chrome.storage.sync.get("options"))?.options ?? {};
     const patches = await fetchPatches();
 
-    patches.forEach((patch) => {
-        if (config[patch.name] !== undefined) return;
-        config[patch.name] = { description: patch.description, enable: true, devices: patch.devices };
-    });
     chrome.storage.sync.set({ options: config });
 
     const optionsDOM = document.querySelector(".options");
     optionsDOM.innerHTML = "";
 
-    const sortedEntries = Object.entries(config).sort((a, b) =>
-        a[0].localeCompare(b[0], 'pl')
+    const sortedPatches = [...patches].sort((a, b) =>
+        a.name.localeCompare(b.name, 'pl')
     );
 
-    for (const [key, value] of sortedEntries) {
+    for (const patch of sortedPatches) {
+        const isEnabled = config[patch.name] !== false;
+
         const option = document.createElement("label");
         option.innerHTML = `
             <div style="flex: 1;">
-                <p class="title">${key}</p>
-                <p class="desc">${value.description}</p>
+                <p class="title">${patch.name}</p>
+                <p class="desc">${patch.description}</p>
             </div>
-            ${value.devices === "mobileOnly" ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is mobile only"><path d="M400-160h160v-40H400v40ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm0-80h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg>` : ""}
-            ${value.devices === "desktopOnly" ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is desktop only"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>` : ""}
+            ${patch.devices === "mobileOnly" ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is mobile only"><path d="M400-160h160v-40H400v40ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm0-80h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg>` : ""}
+            ${patch.devices === "desktopOnly" ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8e8e8e" title="This patch is desktop only"><path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg>` : ""}
             <div class="toggle-wrapper">
-                <input class="toggle-input" type="checkbox" ${value.enable ? "checked" : ""}>
+                <input class="toggle-input" type="checkbox" ${isEnabled ? "checked" : ""}>
                 <div class="toggle-switch"></div>
             </div>
         `;
-        option.querySelector("input").id = key;
-        if (value.devices === "mobileOnly") option.classList.add("mobileOnly");
-        if (value.devices === "desktopOnly") option.classList.add("desktopOnly");
+        option.querySelector("input").id = patch.name;
+        if (patch.devices === "mobileOnly") option.classList.add("mobileOnly");
+        if (patch.devices === "desktopOnly") option.classList.add("desktopOnly");
         optionsDOM.appendChild(option);
     }
 
     optionsDOM.addEventListener("change", async (e) => {
         const target = e.target;
         if (target.tagName === "INPUT") {
-            config[target.id].enable = target.checked;
+            config[target.id] = target.checked;
             await chrome.storage.sync.set({ options: config });
         }
     });
@@ -108,16 +106,11 @@ const render = async () => {
     const toggleAllButton = async () => {
         chrome.storage.sync.set({ nextApplyAllAction: !nextApplyAllAction });
 
-        let config = {};
         const patches = await fetchPatches();
+        const config = {};
 
         patches.forEach((patch) => {
-            if (config[patch.name] !== undefined) return;
-            config[patch.name] = {
-                description: patch.description,
-                enable: nextApplyAllAction,
-                devices: patch.devices
-            };
+            config[patch.name] = nextApplyAllAction;
         });
 
         await chrome.storage.sync.set({ options: config });

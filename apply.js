@@ -43,7 +43,7 @@ const getPatchesFiles = (patches, config) => {
     const result = [];
 
     patches.forEach(patch => {
-        if (!config[patch.name]?.enable) return;
+        if (config[patch.name] === false) return;
         if (!shouldInjectPatchForDevice(patch.devices)) return;
 
         if (patch.files?.js?.length) {
@@ -74,9 +74,15 @@ async function run() {
     let config = await getConfig();
     const patches = await fetchPatches();
 
+    if (patches.length > 0 && config[patches[0].name] && typeof config[patches[0].name] === 'object' && config[patches[0].name].description) {
+        // użytkownik ma stary format configu - kasujemy go
+        config = {};
+    }
+
     patches.forEach((patch) => {
-        if (config[patch.name] !== undefined) return;
-        config[patch.name] = { description: patch.description, enable: true };
+        if (config[patch.name] === undefined) {
+            config[patch.name] = true;
+        }
     });
 
     chrome.storage.sync.set({ options: config });
