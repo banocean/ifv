@@ -5,6 +5,7 @@
  * @property {Object} files - The files to be injected.
  * @property {string[]} [files.css] - An array of CSS file names (optional).
  * @property {string[]} [files.js] - An array of JS file names (optional).
+ * @property {string} [devices] - Device type: "mobileOnly", "desktopOnly" or undefined for both
  */
 
 /** @returns {Promise<Patch[]>} */
@@ -20,43 +21,53 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     if (
         !changes.options?.oldValue ||
         JSON.stringify(changes.options?.oldValue) ===
-            JSON.stringify(changes.options?.newValue)
+        JSON.stringify(changes.options?.newValue)
     )
         return;
     if (namespace !== "sync") return;
     window.location.reload();
 });
 
+const isMobileView = () => window.innerWidth < 1024;
+
+const shouldInjectPatchForDevice = (patchDeviceType) => {
+    if (!patchDeviceType) return true;
+
+    if (patchDeviceType === "mobileOnly") return isMobileView();
+    if (patchDeviceType === "desktopOnly") return !isMobileView();
+
+    return true;
+};
+
 const getPatchesFiles = (patches, config) => {
-    return [
-        ...new Set(
-            patches
-                .flatMap((patch) => {
-                    const result = [];
-                    if (config[patch.name].enable) {
-                        if (patch.files?.js?.length)
-                            result.push(
-                                patch.files.js.map((file) => `patches/${file}`),
-                            );
-                        if (
-                            (!patch.allowedHostsCss ||
-                                patch.allowedHostsCss.includes(
-                                    window.location.hostname,
-                                )) &&
-                            patch.files?.css?.length
-                        ) {
-                            result.push(
-                                patch.files.css.map(
-                                    (file) => `patches/${file}`,
-                                ),
-                            );
-                        }
-                    }
-                    return result;
-                })
-                .flat(),
-        ),
-    ];
+    const result = [];
+
+    patches.forEach(patch => {
+        if (!config[patch.name]?.enable) return;
+        if (!shouldInjectPatchForDevice(patch.devices)) return;
+
+        if (patch.files?.js?.length) {
+            patch.files.js.forEach(file => {
+                result.push({
+                    path: `patches/${file}`,
+                    type: 'js'
+                });
+            });
+        }
+
+        if (patch.files?.css?.length &&
+            (!patch.allowedHostsCss || patch.allowedHostsCss.includes(window.location.hostname))) {
+            patch.files.css.forEach(file => {
+                result.push({
+                    path: `patches/${file}`,
+                    type: 'css',
+                    device: patch.devices
+                });
+            });
+        }
+    });
+
+    return result;
 };
 
 async function run() {
@@ -70,16 +81,17 @@ async function run() {
 
     chrome.storage.sync.set({ options: config });
 
-    for (const filePath of getPatchesFiles(patches, config)) {
+    for (const file of getPatchesFiles(patches, config)) {
         const element = document.createElement(
-            filePath.endsWith(".js") ? "script" : "link",
+            file.type === "js" ? "script" : "link"
         );
         element.setAttribute(
-            filePath.endsWith(".js") ? "src" : "href",
-            chrome.runtime.getURL(filePath),
+            file.type === "js" ? "src" : "href",
+            chrome.runtime.getURL(file.path),
         );
-        if (filePath.endsWith(".css"))
+        if (file.type === "css") {
             element.setAttribute("rel", "stylesheet");
+        }
         else {
             element.setAttribute("type", "module");
             element.classList.add("injected-script");

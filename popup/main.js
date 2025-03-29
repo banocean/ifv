@@ -90,7 +90,7 @@ const render = async () => {
     if (category) {
         categories.value = category;
         categories.dispatchEvent(new Event("input"));
-    } else if (/\bMobile\b/.test(navigator.userAgent)) {
+    } else if (document.body.classList.contains("mobile")) {
         categories.value = "mobile";
         categories.dispatchEvent(new Event("input"));
     } else {
