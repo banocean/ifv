@@ -188,8 +188,8 @@
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
-    "name": "Redisigned attendance",
-    "description": "Changes styles and navigation on attendance page.",
+    "name": "Redesigned dashboard",
+    "description": "Changes styles of the home (dashboard) page. (mobile only)",
     "files": {
       "js": ["newDashboard/index.js"],
       "css": ["newDashboard/styles.css"]
