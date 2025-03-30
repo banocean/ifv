@@ -40,8 +40,8 @@
         padding-bottom: 0;
     }
     
-    .tile.box:has(.lucky-number__circle.lucky-number__circle-1) {
-        display: none;
+    .tile.box:has(.tile__lucky-number) {
+        display: none !important;
     }
     
     .dashboard-info-toolbar {
