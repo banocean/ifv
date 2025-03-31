@@ -1,19 +1,11 @@
 function modifyGradesRequests() {
     const originalXHROpen = XMLHttpRequest.prototype.open;
     const originalXHRSend = XMLHttpRequest.prototype.send;
-    const originalXHRSetRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
 
     XMLHttpRequest.prototype.open = function () {
         this._requestMethod = arguments[0];
         this._requestURL = arguments[1];
-        this._requestAsync = arguments[2];
-        this._requestHeaders = {};
         return originalXHROpen.apply(this, arguments);
-    };
-
-    XMLHttpRequest.prototype.setRequestHeader = function (header, value) {
-        this._requestHeaders[header] = value;
-        return originalXHRSetRequestHeader.apply(this, arguments);
     };
 
     XMLHttpRequest.prototype.send = function () {
@@ -38,36 +30,28 @@ function modifyGradesRequests() {
                         // ================================
                         if (data && data.ocenyPrzedmioty && Array.isArray(data.ocenyPrzedmioty)) {
                             data.ocenyPrzedmioty.forEach(subject => {
-                                let grades = [];
+                                let sum = 0;
+                                let totalWeight = 0;
 
                                 if (subject.kolumnyOcenyCzastkowe && Array.isArray(subject.kolumnyOcenyCzastkowe)) {
                                     subject.kolumnyOcenyCzastkowe.forEach(column => {
                                         if (column.oceny && Array.isArray(column.oceny)) {
                                             column.oceny.forEach(grade => {
                                                 if (grade.wpis && grade.wpis.match(/^[0-6](\+|\-)?$/)) {
-                                                    let value;
+                                                    let value = parseFloat(grade.wpis);
+                                                    if (grade.wpis.includes('+')) value += 0.5;
+                                                    else if (grade.wpis.includes('-')) value -= 0.25;
 
-                                                    if (grade.wpis.endsWith('+')) {
-                                                        value = parseFloat(grade.wpis.slice(0, -1)) + 0.5;
-                                                    } else if (grade.wpis.endsWith('-')) {
-                                                        value = parseFloat(grade.wpis.slice(0, -1)) - 0.25;
-                                                    } else {
-                                                        value = parseFloat(grade.wpis);
-                                                    }
-
-                                                    for (let i = 0; i < grade.waga; i++) {
-                                                        grades.push(value);
-                                                    }
+                                                    sum += value * grade.waga;
+                                                    totalWeight += grade.waga;
                                                 }
                                             });
                                         }
                                     });
                                 }
 
-                                if (grades.length > 0) {
-                                    let average = (grades.reduce((a, b) => a + b, 0) / grades.length).toFixed(2)
-
-                                    subject.srednia = average;
+                                if (totalWeight > 0) {
+                                    subject.srednia = (sum / totalWeight).toFixed(2);
                                 }
                             });
 
@@ -109,5 +93,5 @@ function modifyGradesRequests() {
 window.appendModule({
     run: modifyGradesRequests,
     onlyOnReloads: true,
-    doesRunHere: () => window.location.href.includes("oceny")
+    doesRunHere: () => true
 });
