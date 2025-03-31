@@ -1,62 +1,56 @@
 import { waitForRender } from "../apis/waitForElement.js";
 
-const SEMESTERS = 2;
-const renderVisibilityButtons = () => {
-    for (let i = 0; i < SEMESTERS; i++) {
-        hideEmptyFinalGradesInfo(i);
+const hideEmptyColumns = async () => {
+    if (window.innerWidth > 1024) {
+        await waitForRender(() => document.querySelector(".p-datatable-table .details-btn--appearance"));
+
+        const headers = document.querySelectorAll('.p-datatable-table th');
+
+        headers.forEach((header, idx) => {
+            const cells = Array.from(document.querySelectorAll('tbody tr td:nth-child(' + (idx + 1) + ')'));
+            const check = cells.some(cell => cell.textContent.trim().length > 0);
+
+            const columnCells = document.querySelectorAll('tr th:nth-child(' + (idx + 1) + '), tr td:nth-child(' + (idx + 1) + ')');
+            columnCells.forEach(cell => {
+                cell.style.display = check ? '' : 'none';
+            });
+        });
+    } else {
+        await waitForRender(() => document.querySelector(".MuiAccordionDetails-root .grades__box .info-row"));
+        setTimeout(() => {
+            document.querySelectorAll('.info-row').forEach(e => {
+                if (e.querySelector('.info-text > span').textContent.trim() === "" || e.querySelector('.info-text > span').textContent.trim() === "0") {
+                    e.style.display = "none";
+                }
+            });
+        }, 100)
     }
 };
 
-const getSemestersContainer = () =>
-    document.querySelector(
-        "section > section > .mobile__frame > .content-container",
-    ).children;
-const getRowValue = (node) =>
-    node?.querySelector(".info-text > span")?.innerText?.trim();
+async function prep() {
+    hideEmptyColumns()
 
-const hideEmptyFinalGradesInfo = async (i) => {
-    await waitForRender(
-        () => getSemestersContainer()[i].querySelector("article"),
-        document.querySelector(
-            "section > section > .mobile__frame > .content-container",
-        ),
-    );
-    const container = getSemestersContainer()[i];
-    const subjects = container.querySelectorAll("article");
-    for (const subject of subjects) {
-        const finalGrades = subject.querySelector(
-            ".tile__content:last-of-type",
-        );
-        const predictedFinalGrade = finalGrades.children[0];
-        const finalGrade = finalGrades.children[1];
-
-        const predictedFinalGradeValue = getRowValue(predictedFinalGrade);
-        const finalGradeValue = getRowValue(finalGrade);
-
-        if (predictedFinalGrade && !predictedFinalGradeValue)
-            predictedFinalGrade.style.display = "none";
-        if (finalGrade && !finalGradeValue) {
-            if (predictedFinalGrade)
-                predictedFinalGrade.style.borderBottom = "none";
-            finalGrade.style.display = "none";
-        }
-
-        if (!finalGradeValue && !predictedFinalGradeValue) {
-            finalGrades.style.display = "none";
-            subject.querySelector(
-                ".tile__content.border-b-1",
-            ).style.borderBottom = "none";
-        }
+    if (window.innerWidth > 1024) {
+        await waitForRender(() => document.querySelector('.MuiTabs-flexContainer > button'))
+        document.querySelectorAll(".MuiTabs-flexContainer > button").forEach(e => {
+            e.addEventListener("click", () => {
+                setTimeout(hideEmptyColumns, 100)
+            })
+        })
+    } else {
+        await waitForRender(() => document.querySelector('.MuiPaper-root .accordion__full-width__header'))
+        document.querySelectorAll('.MuiPaper-root .accordion__full-width__header').forEach(e => {
+            e.addEventListener("click", () => {
+                setTimeout(hideEmptyColumns, 100);
+            })
+        })
     }
-};
+}
 
 window.appendModule({
-    run: renderVisibilityButtons,
+    run: prep,
     onlyOnReloads: false,
     doesRunHere: () =>
-        window.location.pathname.endsWith("oceny") && window.innerWidth < 1024,
-    isLoaded: () =>
-        document.querySelector(
-            "section > section > .mobile__frame > .content-container",
-        ),
+        window.location.pathname.endsWith("oceny"),
+    isLoaded: () => true,
 });
