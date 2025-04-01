@@ -20,14 +20,11 @@ function modifyGradesRequests() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     try {
                         // Przechwycenie oryginalnej odpowiedzi
-                        const originalResponse = xhr.responseText;
-                        let data = JSON.parse(originalResponse);
+                        let data = JSON.parse(xhr.responseText);
 
-                        console.debug('Oryginalna odpowiedź:', JSON.parse(JSON.stringify(data)));
+                        console.debug('Oryginalna odpowiedź:', data);
 
-                        // ================================
-                        // Modyfikacja danych - cała magia
-                        // ================================
+                        // Modyfikacja danych - najważniejsza część
                         if (data && data.ocenyPrzedmioty && Array.isArray(data.ocenyPrzedmioty)) {
                             data.ocenyPrzedmioty.forEach(subject => {
                                 let sum = 0;
@@ -61,18 +58,17 @@ function modifyGradesRequests() {
                         }
                         // ================================
 
-                        const modifiedResponse = JSON.stringify(data);
-                        console.debug('Zmodyfikowana odpowiedź:', JSON.parse(modifiedResponse));
+                        console.debug('Zmodyfikowana odpowiedź:', data);
 
                         Object.defineProperty(xhr, 'responseText', {
                             get: function () {
-                                return modifiedResponse;
+                                return data;
                             }
                         });
 
                         Object.defineProperty(xhr, 'response', {
                             get: function () {
-                                return modifiedResponse;
+                                return data;
                             }
                         });
                     } catch (e) {
@@ -92,6 +88,5 @@ function modifyGradesRequests() {
 
 window.appendModule({
     run: modifyGradesRequests,
-    onlyOnReloads: true,
-    doesRunHere: () => true
+    onlyOnReloads: true
 });
