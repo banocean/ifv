@@ -204,7 +204,7 @@
   },
   {
     "name": "Count averages",
-    "description": "Counts averages in grades table. Grades with \"+\" are counted as 0.5 higher and with \"-\" as 0.25 lower.",
+    "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
     "files": {
         "js": ["countAverage.js"]
     }
