@@ -17,7 +17,6 @@ const hideEmptyColumns = async () => {
 };
 
 async function prep() {
-
     if (window.innerWidth > 1024) {
         await waitForRender(() => document.querySelector(".MuiTabs-flexContainer > button"));
 
@@ -35,7 +34,7 @@ async function prep() {
             await waitForRender(() => semester.querySelector('.MuiAccordionDetails-root .grades__box .info-row .info-text > span'));
             semester.querySelectorAll('.info-row').forEach(e => {
                 if (e.querySelector('.info-text > span').textContent.trim() === "" || e.querySelector('.info-text > span').textContent.trim() === "0") {
-                    e.style.display = "none";
+                    e.remove();
                 }
             });
         })
