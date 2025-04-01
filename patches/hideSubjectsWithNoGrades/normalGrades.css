@@ -10,3 +10,15 @@ tbody.p-datatable-tbody > tr:has(.wider--oceny:empty) {
 .grades__box > .tile__content:has(~ .tile__content:empty) {
     border-bottom: 0 !important;
 }
+.mobile__frame .info-label {
+    min-width: 100% !important;
+}
+.content-container .info-row {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    margin-inline: auto;
+}
+.content-container .tile .tile__content {
+    padding: 5px 20px;
+}

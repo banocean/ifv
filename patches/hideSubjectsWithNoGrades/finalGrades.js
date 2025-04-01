@@ -30,7 +30,6 @@ async function prep() {
     } else {
         await waitForRender(() => document.querySelector(".MuiAccordionDetails-root.accordion__full-width__content > .mobile__frame .grades__box"))
         document.querySelectorAll('.MuiAccordionDetails-root.accordion__full-width__content > .mobile__frame').forEach(async semester => {
-            console.debug('semester', semester);
             await waitForRender(() => semester.querySelector('.MuiAccordionDetails-root .grades__box .info-row .info-text > span'));
             semester.querySelectorAll('.info-row').forEach(e => {
                 if (e.querySelector('.info-text > span').textContent.trim() === "" || e.querySelector('.info-text > span').textContent.trim() === "0") {
