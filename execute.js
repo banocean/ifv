@@ -12,7 +12,7 @@ window.appendModule = (...args) => {
 
 const execute = () => {
     if (!modules.length)
-        console.warn(
+        console.debug(
             "Script tried executing before all files loaded or all patches are disabled",
         );
 

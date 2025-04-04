@@ -12,19 +12,15 @@ function modifyGradesRequests() {
         const xhr = this;
 
         if (xhr._requestURL && xhr._requestURL.includes('/api/Oceny?')) {
-            console.debug('Przechwycono żądanie do API ocen w celu wstrzyknięcia średnich:', xhr._requestURL);
-
             const originalOnReadyStateChange = xhr.onreadystatechange;
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     try {
-                        // Przechwycenie oryginalnej odpowiedzi
                         let data = JSON.parse(xhr.responseText);
 
                         console.debug('Oryginalna odpowiedź:', data);
 
-                        // Modyfikacja danych - najważniejsza część
                         if (data && data.ocenyPrzedmioty && Array.isArray(data.ocenyPrzedmioty)) {
                             data.ocenyPrzedmioty.forEach(subject => {
                                 let sum = 0;
@@ -56,7 +52,6 @@ function modifyGradesRequests() {
                                 data.ustawienia.isSredniaAndPunkty = true;
                             }
                         }
-                        // ================================
 
                         console.debug('Zmodyfikowana odpowiedź:', data);
 
@@ -72,7 +67,7 @@ function modifyGradesRequests() {
                             }
                         });
                     } catch (e) {
-                        console.error('Błąd modyfikacji odpowiedzi:', e);
+                        console.debug('Błąd modyfikacji odpowiedzi:', e);
                     }
                 }
 
