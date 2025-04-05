@@ -21,7 +21,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     if (
         !changes.options?.oldValue ||
         JSON.stringify(changes.options?.oldValue) ===
-        JSON.stringify(changes.options?.newValue)
+            JSON.stringify(changes.options?.newValue)
     )
         return;
     if (namespace !== "sync") return;
@@ -42,26 +42,29 @@ const shouldInjectPatchForDevice = (patchDeviceType) => {
 const getPatchesFiles = (patches, config) => {
     const result = [];
 
-    patches.forEach(patch => {
+    patches.forEach((patch) => {
         if (config[patch.name] === false) return;
         if (!shouldInjectPatchForDevice(patch.devices)) return;
 
         if (patch.files?.js?.length) {
-            patch.files.js.forEach(file => {
+            patch.files.js.forEach((file) => {
                 result.push({
                     path: `patches/${file}`,
-                    type: 'js'
+                    type: "js",
                 });
             });
         }
 
-        if (patch.files?.css?.length &&
-            (!patch.allowedHostsCss || patch.allowedHostsCss.includes(window.location.hostname))) {
-            patch.files.css.forEach(file => {
+        if (
+            patch.files?.css?.length &&
+            (!patch.allowedHostsCss ||
+                patch.allowedHostsCss.includes(window.location.hostname))
+        ) {
+            patch.files.css.forEach((file) => {
                 result.push({
                     path: `patches/${file}`,
-                    type: 'css',
-                    device: patch.devices
+                    type: "css",
+                    device: patch.devices,
                 });
             });
         }
@@ -74,7 +77,12 @@ async function run() {
     let config = await getConfig();
     const patches = await fetchPatches();
 
-    if (patches.length > 0 && config[patches[0].name] && typeof config[patches[0].name] === 'object' && config[patches[0].name].description) {
+    if (
+        patches.length > 0 &&
+        config[patches[0].name] &&
+        typeof config[patches[0].name] === "object" &&
+        config[patches[0].name].description
+    ) {
         // użytkownik ma stary format configu - kasujemy go
         config = {};
     }
@@ -93,12 +101,11 @@ async function run() {
         );
         element.setAttribute(
             file.type === "js" ? "src" : "href",
-            chrome.runtime.getURL(file.path),
+            chrome.runtime.getURL(file.path)
         );
         if (file.type === "css") {
             element.setAttribute("rel", "stylesheet");
-        }
-        else {
+        } else {
             element.setAttribute("type", "module");
             element.classList.add("injected-script");
         }

@@ -35,11 +35,13 @@ body.mobile {
     padding-block: 7px;
 }
 
-.filter > div:focus-within, .filter > div:hover {
+.filter > div:focus-within,
+.filter > div:hover {
     background: #3f3f46;
 }
 
-.filter > div > input:focus, .filter > div > input:hover {
+.filter > div > input:focus,
+.filter > div > input:hover {
     outline: none;
 }
 
