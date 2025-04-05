@@ -53,8 +53,7 @@ const hideEmptyFinalGradesInfo = async (i) => {
 window.appendModule({
     run: renderVisibilityButtons,
     onlyOnReloads: false,
-    doesRunHere: () =>
-        window.location.pathname.endsWith("oceny") && window.innerWidth < 1024,
+    doesRunHere: () => window.location.pathname.endsWith("oceny"),
     isLoaded: () =>
         document.querySelector(
             "section > section > .mobile__frame > .content-container",

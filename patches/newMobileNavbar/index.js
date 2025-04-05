@@ -139,7 +139,7 @@ const run = async () => {
 
 window.appendModule({
     run,
-    doesRunHere: () => window.location.hostname.match(/^(dziennik-)?(uczen).*/) && window.innerWidth < 1024,
+    doesRunHere: () => window.location.hostname.match(/^(dziennik-)?(uczen).*/),
     onlyOnReloads: true,
     isLoaded: () => !!document.querySelector(".header__hamburger__icon")
 })
