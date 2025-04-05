@@ -26,7 +26,7 @@ function modifyGradesRequests() {
                             data &&
                             data.ocenyPrzedmioty &&
                             Array.isArray(data.ocenyPrzedmioty) &&
-                            data.ustawienia.isSredniaAndPunkty !== true
+                            !data.ustawienia.isSredniaAndPunkty
                         ) {
                             data.ocenyPrzedmioty.forEach((subject) => {
                                 let sum = 0;
