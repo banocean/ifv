@@ -22,7 +22,7 @@
         padding: 17.5px 48px !important;
     }
 
-    .close-button:not(aside .close-button) {
+    .modal-button--close {
         background-color: white !important;
         box-shadow: none !important;
         position: absolute !important;
@@ -35,17 +35,17 @@
         height: 40px !important;
     }
 
-    .close-button:not(aside .close-button) > span:first-of-type {
+    .modal-button--close > span:first-of-type {
         display: none !important;
     }
 
-    .close-button:not(aside .close-button) > span:last-of-type {
-        content: url("https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
+    .modal-button--close > span:last-of-type {
+        content: url("https://raw.githubusercontent.com/banocean/ifv/main/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
         filter: invert(0.8);
         height: 40px;
     }
 
-    .close-button:not(aside .close-button) > span > svg {
+    .modal-button--close > span > svg {
         display: none !important;
     }
 }

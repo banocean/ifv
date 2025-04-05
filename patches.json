@@ -1,7 +1,16 @@
 [
   {
+      "name": "Move title to header",
+      "description": "Moves title to header (mobile only)",
+      "files": {
+          "css": ["moveTitleToHeader/style.css"],
+          "js": ["moveTitleToHeader/index.js"]
+      },
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
       "name": "Change close button icon",
-      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to (mobile only)",
+      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to. (mobile only)",
       "files": {
           "css": ["arrows.css"]
       },
@@ -9,14 +18,14 @@
   },
   {
       "name": "Move messages button",
-      "description": "Moves messages button to header (mobile only)",
+      "description": "Moves messages button to header. (mobile only)",
       "files": {
           "js": ["messagesButton.js"]
       }
   },
   {
     "name": "Hide subjects with no grades",
-    "description": "Hides subjects without any grades",
+    "description": "Hides subjects without any grades.",
     "files": {
       "js": ["hideSubjectsWithNoGrades/finalGrades.js"],
       "css": ["hideSubjectsWithNoGrades/normalGrades.css"]
@@ -25,14 +34,14 @@
   },
   {
     "name": "Hide empty exam results",
-    "description": "Hides exam results instead of showing no data (mobile only)",
+    "description": "Hides exam results instead of showing no data. (mobile only)",
     "files": {
       "css": ["hideEmptyExamResults.css"]
     }
   },
   {
     "name": "Hide footer",
-    "description": "Hides footer (mobile only)",
+    "description": "Hides footer. (mobile only)",
     "files": {
       "css": ["hideFooter.css"]
     },
@@ -40,14 +49,14 @@
   },
   {
     "name": "Hide WCAG",
-    "description": "todo",
+    "description": "Hide WCAG buttons.",
     "files": {
       "css": ["hideWCAG.css"]
     }
   },
   {
     "name": "Align Detailed Grades Button",
-    "description": "todo",
+    "description": "Aligns detailed grades button with other buttons.",
     "files": {
       "css": ["alignDetailedGradesButton.css"]
     },
@@ -55,7 +64,7 @@
   },
   {
     "name": "Hide Tutors From Board",
-    "description": "todo",
+    "description": "Hides tutors from board.",
     "files": {
       "css": ["hideTutorsFromBoard.css"]
     },
@@ -63,14 +72,14 @@
   },
   {
     "name": "Display Full Name",
-    "description": "todo",
+    "description": "Shows the user's name under the nickname. (desktop only)",
     "files": {
       "js": ["displayFullName.js"]
     }
   },
   {
     "name": "Redirect To Board",
-    "description": "todo",
+    "description": "Redirects to board after login.",
     "files": {
       "js": ["redirectToBoard/script.js"],
       "css": ["redirectToBoard/styles.css"]
@@ -84,9 +93,16 @@
   },
   {
     "name": "Auto redirect to login page in eduVulcan",
-    "description": "todo",
+    "description": "Auto redirect to login page in eduVulcan.",
     "files": {
       "js": ["redirectToEVLogin.js"]
+    }
+  },
+  {
+    "name": "Auto redirect to login page in Dziennik Vulcan",
+    "description": "Auto redirect to login page in Dziennik Vulcan.",
+    "files": {
+      "js": ["redirectToDVLogin.js"]
     }
   },
   {
@@ -99,7 +115,7 @@
   },
   {
     "name": "Hide Help On Dashboard",
-    "description": "Hides \"Do you need help\" tile",
+    "description": "Hides \"Do you need help\" tile.",
     "files": {
       "css": ["hideHelpOnDashboard.css"]
     },
@@ -107,30 +123,21 @@
   },
   {
     "name": "PWA Support",
-    "description": "Gives ability to install page as PWA",
+    "description": "Gives ability to install page as PWA.",
     "files": {
       "js": ["pwa.js"]
     }
   },
   {
-    "name": "Attendance statistics in separate tab",
-    "description": "Makes attendance page more readable by moving statistics to separate tab",
-    "files": {
-      "css": ["attendance/styles.css"],
-      "js": ["attendance/tabs.js"]
-    },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
-  },
-  {
     "name": "Reload on resize",
-    "description": "Reloads page while changing between desktop and mobile layouts",
+    "description": "Reloads page while changing between desktop and mobile layouts.",
     "files": {
       "js": ["fixResizing.js"]
     }
   },
   {
     "name": "Mobile Navigation",
-    "description": "Replaces aside with more readable bottom navigation bar designed (mobile only)",
+    "description": "Replaces aside with more readable bottom navigation bar designed. (mobile only)",
     "files": {
       "css": ["newMobileNavbar/styles.css"],
       "js": ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
@@ -156,12 +163,44 @@
   },
   {
     "name": "Move user options to header",
-    "description": "Moves user avatar to header that opens dropdown with user options (mobile only)",
+    "description": "Moves user avatar to header that opens dropdown with user options. (mobile only)",
     "files": {
       "js": ["moveUserOptionsToHeader/script.js"],
       "css": ["moveUserOptionsToHeader/styles.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
+    "name": "Resigned timetable",
+    "description": "Changes styles and navigation on timetable page. (mobile only)",
+    "files": {
+      "js": ["newTimetable/script.js"],
+      "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
+    }
+  },
+  {
+    "name": "Redisigned attendance",
+    "description": "Changes styles and navigation on attendance page.",
+    "files": {
+      "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
+      "css": ["newAttendance/style.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    "name": "Fix going back in history",
+    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
+    "files": {
+      "js": ["fixGoingBack.js"]
+    }
+  },
+  {
+    "name": "Highlight today",
+    "description": "Highlights today's date in the calendar.",
+    "files": {
+      "css": ["highlightToday.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
     "name": "Dark theme for student module",
