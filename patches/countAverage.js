@@ -11,7 +11,7 @@ function modifyGradesRequests() {
     XMLHttpRequest.prototype.send = function () {
         const xhr = this;
 
-        if (xhr._requestURL && xhr._requestURL.includes('/api/Oceny?')) {
+        if (xhr._requestURL && xhr._requestURL.includes("/api/Oceny?")) {
             const originalOnReadyStateChange = xhr.onreadystatechange;
 
             xhr.onreadystatechange = function () {
@@ -19,32 +19,69 @@ function modifyGradesRequests() {
                     try {
                         let data = JSON.parse(xhr.responseText);
 
-                        console.debug('Oryginalna odpowiedź:', data);
+                        console.debug("Oryginalna odpowiedź:", data);
 
-                        if (data && data.ocenyPrzedmioty && Array.isArray(data.ocenyPrzedmioty)) {
-                            data.ocenyPrzedmioty.forEach(subject => {
+                        if (
+                            data &&
+                            data.ocenyPrzedmioty &&
+                            Array.isArray(data.ocenyPrzedmioty)
+                        ) {
+                            data.ocenyPrzedmioty.forEach((subject) => {
                                 let sum = 0;
                                 let totalWeight = 0;
 
-                                if (subject.kolumnyOcenyCzastkowe && Array.isArray(subject.kolumnyOcenyCzastkowe)) {
-                                    subject.kolumnyOcenyCzastkowe.forEach(column => {
-                                        if (column.oceny && Array.isArray(column.oceny)) {
-                                            column.oceny.forEach(grade => {
-                                                if (grade.wpis && grade.wpis.match(/^[0-6](\+|\-)?$/)) {
-                                                    let value = parseFloat(grade.wpis);
-                                                    if (grade.wpis.includes('+')) value += 0.5;
-                                                    else if (grade.wpis.includes('-')) value -= 0.25;
+                                if (
+                                    subject.kolumnyOcenyCzastkowe &&
+                                    Array.isArray(subject.kolumnyOcenyCzastkowe)
+                                ) {
+                                    subject.kolumnyOcenyCzastkowe.forEach(
+                                        (column) => {
+                                            if (
+                                                column.oceny &&
+                                                Array.isArray(column.oceny)
+                                            ) {
+                                                column.oceny.forEach(
+                                                    (grade) => {
+                                                        if (
+                                                            grade.wpis &&
+                                                            grade.wpis.match(
+                                                                /^[0-6](\+|\-)?$/
+                                                            )
+                                                        ) {
+                                                            let value =
+                                                                parseFloat(
+                                                                    grade.wpis
+                                                                );
+                                                            if (
+                                                                grade.wpis.includes(
+                                                                    "+"
+                                                                )
+                                                            )
+                                                                value += 0.5;
+                                                            else if (
+                                                                grade.wpis.includes(
+                                                                    "-"
+                                                                )
+                                                            )
+                                                                value -= 0.25;
 
-                                                    sum += value * grade.waga;
-                                                    totalWeight += grade.waga;
-                                                }
-                                            });
+                                                            sum +=
+                                                                value *
+                                                                grade.waga;
+                                                            totalWeight +=
+                                                                grade.waga;
+                                                        }
+                                                    }
+                                                );
+                                            }
                                         }
-                                    });
+                                    );
                                 }
 
                                 if (totalWeight > 0) {
-                                    subject.srednia = (sum / totalWeight).toFixed(2);
+                                    subject.srednia = (
+                                        sum / totalWeight
+                                    ).toFixed(2);
                                 }
                             });
 
@@ -53,25 +90,25 @@ function modifyGradesRequests() {
                             }
                         }
 
-                        console.debug('Zmodyfikowana odpowiedź:', data);
+                        console.debug("Zmodyfikowana odpowiedź:", data);
 
-                        Object.defineProperty(xhr, 'responseText', {
+                        Object.defineProperty(xhr, "responseText", {
                             get: function () {
                                 return data;
-                            }
+                            },
                         });
 
-                        Object.defineProperty(xhr, 'response', {
+                        Object.defineProperty(xhr, "response", {
                             get: function () {
                                 return data;
-                            }
+                            },
                         });
                     } catch (e) {
-                        console.debug('Błąd modyfikacji odpowiedzi:', e);
+                        console.debug("Błąd modyfikacji odpowiedzi:", e);
                     }
                 }
 
-                if (typeof originalOnReadyStateChange === 'function') {
+                if (typeof originalOnReadyStateChange === "function") {
                     originalOnReadyStateChange.apply(this, arguments);
                 }
             };
@@ -83,5 +120,5 @@ function modifyGradesRequests() {
 
 window.appendModule({
     run: modifyGradesRequests,
-    onlyOnReloads: true
+    onlyOnReloads: true,
 });
