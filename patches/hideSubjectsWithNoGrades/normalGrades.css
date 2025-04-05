@@ -1,7 +1,27 @@
 article.grades__box:has(.tile__content:first-of-type:empty) {
     display: none !important;
 }
-
 tbody.p-datatable-tbody > tr:has(.wider--oceny:empty) {
     display: none !important;
+}
+.grades__box > .tile__content:empty {
+    display: none !important;
+}
+.grades__box > .tile__content:has(~ .tile__content:empty) {
+    border-bottom: 0 !important;
+}
+.mobile__frame .grades__box .info-label {
+    min-width: 100% !important;
+}
+.content-container .grades__box .info-row {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    margin-inline: auto;
+}
+.content-container .grades__box .tile__content {
+    padding: 5px 20px;
+}
+.p-datatable-wrapper table .p-datatable-thead th.wider--oceny, .p-datatable-wrapper table .p-datatable-tbody td.wider--oceny {
+    width: auto;
 }

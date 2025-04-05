@@ -24,8 +24,8 @@
       }
   },
   {
-    "name": "Hide subjects with no grades",
-    "description": "Hides subjects without any grades.",
+    "name": "Cleanup grades table",
+    "description": "Hides subjects without any grades and columns without content.",
     "files": {
       "js": ["hideSubjectsWithNoGrades/finalGrades.js"],
       "css": ["hideSubjectsWithNoGrades/normalGrades.css"]
@@ -210,5 +210,12 @@
       "css": ["highlightToday.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    "name": "Count averages",
+    "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
+    "files": {
+        "js": ["countAverage.js"]
+    }
   }
 ]
