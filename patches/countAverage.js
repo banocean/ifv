@@ -18,13 +18,15 @@ function modifyGradesRequests() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     try {
                         let data = JSON.parse(xhr.responseText);
+                        const originalResponse = JSON.parse(xhr.responseText);
 
-                        console.debug("Oryginalna odpowiedź:", data);
+                        console.debug("Oryginalna odpowiedź:", originalResponse);
 
                         if (
                             data &&
                             data.ocenyPrzedmioty &&
-                            Array.isArray(data.ocenyPrzedmioty)
+                            Array.isArray(data.ocenyPrzedmioty) &&
+                            data.ustawienia.isSredniaAndPunkty !== true
                         ) {
                             data.ocenyPrzedmioty.forEach((subject) => {
                                 let sum = 0;
@@ -88,9 +90,9 @@ function modifyGradesRequests() {
                             if (data.ustawienia) {
                                 data.ustawienia.isSredniaAndPunkty = true;
                             }
-                        }
 
-                        console.debug("Zmodyfikowana odpowiedź:", data);
+                            console.debug("Zmodyfikowana odpowiedź:", data);
+                        }
 
                         Object.defineProperty(xhr, "responseText", {
                             get: function () {
