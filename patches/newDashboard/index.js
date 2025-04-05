@@ -1,6 +1,12 @@
 import { waitForRender } from "../apis/waitForElement.js";
 import { mapDay } from "../apis/mapTimetable.js";
 
+const doesHaveClickableParent = (element) => {
+    if (["a", "button"].includes(element.tagName.toLowerCase())) return true;
+    if (!element.parentElement) return false;
+    return doesHaveClickableParent(element.parentElement);
+};
+
 const icons = [
     [
         "Dzisiejszy plan zajęć",
@@ -42,7 +48,7 @@ const applyIcons = () => {
         container.parentElement?.parentElement?.addEventListener(
             "click",
             (e) => {
-                if (e.button) return;
+                if (doesHaveClickableParent(e.target)) return;
                 container.parentElement.querySelector("a.tile__link")?.click();
             },
         );
