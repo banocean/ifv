@@ -22,3 +22,6 @@ tbody.p-datatable-tbody > tr:has(.wider--oceny:empty) {
 .content-container .grades__box .tile__content {
     padding: 5px 20px;
 }
+.p-datatable-wrapper table .p-datatable-thead th.wider--oceny, .p-datatable-wrapper table .p-datatable-tbody td.wider--oceny {
+    width: auto;
+}
