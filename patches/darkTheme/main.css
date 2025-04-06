@@ -804,10 +804,6 @@
         border-color: var(--borders);
     }
 
-    .p-editor-container .p-editor-toolbar.ql-snow .ql-stroke {
-        stroke: var(--tertiary-text);
-    }
-
     .p-editor-container .ql-snow.ql-toolbar button:hover,
     .p-editor-container .ql-snow.ql-toolbar button:focus {
         stroke: var(--secondary-text);
@@ -815,7 +811,7 @@
     }
 
     .ql-editor.ql-blank::before {
-        color: var(--secondary-text);
+        color: var(--secondary-text) !important;
     }
 
     .modal .message-details {
@@ -1074,5 +1070,17 @@
     }
     .attendance-tabs > button {
         color: color-mix(in srgb, var(--kolor-brand), #fff 30%);
+    }
+    .modal .text__editor-container .modal__box .ql-toolbar, .modal .text__editor-container .modal__box .ql-container {
+        background-color: var(--secondary--component--background);
+    }
+    .modal .text__editor-container .modal__box .ql-snow {
+        border-color: var(--borders) !important;
+    }
+    .ql-snow .ql-stroke {
+        stroke: var(--tertiary-text) !important;
+    }
+    a.linkified {
+        color: var(--evBlue);
     }
 }
