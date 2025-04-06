@@ -1080,4 +1080,7 @@
     .ql-snow .ql-stroke {
         stroke: var(--tertiary-text) !important;
     }
+    a.linkified {
+        color: var(--evBlue);
+    }
 }
