@@ -35,7 +35,7 @@ const icons = [
 const applyIcons = () => {
     for (const [tileTitle, fileName] of icons) {
         const icon = document.createElement("img");
-        icon.src = `https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/${fileName}`;
+        icon.src = `https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/${fileName}`;
         const container = Array.from(
             document.querySelectorAll(".content-container .tile.box"),
         )
@@ -108,15 +108,15 @@ const createToolbar = async () => {
     element.classList.add("dashboard-info-toolbar");
     element.innerHTML = `
         <div>
-            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/star_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
+            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/star_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
             <span>-</span>
         </div>
         <div>
-            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/event_note_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
+            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/event_note_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
             <span>-</span>
         </div>
         <div>
-            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/dashboard-improvements/assets/icons/mail_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
+            <img src="https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/mail_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
             <span>-</span>
         </div>
     </div>`;
