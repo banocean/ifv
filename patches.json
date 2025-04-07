@@ -1,5 +1,14 @@
 [
   {
+      "name": "Move title to header",
+      "description": "Moves title to header (mobile only)",
+      "files": {
+          "css": ["moveTitleToHeader/style.css"],
+          "js": ["moveTitleToHeader/index.js"]
+      },
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
       "name": "Change close button icon",
       "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to.",
       "files": {
@@ -17,8 +26,8 @@
       "devices": "mobileOnly"
   },
   {
-    "name": "Hide subjects with no grades",
-    "description": "Hides subjects without any grades.",
+    "name": "Cleanup grades table",
+    "description": "Hides subjects without any grades and columns without content.",
     "files": {
       "js": ["hideSubjectsWithNoGrades/finalGrades.js"],
       "css": ["hideSubjectsWithNoGrades/normalGrades.css"]
@@ -125,15 +134,6 @@
     }
   },
   {
-    "name": "Attendance statistics in separate tab",
-    "description": "Makes attendance page more readable by moving statistics to separate tab.",
-    "files": {
-      "css": ["attendance/styles.css"],
-      "js": ["attendance/tabs.js"]
-    },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
-  },
-  {
     "name": "Reload on resize",
     "description": "Reloads page while changing between desktop and mobile layouts.",
     "files": {
@@ -185,5 +185,37 @@
       "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
     },
     "devices": "mobileOnly"
+    }
+  },
+  {
+    "name": "Redisigned attendance",
+    "description": "Changes styles and navigation on attendance page.",
+    "files": {
+      "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
+      "css": ["newAttendance/style.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    "name": "Fix going back in history",
+    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
+    "files": {
+      "js": ["fixGoingBack.js"]
+    }
+  },
+  {
+    "name": "Highlight today",
+    "description": "Highlights today's date in the calendar.",
+    "files": {
+      "css": ["highlightToday.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    "name": "Count averages",
+    "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
+    "files": {
+        "js": ["countAverage.js"]
+    }
   }
 ]

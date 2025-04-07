@@ -16,7 +16,7 @@ const getAsideElement = async () => {
 };
 
 const closeAside = () => {
-    const closeButton = document.querySelector("aside .close-button");
+    const closeButton = document.querySelector(".aside-button--close");
     if (window.asideMode !== "hidden") {
         asideReads--;
         if (closeButton && asideReads <= 0) closeButton.click();
