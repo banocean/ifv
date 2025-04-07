@@ -4,10 +4,10 @@ import { getFromAside } from "./apis/aside.js";
 async function move() {
     const inner = await getFromAside(
         async () => {
-            await waitForRender(() => document.querySelector(".messages"))
-            return document.querySelector(".messages")?.innerHTML
+            await waitForRender(() => document.querySelector(".messages"));
+            return document.querySelector(".messages")?.innerHTML;
         }
-    )
+    );
 
     const messages = document.createElement("div");
     messages.innerHTML = inner;
@@ -26,8 +26,7 @@ async function move() {
 window.appendModule({
     run: move,
     doesRunHere: () =>
-        window.location.hostname.match(/^(dziennik-)?(uczen).*/) &&
-        window.innerWidth < 1024,
+        window.location.hostname.match(/^(dziennik-)?(uczen).*/),
     onlyOnReloads: true,
     isLoaded: () => !!document.querySelector(".header__hamburger__icon")
 });
