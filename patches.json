@@ -1,7 +1,7 @@
 [
   {
       "name": "Move title to header",
-      "description": "Moves title to header (mobile only)",
+      "description": "Moves title to header",
       "files": {
           "css": ["moveTitleToHeader/style.css"],
           "js": ["moveTitleToHeader/index.js"]
@@ -185,7 +185,6 @@
       "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
     },
     "devices": "mobileOnly"
-    }
   },
   {
     "name": "Redisigned attendance",
@@ -198,19 +197,21 @@
   },
   {
     "name": "Redesigned dashboard",
-    "description": "Changes styles of the home (dashboard) page. (mobile only)",
+    "description": "Changes styles of the home (dashboard) page.",
     "files": {
       "js": ["newDashboard/index.js"],
       "css": ["newDashboard/styles.css"]
     },
+    "devices": "mobileOnly",
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]   
   },
   {
     "name": "Fix going back in history",
-    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
+    "description": "Allows to use the browser's back button to return to the expected location. (firefox only)",
     "files": {
       "js": ["fixGoingBack.js"]
-    }
+    },
+    "devices": "mobileOnly"
   },
   {
     "name": "Highlight today",

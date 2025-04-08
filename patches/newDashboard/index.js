@@ -156,8 +156,7 @@ window.appendModule({
         createToolbar();
         replaceTimetable();
     },
-    doesRunHere: () =>
-        window.location.href.endsWith("tablica") && window.innerWidth < 1024,
+    doesRunHere: () => window.location.href.endsWith("tablica"),
     onlyOnReloads: false,
     isLoaded: () =>
         document.querySelector(".plan-zajec") &&
