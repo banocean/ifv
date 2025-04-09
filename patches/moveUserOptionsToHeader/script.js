@@ -52,8 +52,8 @@ const moveUserOptionsToHeader = async () => {
             executeActionOnAside(async () => {
                 document.querySelector(".user").click();
                 await waitForRender(() => document.querySelector(".user__links"));
-                document.querySelectorAll(".user__links a")[i].click()
-            })
+                document.querySelectorAll(".user__links a")[i].click();
+            });
             toggleModal();
         });
 
@@ -100,6 +100,5 @@ window.appendModule({
     onlyOnReloads: true,
     run: moveUserOptionsToHeader,
     doesRunHere: () =>
-        !!window.location.hostname.match(/^(dziennik-)?(wiadomosci|uczen).*/) &&
-        window.innerWidth < 1024,
+        !!window.location.hostname.match(/^(dziennik-)?(wiadomosci|uczen).*/),
 });
