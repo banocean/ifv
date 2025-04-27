@@ -203,7 +203,7 @@
       "css": ["newDashboard/styles.css"]
     },
     "devices": "mobileOnly",
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]   
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
     "name": "Fix going back in history",
@@ -226,6 +226,40 @@
     "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
     "files": {
         "js": ["countAverage.js"]
-    }
+    },
+    "settings": [
+        {
+            "id": "minusValue",
+            "name": "Minus value",
+            "description": "Value to be deducted when the grade has a minus (e.g. 3-).",
+            "type": "number",
+            "default": 0.33
+        },
+        {
+            "id": "plusValue",
+            "name": "Plus value",
+            "description": "Value to add when the grade has a plus (e.g. 3+).",
+            "type": "number",
+            "default": 0.33
+        }
+    ]
+  },
+  {
+    "name": "Display settings on the website",
+    "description": "Makes patches settings accessible.",
+    "files": {
+      "js": ["patchesSettings/index.js"],
+      "css": ["patchesSettings/style.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    "settings": [
+        {
+            "id": "enablePatchesFromSite",
+            "name": "Enable patches from the site",
+            "description": "Allows you to enable/disable patches via the website.",
+            "type": "boolean",
+            "default": true
+        }
+    ]
   }
 ]
