@@ -7,7 +7,10 @@ function addDesktopSettings() {
     settingsButton.classList.add("ifv-settings-button");
     settingsButton.setAttribute("title", "Ustawienia ifv");
     settingsButton.addEventListener("click", async () => {
-        console.debug(await generateSettingsList());
+        const modalDiv = document.createElement("div");
+        modalDiv.className = "ifv-patches-modal";
+        modalDiv.appendChild(await generateSettingsList());
+        document.body.appendChild(modalDiv);
     });
     document.querySelector(".app__aside__desktop + .app__main .header__tools").appendChild(settingsButton);
     console.debug("Added settings button to desktop");

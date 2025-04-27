@@ -4,3 +4,18 @@
     cursor: pointer;
     padding-right: 12px;
 }
+
+.ifv-patches-modal {
+    background: #27272a;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 50%;
+    height: 70%;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}

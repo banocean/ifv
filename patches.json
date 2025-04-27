@@ -233,14 +233,14 @@
             "name": "Minus value",
             "description": "Value to be deducted when the grade has a minus (e.g. 3-).",
             "type": "number",
-            "default": 0.33
+            "default": 0.3
         },
         {
             "id": "plusValue",
             "name": "Plus value",
             "description": "Value to add when the grade has a plus (e.g. 3+).",
             "type": "number",
-            "default": 0.33
+            "default": 0.3
         }
     ]
   },
@@ -251,15 +251,6 @@
       "js": ["patchesSettings/index.js"],
       "css": ["patchesSettings/style.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
-    "settings": [
-        {
-            "id": "enablePatchesFromSite",
-            "name": "Enable patches from the site",
-            "description": "Allows you to enable/disable patches via the website.",
-            "type": "boolean",
-            "default": true
-        }
-    ]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   }
 ]
