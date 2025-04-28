@@ -248,7 +248,7 @@
     "name": "Display settings on the website",
     "description": "Makes patches settings accessible.",
     "files": {
-      "js": ["patchesSettings/index.js"],
+      "js": ["patchesSettings/desktop.js", "patchesSettings/mobile.js"],
       "css": ["patchesSettings/style.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]

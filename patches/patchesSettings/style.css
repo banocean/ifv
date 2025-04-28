@@ -6,16 +6,57 @@
 }
 
 .ifv-patches-modal {
-    background: #27272a;
-    color: white;
-    border-radius: 5px;
-    padding: 10px;
-    width: 50%;
+    background: #e1e5e6;
+    color: #202022;
+    border-radius: 15px;
+    padding: 20px;
+    width: 800px;
     height: 70%;
     overflow-y: auto;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
+    transform: translate(-50%, 200%);
+    opacity: 0.3;
+    z-index: -1;
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s ease-in-out;
+}
+
+.ifv-patches-modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0);
+    transition: backdrop-filter 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.ifv-patches-modal-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ifv-patches-modal-header img {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.ifv-patches-modal-header h1 {
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1;
+    color: #000;
+}
+
+.ifv-patches-modal-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    aspect-ratio: 1;
+    margin-right: 7px;
 }
