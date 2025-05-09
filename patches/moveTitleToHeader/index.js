@@ -28,6 +28,7 @@ function move() {
     });
 
     const button = document.querySelector(".go_to_dashboard") || createButton();
+    button.style.left = `${document.querySelector(".header__logo").getBoundingClientRect().left}px`;
     button.innerHTML =
         "<img src='https://raw.githubusercontent.com/banocean/ifv/main/assets/icons/reply_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg'> Tablica";
     button.classList.add("hidden");
@@ -35,6 +36,10 @@ function move() {
 
     header.addEventListener("click", () => {
         button.classList.toggle("hidden");
+        if (!button.classList.contains("hidden")) button.classList.add("animate");
+        setTimeout(() => {
+            button.classList.remove("animate");
+        }, 100);
     });
 
     button.addEventListener("click", async () => {
@@ -48,6 +53,18 @@ function move() {
             );
         } else await clickOnAside(".tablica a");
     });
+
+    window.addEventListener("click", (e) => {
+        if (!header.contains(e.target) && !button.contains(e.target)) {
+            hideButton();
+        }
+    });
+
+    window.addEventListener("scroll", hideButton);
+
+    function hideButton() {
+        button.classList.add("hidden");
+    }
 }
 
 window.appendModule({
