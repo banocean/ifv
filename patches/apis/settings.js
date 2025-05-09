@@ -1,10 +1,10 @@
 export function getSetting(patchName, settingId) {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];
     const patch = patches.find(p => p.name === patchName);
-    if (!patch) return undefined;
+    if (!patch) throw new Error(`Patch with name ${patchName} not found.`);
 
     const setting = patch.settings?.find(s => s.id === settingId);
-    if (!setting) return undefined;
+    if (!setting) throw new Error(`Setting with id ${settingId} not found in patch ${patchName}.`);
 
     const patchesSettings = JSON.parse(sessionStorage.getItem("ifv_patches_settings")) || {};
     const savedValue = patchesSettings[patchName]?.[settingId];
@@ -36,13 +36,13 @@ export function saveSetting(patchName, settingId, value) {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];
     const patch = patches.find(p => p.name === patchName);
     if (!patch) {
-        console.error(`Patch with name ${patchName} not found.`);
+        console.debug(`Patch with name ${patchName} not found.`);
         return;
     }
 
     const setting = patch.settings?.find(s => s.id === settingId);
     if (!setting) {
-        console.error(`Setting with id ${settingId} not found in patch ${patchName}.`);
+        console.debug(`Setting with id ${settingId} not found in patch ${patchName}.`);
         return;
     }
 
@@ -57,7 +57,7 @@ export function saveSetting(patchName, settingId, value) {
             }
         } catch (e) {
             patchesSettings = {};
-            console.error("Error parsing ifv_patches_settings from sessionStorage. Initializing to {}.", e);
+            console.debug("Error parsing ifv_patches_settings from sessionStorage. Initializing to {}.", e);
         }
     } else {
         patchesSettings = {};
