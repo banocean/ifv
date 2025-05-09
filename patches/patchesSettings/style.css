@@ -6,7 +6,7 @@
 }
 
 .ifv-patches-modal {
-    background: #e1e5e6;
+    background: #f9f9ff;
     color: #202022;
     border-radius: 15px;
     padding: 20px;
@@ -59,4 +59,60 @@
     padding: 0;
     aspect-ratio: 1;
     margin-right: 7px;
+}
+
+.ifv-patches-modal > .patches-list {
+    font-family: 'Google Sans', 'Roboto', system-ui;
+}
+
+.ifv-patches-modal > .patches-list > .patch {
+    background-color: #ecedf7;
+    padding: 15px;
+    border-radius: 13px;
+    margin-bottom: 10px;
+}
+
+.patch-header {
+    margin-bottom: 5px;
+}
+
+.patch-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.patch-description {
+    font-size: 12px;
+    color: #777;
+}
+
+.ifv-patches-modal .patch .settings-list {
+    background-color: #dde2f2;
+    padding: 5px;
+    border-radius: 11px;
+    margin-top: 10px;
+}
+
+.settings-list .setting {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.settings-list .setting:last-child {
+    border-bottom: none;
+}
+
+.setting .separator {
+    color: #999;
+}
+
+.setting-name {
+    font-size: 12px;
+    color: #222;
+}
+
+.setting-description {
+    font-size: 12px;
+    color: #777;
 }

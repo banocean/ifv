@@ -228,3 +228,17 @@ label .title {
 .footer a {
     color: #a1a1aa;
 }
+
+
+#clear-storage {
+    color: #a1a1aa;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-inline: auto;
+    width: fit-content;
+}
+
+#clear-storage:hover {
+    color: #c2c2c2;
+}
