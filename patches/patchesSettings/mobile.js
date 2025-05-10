@@ -1,7 +1,8 @@
-import { generateSettingsList } from './generateSettingsList.js';
-import { waitForRender } from '../apis/waitForElement.js';
+import { generateSettingsList } from "./generateSettingsList.js";
+import { waitForRender } from "../apis/waitForElement.js";
 
-const BACK_ICON_URL = "https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+const BACK_ICON_URL =
+    "https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 
 function addMobileSettings() {
     const settingsButton = document.createElement("div");
@@ -14,21 +15,29 @@ function addMobileSettings() {
             settingsModal.remove();
         });
         const settingsList = await generateSettingsList();
-        settingsModal.querySelector("div:last-of-type").appendChild(settingsList);
-        settingsModal.querySelector("div:last-of-type").classList.add("ifv-patches-mobile");
+        settingsModal
+            .querySelector("div:last-of-type")
+            .appendChild(settingsList);
+        settingsModal
+            .querySelector("div:last-of-type")
+            .classList.add("ifv-patches-mobile");
         document.body.appendChild(settingsModal);
     });
 
-    waitForRender(() => document.querySelector(".more-popup.list-modal div")).then(() => {
-        document.querySelectorAll(".more-popup.list-modal div")[1].appendChild(settingsButton);
+    waitForRender(() =>
+        document.querySelector(".more-popup.list-modal div")
+    ).then(() => {
+        document
+            .querySelectorAll(".more-popup.list-modal div")[1]
+            .appendChild(settingsButton);
     });
 }
 
 window.appendModule({
     run: addMobileSettings,
     onlyOnReloads: true,
-    doesRunHere: () => [
-        "uczen.eduvulcan.pl",
-        "dziennik-uczen.vulcan.net.pl"
-    ].includes(window.location.hostname) && window.innerWidth < 1024,
+    doesRunHere: () =>
+        ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"].includes(
+            window.location.hostname
+        ) && window.innerWidth < 1024,
 });

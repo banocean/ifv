@@ -62,11 +62,13 @@
     margin-right: 7px;
 }
 
-.ifv-patches-modal > .patches-list, .ifv-patches-mobile > .patches-list {
+.ifv-patches-modal > .patches-list,
+.ifv-patches-mobile > .patches-list {
     font-family: "Google Sans", "Roboto", system-ui;
 }
 
-.ifv-patches-modal > .patches-list > .patch, .ifv-patches-mobile > .patches-list > .patch {
+.ifv-patches-modal > .patches-list > .patch,
+.ifv-patches-mobile > .patches-list > .patch {
     background-color: #ecedf7;
     padding: 15px;
     border-radius: 13px;
@@ -88,7 +90,8 @@
     color: #777;
 }
 
-.ifv-patches-modal .patch .settings-list, .ifv-patches-mobile .patch .settings-list {
+.ifv-patches-modal .patch .settings-list,
+.ifv-patches-mobile .patch .settings-list {
     background-color: #dde2f2;
     padding: 5px;
     border-radius: 11px;
@@ -260,12 +263,7 @@
 }
 
 .reset-button:hover {
-    background-color: rgba(
-        0,
-        107,
-        214,
-        0.08
-    );
+    background-color: rgba(0, 107, 214, 0.08);
     border-color: #006bd6;
 }
 
