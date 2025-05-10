@@ -23,6 +23,76 @@
         opacity 0.3s ease-in-out;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #ecedf7;
+    padding: 0 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ecedf7;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.search-bar:has(input[type="text"]:focus) {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px #007bff40;
+}
+
+.search-bar svg {
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #202022;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #8e8e8e;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.search-bar button svg {
+    margin-right: 0;
+}
+
+.ifv-patches-modal mark, .ifv-patches-mobile mark {
+    background-color: #007BFF80;
+    border-radius: 4px;
+    outline: 1px solid #007BFF65;
+}
+
+.no-results-message {
+    display: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
 .ifv-patches-modal-background {
     position: fixed;
     top: 0;
@@ -30,7 +100,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: rgba(0, 0, 0, 0);
+    background: #00000000;
     transition: backdrop-filter 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
@@ -142,7 +212,7 @@
 .setting-input input[type="color"]:focus,
 .setting-input select:focus {
     border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 2px #007bff40;
     outline: none;
 }
 
@@ -263,12 +333,12 @@
 }
 
 .reset-button:hover {
-    background-color: rgba(0, 107, 214, 0.08);
+    background-color: #006bd614;
     border-color: #006bd6;
 }
 
 .reset-button:active {
-    background-color: rgba(0, 107, 214, 0.12);
+    background-color: #006bd61f;
 }
 
 .ifv-patches-mobile > .patches-list {

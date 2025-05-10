@@ -6,6 +6,14 @@ chrome.storage.sync.get("patchesSettings", (data) => {
     }
 });
 
+chrome.storage.sync.get("options", (data) => {
+    if (data.options) {
+        sessionStorage.setItem("ifv_options", JSON.stringify(data.options));
+    } else {
+        sessionStorage.setItem("ifv_options", JSON.stringify({}));
+    }
+});
+
 let lastContent = sessionStorage.getItem("ifv_patches_settings");
 
 function saveSettingsToStorage() {

@@ -2,11 +2,109 @@ import { getSetting, saveSetting } from "../apis/settings.js";
 
 export async function generateSettingsList() {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];
+    const config = JSON.parse(sessionStorage.getItem("ifv_options")) || {};
     const patchesSettingsDiv = document.createElement("div");
     patchesSettingsDiv.className = "patches-list";
 
+    patchesSettingsDiv.innerHTML = `
+        <div class="search-bar">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="#8e8e8e"
+            >
+                <path
+                    d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+                />
+            </svg>
+            <input placeholder="Search" type="text" autofocus />
+            <button id="clear">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="18px"
+                    viewBox="0 -960 960 960"
+                    width="18px"
+                    fill="#8e8e8e"
+                >
+                    <path
+                        d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                    />
+                </svg>
+            </button>
+        </div>
+        <div class="no-results-message">Nie znaleziono pasujących patchy 😿</div>
+    `;
+
+    const searchInput = patchesSettingsDiv.querySelector(".search-bar > input");
+
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim().toLowerCase();
+        const noResultsMessageDiv = patchesSettingsDiv.querySelector(
+            ".no-results-message"
+        );
+        let visiblePatchesCount = 0;
+
+        patchesSettingsDiv.querySelectorAll(".patch").forEach((patchDiv) => {
+            const patchNameEl = patchDiv.querySelector(".patch-name");
+            const patchDescEl = patchDiv.querySelector(".patch-description");
+
+            removeMarks(patchNameEl);
+            removeMarks(patchDescEl);
+            patchDiv.querySelectorAll(".setting").forEach((settingDiv) => {
+                removeMarks(settingDiv.querySelector(".setting-name"));
+                removeMarks(settingDiv.querySelector(".setting-description"));
+            });
+
+            if (query === "") {
+                patchDiv.style.display = "block";
+                return;
+            }
+
+            let combinedTextContent = patchNameEl.textContent.toLowerCase() + " " + patchDescEl.textContent.toLowerCase() + " ";
+
+            patchDiv.querySelectorAll(".setting").forEach((settingDiv) => {
+                combinedTextContent += settingDiv.querySelector(".setting-name").textContent.toLowerCase() + " ";
+                combinedTextContent += settingDiv.querySelector(".setting-description").textContent.toLowerCase() + " ";
+            });
+
+            if (combinedTextContent.includes(query)) {
+                patchDiv.style.display = "block";
+                visiblePatchesCount++;
+
+                markTextInElement(patchNameEl, query);
+                markTextInElement(patchDescEl, query);
+
+                patchDiv.querySelectorAll(".setting").forEach((settingDiv) => {
+                    markTextInElement(settingDiv.querySelector(".setting-name"), query);
+                    markTextInElement(settingDiv.querySelector(".setting-description"), query);
+                });
+            } else {
+                patchDiv.style.display = "none";
+            }
+        });
+
+        if (query === "") {
+            noResultsMessageDiv.style.display = "none";
+        } else if (visiblePatchesCount === 0) {
+            noResultsMessageDiv.style.display = "block";
+        } else {
+            noResultsMessageDiv.style.display = "none";
+        }
+    });
+
+    const clearButton = patchesSettingsDiv.querySelector("#clear");
+    clearButton.addEventListener("click", () => {
+        searchInput.value = "";
+        searchInput.dispatchEvent(new Event("input"));
+    });
+
     for (const patch of patches) {
         if (!patch.settings?.length) continue;
+        if (config[patch.name] === false) continue;
+        if (patch.devices === "mobile" && window.innerWidth >= 1024) continue;
+        if (patch.devices === "desktop" && window.innerWidth < 1024) continue;
 
         const patchDiv = document.createElement("div");
         patchDiv.className = "patch";
@@ -266,3 +364,80 @@ const settingRenderers = {
     }">
     `,
 };
+
+/**
+ * Usuwa znaczniki <mark> z elementu
+ *
+ * @param {Node} element element, z którego usuwamy znaczniki <mark>
+ * @returns {void}
+ */
+async function removeMarks(element) {
+    const marks = element.querySelectorAll("mark");
+    marks.forEach(async (mark) => {
+        const parent = mark.parentNode;
+        while (mark.firstChild) {
+            parent.insertBefore(mark.firstChild, mark);
+        }
+        parent.removeChild(mark);
+    });
+
+    element.normalize();
+}
+
+/**
+ * Zaznacza tekst w elemencie, który pasuje do podanego zapytania.
+ *
+ * @param {Node} element element, w którym zaznaczamy tekst
+ * @param {string} textQueryToHighlight string do wyszukania
+ * @returns {void}
+ */
+async function markTextInElement(element, textQueryToHighlight) {
+    const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT
+    );
+    const nodesToModify = [];
+
+    let currentNode;
+    while ((currentNode = walker.nextNode())) {
+        const nodeText = currentNode.nodeValue;
+        const lowerNodeText = nodeText.toLowerCase();
+
+        if (lowerNodeText.includes(textQueryToHighlight)) {
+            nodesToModify.push({
+                node: currentNode,
+                text: nodeText,
+                query: textQueryToHighlight,
+            });
+        }
+    }
+
+    nodesToModify.forEach(async ({ node, text, query }) => {
+        const lowerText = text.toLowerCase();
+        let matchIndex = lowerText.indexOf(query);
+        const fragment = document.createDocumentFragment();
+        let lastIndex = 0;
+
+        while (matchIndex !== -1) {
+            fragment.appendChild(
+                document.createTextNode(text.substring(lastIndex, matchIndex))
+            );
+            const mark = document.createElement("mark");
+            mark.textContent = text.substring(
+                matchIndex,
+                matchIndex + query.length
+            );
+            fragment.appendChild(mark);
+
+            lastIndex = matchIndex + query.length;
+            matchIndex = lowerText.indexOf(query, lastIndex);
+        }
+        fragment.appendChild(
+            document.createTextNode(text.substring(lastIndex))
+        );
+
+        node.parentNode.replaceChild(fragment, node);
+    });
+
+    element.normalize();
+}
