@@ -314,17 +314,17 @@
     },
     "settings": [
         {
-            "id": "minusValue",
-            "name": "Minus value",
-            "description": "Value to be deducted when the grade has a minus (e.g. 3-).",
+            "id": "plusValue",
+            "name": "Plus value",
+            "description": "Value to add when the grade has a plus (e.g. 3+).",
             "type": "number",
             "default": 0.3,
             "step": 0.1
         },
         {
-            "id": "plusValue",
-            "name": "Plus value",
-            "description": "Value to add when the grade has a plus (e.g. 3+).",
+            "id": "minusValue",
+            "name": "Minus value",
+            "description": "Value to be deducted when the grade has a minus (e.g. 3-).",
             "type": "number",
             "default": 0.3,
             "step": 0.1
