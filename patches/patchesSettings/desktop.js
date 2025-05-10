@@ -28,7 +28,6 @@ async function addDesktopSettings() {
     document.body.appendChild(modalBackground);
     document.body.appendChild(modalDiv);
     document.querySelector(".app__aside__desktop + .app__main .header__tools").appendChild(settingsButton);
-    console.debug("Added settings button to desktop");
 }
 
 async function hideModal() {

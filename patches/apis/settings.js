@@ -1,3 +1,13 @@
+/**
+ * Pobiera wartość określonego ustawienia dla danego patcha.
+ *
+ * @param {string} patchName Pełna nazwa patcha, dla którego pobierane jest ustawienie.
+ * @param {string} settingId Identyfikator ustawienia do pobrania.
+ * @returns {boolean|string|number|Array<string>} Zapisana wartość ustawienia. Jeśli nie istnieje zwracana jest wartość domyślna.
+ *                                                Rzeczywisty typ zwracanej wartości (np. `boolean` dla ustawień typu boolean,
+ *                                                `Array<string>` dla multiselect) zależy od konfiguracji danego `settingId`.
+ * @throws {Error} Rzuca błąd, jeśli patch o podanej nazwie (`patchName`) lub ustawienie o podanym ID (`settingId`) nie zostanie znalezione.
+ */
 export function getSetting(patchName, settingId) {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];
     const patch = patches.find(p => p.name === patchName);
@@ -32,19 +42,23 @@ export function getSetting(patchName, settingId) {
     return setting.default;
 }
 
+/**
+ * Zapisuje wartość określonego ustawienia dla danego patcha.
+ *
+ * @param {string} patchName Nazwa patcha, dla którego zapisywane jest ustawienie.
+ * @param {string} settingId Identyfikator ustawienia do zapisania.
+ * @param {boolean|string|number|string[]} value Wartość ustawienia do zapisania. Typ tej wartości powinien być zgodny
+ *                  z oczekiwanym typem dla danego `settingId`.
+ * @returns {void}
+ * @throws {Error} Rzuca błąd, jeśli patch o podanej nazwie (`patchName`) lub ustawienie o podanym ID (`settingId`) nie zostanie znalezione.
+ */
 export function saveSetting(patchName, settingId, value) {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];
     const patch = patches.find(p => p.name === patchName);
-    if (!patch) {
-        console.debug(`Patch with name ${patchName} not found.`);
-        return;
-    }
+    if (!patch) throw new Error(`Patch with name ${patchName} not found.`);
 
     const setting = patch.settings?.find(s => s.id === settingId);
-    if (!setting) {
-        console.debug(`Setting with id ${settingId} not found in patch ${patchName}.`);
-        return;
-    }
+    if (!setting) throw new Error(`Setting with id ${settingId} not found in patch ${patchName}.`);
 
     let rawPatchesSettings = sessionStorage.getItem("ifv_patches_settings");
     let patchesSettings;
@@ -69,7 +83,6 @@ export function saveSetting(patchName, settingId, value) {
 
     patchesSettings[patchName][settingId] = value;
     sessionStorage.setItem("ifv_patches_settings", JSON.stringify(patchesSettings));
-    console.debug(`Saved setting ${settingId} for patch ${patchName}:`, value);
 
     window.dispatchEvent(new CustomEvent("ifv-settings-changed"));
 }

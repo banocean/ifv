@@ -1,7 +1,6 @@
 chrome.storage.sync.get("patchesSettings", (data) => {
     if (data.patchesSettings) {
         sessionStorage.setItem("ifv_patches_settings", JSON.stringify(data.patchesSettings));
-        console.debug("Patches settings loaded from storage: ", data.patchesSettings);
     } else {
         sessionStorage.setItem("ifv_patches_settings", JSON.stringify([]));
     }
@@ -14,7 +13,6 @@ function saveSettingsToStorage() {
     if (newContent === lastContent) return;
 
     chrome.storage.sync.set({ patchesSettings: JSON.parse(newContent) });
-    console.debug("Patches settings updated in storage: ", newContent);
 
     lastContent = newContent;
 }
