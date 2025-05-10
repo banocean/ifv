@@ -11,7 +11,7 @@
     border-radius: 15px;
     padding: 20px;
     width: 800px;
-    height: 70%;
+    max-height: 70%;
     overflow-y: auto;
     position: fixed;
     top: 50%;
@@ -19,7 +19,8 @@
     transform: translate(-50%, 200%);
     opacity: 0.3;
     z-index: -1;
-    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        opacity 0.3s ease-in-out;
 }
 
 .ifv-patches-modal-background {
@@ -62,7 +63,7 @@
 }
 
 .ifv-patches-modal > .patches-list {
-    font-family: 'Google Sans', 'Roboto', system-ui;
+    font-family: "Google Sans", "Roboto", system-ui;
 }
 
 .ifv-patches-modal > .patches-list > .patch {
@@ -115,4 +116,156 @@
 .setting-description {
     font-size: 12px;
     color: #777;
+}
+
+.setting-input input[type="text"],
+.setting-input input[type="number"],
+.setting-input input[type="color"],
+.setting-input select {
+    background-color: #f0f0f5;
+    border: 1px solid #d0d0d5;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #202022;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.setting-input input[type="text"]:focus,
+.setting-input input[type="number"]:focus,
+.setting-input input[type="color"]:focus,
+.setting-input select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.setting-input select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23202022'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 36px;
+    width: 100%;
+}
+
+.setting-input input[type="color"] {
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #f0f0f5;
+    border: 1px solid #d0d0d5;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.checkbox-item input[type="checkbox"]:checked::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-item label {
+    font-size: 14px;
+    color: #202022;
+    cursor: pointer;
+}
+
+.setting-multiselect .checkbox-item {
+    margin-bottom: 5px;
+}
+
+.patches-list .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+@media (max-width: 425px) {
+    .patches-list .buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.apply-button,
+.reset-button {
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+        border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border: 1px solid transparent;
+    outline: none;
+    line-height: 1.5;
+}
+
+.apply-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
+
+.apply-button:active {
+    background-color: #b9d1ed;
+}
+
+.reset-button {
+    background-color: transparent;
+    color: #006bd6;
+    border-color: #7fadda;
+}
+
+.reset-button:hover {
+    background-color: rgba(
+        0,
+        107,
+        214,
+        0.08
+    );
+    border-color: #006bd6;
+}
+
+.reset-button:active {
+    background-color: rgba(0, 107, 214, 0.12);
 }

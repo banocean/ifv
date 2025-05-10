@@ -298,7 +298,7 @@
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
     "settings": [
       {
-        "id": "highlightTodayColor",
+        "id": "highlightColor",
         "name": "Highlight today color",
         "description": "Color of the highlight.",
         "type": "color",

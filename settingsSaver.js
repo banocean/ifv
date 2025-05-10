@@ -9,18 +9,20 @@ chrome.storage.sync.get("patchesSettings", (data) => {
 
 let lastContent = sessionStorage.getItem("ifv_patches_settings");
 
-setInterval(() => {
-    if (sessionStorage.getItem("ifv_patches_settings") === lastContent) return;
+function saveSettingsToStorage() {
     const newContent = sessionStorage.getItem("ifv_patches_settings");
+    if (newContent === lastContent) return;
 
     chrome.storage.sync.set({ patchesSettings: JSON.parse(newContent) });
     console.debug("Patches settings updated in storage: ", newContent);
 
     lastContent = newContent;
-}, 1000);
+}
+
+window.addEventListener("ifv-settings-changed", saveSettingsToStorage);
 
 fetch(chrome.runtime.getURL("patches.json"))
     .then(response => response.json())
     .then(data => {
         sessionStorage.setItem("IFV_PATCHES", JSON.stringify(data));
-    })
+    });

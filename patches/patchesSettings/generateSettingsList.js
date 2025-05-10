@@ -74,6 +74,31 @@ export async function generateSettingsList() {
         });
     });
 
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.className = "buttons";
+    buttonsDiv.innerHTML = `
+        <button class="reset-button" title="spowoduje odświeżenie strony">Zresetuj do domyślnych</button>
+        <button class="apply-button" title="spowoduje odświeżenie strony">Zastosuj ustawienia</button>
+    `
+    patchesSettingsDiv.appendChild(buttonsDiv);
+
+    patchesSettingsDiv.querySelector(".apply-button").addEventListener("click", () => window.location.reload());
+    patchesSettingsDiv.querySelector(".reset-button").addEventListener("click", () => {
+        for (const patch of patches) {
+            if (!patch.settings?.length) continue;
+            for (const setting of patch.settings) {
+                if (setting.type === "boolean") {
+                    saveSetting(patch.name, setting.id, setting.default ?? false);
+                } else if (setting.type === "multiselect") {
+                    saveSetting(patch.name, setting.id, setting.default ?? []);
+                } else {
+                    saveSetting(patch.name, setting.id, setting.default ?? '');
+                }
+            }
+        }
+        window.location.reload();
+    });
+
     return patchesSettingsDiv;
 }
 
@@ -86,7 +111,7 @@ const settingRenderers = {
         </select>
     `,
     text: (setting, patchName, currentValue) => `
-        <input type="text" class="setting-text" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? ''}">
+        <input type="text" class="setting-text" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? ''}" placeholder="${setting.default ?? ''}">
     `,
     boolean: (setting, patchName, currentValue) => `
         <div class="setting-boolean">
@@ -118,6 +143,6 @@ const settingRenderers = {
         <input type="color" class="setting-color" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? '#000000'}">
     `,
     number: (setting, patchName, currentValue) => `
-        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? ''}" step="${setting.step || 1}">
+        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? ''}" step="${setting.step || 1}" placeholder="${setting.default ?? ''}">
     `,
 };

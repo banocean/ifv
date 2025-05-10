@@ -70,4 +70,6 @@ export function saveSetting(patchName, settingId, value) {
     patchesSettings[patchName][settingId] = value;
     sessionStorage.setItem("ifv_patches_settings", JSON.stringify(patchesSettings));
     console.debug(`Saved setting ${settingId} for patch ${patchName}:`, value);
+
+    window.dispatchEvent(new CustomEvent("ifv-settings-changed"));
 }
