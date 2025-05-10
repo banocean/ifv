@@ -147,7 +147,7 @@ const settingRenderers = {
      * @returns {string} Ciąg HTML reprezentujący input tekstowy.
      */
     text: (setting, patchName, currentValue) => `
-        <input type="text" class="setting-text" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? ''}" placeholder="${setting.default}">
+        <input type="text" class="setting-text" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue}" placeholder="${setting.default}">
     `,
     /**
      * Renderuje input typu boolean (checkbox).
@@ -207,6 +207,6 @@ const settingRenderers = {
      * @returns {string} Ciąg HTML reprezentujący input number.
      */
     number: (setting, patchName, currentValue) => `
-        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue ?? ''}" step="${setting.step || 1}" placeholder="${setting.default}">
+        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue}" step="${setting.step || 1}" placeholder="${setting.default}">
     `,
 };

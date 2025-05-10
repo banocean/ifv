@@ -62,11 +62,11 @@
     margin-right: 7px;
 }
 
-.ifv-patches-modal > .patches-list {
+.ifv-patches-modal > .patches-list, .ifv-patches-mobile > .patches-list {
     font-family: "Google Sans", "Roboto", system-ui;
 }
 
-.ifv-patches-modal > .patches-list > .patch {
+.ifv-patches-modal > .patches-list > .patch, .ifv-patches-mobile > .patches-list > .patch {
     background-color: #ecedf7;
     padding: 15px;
     border-radius: 13px;
@@ -88,7 +88,7 @@
     color: #777;
 }
 
-.ifv-patches-modal .patch .settings-list {
+.ifv-patches-modal .patch .settings-list, .ifv-patches-mobile .patch .settings-list {
     background-color: #dde2f2;
     padding: 5px;
     border-radius: 11px;
@@ -200,6 +200,7 @@
     font-size: 14px;
     color: #202022;
     cursor: pointer;
+    user-select: none;
 }
 
 .setting-multiselect .checkbox-item {
@@ -219,6 +220,8 @@
     .patches-list .buttons {
         flex-direction: column;
         align-items: stretch;
+        margin-top: 15px;
+        margin-inline: 10px;
     }
 }
 
@@ -268,4 +271,16 @@
 
 .reset-button:active {
     background-color: rgba(0, 107, 214, 0.12);
+}
+
+.ifv-patches-mobile > .patches-list {
+    display: block !important;
+    color: unset !important;
+    font-size: unset !important;
+    cursor: unset !important;
+    padding-inline: 5px !important;
+    padding-block: 15px !important;
+    fill: unset !important;
+    border-bottom: none !important;
+    align-items: unset !important;
 }

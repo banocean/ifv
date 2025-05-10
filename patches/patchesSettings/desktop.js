@@ -38,6 +38,7 @@ async function hideModal() {
     setTimeout(() => {
         modalDiv.style.zIndex = "-1";
         modalBackground.style.zIndex = "-1";
+        modalDiv.scroll(0, 0)
     }, 300);
 }
 
