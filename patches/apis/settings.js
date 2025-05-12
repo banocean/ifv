@@ -30,6 +30,9 @@ export function getSetting(patchName, settingId) {
         if (setting.type === "multiselect" && typeof savedValue === 'string') {
             return savedValue.split(',');
         }
+        if (setting.type === "number" && typeof savedValue === 'string') {
+            return parseFloat(savedValue);
+        }
         return savedValue;
     }
 
