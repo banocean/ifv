@@ -1028,6 +1028,12 @@
     main.app__main {
         background: var(--primary-background) !important;
     }
+    .dashboard-info-toolbar > div, .tile__header, .tile__content {
+        background: var(--secondary--component--background) !important;
+    }
+    ul.list-without-marker > li {
+        background: var(--tertiary--component--background) !important;
+    }
     div.attendance-tabs {
         background: var(--primary-background) !important;
     }
