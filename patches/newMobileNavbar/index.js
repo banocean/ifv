@@ -166,7 +166,7 @@ addEventListener('popstate', (e) => {
 
 window.appendModule({
     run,
-    doesRunHere: () => /^(dziennik-)?(uczen).*/.exec(window.location.hostname) && window.innerWidth < 1024,
+    doesRunHere: () => window.location.hostname.match(/^(dziennik-)?(uczen).*/),
     onlyOnReloads: true,
     isLoaded: () => !!document.querySelector(".header__hamburger__icon")
 })
