@@ -1013,6 +1013,12 @@
     div.header__logo-product {
         color: var(--secondary-text) !important;
     }
+    .tile__header.flex__items > .flex__item-auto > img {
+        filter: invert(0.2);
+    }
+    .dashboard-info-toolbar > div > img {
+        filter: invert(0.2) !important;
+    }
     main.app__main {
         background: var(--primary-background) !important;
     }
