@@ -41,8 +41,7 @@
         padding-bottom: 0;
     }
 
-    .tile.box:has(.lucky-number__circle.lucky-number__circle-1),
-    .tile.box:has(.tile__lucky-number) {
+    .tile.box.tile__lucky-number {
         display: none !important;
     }
 
