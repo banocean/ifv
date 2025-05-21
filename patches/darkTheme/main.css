@@ -1013,23 +1013,21 @@
     div.header__logo-product {
         color: var(--secondary-text) !important;
     }
-    .tile__header.flex__items > .flex__item-auto > img {
-        filter: invert(0.2);
-    }
-    .dashboard-info-toolbar > div > img {
+    .tile__header.flex__items > .flex__item-auto > img, .dashboard-info-toolbar > div > img, button.ql-bold > svg {
         filter: invert(0.2) !important;
     }
-    main.app__main {
+    main.app__main, div.attendance-tabs {
         background: var(--primary-background) !important;
+    }
+    #tresc > .ql-toolbar.ql-snow, #tresc > .ql-container.ql-snow {
+        background: var(--secondary--component--background) !important;
+        border: 1px solid var(--borders) !important;
     }
     .dashboard-info-toolbar > div, .tile__header, .tile__content {
         background: var(--secondary--component--background) !important;
     }
     .tile__list__rectangle-boxes > li {
         background: var(--tertiary--component--background) !important;
-    }
-    div.attendance-tabs {
-        background: var(--primary-background) !important;
     }
     div.attendance-tabs > div {
         border-bottom: 0 !important;
