@@ -229,6 +229,38 @@
     }
   },
   {
+    "name": "Resigned timetable",
+    "description": "Changes styles and navigation on timetable page. (mobile only)",
+    "files": {
+      "js": ["newTimetable/script.js"],
+      "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
+    }
+  },
+  {
+    "name": "Redisigned attendance",
+    "description": "Changes styles and navigation on attendance page.",
+    "files": {
+      "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
+      "css": ["newAttendance/style.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
+    "name": "Fix going back in history",
+    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
+    "files": {
+      "js": ["fixGoingBack.js"]
+    }
+  },
+  {
+    "name": "Highlight today",
+    "description": "Highlights today's date in the calendar.",
+    "files": {
+      "css": ["highlightToday.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+  },
+  {
     "name": "Dark theme for student module",
     "description": "Adds dark theme for student module",
     "files": {
