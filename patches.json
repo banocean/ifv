@@ -178,7 +178,7 @@
     "devices": "mobileOnly"
   },
   {
-    "name": "Resigned timetable",
+    "name": "Redisigned timetable",
     "description": "Changes styles and navigation on timetable page.",
     "files": {
       "js": ["newTimetable/script.js"],
@@ -226,30 +226,6 @@
     "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
     "files": {
         "js": ["countAverage.js"]
-    }
-  },
-  {
-    "name": "Resigned timetable",
-    "description": "Changes styles and navigation on timetable page. (mobile only)",
-    "files": {
-      "js": ["newTimetable/script.js"],
-      "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
-    }
-  },
-  {
-    "name": "Redisigned attendance",
-    "description": "Changes styles and navigation on attendance page.",
-    "files": {
-      "js": ["newAttendance/justifyButton.js", "newAttendance/tabs.js"],
-      "css": ["newAttendance/style.css"]
-    },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
-  },
-  {
-    "name": "Fix going back in history",
-    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
-    "files": {
-      "js": ["fixGoingBack.js"]
     }
   },
   {
