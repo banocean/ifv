@@ -5,7 +5,7 @@
 
     main > section {
         background-color: var(--primary-background) !important;
-        color: white !important;
+        color: var(--primary-text) !important;
     }
 
     main > header {
@@ -65,7 +65,7 @@
     }
 
     .header__hamburger__icon > button > span > svg {
-        color: white !important;
+        color: var(--primary-text) !important;
     }
 
     .side_studentContext {
@@ -73,7 +73,7 @@
     }
 
     .wiadomosci_svg__icon_4 {
-        fill: white;
+        fill: var(--primary-text);
     }
 
     .tile__header,
@@ -108,30 +108,18 @@
 
     .tile__empty-bg,
     .timetable__grid .column.wolne.current,
-    .timetable__grid .column.wolne {
-        background: repeating-linear-gradient(
-            45deg,
-            #222,
-            #222 10px,
-            var(--tertiary--component--background) 12px,
-            var(--tertiary--component--background) 12px
-        );
-        border: 1px solid var(--borders);
-    }
-
+    .timetable__grid .column.wolne,
     .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day,
-    .plan-scheduler
-        .plan-scheduler__body-row
-        .plan-scheduler-cell__free-day.plan-scheduler-cell__current,
+    .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day.plan-scheduler-cell__current,
     .modal__free-day {
         background: repeating-linear-gradient(
             45deg,
-            #222,
-            #222 10px,
-            var(--tertiary--component--background) 12px,
+            var(--secondary--component--background),
+            var(--secondary--component--background) 10px,
+            var(--tertiary--component--background) 10px,
             var(--tertiary--component--background) 12px
         );
-        border-color: var(--borders);
+        border: 1px solid var(--borders);
     }
 
     .plan-scheduler .plan-scheduler__body-row .plan-scheduler__body-cell {
@@ -174,7 +162,7 @@
     }
 
     .logoEduVulcan_ciemne_r_svg__cls-1 {
-        fill: white !important;
+        fill: #FFF !important;
     }
 
     .tile__content {
@@ -197,29 +185,29 @@
     }
 
     .tile__list__rectangle__ribbon {
-        background-color: #656587;
+        background-color: color-mix(in srgb, var(--tertiary-text) 80%, #000 20%);
     }
-
+    
     .tile__header {
         background-color: var(--tertiary--component--background);
     }
-
+    
     .cell--single > .plan-position,
     .cell--multi--conflicted,
     .plan-scheduler-cell__position,
     .modal__content > div > .plan-position {
-        color: black;
+        color: #000;
         filter: brightness(0.8) invert(1) hue-rotate(180deg) saturate(170%);
     }
-
+    
     .cell--single > .plan-position > .details-btn--appearance,
     .cell--multi--conflicted > div > .conflicted--details--button,
     .modal__content > div > .plan-position > .details-btn--appearance {
         filter: invert(1) hue-rotate(180deg);
     }
-
+    
     .timetable__grid .column.current {
-        background-color: rgba(200, 200, 210, 0.068);
+        background-color: var(--tertiary--component--background);
     }
 
     .last-login__mark {
@@ -1025,11 +1013,25 @@
     div.header__logo-product {
         color: var(--secondary-text) !important;
     }
-    main.app__main {
+    .tile__header.flex__items > .flex__item-auto > img, .dashboard-info-toolbar > div > img, button.ql-bold > svg {
+        filter: invert(0.2) !important;
+    }
+    main.app__main, div.attendance-tabs {
         background: var(--primary-background) !important;
     }
-    div.attendance-tabs {
-        background: var(--primary-background) !important;
+    #tresc > .ql-toolbar.ql-snow, #tresc > .ql-container.ql-snow {
+        background: var(--secondary--component--background) !important;
+        border: 1px solid var(--borders) !important;
+    }
+    .dashboard-info-toolbar > div, .tile__header, .tile__content {
+        background: var(--secondary--component--background) !important;
+    }
+    input.MuiInputBase-input.MuiInput-input {
+        color: #000 !important;
+        filter: invert(0.8) !important;
+    }
+    .tile__list__rectangle-boxes > li {
+        background: var(--tertiary--component--background) !important;
     }
     div.attendance-tabs > div {
         border-bottom: 0 !important;
@@ -1042,10 +1044,16 @@
         background-color: var(--component-background) !important;
     }
     div.lesson.canceled > article {
-        background-color: color-mix(in srgb, var(--component-background) 80%, red 20%) !important;
+        background-color: color-mix(in srgb, var(--component-background) 80%, #F00 20%) !important;
+    }
+    ol.lessons-container > li.canceled {
+        color: color-mix(in srgb, var(--component-background) 20%, #F00 80%) !important;
     }
     div.lesson.substitute > article {
         background-color: color-mix(in srgb, var(--component-background) 60%, #FF0 20%) !important;
+    }
+    ol.lessons-container > li.substitute {
+        color: color-mix(in srgb, var(--component-background) 20%, #FF0 60%) !important;
     }
     div.lesson.normal > div, div.lesson.conflicted > div {
         color: var(--primary-text) !important;
