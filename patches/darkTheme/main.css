@@ -1026,6 +1026,10 @@
     .dashboard-info-toolbar > div, .tile__header, .tile__content {
         background: var(--secondary--component--background) !important;
     }
+    input.MuiInputBase-input.MuiInput-input {
+        color: #000 !important;
+        filter: invert(0.8) !important;
+    }
     .tile__list__rectangle-boxes > li {
         background: var(--tertiary--component--background) !important;
     }
