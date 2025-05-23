@@ -19,9 +19,34 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install ESLint and GHA Formatter
+      - name: Install ESLint and its plugins
         run: |
-          npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js
+          npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js @stylistic/eslint-plugin-js
 
-      - name: Run ESLint with GHA Formatter
+      - name: Run ESLint
         run: npx eslint . -f gha
+
+  suggest-fixes:
+    name: Suggest ESLint fixes
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ESLint
+        run: npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js @stylistic/eslint-plugin-js
+
+      - name: Suggest fixes for ESLint issues
+        uses: CatChen/eslint-suggestion-action@v4.1.17
+        with:
+            config-path: eslint.config.mjs
+            fail-check: true
