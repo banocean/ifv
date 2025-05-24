@@ -4,7 +4,7 @@ const ifvLogoUrl = window.location.hostname.includes("eduvulcan")
     ? "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/logo/logo-128-blue.png"
     : "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/logo/logo-128-red.png";
 const settingsIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/settings.svg"
-const closeIconUrl = "https://raw.githubusercontent.com/banocean/yoper12/refs/heads/patches-settings/assets/icons/close.svg";
+const closeIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/close.svg";
 
 const settingsButton = document.createElement("button");
 const modalDiv = document.createElement("div");
