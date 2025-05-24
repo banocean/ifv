@@ -41,7 +41,6 @@ async function addDesktopSettings() {
 async function hideModal() {
     modalDiv.style.transform = "translate(-50%, 200%)";
     modalDiv.style.opacity = "0.3";
-    modalBackground.style.backdropFilter = "blur(0px)";
     modalBackground.style.background = "rgba(0, 0, 0, 0)";
     setTimeout(() => {
         modalDiv.style.zIndex = "-1";
@@ -54,7 +53,6 @@ async function showModal() {
     modalDiv.style.transform = "translate(-50%, -50%)";
     modalDiv.style.zIndex = "1000";
     modalDiv.style.opacity = "1";
-    modalBackground.style.backdropFilter = "blur(5px)";
     modalBackground.style.background = "rgba(0, 0, 0, 0.5)";
     modalBackground.style.zIndex = "999";
 }
