@@ -194,13 +194,7 @@ export async function generateSettingsList() {
             for (const patch of patches) {
                 if (!patch.settings?.length) continue;
                 for (const setting of patch.settings) {
-                    if (setting.type === "boolean") {
-                        saveSetting(patch.name, setting.id, setting.default);
-                    } else if (setting.type === "multiselect") {
-                        saveSetting(patch.name, setting.id, setting.default);
-                    } else {
-                        saveSetting(patch.name, setting.id, setting.default);
-                    }
+                    saveSetting(patch.name, setting.id, setting.default);
                 }
             }
             window.location.reload();
