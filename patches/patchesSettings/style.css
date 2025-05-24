@@ -41,7 +41,7 @@
     box-shadow: 0 0 0 2px #007bff40;
 }
 
-.search-bar svg {
+.search-bar img {
     margin-right: 8px;
     flex-shrink: 0;
 }
@@ -76,7 +76,7 @@
     flex-shrink: 0;
 }
 
-.search-bar button svg {
+.search-bar button img {
     margin-right: 0;
 }
 
