@@ -18,7 +18,7 @@ async function addDesktopSettings() {
     modalBackground.className = "ifv-patches-modal-background";
     modalDiv.innerHTML = `
         <div class="ifv-patches-modal-header">
-            <img src="${ifvLogoUrl}">
+            <img src="${ifvLogoUrl}" class="ifv-logo">
             <h1>Ustawienia ifv</h1>
             <button id="ifv-close-patches-modal"><img src="${closeIconUrl}"></button>
         </div>

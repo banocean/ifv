@@ -110,7 +110,7 @@
     margin-bottom: 20px;
 }
 
-.ifv-patches-modal-header img {
+.ifv-patches-modal-header .ifv-logo {
     width: 40px;
     height: 40px;
     margin-right: 12px;
