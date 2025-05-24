@@ -1,7 +1,7 @@
 import { generateSettingsList } from "./generateSettingsList.js";
 import { waitForRender } from "../apis/waitForElement.js";
 
-const BACK_ICON_URL =
+const backIconUrl =
     "https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 
 const settingsIconUrl = "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/settings.svg"
@@ -12,7 +12,7 @@ function addMobileSettings() {
     settingsButton.addEventListener("click", async () => {
         const settingsModal = document.createElement("div");
         settingsModal.classList.add("settings-popup", "list-modal");
-        settingsModal.innerHTML = `<div><img src='${BACK_ICON_URL}'><h1>Ustawienia IFV</h1></div><div></div>`;
+        settingsModal.innerHTML = `<div><img src='${backIconUrl}'><h1>Ustawienia IFV</h1></div><div></div>`;
         settingsModal.querySelector("img").addEventListener("click", () => {
             settingsModal.remove();
         });
