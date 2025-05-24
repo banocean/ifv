@@ -26,7 +26,7 @@ function addMobileSettings() {
     });
 
     waitForRender(() =>
-        document.querySelector(".more-popup.list-modal div")?.length >= 2
+        document.querySelectorAll(".more-popup.list-modal div")[1]
     ).then(() => {
         document
             .querySelectorAll(".more-popup.list-modal div")[1]
