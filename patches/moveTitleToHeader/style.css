@@ -26,6 +26,8 @@
     text-overflow: ellipsis !important;
     white-space: nowrap;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
 }
 
 .app__content__header {
@@ -57,6 +59,22 @@
     border-color: #e5e7e9;
     border-style: solid;
     border-width: 0 2px 2px 2px;
+    cursor: pointer;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.go_to_dashboard.animate {
+    animation: fadeIn 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media screen and (max-width: 1023px) {
