@@ -61,7 +61,7 @@ window.appendModule({
     run: addDesktopSettings,
     onlyOnReloads: true,
     doesRunHere: () =>
-        ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"].includes(
+        ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"].includes(
             window.location.hostname
         ) && window.innerWidth >= 1024,
 });
