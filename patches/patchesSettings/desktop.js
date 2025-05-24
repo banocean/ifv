@@ -20,7 +20,7 @@ async function addDesktopSettings() {
         <div class="ifv-patches-modal-header">
             <img src="${ifvLogoUrl}">
             <h1>Ustawienia ifv</h1>
-            <button id="ifv-close-patches-modal">${closeIconUrl}</button>
+            <button id="ifv-close-patches-modal"><img src="${closeIconUrl}"></button>
         </div>
     `;
 
