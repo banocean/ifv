@@ -353,3 +353,60 @@
     border-bottom: none !important;
     align-items: unset !important;
 }
+
+/* Toggle */
+/* https://uiverse.io/ClawHack1/itchy-bobcat-18 */
+
+.setting-boolean-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.setting-boolean-toggle .toggle-switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #52525b;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.setting-boolean-toggle .toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.setting-boolean-toggle .toggle-input:checked + .toggle-switch::before {
+    transform: translateX(16px);
+}
+
+.setting-boolean-toggle .toggle-input:checked + .toggle-switch {
+    background-color: #007bff;
+}
+
+.setting-boolean-toggle .toggle-input:checked + .toggle-switch::before {
+    transform: translateX(16px);
+}
+
+.setting-boolean-toggle .toggle-input {
+    display: none;
+}
+
+.setting:has(.setting-boolean-toggle) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

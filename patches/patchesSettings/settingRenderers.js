@@ -60,11 +60,9 @@ export const settingRenderers = {
      */
     boolean: (setting, patchName, currentValue) => `
         <div class="setting-boolean">
-            <div class="checkbox-item">
-                <input type="checkbox" class="setting-boolean-checkbox" id="${patchName}-${setting.id
-        }" data-patch="${patchName}" data-setting="${setting.id}" ${currentValue ? "checked" : ""
-        }>
-                <label for="${patchName}-${setting.id}"></label>
+            <div class="setting-boolean-toggle">
+                <input class="toggle-input" type="checkbox" data-patch="${patchName}" data-setting="${setting.id}" ${currentValue ? "checked" : ""}>
+                <div class="toggle-switch"></div>
             </div>
         </div>
     `,

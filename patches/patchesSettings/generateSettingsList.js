@@ -157,20 +157,16 @@ function setupSearchbar(patchesSettingsDiv) {
  */
 function addListenersToInputs(patchesSettingsDiv) {
     patchesSettingsDiv
-        .querySelectorAll(".setting-boolean-checkbox")
-        .forEach((checkbox) => {
-            const label = checkbox.parentNode.querySelector("label");
-            if (label) {
-                label.innerText = checkbox.checked ? "Enabled" : "Disabled";
-                checkbox.addEventListener("change", () => {
-                    label.innerText = checkbox.checked ? "Enabled" : "Disabled";
-                    saveSetting(
-                        checkbox.dataset.patch,
-                        checkbox.dataset.setting,
-                        checkbox.checked
-                    );
-                });
-            }
+        .querySelectorAll(".setting-boolean-toggle")
+        .forEach((toggle) => {
+            toggle.querySelector('.toggle-switch').addEventListener("click", () => {
+                toggle.querySelector('.toggle-input').checked = !toggle.querySelector('.toggle-input').checked;
+                saveSetting(
+                    toggle.querySelector('.toggle-input').dataset.patch,
+                    toggle.querySelector('.toggle-input').dataset.setting,
+                    toggle.querySelector('.toggle-input').checked
+                );
+            });
         });
 
     patchesSettingsDiv

@@ -174,6 +174,20 @@
         "description": "Should reload in eduVulcan home.",
         "type": "boolean",
         "default": false
+      },
+      {
+        "id": "reloadInMessages",
+        "name": "Reload in messages",
+        "description": "Should reload in messages page.",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "customDelay",
+        "name": "Custom delay",
+        "description": "Custom delay in milliseconds before reload.",
+        "type": "number",
+        "default": "500"
       }
     ]
   },
