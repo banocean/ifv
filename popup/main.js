@@ -123,12 +123,6 @@ const render = async () => {
         categories.value = "desktop";
         categories.dispatchEvent(new Event("input"));
     }
-
-    document.querySelector("#clear-storage").addEventListener("click", async () => {
-        await chrome.storage.local.clear();
-        await chrome.storage.sync.clear();
-        await render();
-    });
 };
 
 (async () => {
