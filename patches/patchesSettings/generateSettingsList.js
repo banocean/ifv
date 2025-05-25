@@ -1,4 +1,6 @@
 import { getSetting, saveSetting } from "../apis/settings.js";
+import { settingRenderers } from "./settingRenderers.js";
+import { removeMarks, markTextInElement } from "./markers.js";
 
 const searchIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/search.svg";
 const clearIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/clear.svg";
@@ -20,6 +22,69 @@ export async function generateSettingsList() {
         <div class="no-results-message">Nie znaleziono pasujących patchy 😿</div>
     `;
 
+    setupSearchbar(patchesSettingsDiv);
+
+    for (const patch of patches) {
+        if (!patch.settings?.length) continue;
+        if (config[patch.name] === false) continue;
+        if (patch.devices === "mobile" && window.innerWidth >= 1024) continue;
+        if (patch.devices === "desktop" && window.innerWidth < 1024) continue;
+
+        const patchDiv = document.createElement("div");
+        patchDiv.className = "patch";
+        patchDiv.innerHTML = `
+            <div class="patch-header">
+                <p class="patch-name">${patch.name}</p>
+                <p class="patch-description">${patch.description}</p>
+            </div>
+            <div class="settings-list"></div>
+        `;
+
+        const settingsListDiv = patchDiv.querySelector(".settings-list");
+
+        for (const setting of patch.settings) {
+            const settingContainerDiv = document.createElement("div");
+            settingContainerDiv.className = "setting";
+            settingContainerDiv.innerHTML = `
+                <div class="setting-header">
+                    <span class="setting-name">${setting.name}</span>
+                    <span class="separator">—</span>
+                    <span class="setting-description">${setting.description}</span>
+                </div>
+            `;
+
+            const settingInputDiv = document.createElement("div");
+            settingInputDiv.className = "setting-input";
+
+            const renderer = settingRenderers[setting.type];
+            if (renderer) {
+                const currentValue = getSetting(patch.name, setting.id);
+                settingInputDiv.innerHTML = renderer(
+                    setting,
+                    patch.name,
+                    currentValue
+                );
+            }
+
+            settingContainerDiv.appendChild(settingInputDiv);
+            settingsListDiv.appendChild(settingContainerDiv);
+        }
+        patchesSettingsDiv.appendChild(patchDiv);
+    }
+
+    addListenersToInputs(patchesSettingsDiv);
+    addBttmButtons(patchesSettingsDiv);
+
+    return patchesSettingsDiv;
+}
+
+/**
+ * Ustawia funkcjonalność paska wyszukiwania.
+ *
+ * @param {Node} patchesSettingsDiv
+ * @returns {void}
+ */
+function setupSearchbar(patchesSettingsDiv) {
     const searchInput = patchesSettingsDiv.querySelector(".search-bar > input");
 
     searchInput.addEventListener("input", () => {
@@ -82,55 +147,15 @@ export async function generateSettingsList() {
         searchInput.value = "";
         searchInput.dispatchEvent(new Event("input"));
     });
+}
 
-    for (const patch of patches) {
-        if (!patch.settings?.length) continue;
-        if (config[patch.name] === false) continue;
-        if (patch.devices === "mobile" && window.innerWidth >= 1024) continue;
-        if (patch.devices === "desktop" && window.innerWidth < 1024) continue;
-
-        const patchDiv = document.createElement("div");
-        patchDiv.className = "patch";
-        patchDiv.innerHTML = `
-            <div class="patch-header">
-                <p class="patch-name">${patch.name}</p>
-                <p class="patch-description">${patch.description}</p>
-            </div>
-            <div class="settings-list"></div>
-        `;
-
-        const settingsListDiv = patchDiv.querySelector(".settings-list");
-
-        for (const setting of patch.settings) {
-            const settingContainerDiv = document.createElement("div");
-            settingContainerDiv.className = "setting";
-            settingContainerDiv.innerHTML = `
-                <div class="setting-header">
-                    <span class="setting-name">${setting.name}</span>
-                    <span class="separator">—</span>
-                    <span class="setting-description">${setting.description}</span>
-                </div>
-            `;
-
-            const settingInputDiv = document.createElement("div");
-            settingInputDiv.className = "setting-input";
-
-            const renderer = settingRenderers[setting.type];
-            if (renderer) {
-                const currentValue = getSetting(patch.name, setting.id);
-                settingInputDiv.innerHTML = renderer(
-                    setting,
-                    patch.name,
-                    currentValue
-                );
-            }
-
-            settingContainerDiv.appendChild(settingInputDiv);
-            settingsListDiv.appendChild(settingContainerDiv);
-        }
-        patchesSettingsDiv.appendChild(patchDiv);
-    }
-
+/**
+ * Dodaje listenery do inputów.
+ *
+ * @param {Node} patchesSettingsDiv
+ * @returns {void}
+ */
+function addListenersToInputs(patchesSettingsDiv) {
     patchesSettingsDiv
         .querySelectorAll(".setting-boolean-checkbox")
         .forEach((checkbox) => {
@@ -176,7 +201,15 @@ export async function generateSettingsList() {
                 saveSetting(patchName, settingId, selectedValues);
             });
         });
+}
 
+/**
+ * Dodaje dolne przyciski.
+ *
+ * @param {Node} patchesSettingsDiv
+ * @returns {void}
+ */
+function addBttmButtons(patchesSettingsDiv) {
     const buttonsDiv = document.createElement("div");
     buttonsDiv.className = "buttons";
     buttonsDiv.innerHTML = `
@@ -199,222 +232,4 @@ export async function generateSettingsList() {
             }
             window.location.reload();
         });
-
-    return patchesSettingsDiv;
-}
-
-/**
- * @typedef {object} SettingOption
- * @property {string} value Wartość opcji przekazywana patchom.
- * @property {string} name Nazwa opcji wyświetlana użytkownikowi.
- */
-
-/**
- * @typedef {object} Setting
- * @property {string} id Unikalny identyfikator ustawienia.
- * @property {string} name Nazwa ustawienia wyświetlana użytkownikowi.
- * @property {string} description Opis ustawienia.
- * @property {string} type Typ ustawienia (np. "select", "text", "boolean", "multiselect", "color", "number").
- * @property {string|boolean|number|string[]} default Domyślna wartość ustawienia.
- * @property {SettingOption[]} [options] Tablica opcji dla ustawień typu "select" i "multiselect".
- * @property {number} [step] Krok dla ustawień typu "number".
- */
-
-/**
- * Obiekt mapujący typy ustawień na funkcje renderujące odpowiednie inputy HTML.
- * Każda funkcja renderująca przyjmuje obiekt ustawienia, nazwę patcha oraz aktualną wartość ustawienia.
- * @type {Object<string, function(Setting, string, any): string>}
- */
-const settingRenderers = {
-    /**
-     * Renderuje input typu select (lista rozwijana).
-     * @param {Setting} setting Obiekt konfiguracji ustawienia.
-     * @param {string} patchName Nazwa patcha.
-     * @param {string} currentValue Aktualna wartość ustawienia.
-     * @returns {string} Ciąg HTML reprezentujący input select.
-     */
-    select: (setting, patchName, currentValue) => `
-        <select class="setting-select" data-patch="${patchName}" data-setting="${
-        setting.id
-    }">
-            ${setting.options
-                .map(
-                    (option) => `
-                <option value="${option.value}" ${
-                        option.value === currentValue ? "selected" : ""
-                    }>${option.name}</option>
-            `
-                )
-                .join("")}
-        </select>
-    `,
-    /**
-     * Renderuje input typu text (pole tekstowe).
-     * @param {Setting} setting Obiekt konfiguracji ustawienia.
-     * @param {string} patchName Nazwa patcha.
-     * @param {string} currentValue Aktualna wartość ustawienia.
-     * @returns {string} Ciąg HTML reprezentujący input tekstowy.
-     */
-    text: (setting, patchName, currentValue) => `
-        <input type="text" class="setting-text" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue}" placeholder="${setting.default}">
-    `,
-    /**
-     * Renderuje input typu boolean (checkbox).
-     * @param {Setting} setting Obiekt konfiguracji ustawienia.
-     * @param {string} patchName Nazwa patcha.
-     * @param {boolean} currentValue Aktualna wartość ustawienia.
-     * @returns {string} Ciąg HTML reprezentujący input checkbox.
-     */
-    boolean: (setting, patchName, currentValue) => `
-        <div class="setting-boolean">
-            <div class="checkbox-item">
-                <input type="checkbox" class="setting-boolean-checkbox" id="${patchName}-${
-        setting.id
-    }" data-patch="${patchName}" data-setting="${setting.id}" ${
-        currentValue ? "checked" : ""
-    }>
-                <label for="${patchName}-${setting.id}"></label>
-            </div>
-        </div>
-    `,
-    /**
-     * Renderuje input typu multiselect (wiele checkboxów).
-     * @param {Setting} setting Obiekt konfiguracji ustawienia.
-     * @param {string} patchName Nazwa patcha.
-     * @param {string[]} currentValue Aktualnie zaznaczone wartości.
-     * @returns {string} Ciąg HTML reprezentujący grupę checkboxów.
-     */
-    multiselect: (setting, patchName, currentValue) => {
-        const selectedValues = Array.isArray(currentValue)
-            ? currentValue
-            : typeof currentValue === "string" && currentValue.length > 0
-            ? currentValue.split(",")
-            : [];
-        return `
-            <div class="setting-multiselect">
-                ${setting.options
-                    .map(
-                        (option) => `
-                    <div class="checkbox-item">
-                        <input type="checkbox" class="setting-multiselect-checkbox"
-                            id="${patchName}-${setting.id}-${option.value}"
-                            data-patch="${patchName}"
-                            data-setting="${setting.id}"
-                            value="${option.value}"
-                            ${
-                                selectedValues.includes(option.value)
-                                    ? "checked"
-                                    : ""
-                            }>
-                        <label for="${patchName}-${setting.id}-${
-                            option.value
-                        }">${option.name}</label>
-                    </div>
-                `
-                    )
-                    .join("")}
-            </div>
-        `;
-    },
-    /**
-     * Renderuje input typu color (próbnik kolorów).
-     * @param {Setting} setting Obiekt konfiguracji ustawienia.
-     * @param {string} patchName Nazwa patcha.
-     * @param {string} currentValue Aktualna wartość koloru (hex).
-     * @returns {string} Ciąg HTML reprezentujący input color.
-     */
-    color: (setting, patchName, currentValue) => `
-        <input type="color" class="setting-color" data-patch="${patchName}" data-setting="${setting.id}" value="${currentValue}">
-    `,
-    /**
-     * Renderuje input typu number (pole numeryczne).
-     * @param {Setting} setting Obiekt konfiguracji ustawienia.
-     * @param {string} patchName Nazwa patcha.
-     * @param {number} currentValue Aktualna wartość liczbowa.
-     * @returns {string} Ciąg HTML reprezentujący input number.
-     */
-    number: (setting, patchName, currentValue) => `
-        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${
-        setting.id
-    }" value="${currentValue}" step="${setting.step || 1}" placeholder="${
-        setting.default
-    }">
-    `,
-};
-
-/**
- * Usuwa znaczniki <mark> z elementu
- *
- * @param {Node} element element, z którego usuwamy znaczniki <mark>
- * @returns {void}
- */
-async function removeMarks(element) {
-    const marks = element.querySelectorAll("mark");
-    marks.forEach(async (mark) => {
-        const parent = mark.parentNode;
-        while (mark.firstChild) {
-            parent.insertBefore(mark.firstChild, mark);
-        }
-        parent.removeChild(mark);
-    });
-
-    element.normalize();
-}
-
-/**
- * Zaznacza tekst w elemencie, który pasuje do podanego zapytania.
- *
- * @param {Node} element element, w którym zaznaczamy tekst
- * @param {string} textQueryToHighlight string do wyszukania
- * @returns {void}
- */
-async function markTextInElement(element, textQueryToHighlight) {
-    const walker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT
-    );
-    const nodesToModify = [];
-
-    let currentNode;
-    while ((currentNode = walker.nextNode())) {
-        const nodeText = currentNode.nodeValue;
-        const lowerNodeText = nodeText.toLowerCase();
-
-        if (lowerNodeText.includes(textQueryToHighlight)) {
-            nodesToModify.push({
-                node: currentNode,
-                text: nodeText,
-                query: textQueryToHighlight,
-            });
-        }
-    }
-
-    nodesToModify.forEach(async ({ node, text, query }) => {
-        const lowerText = text.toLowerCase();
-        let matchIndex = lowerText.indexOf(query);
-        const fragment = document.createDocumentFragment();
-        let lastIndex = 0;
-
-        while (matchIndex !== -1) {
-            fragment.appendChild(
-                document.createTextNode(text.substring(lastIndex, matchIndex))
-            );
-            const mark = document.createElement("mark");
-            mark.textContent = text.substring(
-                matchIndex,
-                matchIndex + query.length
-            );
-            fragment.appendChild(mark);
-
-            lastIndex = matchIndex + query.length;
-            matchIndex = lowerText.indexOf(query, lastIndex);
-        }
-        fragment.appendChild(
-            document.createTextNode(text.substring(lastIndex))
-        );
-
-        node.parentNode.replaceChild(fragment, node);
-    });
-
-    element.normalize();
 }
