@@ -2,7 +2,7 @@ import { getFromAside } from "../apis/aside.js";
 import { waitForRender } from "../apis/waitForElement.js";
 import { setHighlights } from "./highlights.js";
 
-if (/^(dziennik-)?(uczen).*/.exec(window.location.hostname)) window.asideMode = "hidden"
+if (window.location.hostname.match(/^(dziennik-)?(uczen).*/)) window.asideMode = "hidden"
 
 const getPages = (selector = "aside > section > .MuiList-root > ul") => {
     if (!document.querySelector("aside")) return []
@@ -40,7 +40,6 @@ const navIcons = {
 }
 
 const run = async () => {
-
     const nav = document.createElement("nav")
     nav.classList.add("bottom-navigation-bar")
 
@@ -83,7 +82,6 @@ const run = async () => {
                 more.style.display = "none"
                 document.querySelector(".header__hamburger__icon button").click()
                 document.querySelector("div#root").scroll(0,0)
-
                 setHighlights()
             })
         } else {
