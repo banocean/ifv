@@ -25,10 +25,7 @@ export async function removeMarks(element) {
  * @returns {void}
  */
 export async function markTextInElement(element, textQueryToHighlight) {
-    const walker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT
-    );
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
     const nodesToModify = [];
 
     let currentNode;

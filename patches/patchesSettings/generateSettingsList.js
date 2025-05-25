@@ -2,8 +2,10 @@ import { getSetting, saveSetting } from "../apis/settings.js";
 import { settingRenderers } from "./settingRenderers.js";
 import { removeMarks, markTextInElement } from "./markers.js";
 
-const searchIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/search.svg";
-const clearIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/clear.svg";
+const searchIconUrl =
+    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/search.svg";
+const clearIconUrl =
+    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/clear.svg";
 
 export async function generateSettingsList() {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];
@@ -110,11 +112,21 @@ function setupSearchbar(patchesSettingsDiv) {
                 return;
             }
 
-            let combinedTextContent = patchNameEl.textContent.toLowerCase() + " " + patchDescEl.textContent.toLowerCase() + " ";
+            let combinedTextContent =
+                patchNameEl.textContent.toLowerCase() +
+                " " +
+                patchDescEl.textContent.toLowerCase() +
+                " ";
 
             patchDiv.querySelectorAll(".setting").forEach((settingDiv) => {
-                combinedTextContent += settingDiv.querySelector(".setting-name").textContent.toLowerCase() + " ";
-                combinedTextContent += settingDiv.querySelector(".setting-description").textContent.toLowerCase() + " ";
+                combinedTextContent +=
+                    settingDiv
+                        .querySelector(".setting-name")
+                        .textContent.toLowerCase() + " ";
+                combinedTextContent +=
+                    settingDiv
+                        .querySelector(".setting-description")
+                        .textContent.toLowerCase() + " ";
             });
 
             if (combinedTextContent.includes(query)) {
@@ -125,8 +137,14 @@ function setupSearchbar(patchesSettingsDiv) {
                 markTextInElement(patchDescEl, query);
 
                 patchDiv.querySelectorAll(".setting").forEach((settingDiv) => {
-                    markTextInElement(settingDiv.querySelector(".setting-name"), query);
-                    markTextInElement(settingDiv.querySelector(".setting-description"), query);
+                    markTextInElement(
+                        settingDiv.querySelector(".setting-name"),
+                        query
+                    );
+                    markTextInElement(
+                        settingDiv.querySelector(".setting-description"),
+                        query
+                    );
                 });
             } else {
                 patchDiv.style.display = "none";
@@ -159,14 +177,17 @@ function addListenersToInputs(patchesSettingsDiv) {
     patchesSettingsDiv
         .querySelectorAll(".setting-boolean-toggle")
         .forEach((toggle) => {
-            toggle.querySelector('.toggle-switch').addEventListener("click", () => {
-                toggle.querySelector('.toggle-input').checked = !toggle.querySelector('.toggle-input').checked;
-                saveSetting(
-                    toggle.querySelector('.toggle-input').dataset.patch,
-                    toggle.querySelector('.toggle-input').dataset.setting,
-                    toggle.querySelector('.toggle-input').checked
-                );
-            });
+            toggle
+                .querySelector(".toggle-switch")
+                .addEventListener("click", () => {
+                    toggle.querySelector(".toggle-input").checked =
+                        !toggle.querySelector(".toggle-input").checked;
+                    saveSetting(
+                        toggle.querySelector(".toggle-input").dataset.patch,
+                        toggle.querySelector(".toggle-input").dataset.setting,
+                        toggle.querySelector(".toggle-input").checked
+                    );
+                });
         });
 
     patchesSettingsDiv

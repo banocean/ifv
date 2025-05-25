@@ -3,8 +3,10 @@ import { generateSettingsList } from "./generateSettingsList.js";
 const ifvLogoUrl = window.location.hostname.includes("eduvulcan")
     ? "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/logo/logo-128-blue.png"
     : "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/logo/logo-128-red.png";
-const settingsIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/settings.svg"
-const closeIconUrl = "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/close.svg";
+const settingsIconUrl =
+    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/settings.svg";
+const closeIconUrl =
+    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/close.svg";
 
 const settingsButton = document.createElement("button");
 const modalDiv = document.createElement("div");
@@ -61,7 +63,10 @@ window.appendModule({
     run: addDesktopSettings,
     onlyOnReloads: true,
     doesRunHere: () =>
-        ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"].includes(
-            window.location.hostname
-        ) && window.innerWidth >= 1024,
+        [
+            "uczen.eduvulcan.pl",
+            "dziennik-uczen.vulcan.net.pl",
+            "wiadomosci.eduvulcan.pl",
+            "dziennik-wiadomosci.vulcan.net.pl",
+        ].includes(window.location.hostname) && window.innerWidth >= 1024,
 });

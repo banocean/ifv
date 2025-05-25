@@ -21,7 +21,8 @@
     z-index: -1;
     transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
         opacity 0.3s ease-in-out;
-    box-shadow: 0 8px 10px -5px rgba(0,0,0,0.2), 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+        0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
 }
 
 .search-bar {
@@ -81,10 +82,11 @@
     margin-right: 0;
 }
 
-.ifv-patches-modal mark, .ifv-patches-mobile mark {
-    background-color: #007BFF80;
+.ifv-patches-modal mark,
+.ifv-patches-mobile mark {
+    background-color: #007bff80;
     border-radius: 4px;
-    outline: 1px solid #007BFF65;
+    outline: 1px solid #007bff65;
 }
 
 .no-results-message {

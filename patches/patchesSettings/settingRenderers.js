@@ -29,16 +29,18 @@ export const settingRenderers = {
      * @returns {string} Ciąg HTML reprezentujący input select.
      */
     select: (setting, patchName, currentValue) => `
-        <select class="setting-select" data-patch="${patchName}" data-setting="${setting.id
-        }">
+        <select class="setting-select" data-patch="${patchName}" data-setting="${
+        setting.id
+    }">
             ${setting.options
-            .map(
-                (option) => `
-                <option value="${option.value}" ${option.value === currentValue ? "selected" : ""
+                .map(
+                    (option) => `
+                <option value="${option.value}" ${
+                        option.value === currentValue ? "selected" : ""
                     }>${option.name}</option>
             `
-            )
-            .join("")}
+                )
+                .join("")}
         </select>
     `,
     /**
@@ -61,7 +63,9 @@ export const settingRenderers = {
     boolean: (setting, patchName, currentValue) => `
         <div class="setting-boolean">
             <div class="setting-boolean-toggle">
-                <input class="toggle-input" type="checkbox" data-patch="${patchName}" data-setting="${setting.id}" ${currentValue ? "checked" : ""}>
+                <input class="toggle-input" type="checkbox" data-patch="${patchName}" data-setting="${
+        setting.id
+    }" ${currentValue ? "checked" : ""}>
                 <div class="toggle-switch"></div>
             </div>
         </div>
@@ -77,29 +81,31 @@ export const settingRenderers = {
         const selectedValues = Array.isArray(currentValue)
             ? currentValue
             : typeof currentValue === "string" && currentValue.length > 0
-                ? currentValue.split(",")
-                : [];
+            ? currentValue.split(",")
+            : [];
         return `
             <div class="setting-multiselect">
                 ${setting.options
-                .map(
-                    (option) => `
+                    .map(
+                        (option) => `
                     <div class="checkbox-item">
                         <input type="checkbox" class="setting-multiselect-checkbox"
                             id="${patchName}-${setting.id}-${option.value}"
                             data-patch="${patchName}"
                             data-setting="${setting.id}"
                             value="${option.value}"
-                            ${selectedValues.includes(option.value)
-                            ? "checked"
-                            : ""
-                        }>
-                        <label for="${patchName}-${setting.id}-${option.value
+                            ${
+                                selectedValues.includes(option.value)
+                                    ? "checked"
+                                    : ""
+                            }>
+                        <label for="${patchName}-${setting.id}-${
+                            option.value
                         }">${option.name}</label>
                     </div>
                 `
-                )
-                .join("")}
+                    )
+                    .join("")}
             </div>
         `;
     },
@@ -121,8 +127,10 @@ export const settingRenderers = {
      * @returns {string} Ciąg HTML reprezentujący input number.
      */
     number: (setting, patchName, currentValue) => `
-        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${setting.id
-        }" value="${currentValue}" step="${setting.step || 1}" placeholder="${setting.default
-        }">
+        <input type="number" class="setting-number" data-patch="${patchName}" data-setting="${
+        setting.id
+    }" value="${currentValue}" step="${setting.step || 1}" placeholder="${
+        setting.default
+    }">
     `,
 };
