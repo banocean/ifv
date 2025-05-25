@@ -17,7 +17,7 @@
     padding: 0 !important;
 }
 
-.part-business { order: 2 !important; }
+.part-business { display: none; }
 
 .header-part-2 {
     min-width: inherit !important;
