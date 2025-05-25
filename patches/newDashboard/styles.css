@@ -1,0 +1,115 @@
+@media screen and (max-width: 1023px) {
+    .content-container:has(.plan-zajec) {
+        margin: 0 !important;
+    }
+
+    .content-container:has(.plan-zajec),
+    .content-container:has(.plan-zajec) > .tile-container {
+        padding: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    .box-shaded {
+        background-color: #f8f9fc !important;
+        box-shadow: none !important;
+        border-width: 0 !important;
+    }
+
+    .tile__header h2 {
+        font-weight: bold;
+    }
+
+    .tile__header .toolbar {
+        display: none;
+    }
+
+    .tile__header.flex__items > .flex__item-auto {
+        display: flex;
+        align-items: center;
+    }
+
+    .tile__header.flex__items > .flex__item-auto > img {
+        filter: invert(0.8);
+        margin-right: 5px;
+    }
+
+    .content-container .tile .tile__header {
+        padding-top: 10px;
+        padding-left: 10px;
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .tile.box.tile__lucky-number,
+    .tile.box:has(.lucky-number__circle.lucky-number__circle-1),
+    .tile.box:has(.tile__lucky-number) {
+        display: none !important;
+    }
+
+    .dashboard-info-toolbar {
+        display: flex;
+        height: 50px;
+        gap: 10px;
+    }
+
+    .dashboard-info-toolbar > div {
+        padding: 10px;
+        background: #f8f9fc;
+        border-radius: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+    }
+
+    .dashboard-info-toolbar > div > img {
+        filter: invert(0.8);
+        margin-right: 5px;
+        height: 28px;
+    }
+
+    .dashboard-info-toolbar > div > span {
+        margin-right: 5px;
+    }
+
+    .content-container > .tile-container,
+    .content-container > .tile-container > .tile-subcontainer {
+        gap: 10px !important;
+    }
+
+    body:has(.dashboard-info-toolbar) .plan-zajec,
+    body:has(.dashboard-info-toolbar)
+        .tile__content:has(.plan-zajec)
+        > .tile__content__title {
+        display: none !important;
+    }
+
+    .lessons-container {
+        margin-left: 15px;
+        font-family:
+            "WorkSans",
+            Graphik,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Helvetica,
+            Arial,
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol";
+        font-size: 14px;
+        text-wrap: wrap;
+    }
+
+    .lessons-container .canceled {
+        color: #e12d39 !important;
+        text-decoration: line-through !important;
+    }
+
+    .lessons-container .substitute {
+        color: #6d5e0f !important;
+    }
+}

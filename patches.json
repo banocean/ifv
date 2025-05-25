@@ -1,7 +1,7 @@
 [
   {
       "name": "Move title to header",
-      "description": "Moves title to header (mobile only)",
+      "description": "Moves title to header",
       "files": {
           "css": ["moveTitleToHeader/style.css"],
           "js": ["moveTitleToHeader/index.js"]
@@ -10,22 +10,24 @@
   },
   {
       "name": "Change close button icon",
-      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to. (mobile only)",
+      "description": "Replaces close buttons with back buttons to indicate more accurately what action it corresponds to.",
       "files": {
           "css": ["arrows.css"]
       },
-      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+      "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
+      "devices": "mobileOnly"
   },
   {
       "name": "Move messages button",
-      "description": "Moves messages button to header. (mobile only)",
+      "description": "Moves messages button to header.",
       "files": {
           "js": ["messagesButton.js"]
-      }
+      },
+      "devices": "mobileOnly"
   },
   {
-    "name": "Hide subjects with no grades",
-    "description": "Hides subjects without any grades.",
+    "name": "Cleanup grades table",
+    "description": "Hides subjects without any grades and columns without content.",
     "files": {
       "js": ["hideSubjectsWithNoGrades/finalGrades.js"],
       "css": ["hideSubjectsWithNoGrades/normalGrades.css"]
@@ -34,18 +36,20 @@
   },
   {
     "name": "Hide empty exam results",
-    "description": "Hides exam results instead of showing no data. (mobile only)",
+    "description": "Hides exam results instead of showing no data.",
     "files": {
       "css": ["hideEmptyExamResults.css"]
-    }
+    },
+    "devices": "mobileOnly"
   },
   {
     "name": "Hide footer",
-    "description": "Hides footer. (mobile only)",
+    "description": "Hides footer.",
     "files": {
       "css": ["hideFooter.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
+    "devices": "mobileOnly"
   },
   {
     "name": "Hide WCAG",
@@ -72,10 +76,11 @@
   },
   {
     "name": "Display Full Name",
-    "description": "Shows the user's name under the nickname. (desktop only)",
+    "description": "Shows the user's name under the nickname.",
     "files": {
       "js": ["displayFullName.js"]
-    }
+    },
+    "devices": "desktopOnly"
   },
   {
     "name": "Redirect To Board",
@@ -137,12 +142,13 @@
   },
   {
     "name": "Mobile Navigation",
-    "description": "Replaces aside with more readable bottom navigation bar designed. (mobile only)",
+    "description": "Replaces aside with more readable bottom navigation bar designed.",
     "files": {
       "css": ["newMobileNavbar/styles.css"],
       "js": ["newMobileNavbar/index.js", "newMobileNavbar/highlights.js"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    "devices": "mobileOnly"
   },
   {
     "name": "Hide weekends in monthly calendars",
@@ -163,20 +169,22 @@
   },
   {
     "name": "Move user options to header",
-    "description": "Moves user avatar to header that opens dropdown with user options. (mobile only)",
+    "description": "Moves user avatar to header that opens dropdown with user options.",
     "files": {
       "js": ["moveUserOptionsToHeader/script.js"],
       "css": ["moveUserOptionsToHeader/styles.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"],
+    "devices": "mobileOnly"
   },
   {
     "name": "Resigned timetable",
-    "description": "Changes styles and navigation on timetable page. (mobile only)",
+    "description": "Changes styles and navigation on timetable page.",
     "files": {
       "js": ["newTimetable/script.js"],
       "css": ["newTimetable/styles.css", "apis/bottomDateSelector/styles.css"]
-    }
+    },
+    "devices": "mobileOnly"
   },
   {
     "name": "Redisigned attendance",
@@ -188,11 +196,22 @@
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
+    "name": "Redesigned dashboard",
+    "description": "Changes styles of the home (dashboard) page.",
+    "files": {
+      "js": ["newDashboard/index.js"],
+      "css": ["newDashboard/styles.css"]
+    },
+    "devices": "mobileOnly",
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]   
+  },
+  {
     "name": "Fix going back in history",
-    "description": "Allows to use the browser's back button to return to the expected location. (mobile only) (firefox only)",
+    "description": "Allows to use the browser's back button to return to the expected location. (firefox only)",
     "files": {
       "js": ["fixGoingBack.js"]
-    }
+    },
+    "devices": "mobileOnly"
   },
   {
     "name": "Highlight today",
@@ -217,5 +236,12 @@
       "css": ["darkTheme/evHome.css", "darkTheme/colors.css"]
     },
     "allowedHostsCss": ["eduvulcan.pl"]
+  },
+  {
+    "name": "Count averages",
+    "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
+    "files": {
+        "js": ["countAverage.js"]
+    }
   }
 ]
