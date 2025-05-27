@@ -75,7 +75,7 @@ export async function generateSettingsList() {
     }
 
     addListenersToInputs(patchesSettingsDiv);
-    addBttmButtons(patchesSettingsDiv);
+    addBttmButtons(patchesSettingsDiv, patches);
 
     return patchesSettingsDiv;
 }
@@ -226,7 +226,7 @@ function addListenersToInputs(patchesSettingsDiv) {
  * @param {Node} patchesSettingsDiv
  * @returns {void}
  */
-function addBttmButtons(patchesSettingsDiv) {
+function addBttmButtons(patchesSettingsDiv, patches) {
     const buttonsDiv = document.createElement("div");
     buttonsDiv.className = "buttons";
     buttonsDiv.innerHTML = `
