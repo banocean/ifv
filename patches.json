@@ -23,7 +23,26 @@
       "files": {
           "js": ["messagesButton.js"]
       },
-      "devices": "mobileOnly"
+      "devices": "mobileOnly",
+      "settings": [
+        {
+          "id": "placeToMove",
+          "name": "Place to move",
+          "description": "Place to move the messages button.",
+          "type": "select",
+          "default": "header",
+          "options": [
+            {
+              "value": "header",
+              "name": "Header"
+            },
+            {
+              "value": "footer",
+              "name": "Footer"
+            }
+          ]
+        }
+      ]
   },
   {
     "name": "Cleanup grades table",
@@ -80,7 +99,16 @@
     "files": {
       "js": ["displayFullName.js"]
     },
-    "devices": "desktopOnly"
+    "devices": "desktopOnly",
+    "settings": [
+      {
+        "id": "customName",
+        "name": "Custom name",
+        "description": "Custom name to be displayed.",
+        "type": "text",
+        "default": ""
+      }
+    ]
   },
   {
     "name": "Redirect To Board",
@@ -138,7 +166,30 @@
     "description": "Reloads page while changing between desktop and mobile layouts.",
     "files": {
       "js": ["fixResizing.js"]
-    }
+    },
+    "settings": [
+      {
+        "id": "reloadInHome",
+        "name": "Reload in home",
+        "description": "Should reload in eduVulcan home.",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "reloadInMessages",
+        "name": "Reload in messages",
+        "description": "Should reload in messages page.",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "customDelay",
+        "name": "Custom delay",
+        "description": "Custom delay in milliseconds before reload.",
+        "type": "number",
+        "default": "500"
+      }
+    ]
   },
   {
     "name": "Mobile Navigation",
@@ -156,7 +207,46 @@
     "files": {
       "css": ["hideWeekends.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    "settings": [
+      {
+        "id": "daysToHide",
+        "name": "Days to hide",
+        "description": "Days to hide in monthly calendars.",
+        "type": "multiselect",
+        "default": ["saturday", "sunday"],
+        "options": [
+          {
+            "value": "monday",
+            "name": "Monday"
+          },
+          {
+            "value": "tuesday",
+            "name": "Tuesday"
+          },
+          {
+            "value": "wednesday",
+            "name": "Wednesday"
+          },
+          {
+            "value": "thursday",
+            "name": "Thursday"
+          },
+          {
+            "value": "friday",
+            "name": "Friday"
+          },
+          {
+            "value": "saturday",
+            "name": "Saturday"
+          },
+          {
+            "value": "sunday",
+            "name": "Sunday"
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "Login and password together",
@@ -203,7 +293,7 @@
       "css": ["newDashboard/styles.css"]
     },
     "devices": "mobileOnly",
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]   
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
     "name": "Fix going back in history",
@@ -219,13 +309,49 @@
     "files": {
       "css": ["highlightToday.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"],
+    "settings": [
+      {
+        "id": "highlightColor",
+        "name": "Highlight today color",
+        "description": "Color of the highlight.",
+        "type": "color",
+        "default": "#e12d39"
+      }
+    ]
   },
   {
     "name": "Count averages",
     "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
     "files": {
         "js": ["countAverage.js"]
-    }
+    },
+    "settings": [
+        {
+            "id": "plusValue",
+            "name": "Plus value",
+            "description": "Value to add when the grade has a plus (e.g. 3+).",
+            "type": "number",
+            "default": 0.3,
+            "step": 0.1
+        },
+        {
+            "id": "minusValue",
+            "name": "Minus value",
+            "description": "Value to be deducted when the grade has a minus (e.g. 3-).",
+            "type": "number",
+            "default": 0.3,
+            "step": 0.1
+        }
+    ]
+  },
+  {
+    "name": "Display settings on the website",
+    "description": "Makes patches settings accessible.",
+    "files": {
+      "js": ["patchesSettings/desktop.js", "patchesSettings/mobile.js"],
+      "css": ["patchesSettings/style.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
   }
 ]
