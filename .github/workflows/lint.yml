@@ -21,7 +21,7 @@ jobs:
 
       - name: Install ESLint and its plugins
         run: |
-          npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js @stylistic/eslint-plugin-js
+          npm ci
 
       - name: Run ESLint
         run: npx eslint . -f gha
@@ -43,7 +43,7 @@ jobs:
           node-version: '20'
 
       - name: Install ESLint
-        run: npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js @stylistic/eslint-plugin-js
+        run: npm ci
 
       - name: Suggest fixes for ESLint issues
         uses: CatChen/eslint-suggestion-action@v4.1.17

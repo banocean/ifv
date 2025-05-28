@@ -1,0 +1,32 @@
+{
+    "name": "ifv",
+    "version": "0.4.0",
+    "description": "Poprawia uciążliwe elementy stron usług eduVULCAN oraz Dziennik Vulcan",
+    "main": "apply.js",
+    "type": "module",
+    "devDependencies": {
+        "@eslint/css": "^0.8.1",
+        "@eslint/js": "^9.27.0",
+        "@eslint/json": "^0.12.0",
+        "@stylistic/eslint-plugin": "^4.4.0",
+        "eslint": "^9.27.0",
+        "eslint-formatter-gha": "^1.5.2",
+        "eslint-plugin-jsdoc": "^50.6.17",
+        "globals": "^16.2.0",
+        "prettier": "^3.5.3"
+    },
+    "scripts": {
+        "fix eslint": "npx eslint . --fix",
+        "format": "npx prettier . --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/banocean/ifv.git"
+    },
+    "author": "banocean",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/banocean/ifv/issues"
+    },
+    "homepage": "https://github.com/banocean/ifv#readme"
+}
