@@ -10,26 +10,6 @@ jobs:
   lint:
     name: Run ESLint
     runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install ESLint and its plugins
-        run: |
-          npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js @stylistic/eslint-plugin-js
-
-      - name: Run ESLint
-        run: npx eslint . -f gha
-
-  suggest-fixes:
-    name: Suggest ESLint fixes
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
     permissions:
       contents: read
       pull-requests: write
@@ -42,11 +22,16 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install ESLint
-        run: npm install --save-dev globals eslint-formatter-gha eslint-plugin-jsdoc @eslint/json @eslint/js @stylistic/eslint-plugin-js
+      - name: Install ESLint and its plugins
+        run: |
+          npm i --save-dev @eslint/css@0.8.1 @eslint/js@9.27.0 @eslint/json@0.12.0 @stylistic/eslint-plugin@4.4.0 eslint@9.27.0 eslint-formatter-gha@1.5.2 eslint-plugin-jsdoc@50.6.17 globals@16.2.0
+
+      - name: Run ESLint
+        run: npx eslint . -f gha
 
       - name: Suggest fixes for ESLint issues
         uses: CatChen/eslint-suggestion-action@v4.1.17
+        if: always() && github.event_name == 'pull_request'
         with:
             config-path: eslint.config.mjs
             fail-check: true
