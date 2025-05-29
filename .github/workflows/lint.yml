@@ -24,7 +24,7 @@ jobs:
 
       - name: Install ESLint and its plugins
         run: |
-          npm i --save-dev @eslint/css@0.8.1 @eslint/js@9.27.0 @eslint/json@0.12.0 @stylistic/eslint-plugin@4.4.0 eslint@9.27.0 eslint-formatter-gha@1.5.2 eslint-plugin-jsdoc@50.6.17 globals@16.2.0
+          npm i --save-dev @eslint/css @eslint/js @eslint/json @stylistic/eslint-plugin eslint eslint-plugin-jsdoc globals eslint-config-prettier eslint-formatter-gha
 
       - name: Run ESLint
         run: npx eslint . -f gha

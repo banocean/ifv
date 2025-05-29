@@ -1,6 +1,7 @@
 // to use eslint locally with this configuration install the following packages:
-//   npm install --save-dev @eslint/css@0.8.1 @eslint/js@9.27.0 @eslint/json@0.12.0 @stylistic/eslint-plugin@4.4.0 eslint@9.27.0 eslint-plugin-jsdoc@50.6.17 globals@16.2.0
+//   npm install --save-dev @eslint/css @eslint/js @eslint/json @stylistic/eslint-plugin eslint eslint-plugin-jsdoc globals eslint-config-prettier
 // and run it with `npx eslint .` in the root of this repository
+// or with `npx eslint . --fix` to automatically fix some issues
 // you can also install the eslint add-on for your editor - for VS Code this is https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 import globals from "globals";
@@ -10,6 +11,7 @@ import json from "@eslint/json";
 import jsdoc from "eslint-plugin-jsdoc";
 import stylistic from "@stylistic/eslint-plugin";
 import { defineConfig } from "eslint/config";
+import prettierConfig from "eslint-config-prettier/flat";
 
 export default defineConfig([
     {
@@ -17,58 +19,42 @@ export default defineConfig([
         plugins: {
             js,
             jsdoc,
-            stylistic,
+            "@stylistic": stylistic,
         },
         languageOptions: {
             globals: {
                 ...globals.browser,
-                ...globals.webextensions
+                ...globals.webextensions,
             },
             parserOptions: {
                 ecmaFeatures: {
                     impliedStrict: true,
-                }
-            }
+                },
+            },
         },
         rules: {
             "no-console": "warn",
             "prefer-const": "error",
-            "eqeqeq": ["warn", "smart"],
+            eqeqeq: ["warn", "smart"],
             "no-duplicate-imports": "error",
             "no-self-compare": "error",
             "no-unassigned-vars": "error",
-            "yoda": ["warn", "never"],
+            yoda: ["warn", "never"],
             "no-var": "error",
             "no-useless-assignment": "warn",
             "no-unreachable-loop": "error",
             "jsdoc/check-syntax": "error",
             "jsdoc/check-types": "error",
             "jsdoc/valid-types": "error",
-            "stylistic/brace-style": ["error", "1tbs"],
-            "stylistic/comma-dangle": ["error", "always-multiline"],
-            "stylistic/comma-spacing": "error",
-            "stylistic/function-call-spacing": ["error", "never"],
-            "stylistic/indent": ["error", 4, { "SwitchCase": 1 }],
-            "stylistic/key-spacing": ["error", { "beforeColon": false, "afterColon": true, "mode": "minimum" }],
-            "stylistic/keyword-spacing": "error",
-            "stylistic/no-confusing-arrow": "warn",
-            "stylistic/no-extra-semi": "error",
-            "stylistic/no-mixed-operators": "warn",
-            "stylistic/no-tabs": "error",
-            "stylistic/quotes": ["error", "double"],
-            "stylistic/semi": ["error", "always"],
-            "stylistic/semi-spacing": ["error", { "before": false, "after": true }],
-            "stylistic/semi-style": ["error", "last"],
-            "stylistic/switch-colon-spacing": ["error", { "after": true, "before": false }],
-            "stylistic/no-trailing-spaces": "error",
-            "stylistic/no-whitespace-before-property": "error",
+            "@stylistic/no-confusing-arrow": "warn",
+            "@stylistic/no-mixed-operators": "warn",
+            "@stylistic/no-tabs": "error",
+            "@stylistic/quotes": ["error", "double"],
         },
         linterOptions: {
             reportUnusedInlineConfigs: "error",
         },
-        ignores: [
-            "/node_modules/"
-        ],
+        ignores: ["/node_modules/"],
         extends: ["js/recommended"],
     },
     {
@@ -83,18 +69,18 @@ export default defineConfig([
             "json/no-unsafe-values": "warn",
             "json/no-unnormalized-keys": "error",
         },
-        ignores: [
-            "package-lock.json"
-        ]
+        ignores: ["package.json", "package-lock.json", "/node_modules/"],
     },
     {
         files: ["**/*.css"],
         plugins: {
-            css
+            css,
         },
         rules: {
             "no-important": "off",
         },
+        ignores: ["/node_modules/"],
         extends: ["css/recommended"],
-    }
+    },
+    prettierConfig,
 ]);
