@@ -222,6 +222,22 @@
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
+    "name": "Dark theme for student module",
+    "description": "Adds dark theme for student module",
+    "files": {
+      "css": ["darkTheme/main.css", "darkTheme/colors.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  },
+  {
+    "name": "Dark theme for eduVulcan homepage",
+    "description": "Adds dark theme for eduVulcan homepage",
+    "files": {
+      "css": ["darkTheme/evHome.css", "darkTheme/colors.css"]
+    },
+    "allowedHostsCss": ["eduvulcan.pl"]
+  },
+  {
     "name": "Count averages",
     "description": "Counts averages in grades table and gives access to \"Uczeń na tle klasy\".",
     "files": {
