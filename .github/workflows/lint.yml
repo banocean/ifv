@@ -1,0 +1,37 @@
+name: ESLint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ESLint and its plugins
+        run: |
+          npm i --save-dev @eslint/css @eslint/js @eslint/json @stylistic/eslint-plugin eslint eslint-plugin-jsdoc globals eslint-config-prettier eslint-formatter-gha
+
+      - name: Run ESLint
+        run: npx eslint . -f gha
+
+      - name: Suggest fixes for ESLint issues
+        uses: CatChen/eslint-suggestion-action@v4.1.17
+        if: always() && github.event_name == 'pull_request'
+        with:
+            config-path: eslint.config.mjs
+            fail-check: true
