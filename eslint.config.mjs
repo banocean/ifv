@@ -2,7 +2,6 @@
 //   npm install --save-dev @eslint/css @eslint/js @eslint/json @stylistic/eslint-plugin eslint eslint-plugin-jsdoc globals eslint-config-prettier
 // and run it with `npx eslint .` in the root of this repository
 // or with `npx eslint . --fix` to automatically fix some issues
-// you can also install the eslint add-on for your editor - for VS Code this is https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 import globals from "globals";
 import js from "@eslint/js";
