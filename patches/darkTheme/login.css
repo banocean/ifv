@@ -1,0 +1,36 @@
+@media (prefers-color-scheme: dark) {
+    body,
+    div.main,
+    .page-center-box,
+    .header-appearance {
+        background-color: var(--primary-background) !important;
+        color: var(--primary-text) !important;
+    }
+
+    .header-appearance {
+        box-shadow: none !important;
+    }
+
+    footer {
+        background-color: var(--primary-background) !important;
+        color: var(--secondary-text) !important;
+    }
+
+    h2.form-title,
+    .input-components label,
+    footer a,
+    .center-box a {
+        color: var(--primary-text) !important;
+    }
+
+    .center-box {
+        background-color: var(--secondary-background) !important;
+        color: var(--secondary-text) !important;
+    }
+
+    .input-components input {
+        background-color: var(--component-background) !important;
+        color: var(--primary-text) !important;
+        border-color: var(--borders) !important;
+    }
+}
