@@ -222,6 +222,14 @@
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   },
   {
+      "name": "Dark theme for login page",
+      "description": "Adds dark theme to login page",
+      "files": {
+          "css": ["darkTheme/colors.css", "darkTheme/login.css"]
+      },
+      "allowedHostsCss": ["dziennik-logowanie.vulcan.net.pl", "uonetplus.vulcan.net.pl"]
+  },
+  {
     "name": "Dark theme for student module",
     "description": "Adds dark theme for student module",
     "files": {
