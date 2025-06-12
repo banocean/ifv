@@ -1,3 +1,5 @@
+import { getSetting } from './apis/settings.js';
+
 function modifyGradesRequests() {
     const originalXHROpen = XMLHttpRequest.prototype.open;
     const originalXHRSend = XMLHttpRequest.prototype.send;
@@ -59,13 +61,13 @@ function modifyGradesRequests() {
                                                                     "+"
                                                                 )
                                                             )
-                                                                value += 0.5;
+                                                                value += getSetting("Count averages", "plusValue");
                                                             else if (
                                                                 grade.wpis.includes(
                                                                     "-"
                                                                 )
                                                             )
-                                                                value -= 0.25;
+                                                                value -= getSetting("Count averages", "minusValue");
 
                                                             sum +=
                                                                 value *
