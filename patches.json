@@ -227,7 +227,7 @@
       "files": {
           "css": ["darkTheme/colors.css", "darkTheme/login.css"]
       },
-      "allowedHostsCss": ["dziennik-logowanie.vulcan.net.pl"]
+      "allowedHostsCss": ["dziennik-logowanie.vulcan.net.pl", "uonetplus.vulcan.net.pl"]
   },
   {
     "name": "Dark theme for student module",

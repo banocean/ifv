@@ -1,17 +1,29 @@
 @media (prefers-color-scheme: dark) {
     body,
+    .startScreen,
     div.main,
     .page-center-box,
-    .header-appearance {
+    .header-appearance,
+    .topBar,
+    .loginBox {
         background-color: var(--primary-background) !important;
         color: var(--primary-text) !important;
+        background-image: none !important;
+    }
+    
+    * {
+        border-color: var(--borders) !important;
+    }
+
+    span.info *, span.loginInfoDescription, .bottomBar a {
+        color: var(--secondary-text) !important;
     }
 
     .header-appearance {
         box-shadow: none !important;
     }
 
-    footer {
+    footer, .bottomBar {
         background-color: var(--primary-background) !important;
         color: var(--secondary-text) !important;
     }
@@ -19,7 +31,8 @@
     h2.form-title,
     .input-components label,
     footer a,
-    .center-box a {
+    .center-box a,
+    .loginHint a {
         color: var(--primary-text) !important;
     }
 
@@ -32,5 +45,9 @@
         background-color: var(--component-background) !important;
         color: var(--primary-text) !important;
         border-color: var(--borders) !important;
+    }
+    
+    .startIframeContainer {
+        background: none !important;
     }
 }
