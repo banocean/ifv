@@ -353,5 +353,14 @@
       "css": ["patchesSettings/style.css"]
     },
     "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
+  }, 
+  {
+    "name": "Excuse all button",
+    "description": "Adds option to select all the attendance to excuse with one click",
+    "files": {
+        "js": ["excuseAll/index.js"],
+        "css": ["excuseAll/styles.css"]
+    },
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl"]
   }
 ]
