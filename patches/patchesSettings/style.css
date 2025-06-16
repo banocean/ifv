@@ -337,7 +337,7 @@
 
 .reset-button:hover {
     background-color: #006bd614;
-    border-color: #006bd6;
+    border-color: #006bd6 !important;
 }
 
 .reset-button:active {

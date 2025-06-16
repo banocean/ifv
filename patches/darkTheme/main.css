@@ -1,4 +1,4 @@
-@media (prefers-color-scheme: dark) {
+:root.dark {
     * {
         box-shadow: none !important;
     }
@@ -110,7 +110,9 @@
     .timetable__grid .column.wolne.current,
     .timetable__grid .column.wolne,
     .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day,
-    .plan-scheduler .plan-scheduler__body-row .plan-scheduler-cell__free-day.plan-scheduler-cell__current,
+    .plan-scheduler
+        .plan-scheduler__body-row
+        .plan-scheduler-cell__free-day.plan-scheduler-cell__current,
     .modal__free-day {
         background: repeating-linear-gradient(
             45deg,
@@ -162,7 +164,7 @@
     }
 
     .logoEduVulcan_ciemne_r_svg__cls-1 {
-        fill: #FFF !important;
+        fill: #fff !important;
     }
 
     .tile__content {
@@ -185,13 +187,17 @@
     }
 
     .tile__list__rectangle__ribbon {
-        background-color: color-mix(in srgb, var(--tertiary-text) 80%, #000 20%);
+        background-color: color-mix(
+            in srgb,
+            var(--tertiary-text) 80%,
+            #000 20%
+        );
     }
-    
+
     .tile__header {
         background-color: var(--tertiary--component--background);
     }
-    
+
     .cell--single > .plan-position,
     .cell--multi--conflicted,
     .plan-scheduler-cell__position,
@@ -199,13 +205,13 @@
         color: #000;
         filter: brightness(0.8) invert(1) hue-rotate(180deg) saturate(170%);
     }
-    
+
     .cell--single > .plan-position > .details-btn--appearance,
     .cell--multi--conflicted > div > .conflicted--details--button,
     .modal__content > div > .plan-position > .details-btn--appearance {
         filter: invert(1) hue-rotate(180deg);
     }
-    
+
     .timetable__grid .column.current {
         background-color: var(--tertiary--component--background);
     }
@@ -1013,17 +1019,23 @@
     div.header__logo-product {
         color: var(--secondary-text) !important;
     }
-    .tile__header.flex__items > .flex__item-auto > img, .dashboard-info-toolbar > div > img, button.ql-bold > svg {
+    .tile__header.flex__items > .flex__item-auto > img,
+    .dashboard-info-toolbar > div > img,
+    button.ql-bold > svg {
         filter: invert(0.2) !important;
     }
-    main.app__main, div.attendance-tabs {
+    main.app__main,
+    div.attendance-tabs {
         background: var(--primary-background) !important;
     }
-    #tresc > .ql-toolbar.ql-snow, #tresc > .ql-container.ql-snow {
+    #tresc > .ql-toolbar.ql-snow,
+    #tresc > .ql-container.ql-snow {
         background: var(--secondary--component--background) !important;
         border: 1px solid var(--borders) !important;
     }
-    .dashboard-info-toolbar > div, .tile__header, .tile__content {
+    .dashboard-info-toolbar > div,
+    .tile__header,
+    .tile__content {
         background: var(--secondary--component--background) !important;
     }
     input.MuiInputBase-input.MuiInput-input {
@@ -1040,22 +1052,40 @@
         background: var(--secondary-background) !important;
         border-top: 2px solid var(--borders) !important;
     }
-    div.lesson.normal > article, div.lesson.conflicted > article {
+    div.lesson.normal > article,
+    div.lesson.conflicted > article {
         background-color: var(--component-background) !important;
     }
     div.lesson.canceled > article {
-        background-color: color-mix(in srgb, var(--component-background) 80%, #F00 20%) !important;
+        background-color: color-mix(
+            in srgb,
+            var(--component-background) 80%,
+            #f00 20%
+        ) !important;
     }
     ol.lessons-container > li.canceled {
-        color: color-mix(in srgb, var(--component-background) 20%, #F00 80%) !important;
+        color: color-mix(
+            in srgb,
+            var(--component-background) 20%,
+            #f00 80%
+        ) !important;
     }
     div.lesson.substitute > article {
-        background-color: color-mix(in srgb, var(--component-background) 60%, #FF0 20%) !important;
+        background-color: color-mix(
+            in srgb,
+            var(--component-background) 60%,
+            #ff0 20%
+        ) !important;
     }
     ol.lessons-container > li.substitute {
-        color: color-mix(in srgb, var(--component-background) 20%, #FF0 60%) !important;
+        color: color-mix(
+            in srgb,
+            var(--component-background) 20%,
+            #ff0 60%
+        ) !important;
     }
-    div.lesson.normal > div, div.lesson.conflicted > div {
+    div.lesson.normal > div,
+    div.lesson.conflicted > div {
         color: var(--primary-text) !important;
     }
     div.subject {
@@ -1079,7 +1109,8 @@
     .attendance-tabs > button {
         color: color-mix(in srgb, var(--kolor-brand), #fff 30%);
     }
-    .modal .text__editor-container .modal__box .ql-toolbar, .modal .text__editor-container .modal__box .ql-container {
+    .modal .text__editor-container .modal__box .ql-toolbar,
+    .modal .text__editor-container .modal__box .ql-container {
         background-color: var(--secondary--component--background);
     }
     .modal .text__editor-container .modal__box .ql-snow {
@@ -1090,5 +1121,112 @@
     }
     a.linkified {
         color: var(--evBlue);
+    }
+    .ifv-settings-button img {
+        filter: invert(0) !important;
+    }
+    .ifv-patches-modal {
+        background-color: var(--component-background);
+        border: 1px solid var(--borders);
+    }
+    .ifv-patches-modal-header h1 {
+        color: var(--primary-text);
+    }
+    .ifv-patches-modal > .patches-list > .patch,
+    .ifv-patches-mobile > .patches-list > .patch {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+    }
+    .ifv-patches-modal .patch .settings-list,
+    .ifv-patches-mobile .patch .settings-list {
+        background-color: var(--tertiary--component--background);
+        border: 1px solid var(--borders);
+    }
+    .patch-name {
+        color: color-mix(
+            in srgb,
+            var(--secondary-text),
+            var(--tertiary-text) 80%
+        );
+    }
+    .setting-name {
+        color: color-mix(
+            in srgb,
+            var(--secondary-text),
+            var(--tertiary-text) 60%
+        );
+    }
+    .setting-input input[type="text"],
+    .setting-input input[type="number"],
+    .setting-input input[type="color"],
+    .setting-input select {
+        background-color: var(--secondary-background);
+        color: var(--primary-text);
+        border: 1px solid var(--borders);
+        box-shadow: 0 0 300px color-mix(in srgb, var(--evBlue), transparent 85%) !important;
+        transition: 0.1s ease-out box-shadow;
+    }
+    .setting-boolean-toggle .toggle-input, .checkbox-item input[type="checkbox"] {
+        box-shadow: 0 0 30px color-mix(in srgb, var(--evBlue), transparent 90%) !important;
+        transition: 0.1s ease-out box-shadow;
+    }
+    .setting-boolean-toggle .toggle-input:hover, .checkbox-item input[type="checkbox"]:hover {
+        box-shadow: 0 0 15px color-mix(in srgb, var(--evBlue), transparent 85%) !important;
+    }
+    .checkbox-item input[type="checkbox"] {
+        background-color: var(--secondary-background);
+        border: 1px solid var(--borders);
+    }
+    .checkbox-item input[type="checkbox"]:checked {
+        background-color: color-mix(
+            in srgb,
+            var(--evBlue),
+            var(--secondary-background) 70%
+        );
+        border: 1px solid #007bff;
+    }
+    .checkbox-item label {
+        color: var(--primary-text);
+    }
+    .setting-input select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DFDFDD'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+    }
+    .search-bar {
+        background-color: var(--secondary--component--background);
+        border: 1px solid var(--borders);
+    }
+    .search-bar input[type="text"] {
+        color: var(--primary-text);
+    }
+    #ifv-close-patches-modal img {
+        filter: invert(1);
+    }
+    .settings-list .setting {
+        border-bottom: 1px solid var(--hr-borders);
+    }
+    .patches-list .buttons {
+        border-top: 1px solid var(--hr-borders);
+    }
+    .settings-list .setting:last-child {
+        border-bottom: none;
+    }
+    .setting-input input[type="text"]:focus,
+    .setting-input input[type="number"]:focus,
+    .setting-input input[type="color"]:focus,
+    .setting-input select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 30px color-mix(in srgb, var(--evBlue), transparent 85%) !important;
+    }
+    .reset-button {
+        border-color: var(--borders);
+    }
+    .no-results-message {
+        color: var(--primary-text);
+    }
+    .patch > .patch-header > *, .patch .setting-header > * {
+        text-shadow: 0 0 50px color-mix(in srgb, var(--evBlue), transparent 70%);
+    }
+    .checkbox-item input[type="checkbox"]:checked {
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.1s ease-out;
     }
 }

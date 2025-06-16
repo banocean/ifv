@@ -321,20 +321,36 @@
     ]
   },
   {
-    "name": "Dark theme for student module",
-    "description": "Adds dark theme for student module",
+    "name": "Dark theme",
+    "description": "Adds dark theme",
     "files": {
-      "css": ["darkTheme/main.css", "darkTheme/colors.css"]
+      "js": ["darkTheme/index.js"],
+      "css": ["darkTheme/main.css", "darkTheme/evHome.css", "darkTheme/colors.css"]
     },
-    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl"]
-  },
-  {
-    "name": "Dark theme for eduVulcan homepage",
-    "description": "Adds dark theme for eduVulcan homepage",
-    "files": {
-      "css": ["darkTheme/evHome.css", "darkTheme/colors.css"]
-    },
-    "allowedHostsCss": ["eduvulcan.pl"]
+    "allowedHostsCss": ["uczen.eduvulcan.pl", "dziennik-uczen.vulcan.net.pl", "wiadomosci.eduvulcan.pl", "dziennik-wiadomosci.vulcan.net.pl", "eduvulcan.pl"],
+    "settings": [
+        {
+            "id": "darkThemeEnabled",
+            "name": "Dark theme enabled",
+            "description": "Whether dark theme should be enabled.",
+            "type": "select",
+            "default": "auto",
+            "options": [
+                {
+                    "value": "auto",
+                    "name": "Auto"
+                },
+                {
+                    "value": "enabled",
+                    "name": "Enabled"
+                },
+                {
+                    "value": "disabled",
+                    "name": "Disabled"
+                }
+            ]
+        }
+    ]
   },
   {
     "name": "Count averages",
