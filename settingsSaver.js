@@ -1,6 +1,9 @@
 chrome.storage.sync.get("patchesSettings", (data) => {
     if (data.patchesSettings) {
-        sessionStorage.setItem("ifv_patches_settings", JSON.stringify(data.patchesSettings));
+        sessionStorage.setItem(
+            "ifv_patches_settings",
+            JSON.stringify(data.patchesSettings)
+        );
     } else {
         sessionStorage.setItem("ifv_patches_settings", JSON.stringify([]));
     }
@@ -28,7 +31,10 @@ function saveSettingsToStorage() {
 window.addEventListener("ifv-settings-changed", saveSettingsToStorage);
 
 fetch(chrome.runtime.getURL("patches.json"))
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) =>
+        data.sort((a, b) => a.name.localeCompare(b.name, "pl"))
+    )
+    .then((data) => {
         sessionStorage.setItem("IFV_PATCHES", JSON.stringify(data));
     });
