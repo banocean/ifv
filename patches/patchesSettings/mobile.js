@@ -4,7 +4,7 @@ import { waitForRender } from "../apis/waitForElement.js";
 const backIconUrl =
     "https://raw.githubusercontent.com/banocean/ifv/new-navbar/assets/icons/keyboard_backspace_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 const settingsIconUrl =
-    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/settings.svg";
+    "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/settings.svg";
 
 function addMobileSettings() {
     const settingsButton = document.createElement("div");
