@@ -67,10 +67,22 @@ function move() {
     header.addEventListener("click", () => {
         button.classList.toggle("hidden");
         if (!button.classList.contains("hidden"))
-            button.classList.add("animate");
-        setTimeout(() => {
-            button.classList.remove("animate");
-        }, 100);
+            button.animate(
+                [
+                    {
+                        opacity: 0,
+                        transform: "translateY(-10px)",
+                    },
+                    {
+                        opacity: 1,
+                        transform: "translateY(0)",
+                    },
+                ],
+                {
+                    duration: 100,
+                    easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                }
+            );
     });
 
     button.addEventListener("click", async () => {
