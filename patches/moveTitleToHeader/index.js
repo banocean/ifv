@@ -22,13 +22,8 @@ function updateTitle() {
         );
 
         textbox.appendChild(toolbar);
-        textbox.style.flexDirection = "row";
-        textbox.querySelector(".MuiInputBase-formControl").style.width = "100%";
 
         toolbar.querySelectorAll("button").forEach((btn) => {
-            btn.style.padding = "10px 10px";
-            btn.style.minWidth = "0";
-
             const btnIncludes = (t) =>
                 btn.querySelector("span").innerText.includes(t);
             switch (true) {

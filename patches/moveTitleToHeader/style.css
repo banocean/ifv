@@ -4,18 +4,9 @@
 }
 
 .header__logo-product {
-    font-family:
-        WorkSans,
-        Graphik,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Helvetica,
-        Arial,
-        sans-serif,
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol";
+    font-family: WorkSans, Graphik, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
     margin-left: 16px !important;
 }
 
@@ -35,18 +26,9 @@
 }
 
 .go_to_dashboard {
-    font-family:
-        WorkSans,
-        Graphik,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Helvetica,
-        Arial,
-        sans-serif,
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol";
+    font-family: WorkSans, Graphik, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 24px;
     color: #3d4455;
     position: fixed;
@@ -94,4 +76,21 @@
 
 .hidden {
     display: none;
+}
+
+.desktop__frame > .form__box.textbox {
+    flex-direction: row;
+}
+
+.desktop__frame > .form__box.textbox .MuiInputBase-formControl {
+    width: 100%;
+}
+
+.app__content__header .toolbar button {
+    padding: 10px 10px;
+    min-width: 0;
+}
+
+.app__content__header .toolbar button.MuiDisabled {
+    opacity: 0.26;
 }
