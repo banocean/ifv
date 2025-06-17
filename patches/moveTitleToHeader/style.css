@@ -86,11 +86,16 @@
     width: 100%;
 }
 
-.app__content__header .toolbar button {
+.desktop__frame > .form__box.textbox .toolbar {
+    margin-left: 8px;
+}
+
+.desktop__frame > .form__box.textbox .toolbar button {
     padding: 10px 10px;
     min-width: 0;
 }
 
-.app__content__header .toolbar button.MuiDisabled {
+.desktop__frame > .form__box.textbox .toolbar button.Mui-disabled > img {
+    filter: invert(1);
     opacity: 0.26;
 }
