@@ -78,19 +78,16 @@
 
 .desktop__frame > .toolbar {
     position: fixed;
-    bottom: 15px;
-    right: 15px;
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
-}
-
-.desktop__frame > .toolbar button > img {
-    width: 30px;
-    height: 30px;
 }
 
 .toolbar button {
     padding: 10px 10px;
     min-width: 0;
+    aspect-ratio: 1;
+    height: 50px;
 }
 
 .toolbar button.Mui-disabled > img {
