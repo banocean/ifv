@@ -76,12 +76,24 @@
     margin-left: 8px;
 }
 
-.desktop__frame > .form__box.textbox .toolbar button {
+.desktop__frame > .toolbar {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 1000;
+}
+
+.desktop__frame > .toolbar button > img {
+    width: 30px;
+    height: 30px;
+}
+
+.toolbar button {
     padding: 10px 10px;
     min-width: 0;
 }
 
-.desktop__frame > .form__box.textbox .toolbar button.Mui-disabled > img {
+.toolbar button.Mui-disabled > img {
     filter: invert(1);
     opacity: 0.26;
 }

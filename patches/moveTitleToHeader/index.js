@@ -13,7 +13,7 @@ function updateTitle() {
     );
     if (header && title?.innerText && header.innerText !== title.innerText)
         header.innerText = title.innerText;
-    if (document.querySelector(".app__content__header .toolbar")) {
+    if (document.querySelector(".app__content__header .toolbar")?.innerHTML != "" && window.innerWidth >= 1024) {
         const toolbar = document.querySelector(
             ".app__content__header .toolbar"
         );
@@ -21,7 +21,11 @@ function updateTitle() {
             ".desktop__frame > .form__box.textbox"
         );
 
-        textbox.appendChild(toolbar);
+        if (textbox) {
+            textbox.appendChild(toolbar);
+        } else {
+            document.querySelector(".desktop__frame")?.appendChild(toolbar);
+        }
 
         toolbar.querySelectorAll("button").forEach((btn) => {
             const btnIncludes = (t) =>
