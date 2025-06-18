@@ -1,5 +1,6 @@
 import { clickOnAside } from "../apis/aside.js";
-import { showTooltip } from '../apis/tooltips.js';
+import { showTooltip } from "../apis/tooltips.js";
+import { waitForReplacement } from '../apis/waitForElement.js';
 
 function createButton() {
     const button = document.createElement("span");
@@ -15,15 +16,16 @@ function updateTitle() {
     if (header && title?.innerText && header.innerText !== title.innerText)
         header.innerText = title.innerText;
 
-    document.querySelector(".desktop__frame > .toolbar")
-        ? document.querySelector(".desktop__frame > .toolbar").remove()
-        : null;
-
     if (
+        document.querySelector(".app__content__header .toolbar") &&
         document.querySelector(".app__content__header .toolbar")?.innerHTML !=
-            "" &&
+        "" &&
         window.innerWidth >= 1024
     ) {
+        document.querySelector(".desktop__frame > .toolbar")
+            ? document.querySelector(".desktop__frame > .toolbar").remove()
+            : null;
+
         const toolbar = document.querySelector(
             ".app__content__header .toolbar"
         );
@@ -47,7 +49,7 @@ function updateTitle() {
             const originalText = btn.innerText;
             btn.addEventListener("mouseenter", (e) => {
                 showTooltip(e, originalText, position);
-            })
+            });
 
             switch (true) {
                 case btnIncludes("Usuń"):
@@ -64,6 +66,10 @@ function updateTitle() {
                     break;
             }
         });
+    } else {
+        document.querySelector(".desktop__frame > .toolbar")
+            ? document.querySelector(".desktop__frame > .toolbar").remove()
+            : null;
     }
 }
 
@@ -72,11 +78,9 @@ function move() {
     header.appendChild(document.createElement("span"));
     updateTitle();
 
-    const observer = new MutationObserver(updateTitle);
-    observer.observe(document.querySelector(".app__content"), {
-        characterData: true,
-        childList: true,
-    });
+    waitForReplacement(() => document.querySelector(".app__content__header__h1_subtitle > h1")).then(() => {
+        updateTitle();
+    })
 
     const button = document.querySelector(".go_to_dashboard") || createButton();
     button.style.left = `${
@@ -137,7 +141,7 @@ window.appendModule({
     run: move,
     doesRunHere: () =>
         window.location.hostname.match(/^(dziennik-)?(uczen|wiadomosci).*/),
-    onlyOnReloads: true,
+    onlyOnReloads: false,
     isLoaded: () =>
         !!document.querySelector(".header_logo_tools-container") &&
         document.querySelector(".app__content__header__h1_subtitle > h1"),
