@@ -13,7 +13,16 @@ function updateTitle() {
     );
     if (header && title?.innerText && header.innerText !== title.innerText)
         header.innerText = title.innerText;
-    if (document.querySelector(".app__content__header .toolbar")?.innerHTML != "" && window.innerWidth >= 1024) {
+
+    document.querySelector(".desktop__frame > .toolbar")
+        ? document.querySelector(".desktop__frame > .toolbar").remove()
+        : null;
+
+    if (
+        document.querySelector(".app__content__header .toolbar")?.innerHTML !=
+            "" &&
+        window.innerWidth >= 1024
+    ) {
         const toolbar = document.querySelector(
             ".app__content__header .toolbar"
         );
