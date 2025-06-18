@@ -1,4 +1,5 @@
 import { clickOnAside } from "../apis/aside.js";
+import { showTooltip } from '../apis/tooltips.js';
 
 function createButton() {
     const button = document.createElement("span");
@@ -29,16 +30,25 @@ function updateTitle() {
         const textbox = document.querySelector(
             ".desktop__frame > .form__box.textbox"
         );
+        let position;
 
         if (textbox) {
             textbox.appendChild(toolbar);
+            position = "bottom";
         } else {
             document.querySelector(".desktop__frame")?.appendChild(toolbar);
+            position = "left";
         }
 
         toolbar.querySelectorAll("button").forEach((btn) => {
             const btnIncludes = (t) =>
                 btn.querySelector("span").innerText.includes(t);
+
+            const originalText = btn.innerText;
+            btn.addEventListener("mouseenter", (e) => {
+                showTooltip(e, originalText, position);
+            })
+
             switch (true) {
                 case btnIncludes("Usuń"):
                     btn.innerHTML = `<img src="https://raw.githubusercontent.com/yoper12/ifv/fixed-title-to-header/assets/icons/delete.svg">`;
