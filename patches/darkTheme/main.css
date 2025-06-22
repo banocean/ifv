@@ -1106,9 +1106,6 @@
     .date-selector > div > img {
         filter: invert(0.2);
     }
-    .attendance-tabs > button {
-        color: color-mix(in srgb, var(--kolor-brand), #fff 30%);
-    }
     .modal .text__editor-container .modal__box .ql-toolbar,
     .modal .text__editor-container .modal__box .ql-container {
         background-color: var(--secondary--component--background);
