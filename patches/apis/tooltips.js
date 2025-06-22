@@ -61,7 +61,7 @@ export function showTooltip(event, text, position = 'top') {
         setTimeout(() => {
                 tooltipWrapper.remove();
         }, 200);
-    });
+    }, { once: true });
 }
 
 function addStylesIfNotPresent() {

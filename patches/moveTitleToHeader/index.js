@@ -82,7 +82,9 @@ function move() {
         updateTitle();
     })
 
-    const button = document.querySelector(".go_to_dashboard") || createButton();
+    if (document.querySelector(".go_to_dashboard")) return;
+
+    const button = createButton();
     button.style.left = `${
         document.querySelector(".header__logo").getBoundingClientRect().left
     }px`;
@@ -93,7 +95,7 @@ function move() {
 
     header.addEventListener("click", () => {
         button.classList.toggle("hidden");
-        if (!button.classList.contains("hidden"))
+        if (!button.classList.contains("hidden")) {
             button.animate(
                 [
                     {
@@ -110,6 +112,13 @@ function move() {
                     easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }
             );
+            window.addEventListener("scroll", hideButton, { once: true });
+            window.addEventListener("mousedown", (e) => {
+                if (!header.contains(e.target) && !button.contains(e.target)) {
+                    hideButton();
+                }
+            }, { once: true });
+        }
     });
 
     button.addEventListener("click", async () => {
@@ -123,14 +132,6 @@ function move() {
             );
         } else await clickOnAside(".tablica a");
     });
-
-    window.addEventListener("click", (e) => {
-        if (!header.contains(e.target) && !button.contains(e.target)) {
-            hideButton();
-        }
-    });
-
-    window.addEventListener("scroll", hideButton);
 
     function hideButton() {
         button.classList.add("hidden");
