@@ -748,6 +748,13 @@
         border-color: var(--borders);
     }
 
+    body .button--default.scheduler-cell-item,
+    .app .button--default.scheduler-cell-item,
+    .modal .button--default.scheduler-cell-item,
+    .details .button--default.scheduler-cell-item {
+        color: var(--primary-text);
+    }
+
     body .button--default:hover,
     .app .button--default:hover,
     .modal .button--default:hover,
@@ -755,6 +762,13 @@
         background-color: var(--hover);
         color: var(--evBlue);
         border-color: var(--borders);
+    }
+
+    body .button--default.scheduler-cell-item:hover,
+    .app .button--default.scheduler-cell-item:hover,
+    .modal .button--default.scheduler-cell-item:hover,
+    .details .button--default.scheduler-cell-item:hover {
+        color: var(--primary-text);
     }
 
     .app .textbox .editor__form fieldset,
