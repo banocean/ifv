@@ -54,7 +54,7 @@
       "world": "MAIN"
     },
     {
-      "js": ["apply.js"],
+      "js": ["apply.js", "settingsSaver.js"],
       "matches": [
         "*://dziennik-uczen.vulcan.net.pl/*",
         "*://dziennik-wiadomosci.vulcan.net.pl/*",

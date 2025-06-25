@@ -1,0 +1,414 @@
+.ifv-settings-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.ifv-patches-modal {
+    background: #f9f9ff;
+    color: #202022;
+    border-radius: 15px;
+    padding: 20px;
+    width: 800px;
+    max-height: 70%;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    opacity: 0.3;
+    z-index: -1;
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        opacity 0.3s ease-in-out;
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+        0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #ecedf7;
+    padding: 0 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #ecedf7;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.search-bar:has(input[type="text"]:focus) {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px #007bff40;
+}
+
+.search-bar img {
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #202022;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #8e8e8e;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.search-bar button img {
+    margin-right: 0;
+}
+
+.ifv-patches-modal mark,
+.ifv-patches-mobile mark {
+    background-color: #007bff80;
+    border-radius: 4px;
+    outline: 1px solid #007bff65;
+}
+
+.no-results-message {
+    display: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.ifv-patches-modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #00000000;
+    transition: backdrop-filter 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.ifv-patches-modal-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ifv-patches-modal-header .ifv-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.ifv-patches-modal-header h1 {
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1;
+    color: #000;
+}
+
+.ifv-patches-modal-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    aspect-ratio: 1;
+    margin-right: 7px;
+}
+
+.ifv-patches-modal > .patches-list,
+.ifv-patches-mobile > .patches-list {
+    font-family: "Google Sans", "Roboto", system-ui;
+}
+
+.ifv-patches-modal > .patches-list > .patch,
+.ifv-patches-mobile > .patches-list > .patch {
+    background-color: #ecedf7;
+    padding: 15px;
+    border-radius: 13px;
+    margin-bottom: 10px;
+}
+
+.patch-header {
+    margin-bottom: 5px;
+}
+
+.patch-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.patch-description {
+    font-size: 12px;
+    color: #777;
+}
+
+.ifv-patches-modal .patch .settings-list,
+.ifv-patches-mobile .patch .settings-list {
+    background-color: #dde2f2;
+    padding: 5px;
+    border-radius: 11px;
+    margin-top: 10px;
+}
+
+.settings-list .setting {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.settings-list .setting:last-child {
+    border-bottom: none;
+}
+
+.setting .separator {
+    color: #999;
+}
+
+.setting-name {
+    font-size: 12px;
+    color: #222;
+}
+
+.setting-description {
+    font-size: 12px;
+    color: #777;
+}
+
+.setting-input input[type="text"],
+.setting-input input[type="number"],
+.setting-input input[type="color"],
+.setting-input select {
+    background-color: #f0f0f5;
+    border: 1px solid #d0d0d5;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #202022;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.setting-input input[type="text"]:focus,
+.setting-input input[type="number"]:focus,
+.setting-input input[type="color"]:focus,
+.setting-input select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px #007bff40;
+    outline: none;
+}
+
+.setting-input select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23202022'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 36px;
+    width: 100%;
+}
+
+.setting-input input[type="color"] {
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #f0f0f5;
+    border: 1px solid #d0d0d5;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.checkbox-item input[type="checkbox"]:checked::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-item label {
+    font-size: 14px;
+    color: #202022;
+    cursor: pointer;
+    user-select: none;
+}
+
+.setting-multiselect .checkbox-item {
+    margin-bottom: 5px;
+}
+
+.patches-list .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+@media (max-width: 425px) {
+    .patches-list .buttons {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 15px;
+        margin-inline: 10px;
+    }
+}
+
+.apply-button,
+.reset-button {
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+        border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border: 1px solid transparent;
+    outline: none;
+    line-height: 1.5;
+}
+
+.apply-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
+
+.apply-button:active {
+    background-color: #b9d1ed;
+}
+
+.reset-button {
+    background-color: transparent;
+    color: #006bd6;
+    border-color: #7fadda;
+}
+
+.reset-button:hover {
+    background-color: #006bd614;
+    border-color: #006bd6 !important;
+}
+
+.reset-button:active {
+    background-color: #006bd61f;
+}
+
+.ifv-patches-mobile > .patches-list {
+    display: block !important;
+    color: unset !important;
+    font-size: unset !important;
+    cursor: unset !important;
+    padding-inline: 5px !important;
+    padding-block: 15px !important;
+    fill: unset !important;
+    border-bottom: none !important;
+    align-items: unset !important;
+}
+
+/* Toggle */
+/* https://uiverse.io/ClawHack1/itchy-bobcat-18 */
+
+.setting-boolean-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.setting-boolean-toggle .toggle-switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 24px;
+    background-color: #52525b;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.setting-boolean-toggle .toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.setting-boolean-toggle .toggle-input:checked + .toggle-switch::before {
+    transform: translateX(16px);
+}
+
+.setting-boolean-toggle .toggle-input:checked + .toggle-switch {
+    background-color: #007bff;
+}
+
+.setting-boolean-toggle .toggle-input:checked + .toggle-switch::before {
+    transform: translateX(16px);
+}
+
+.setting-boolean-toggle .toggle-input {
+    display: none;
+}
+
+.setting:has(.setting-boolean-toggle) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
