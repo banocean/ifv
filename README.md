@@ -1,3 +1,5 @@
+[![ESLint](https://github.com/banocean/ifv/actions/workflows/lint.yml/badge.svg?branch=main&event=push)](https://github.com/banocean/ifv/actions/workflows/lint.yml)
+
 # Improvements for VULCAN
 
 Browser extension with improvements for eduVULCAN and Dziennik VULCAN.
@@ -32,7 +34,7 @@ Browser extension with improvements for eduVULCAN and Dziennik VULCAN.
 </details>
 <details>
     <summary>Hiding weekends in monthy calendars</summary>
-    
+
 | Before:                                                      | After:                                                      |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | <img src="./screenshots/hideWeekendsBefore.png" width="300px" /> | <img src="./screenshots/hideWeekendsAfter.png" width="300px" /> |
@@ -67,7 +69,7 @@ After:
 
 <details>
     <summary>Other minor improvements</summary>
-    
+
 - Hiding WCAG controls
 - Aligning detailed grades button
 - Redirecting to board
