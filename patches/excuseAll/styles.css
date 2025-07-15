@@ -1,0 +1,11 @@
+.excuse-all:has(input:checked) .unchecked {
+    display: none;
+}
+
+.excuse-all:has(input:not(:checked)) .checked {
+    display: none;
+}
+
+.excuse-all .checked {
+    fill: rgb(225, 45, 57);
+}
