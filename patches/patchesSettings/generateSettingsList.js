@@ -3,9 +3,9 @@ import { settingRenderers } from "./settingRenderers.js";
 import { removeMarks, markTextInElement } from "./markers.js";
 
 const searchIconUrl =
-    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/search.svg";
+    "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/search.svg";
 const clearIconUrl =
-    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/clear.svg";
+    "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/clear.svg";
 
 export async function generateSettingsList() {
     const patches = JSON.parse(sessionStorage.getItem("IFV_PATCHES")) || [];

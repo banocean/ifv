@@ -4,9 +4,9 @@ const ifvLogoUrl = window.location.hostname.includes("eduvulcan")
     ? "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/logo/logo-128-blue.png"
     : "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/logo/logo-128-red.png";
 const settingsIconUrl =
-    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/settings.svg";
+    "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/settings.svg";
 const closeIconUrl =
-    "https://raw.githubusercontent.com/yoper12/ifv/refs/heads/patches-settings/assets/icons/close.svg";
+    "https://raw.githubusercontent.com/banocean/ifv/refs/heads/main/assets/icons/close.svg";
 
 const settingsButton = document.createElement("button");
 const modalDiv = document.createElement("div");
@@ -44,6 +44,7 @@ async function hideModal() {
     modalDiv.style.transform = "translate(-50%, 200%)";
     modalDiv.style.opacity = "0.3";
     modalBackground.style.background = "rgba(0, 0, 0, 0)";
+    document.body.style.overflow = "auto";
     setTimeout(() => {
         modalDiv.style.zIndex = "-1";
         modalBackground.style.zIndex = "-1";
@@ -57,6 +58,7 @@ async function showModal() {
     modalDiv.style.opacity = "1";
     modalBackground.style.background = "rgba(0, 0, 0, 0.5)";
     modalBackground.style.zIndex = "999";
+    document.body.style.overflow = "hidden";
 }
 
 window.appendModule({
